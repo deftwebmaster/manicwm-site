@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Design Articles for DFW Business Owners | ManicWebmaster</title>
+  <meta name="description" content="Calm, practical website design, local SEO, and graphic design articles for DFW small business owners who need better customer flow online.">
+  <meta name="theme-color" content="#faf8f2">
+  <link rel="canonical" href="https://manicwebmaster.com/articles/">
+  <meta property="og:title" content="Website Design Articles for DFW Business Owners">
+  <meta property="og:description" content="Practical notes on web fixes, local SEO, mobile design, conversion, and hiring the right web designer.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://manicwebmaster.com/articles/">
+  <meta property="og:site_name" content="ManicWebmaster">
+  <meta property="og:image" content="https://manicwebmaster.com/card.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Website Design Articles for DFW Business Owners">
+  <meta name="twitter:description" content="Straightforward web design and local SEO guidance for DFW small businesses.">
+  <meta name="twitter:image" content="https://manicwebmaster.com/card.jpg">
+  <link rel="icon" href="../mw-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&amp;family=Newsreader:opsz,wght@6..72,500;6..72,650&amp;display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #141414;
+      --soft-ink: #4c4d50;
+      --quiet: #7a7b7c;
+      --paper: #faf8f2;
+      --paper-deep: #eee8dc;
+      --white: #fffdf8;
+      --line: rgba(20, 20, 20, 0.12);
+      --line-strong: rgba(20, 20, 20, 0.22);
+      --cyan: #00b8df;
+      --container: 1120px;
+      --measure: 760px;
+    }
+
+    html {
+      background: var(--paper);
+      color: var(--ink);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 16% 0%, rgba(0, 184, 223, 0.11), transparent 29rem),
+        linear-gradient(180deg, var(--paper), #f7f2e9 62%, #f1eadf);
+      font-family: 'Barlow', sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    .wrap {
+      width: min(100% - 40px, var(--container));
+      margin: 0 auto;
+    }
+
+    .measure {
+      width: min(100%, var(--measure));
+      margin: 0 auto;
+    }
+
+    .site-top {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 253, 248, 0.46);
+    }
+
+    .site-top-inner {
+      display: flex;
+      min-height: 72px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--ink);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .brand img {
+      width: 34px;
+      height: 34px;
+      border-radius: 7px;
+      background: var(--ink);
+    }
+
+    .home-link {
+      display: inline-flex;
+      align-items: center;
+      border-bottom: 1px solid transparent;
+      color: var(--quiet);
+      font-size: 0.84rem;
+      font-weight: 700;
+      line-height: 1.3;
+      text-decoration: none;
+    }
+
+    .home-link:hover {
+      border-color: var(--ink);
+      color: var(--ink);
+    }
+
+    .hero {
+      padding: clamp(64px, 9vw, 124px) 0 clamp(44px, 7vw, 82px);
+    }
+
+    .eyebrow,
+    .section-label,
+    .article-kicker {
+      color: var(--quiet);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2 {
+      color: var(--ink);
+      font-family: 'Newsreader', serif;
+      font-weight: 650;
+      letter-spacing: 0;
+      line-height: 1.02;
+    }
+
+    h1 {
+      max-width: 840px;
+      margin-top: 18px;
+      font-size: clamp(3rem, 6.6vw, 5.9rem);
+    }
+
+    .hero-copy {
+      max-width: 690px;
+      margin-top: 24px;
+      color: var(--soft-ink);
+      font-size: clamp(1.08rem, 2vw, 1.32rem);
+      line-height: 1.55;
+    }
+
+    .intro-line {
+      border-block: 1px solid var(--line);
+      background: rgba(255, 253, 248, 0.58);
+      padding: clamp(28px, 5vw, 46px) 0;
+    }
+
+    .intro-line p {
+      color: var(--soft-ink);
+      font-size: clamp(1.05rem, 2vw, 1.24rem);
+      line-height: 1.6;
+    }
+
+    .articles {
+      padding: clamp(48px, 8vw, 86px) 0 clamp(70px, 10vw, 120px);
+    }
+
+    .section-label {
+      display: block;
+      margin-bottom: 18px;
+    }
+
+    .article-list {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .article-card {
+      display: grid;
+      gap: 16px;
+      border-bottom: 1px solid var(--line);
+      padding: clamp(28px, 5vw, 42px) 0;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .article-card:hover .article-title {
+      color: var(--soft-ink);
+    }
+
+    .article-card:hover .article-action {
+      border-color: var(--ink);
+      color: var(--ink);
+      transform: translateX(4px);
+    }
+
+    .article-head {
+      display: grid;
+      gap: 14px;
+    }
+
+    .article-kicker {
+      color: var(--quiet);
+      font-size: 0.74rem;
+    }
+
+    .article-title {
+      max-width: 760px;
+      font-family: 'Newsreader', serif;
+      font-size: clamp(1.8rem, 3.7vw, 3.1rem);
+      font-weight: 650;
+      line-height: 1.06;
+      transition: color 160ms ease;
+    }
+
+    .article-summary {
+      max-width: 660px;
+      color: var(--soft-ink);
+      font-size: 1.02rem;
+      line-height: 1.65;
+    }
+
+    .article-action {
+      justify-self: start;
+      border-bottom: 1px solid transparent;
+      color: var(--quiet);
+      font-size: 0.86rem;
+      font-weight: 800;
+      line-height: 1.3;
+      transition: border-color 160ms ease, color 160ms ease, transform 160ms ease;
+    }
+
+    .cta-strip {
+      border: 1px solid var(--line-strong);
+      border-radius: 24px;
+      background: #151515;
+      color: var(--paper);
+      padding: clamp(28px, 5vw, 44px);
+    }
+
+    .cta-strip h2 {
+      max-width: 640px;
+      color: var(--paper);
+      font-size: clamp(2rem, 4vw, 3.4rem);
+    }
+
+    .cta-strip p {
+      max-width: 580px;
+      margin-top: 14px;
+      color: rgba(250, 248, 242, 0.74);
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(250, 248, 242, 0.28);
+      border-radius: 999px;
+      padding: 11px 17px;
+      color: var(--paper);
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .button.primary {
+      border-color: var(--paper);
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--line);
+      padding: 30px 0 42px;
+      color: var(--quiet);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .site-footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .site-footer a {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    @media (min-width: 820px) {
+      .article-card {
+        grid-template-columns: minmax(0, 1fr) 150px;
+        align-items: end;
+      }
+
+      .article-action {
+        justify-self: end;
+        margin-bottom: 6px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .wrap {
+        width: min(100% - 28px, var(--container));
+      }
+
+      .site-top-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        padding-block: 16px;
+      }
+
+      h1 {
+        font-size: clamp(2.75rem, 13vw, 4.35rem);
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-top">
+    <div class="wrap site-top-inner">
+      <a class="brand" href="../" aria-label="ManicWebmaster home">
+        <img src="../mw-logo.png" alt="" width="34" height="34">
+        <span>ManicWebmaster</span>
+      </a>
+      <a class="home-link" href="../">Web fixes &amp; graphic design</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap measure">
+        <p class="eyebrow">Under the hood</p>
+        <h1>Website notes for DFW business owners.</h1>
+        <p class="hero-copy">Straight talk about web fixes, local SEO, mobile design, conversion, and hiring the right person before your site quietly costs you customers.</p>
+      </div>
+    </section>
+
+    <section class="intro-line">
+      <div class="wrap measure">
+        <p>These articles are written for business owners who do not need jargon. They need to know what is broken, what matters, and what to do next.</p>
+      </div>
+    </section>
+
+    <section class="articles">
+      <div class="wrap measure">
+        <span class="section-label">All articles</span>
+        <div class="article-list">
+          <a class="article-card" href="dfw-business-website-not-bringing-customers/">
+            <span class="article-head">
+              <span class="article-kicker">Website repair</span>
+              <span class="article-title">5 reasons your DFW business website isn't bringing you customers.</span>
+              <span class="article-summary">Slow mobile speed, weak local SEO, generic design, unclear calls to action, and stale content are the usual suspects.</span>
+            </span>
+            <span class="article-action">Read article</span>
+          </a>
+
+          <a class="article-card" href="hiring-dfw-local-business-web-designer/">
+            <span class="article-head">
+              <span class="article-kicker">Hiring guide</span>
+              <span class="article-title">What to look for when hiring a DFW local business web designer.</span>
+              <span class="article-summary">A practical checklist for choosing someone who understands your business, communicates clearly, builds mobile-first, and thinks beyond launch day.</span>
+            </span>
+            <span class="article-action">Read article</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="measure cta-strip">
+        <h2>Want me to look under the hood?</h2>
+        <p>Send the URL, rough idea, or design problem. I will tell you what I would clean up first.</p>
+        <div class="button-row">
+          <a class="button primary sms-link" data-sms="I was reading your articles and want you to look at my website.">Text Matt</a>
+          <a class="button" href="mailto:matt@manicwebmaster.com">Email the brief</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© 2026 ManicWebmaster</p>
+      <p><a href="../">Website fixes</a> · <a href="../graphics/">Graphic design</a> · <a href="mailto:matt@manicwebmaster.com">matt@manicwebmaster.com</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const PHONE = '4697170416';
+    document.querySelectorAll('.sms-link').forEach(a => {
+      const body = encodeURIComponent('Hey Matt, ' + a.dataset.sms);
+      a.href = `sms:${PHONE}?&body=${body}`;
+    });
+  </script>
+</body>
+</html>

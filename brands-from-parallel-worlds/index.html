@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brands From Parallel Worlds | Fictional Brand Systems by Matt Livingston</title>
+  <meta name="description" content="A cinematic archive of fictional logos, imaginary businesses, speculative branding systems, and worldbuilt commercial identities by Matt Livingston.">
+  <meta name="keywords" content="fictional logos, speculative branding, worldbuilding portfolio, cinematic brand design, imaginary companies, visual identity systems, fantasy branding, sci-fi branding, concept brand design">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #09090b;
+      --charcoal: #111113;
+      --surface: #161618;
+      --border: #222226;
+      --muted: #3a3a40;
+      --text-dim: #6b6b72;
+      --text-mid: #9b9ba2;
+      --text: #d4d4d8;
+      --white: #f0f0f2;
+
+      --ember: #c8862a;
+      --ember-pale: #e8c27a;
+      --ember-bg: #1a1208;
+
+      --kestrel: #d45a00;
+      --kestrel-pale: #f08040;
+      --kestrel-bg: #120a00;
+
+      --dead: #3dff4a;
+      --dead-pale: #8fff96;
+      --dead-bg: #020a02;
+
+      --orbital: #8ab4cc;
+      --orbital-pale: #b8d4e8;
+      --orbital-bg: #030810;
+
+      --glass: #c8c8b8;
+      --glass-pale: #e4e4d8;
+      --glass-gold: #a89060;
+      --glass-bg: #06060a;
+
+      --blacktide: #8c6c30;
+      --blacktide-pale: #b8944a;
+      --blacktide-crimson: #6a2020;
+      --blacktide-bg: #04030a;
+
+      --helios: #c8a860;
+      --helios-pale: #e4c880;
+      --helios-coral: #d4846a;
+      --helios-bg: #0a0806;
+
+      --ff-display: 'Bebas Neue', sans-serif;
+      --ff-condensed: 'Barlow Condensed', sans-serif;
+      --ff-mono: 'IBM Plex Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5.5rem;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: var(--ff-condensed);
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* ── SCANLINES ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.03) 2px,
+        rgba(0,0,0,0.03) 4px
+      );
+      pointer-events: none;
+      z-index: 9998;
+    }
+
+    /* ── UTILITY ── */
+    .mono { font-family: var(--ff-mono); }
+    .label {
+      font-family: var(--ff-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+    .accent-line {
+      display: inline-block;
+      width: 2rem;
+      height: 1px;
+      background: currentColor;
+      vertical-align: middle;
+      margin-right: 0.75rem;
+    }
+
+    /* ── FADE-IN ANIMATION ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.35s; }
+    .reveal-delay-4 { transition-delay: 0.5s; }
+
+    /* ════════════════════════════
+       HERO
+    ════════════════════════════ */
+    .hero {
+      min-height: clamp(640px, 86svh, 860px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      padding: clamp(5rem, 8vw, 7rem) 5vw clamp(3rem, 6vw, 5rem);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(120,80,20,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 80% at 20% 70%, rgba(50,80,120,0.04) 0%, transparent 70%),
+        var(--black);
+    }
+
+    /* Ghost image strip */
+    .hero-ghost-strip {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      gap: 2px;
+      opacity: 0.07;
+      filter: grayscale(1) blur(1px);
+      pointer-events: none;
+    }
+    .hero-ghost-strip img {
+      flex: 1;
+      object-fit: cover;
+      height: 100%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1000px;
+    }
+
+    .hero-archive-ui {
+      display: flex;
+      flex-wrap: wrap;
+      gap: clamp(1rem, 2vw, 1.5rem);
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+    .archive-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .archive-stat .key {
+      font-family: var(--ff-mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+    }
+    .archive-stat .val {
+      font-family: var(--ff-mono);
+      font-size: 0.7rem;
+      color: var(--ember);
+    }
+    .archive-stat .val.blink {
+      animation: blink 2.4s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%, 90%, 100% { opacity: 1; }
+      95% { opacity: 0.2; }
+    }
+
+    .hero-eyebrow {
+      font-family: var(--ff-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .hero-headline {
+      font-family: var(--ff-display);
+      font-size: clamp(3.25rem, 8vw, 8.25rem);
+      line-height: 0.92;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      margin-bottom: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    .hero-sub {
+      font-family: var(--ff-condensed);
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      margin-bottom: clamp(1.2rem, 2.5vw, 2rem);
+    }
+
+    .hero-body {
+      max-width: 560px;
+      font-size: 1rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin-bottom: clamp(2rem, 4vw, 3.5rem);
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      font-family: var(--ff-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      border-bottom: 1px solid var(--muted);
+      padding-bottom: 0.4rem;
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .hero-cta:hover { color: var(--ember); border-color: var(--ember); }
+    .hero-cta .arrow { transition: transform 0.3s; }
+    .hero-cta:hover .arrow { transform: translateY(4px); }
+
+    .scroll-rule {
+      position: absolute;
+      bottom: 0;
+      left: 5vw;
+      right: 5vw;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ════════════════════════════
+       INTRO
+    ════════════════════════════ */
+    .intro {
+      padding: clamp(4rem, 8vw, 6.5rem) 5vw;
+      max-width: 900px;
+    }
+
+    .intro p {
+      font-size: clamp(1.15rem, 2.1vw, 1.75rem);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+    .intro p:last-child { color: var(--text-mid); font-size: clamp(1rem, 1.8vw, 1.4rem); }
+
+    /* ════════════════════════════
+       INDEX
+    ════════════════════════════ */
+    .index-section {
+      padding: clamp(1.5rem, 3vw, 2rem) 5vw clamp(4rem, 7vw, 6rem);
+    }
+    .index-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: clamp(2rem, 4vw, 3.25rem);
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .index-header h2 {
+      font-family: var(--ff-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+    }
+    .index-count {
+      font-family: var(--ff-mono);
+      font-size: 0.65rem;
+      color: var(--muted);
+    }
+
+    .index-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2px;
+    }
+
+    .index-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      position: relative;
+      transition: border-color 0.3s;
+    }
+    .index-card:hover { border-color: var(--card-accent); }
+
+    .index-card-img {
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      position: relative;
+    }
+    .index-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease, filter 0.4s;
+      filter: grayscale(0.2);
+    }
+    .index-card:hover .index-card-img img {
+      transform: scale(1.04);
+      filter: grayscale(0);
+    }
+    .index-card-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(9,9,11,0.9) 0%, transparent 50%);
+    }
+
+    .index-card-body {
+      padding: clamp(1rem, 1.8vw, 1.35rem);
+    }
+    .index-card-class {
+      font-family: var(--ff-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--card-accent);
+      margin-bottom: 0.6rem;
+    }
+    .index-card-name {
+      font-family: var(--ff-display);
+      font-size: clamp(1.45rem, 2.6vw, 2rem);
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+    }
+    .index-card-premise {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      line-height: 1.55;
+      margin-bottom: 1.2rem;
+    }
+    .index-card-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--border);
+    }
+    .meta-row {
+      display: flex;
+      gap: 0.8rem;
+      font-family: var(--ff-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+    }
+    .meta-row .k { color: var(--text-dim); text-transform: uppercase; }
+    .meta-row .v { color: var(--text-mid); }
+
+    /* ════════════════════════════
+       BRAND SECTIONS
+    ════════════════════════════ */
+    .brand-section {
+      padding: clamp(4.5rem, 8vw, 7rem) 5vw;
+      position: relative;
+      overflow: hidden;
+    }
+    .brand-section + .brand-section {
+      border-top: 1px solid var(--border);
+    }
+
+    .brand-section-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .brand-header {
+      margin-bottom: clamp(2.75rem, 5vw, 4rem);
+    }
+    .brand-eyebrow {
+      font-family: var(--ff-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--section-accent);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .brand-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 1.5rem;
+      height: 1px;
+      background: var(--section-accent);
+    }
+    .brand-title {
+      font-family: var(--ff-display);
+      font-size: clamp(3rem, 8.5vw, 7.5rem);
+      line-height: 0.92;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.01em;
+    }
+    .brand-tagline {
+      font-family: var(--ff-condensed);
+      font-size: clamp(1rem, 1.8vw, 1.4rem);
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--section-accent);
+      margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .brand-lore-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 4vw, 4rem);
+      align-items: start;
+      margin-bottom: clamp(2.75rem, 5vw, 4.25rem);
+    }
+    @media (max-width: 768px) {
+      .brand-lore-wrap { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    .brand-lore {
+      font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+      color: var(--text-mid);
+      line-height: 1.8;
+    }
+
+    .brand-meta-block {
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      background: var(--surface);
+    }
+    .brand-meta-block .meta-title {
+      font-family: var(--ff-mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .brand-meta-block .meta-row {
+      margin-bottom: 0.6rem;
+    }
+    .brand-meta-block .meta-row .k { min-width: 8rem; }
+
+    /* Image Galleries */
+    .gallery-hero {
+      margin-bottom: 2px;
+    }
+    .gallery-hero img {
+      width: 100%;
+      height: clamp(420px, 56vh, 620px);
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-bottom: 2px;
+    }
+    .gallery-two-col img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-full {
+      margin-bottom: 2px;
+    }
+    .gallery-full img {
+      width: 100%;
+      height: clamp(420px, 58vh, 680px);
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    @media (max-width: 600px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-two-col { grid-template-columns: 1fr; }
+    }
+    .gallery-grid img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-img {
+      overflow: hidden;
+      cursor: zoom-in;
+      position: relative;
+    }
+    .gallery-img img {
+      transition: transform 0.8s ease;
+    }
+    .gallery-img:hover img {
+      transform: scale(1.03);
+    }
+
+    .image-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      display: none;
+      background: rgba(5,5,7,0.94);
+    }
+    .image-modal.open {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+    }
+    .image-modal-bar {
+      min-height: 4.25rem;
+      padding: 1rem 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(9,9,11,0.78);
+    }
+    .image-modal-title {
+      min-width: 0;
+      font-family: var(--ff-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      line-height: 1.5;
+      color: var(--text-mid);
+      text-transform: uppercase;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .image-modal-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex: 0 0 auto;
+    }
+    .image-modal button {
+      min-width: 2.4rem;
+      min-height: 2.4rem;
+      border: 1px solid var(--border);
+      background: rgba(22,22,24,0.9);
+      color: var(--white);
+      cursor: pointer;
+      font-family: var(--ff-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .image-modal button:hover,
+    .image-modal button:focus-visible {
+      border-color: var(--ember);
+      color: var(--ember-pale);
+      outline: none;
+    }
+    .image-modal-stage {
+      min-height: 0;
+      padding: 1.5rem 5vw;
+      display: grid;
+      place-items: center;
+    }
+    .image-modal-img {
+      max-width: 100%;
+      max-height: calc(100svh - 10rem);
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      background: transparent;
+      box-shadow: 0 1rem 4rem rgba(0,0,0,0.45);
+    }
+    .image-modal-foot {
+      padding: 0 5vw 1rem;
+      display: flex;
+      justify-content: center;
+    }
+    .image-modal-count {
+      font-family: var(--ff-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+    }
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    .brand-divider {
+      height: 1px;
+      background: var(--section-accent);
+      margin: clamp(2.5rem, 5vw, 4rem) 0 0;
+      opacity: 0.3;
+    }
+
+    /* ════════════════════════════
+       DEAD CHANNEL SPECIAL
+    ════════════════════════════ */
+    .dead-section {
+      position: relative;
+    }
+    .dead-section .brand-title {
+      color: var(--dead);
+      text-shadow: 0 0 40px rgba(61,255,74,0.15);
+    }
+    .glitch {
+      position: relative;
+    }
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0; left: 0;
+      font-family: var(--ff-display);
+      font-size: inherit;
+      line-height: inherit;
+      color: var(--dead);
+      clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+      animation: glitch-1 4s infinite linear;
+      opacity: 0;
+    }
+    .glitch::after {
+      color: #ff0055;
+      clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+      animation: glitch-2 4s infinite linear;
+    }
+    @keyframes glitch-1 {
+      0%, 85%, 100% { opacity: 0; transform: none; }
+      87% { opacity: 0.6; transform: translate(-3px, 0); }
+      89% { opacity: 0; }
+      91% { opacity: 0.4; transform: translate(3px, 0); }
+      93% { opacity: 0; }
+    }
+    @keyframes glitch-2 {
+      0%, 87%, 100% { opacity: 0; transform: none; }
+      89% { opacity: 0.5; transform: translate(2px, 0); }
+      91% { opacity: 0; }
+      93% { opacity: 0.3; transform: translate(-2px, 0); }
+      95% { opacity: 0; }
+    }
+
+    .dead-section .gallery-img img {
+      filter: contrast(1.1) saturate(0.1);
+      transition: filter 0.4s, transform 0.8s;
+    }
+    .dead-section .gallery-img:hover img {
+      filter: contrast(1.15) saturate(0.3) hue-rotate(60deg);
+    }
+
+    /* ════════════════════════════
+       GLASS CATHEDRAL — slower, sacred
+    ════════════════════════════ */
+    .glass-section .gallery-img img {
+      filter: grayscale(0.15) brightness(0.95);
+      transition: filter 0.8s ease, transform 1.2s ease;
+    }
+    .glass-section .gallery-img:hover img {
+      filter: grayscale(0) brightness(1.05);
+      transform: scale(1.02);
+    }
+    .glass-section .brand-title {
+      color: var(--glass-pale);
+      letter-spacing: 0.04em;
+    }
+
+    /* ════════════════════════════
+       BLACKTIDE — storm-heavy
+    ════════════════════════════ */
+    .blacktide-section .gallery-img img {
+      filter: contrast(1.1) saturate(0.85) brightness(0.9);
+      transition: filter 0.5s, transform 0.8s;
+    }
+    .blacktide-section .gallery-img:hover img {
+      filter: contrast(1.15) saturate(1) brightness(0.95);
+    }
+
+    /* ════════════════════════════
+       HELIOS — warm, bright
+    ════════════════════════════ */
+    .helios-section {
+      position: relative;
+    }
+    .helios-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 100% 60% at 50% 0%, rgba(200,168,96,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .helios-section .gallery-img img {
+      filter: brightness(1.02) saturate(1.05);
+      transition: filter 0.5s, transform 0.8s;
+    }
+    .helios-section .gallery-img:hover img {
+      filter: brightness(1.06) saturate(1.1);
+    }
+
+    /* ════════════════════════════
+       CLOSING
+    ════════════════════════════ */
+    .closing {
+      padding: clamp(5rem, 9vw, 8rem) 5vw;
+      max-width: 900px;
+    }
+    .closing-headline {
+      font-family: var(--ff-display);
+      font-size: clamp(2.5rem, 6vw, 6rem);
+      line-height: 0.95;
+      color: var(--white);
+      margin-bottom: 2.5rem;
+    }
+    .closing p {
+      font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+      color: var(--text-mid);
+      line-height: 1.8;
+      max-width: 540px;
+      margin-bottom: clamp(2rem, 4vw, 3.5rem);
+    }
+    .closing-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .cta-primary {
+      font-family: var(--ff-condensed);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--white);
+      padding: 1rem 2rem;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+    }
+    .cta-primary:hover { background: var(--ember); color: var(--black); }
+    .cta-secondary {
+      font-family: var(--ff-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      text-decoration: none;
+      border-bottom: 1px solid var(--muted);
+      padding-bottom: 0.2rem;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .cta-secondary:hover { color: var(--white); border-color: var(--white); }
+
+    /* ════════════════════════════
+       FOOTER
+    ════════════════════════════ */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 5vw;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+    }
+    .footer-transmission {
+      font-family: var(--ff-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      line-height: 2;
+    }
+    .footer-transmission .terminated {
+      color: var(--muted);
+      animation: flicker 6s ease-in-out infinite;
+    }
+    @keyframes flicker {
+      0%, 95%, 100% { opacity: 1; }
+      96% { opacity: 0.1; }
+      97% { opacity: 0.8; }
+      98% { opacity: 0.2; }
+      99% { opacity: 1; }
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.5rem;
+    }
+    .footer-links a {
+      font-family: var(--ff-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--text-dim);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    /* ════════════════════════════
+       NAV
+    ════════════════════════════ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.2rem 5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to bottom, rgba(9,9,11,0.9) 0%, transparent 100%);
+      backdrop-filter: blur(0px);
+      transition: backdrop-filter 0.3s, background 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(9,9,11,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand {
+      font-family: var(--ff-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    @media (max-width: 600px) { .nav-links { display: none; } }
+    .nav-links a {
+      font-family: var(--ff-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      color: var(--text-dim);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    .mobile-menu {
+      display: none;
+      position: relative;
+    }
+    .mobile-menu summary {
+      list-style: none;
+      cursor: pointer;
+      font-family: var(--ff-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      color: var(--white);
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      padding: 0.55rem 0.7rem;
+      background: rgba(22,22,24,0.9);
+    }
+    .mobile-menu summary::-webkit-details-marker { display: none; }
+    .mobile-menu-panel {
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      right: 0;
+      width: min(78vw, 18rem);
+      display: grid;
+      gap: 1px;
+      padding: 1px;
+      background: var(--border);
+      box-shadow: 0 1rem 3rem rgba(0,0,0,0.45);
+    }
+    .mobile-menu-panel a {
+      font-family: var(--ff-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      text-decoration: none;
+      background: rgba(17,17,19,0.98);
+      padding: 0.85rem 0.95rem;
+    }
+    .mobile-menu-panel a:hover { color: var(--white); }
+
+    /* ── Section color variables applied inline ── */
+    .ember-section { --section-accent: var(--ember); background: radial-gradient(ellipse 80% 60% at 10% 50%, rgba(200,134,42,0.04) 0%, transparent 70%); }
+    .kestrel-section { --section-accent: var(--kestrel); background: radial-gradient(ellipse 80% 60% at 90% 50%, rgba(212,90,0,0.04) 0%, transparent 70%); }
+    .dead-section { --section-accent: var(--dead); background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(61,255,74,0.03) 0%, transparent 70%); }
+    .orbital-section { --section-accent: var(--orbital); background: radial-gradient(ellipse 80% 60% at 30% 60%, rgba(138,180,204,0.04) 0%, transparent 70%); }
+    .glass-section { --section-accent: var(--glass); background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(200,200,184,0.03) 0%, transparent 70%); }
+    .blacktide-section { --section-accent: var(--blacktide); background: radial-gradient(ellipse 80% 60% at 20% 60%, rgba(140,108,48,0.05) 0%, transparent 70%); }
+    .helios-section { --section-accent: var(--helios); background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(200,168,96,0.05) 0%, transparent 70%); }
+
+    .index-card.ember-card { --card-accent: var(--ember); }
+    .index-card.kestrel-card { --card-accent: var(--kestrel); }
+    .index-card.dead-card { --card-accent: var(--dead); }
+    .index-card.orbital-card { --card-accent: var(--orbital); }
+    .index-card.glass-card { --card-accent: var(--glass); }
+    .index-card.blacktide-card { --card-accent: var(--blacktide); }
+    .index-card.helios-card { --card-accent: var(--helios); }
+
+    /* ── Spacer rule between major sections ── */
+    .section-rule {
+      height: 1px;
+      background: var(--border);
+      margin: 0 5vw;
+    }
+
+    /* ── Loading state for images ── */
+    img {
+      background: var(--surface);
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        gap: 1rem;
+      }
+      .nav-links a {
+        font-size: 0.52rem;
+      }
+    }
+
+    @media (max-width: 760px) {
+      html { scroll-padding-top: 4.75rem; }
+
+      nav {
+        padding: 0.85rem 5vw;
+        background: rgba(9,9,11,0.94);
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-brand {
+        max-width: 13.5rem;
+        line-height: 1.4;
+      }
+      .nav-links { display: none; }
+      .mobile-menu { display: block; }
+
+      .hero {
+        min-height: auto;
+        padding: 5.5rem 5vw 3.25rem;
+      }
+      .hero-ghost-strip {
+        opacity: 0.1;
+        filter: grayscale(1) blur(0.5px);
+      }
+      .hero-ghost-strip img:nth-child(n+3) {
+        display: none;
+      }
+      .hero-archive-ui {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.9rem 1rem;
+        margin-bottom: 2rem;
+      }
+      .archive-stat .key {
+        font-size: 0.5rem;
+        letter-spacing: 0.17em;
+      }
+      .archive-stat .val {
+        font-size: 0.62rem;
+      }
+      .hero-eyebrow {
+        font-size: 0.56rem;
+        letter-spacing: 0.2em;
+      }
+      .hero-headline {
+        font-size: clamp(3rem, 13vw, 4rem);
+        max-width: 8ch;
+      }
+      .hero-sub {
+        max-width: 25rem;
+        font-size: 1rem;
+        letter-spacing: 0.12em;
+      }
+      .hero-body {
+        max-width: 27rem;
+        margin-bottom: 2.25rem;
+      }
+
+      .intro {
+        padding: 3.5rem 5vw;
+      }
+      .intro p {
+        font-size: 1.1rem;
+        line-height: 1.55;
+      }
+      .intro p:last-child {
+        font-size: 0.98rem;
+      }
+
+      .index-header {
+        margin-bottom: 1.5rem;
+      }
+      .index-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+      .index-card {
+        display: grid;
+        grid-template-columns: minmax(7.25rem, 38%) minmax(0, 1fr);
+        min-height: 11rem;
+      }
+      .index-card-img {
+        aspect-ratio: auto;
+        min-height: 100%;
+      }
+      .index-card-body {
+        padding: 1rem;
+      }
+      .index-card-class {
+        font-size: 0.5rem;
+        letter-spacing: 0.14em;
+      }
+      .index-card-name {
+        font-size: clamp(1.35rem, 7vw, 1.85rem);
+      }
+      .index-card-premise {
+        font-size: 0.8rem;
+        line-height: 1.45;
+        margin-bottom: 0;
+      }
+      .index-card-meta {
+        display: none;
+      }
+
+      .brand-section {
+        padding: 4rem 5vw;
+      }
+      .brand-header {
+        margin-bottom: 2rem;
+      }
+      .brand-eyebrow {
+        font-size: 0.52rem;
+        letter-spacing: 0.18em;
+      }
+      .brand-eyebrow::before {
+        width: 1rem;
+      }
+      .brand-title {
+        font-size: clamp(2.75rem, 15vw, 4rem);
+        max-width: 9ch;
+        margin-bottom: 1rem;
+      }
+      .brand-tagline {
+        font-size: 0.98rem;
+        letter-spacing: 0.1em;
+      }
+      .brand-lore-wrap {
+        gap: 1.25rem;
+        margin-bottom: 2rem;
+      }
+      .brand-lore {
+        font-size: 0.95rem;
+        line-height: 1.65;
+      }
+      .brand-meta-block {
+        padding: 1rem;
+      }
+      .brand-meta-block .meta-row {
+        display: grid;
+        grid-template-columns: minmax(5.75rem, 36%) 1fr;
+        gap: 0.5rem;
+      }
+      .brand-meta-block .meta-row .k {
+        min-width: 0;
+      }
+      .meta-row {
+        font-size: 0.52rem;
+        letter-spacing: 0.08em;
+      }
+
+      .gallery-hero img {
+        height: min(58vh, 28rem);
+        aspect-ratio: 4/5;
+      }
+      .gallery-two-col {
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .gallery-full {
+        margin-bottom: 0.5rem;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+      }
+      .gallery-full img {
+        height: min(58vh, 28rem);
+        aspect-ratio: 4/5;
+      }
+      .gallery-grid img,
+      .gallery-two-col img {
+        aspect-ratio: 4/5;
+      }
+
+      .image-modal-bar {
+        padding: 0.75rem 5vw;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .image-modal-title {
+        width: 100%;
+        font-size: 0.55rem;
+      }
+      .image-modal-stage {
+        padding: 1rem 3vw;
+      }
+      .image-modal-actions {
+        width: 100%;
+        justify-content: flex-end;
+        gap: 0.35rem;
+      }
+      .image-modal button {
+        min-width: 2.15rem;
+        min-height: 2.15rem;
+        font-size: 0.52rem;
+      }
+      .image-modal-img {
+        max-height: calc(100svh - 8.5rem);
+      }
+
+      .closing-ctas {
+        align-items: stretch;
+      }
+      .cta-primary,
+      .cta-secondary {
+        width: 100%;
+      }
+      .cta-primary {
+        text-align: center;
+      }
+      footer {
+        align-items: flex-start;
+      }
+      .footer-links {
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .index-card {
+        grid-template-columns: minmax(6.5rem, 36%) minmax(0, 1fr);
+      }
+      .index-card-premise {
+        display: none;
+      }
+      .index-card {
+        min-height: 8.75rem;
+      }
+      .hero-cta {
+        font-size: 0.65rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#" class="nav-brand">PARALLEL WORLDS ARCHIVE</a>
+    <ul class="nav-links">
+      <li><a href="#index">Index</a></li>
+      <li><a href="#ninth-ember">Ninth Ember</a></li>
+      <li><a href="#kestrel">Kestrel</a></li>
+      <li><a href="#dead-channel">Dead Channel</a></li>
+      <li><a href="#orbital">Orbital</a></li>
+      <li><a href="#glass-cathedral">Glass Cathedral</a></li>
+      <li><a href="#blacktide">Blacktide</a></li>
+      <li><a href="#helios">Helios</a></li>
+    </ul>
+    <details class="mobile-menu">
+      <summary>Worlds</summary>
+      <div class="mobile-menu-panel">
+        <a href="#index">Index</a>
+        <a href="#ninth-ember">Ninth Ember</a>
+        <a href="#kestrel">Kestrel</a>
+        <a href="#dead-channel">Dead Channel</a>
+        <a href="#orbital">Orbital</a>
+        <a href="#glass-cathedral">Glass Cathedral</a>
+        <a href="#blacktide">Blacktide</a>
+        <a href="#helios">Helios</a>
+      </div>
+    </details>
+  </nav>
+
+  <!-- ════════════════════════════
+       HERO
+  ════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-ghost-strip" aria-hidden="true">
+      <img src="images/parallel-worlds/ninth-ember-1.webp" alt="" loading="lazy" decoding="async">
+      <img src="images/parallel-worlds/kestrel-1.webp" alt="" loading="lazy" decoding="async">
+      <img src="images/parallel-worlds/dead-channel-1.webp" alt="" loading="lazy" decoding="async">
+      <img src="images/parallel-worlds/orbital-1.webp" alt="" loading="lazy" decoding="async">
+      <img src="images/parallel-worlds/glass-cathedral-3.webp" alt="" loading="lazy" decoding="async">
+      <img src="images/parallel-worlds/blacktide-2.webp" alt="" loading="lazy" decoding="async">
+      <img src="images/parallel-worlds/helios-1.webp" alt="" loading="lazy" decoding="async">
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-archive-ui reveal">
+        <div class="archive-stat">
+          <span class="key">Archive Node</span>
+          <span class="val blink">● ACTIVE</span>
+        </div>
+        <div class="archive-stat">
+          <span class="key">Index Status</span>
+          <span class="val">EXPANDING</span>
+        </div>
+        <div class="archive-stat">
+          <span class="key">Signal Integrity</span>
+          <span class="val">82%</span>
+        </div>
+        <div class="archive-stat">
+          <span class="key">Reality Class</span>
+          <span class="val">COMMERCIAL ARTIFACTS</span>
+        </div>
+      </div>
+
+      <p class="hero-eyebrow reveal reveal-delay-1">Archive Entry / Visual Identity Systems</p>
+
+      <h1 class="hero-headline reveal reveal-delay-2">BRANDS<br>FROM<br>PARALLEL<br>WORLDS</h1>
+
+      <p class="hero-sub reveal reveal-delay-3">Cinematic identity systems for businesses that never existed.</p>
+
+      <p class="hero-body reveal reveal-delay-4">
+        An archive of fictional companies, speculative commercial systems, and visual identities built as if they truly exist.
+      </p>
+
+      <a href="#index" class="hero-cta reveal reveal-delay-4">
+        <span class="arrow">↓</span>
+        <span>Enter the Archive</span>
+      </a>
+    </div>
+
+    <div class="scroll-rule"></div>
+  </section>
+
+  <!-- ════════════════════════════
+       INTRO
+  ════════════════════════════ -->
+  <section class="intro">
+    <p class="reveal">
+      These are not just logos. They are economies, cultures, industries, rituals, advertisements, products, and institutions from worlds adjacent to ours.
+    </p>
+    <p class="reveal reveal-delay-1">
+      Each brand system explores how fictional businesses might look, sell, advertise, package, recruit, and survive inside their own reality.
+    </p>
+  </section>
+
+  <div class="section-rule"></div>
+
+  <!-- ════════════════════════════
+       PROJECT INDEX
+  ════════════════════════════ -->
+  <section class="index-section" id="index">
+    <div class="index-header reveal">
+      <h2>Project Index</h2>
+      <span class="index-count">// 07 entries</span>
+    </div>
+
+    <div class="index-grid">
+
+      <!-- Ninth Ember -->
+      <a href="#ninth-ember" class="index-card ember-card reveal">
+        <div class="index-card-img">
+          <img src="images/parallel-worlds/ninth-ember-3.webp" alt="The Ninth Ember Tavern Co." loading="lazy">
+        </div>
+        <div class="index-card-body">
+          <div class="index-card-class">Fantasy Hospitality / Tavern Chain</div>
+          <div class="index-card-name">THE NINTH EMBER TAVERN CO.</div>
+          <p class="index-card-premise">A legendary tavern company serving travelers, mercenaries, merchants, and storytellers across a fractured fantasy empire.</p>
+          <div class="index-card-meta">
+            <div class="meta-row"><span class="k">Status</span><span class="v">OPEN</span></div>
+            <div class="meta-row"><span class="k">Region</span><span class="v">WESTERN ROAD KINGDOMS</span></div>
+            <div class="meta-row"><span class="k">Specialty</span><span class="v">EMBER ALE</span></div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Kestrel -->
+      <a href="#kestrel" class="index-card kestrel-card reveal reveal-delay-1">
+        <div class="index-card-img">
+          <img src="images/parallel-worlds/kestrel-2.webp" alt="Kestrel Courier Division" loading="lazy">
+        </div>
+        <div class="index-card-body">
+          <div class="index-card-class">Interplanetary Logistics / Courier Network</div>
+          <div class="index-card-name">KESTREL COURIER DIVISION</div>
+          <p class="index-card-premise">An elite high-speed courier division moving dangerous cargo, encrypted data, and black-market shipments through unstable outer systems.</p>
+          <div class="index-card-meta">
+            <div class="meta-row"><span class="k">Status</span><span class="v">ACTIVE</span></div>
+            <div class="meta-row"><span class="k">Sector</span><span class="v">OUTER BELT</span></div>
+            <div class="meta-row"><span class="k">Risk Level</span><span class="v">EXTREME</span></div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Dead Channel -->
+      <a href="#dead-channel" class="index-card dead-card reveal reveal-delay-2">
+        <div class="index-card-img">
+          <img src="images/parallel-worlds/dead-channel-2.webp" alt="Dead Channel Broadcasting" loading="lazy">
+        </div>
+        <div class="index-card-body">
+          <div class="index-card-class">Pirate Broadcast Network / Unauthorized Media</div>
+          <div class="index-card-name">DEAD CHANNEL BROADCASTING</div>
+          <p class="index-card-premise">An underground pirate radio network hijacking corporate media infrastructure across a dystopian megacity.</p>
+          <div class="index-card-meta">
+            <div class="meta-row"><span class="k">Signal</span><span class="v">UNAUTHORIZED</span></div>
+            <div class="meta-row"><span class="k">Frequency</span><span class="v">UNKNOWN</span></div>
+            <div class="meta-row"><span class="k">Corp. Response</span><span class="v">SUPPRESSED</span></div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Orbital -->
+      <a href="#orbital" class="index-card orbital-card reveal reveal-delay-3">
+        <div class="index-card-img">
+          <img src="images/parallel-worlds/orbital-1.webp" alt="Orbital Mourning Services" loading="lazy">
+        </div>
+        <div class="index-card-body">
+          <div class="index-card-class">Interstellar Funeral Logistics / Memorial Institution</div>
+          <div class="index-card-name">ORBITAL MOURNING SERVICES</div>
+          <p class="index-card-premise">A luxury funeral logistics corporation transporting the dead, memory archives, and ceremonial remains across star systems.</p>
+          <div class="index-card-meta">
+            <div class="meta-row"><span class="k">Status</span><span class="v">ACTIVE</span></div>
+            <div class="meta-row"><span class="k">Service Class</span><span class="v">CELESTIAL</span></div>
+            <div class="meta-row"><span class="k">Route</span><span class="v">FINAL ORBIT</span></div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Glass Cathedral -->
+      <a href="#glass-cathedral" class="index-card glass-card reveal">
+        <div class="index-card-img">
+          <img src="images/parallel-worlds/glass-cathedral-3.webp" alt="Glass Cathedral Data Vaults" loading="lazy">
+        </div>
+        <div class="index-card-body">
+          <div class="index-card-class">Civilizational Memory Institution / Sacred Archival Infrastructure</div>
+          <div class="index-card-name">GLASS CATHEDRAL DATA VAULTS</div>
+          <p class="index-card-premise">An immense interstellar institution preserving consciousness archives, extinct languages, cultural artifacts, and civilization backups against oblivion itself.</p>
+          <div class="index-card-meta">
+            <div class="meta-row"><span class="k">Archive Status</span><span class="v">ACTIVE</span></div>
+            <div class="meta-row"><span class="k">Memory Integrity</span><span class="v">VERIFIED</span></div>
+            <div class="meta-row"><span class="k">Preservation</span><span class="v">ETERNAL</span></div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Blacktide -->
+      <a href="#blacktide" class="index-card blacktide-card reveal reveal-delay-1">
+        <div class="index-card-img">
+          <img src="images/parallel-worlds/blacktide-2.webp" alt="Blacktide Privateering Co." loading="lazy">
+        </div>
+        <div class="index-card-body">
+          <div class="index-card-class">Imperial Maritime Privateering Authority / Naval Trade Syndicate</div>
+          <div class="index-card-name">BLACKTIDE PRIVATEERING CO.</div>
+          <p class="index-card-premise">A storm-born maritime corporation that transformed legalized piracy into empire — controlling shipping lanes through fear, gold, and cannon fire.</p>
+          <div class="index-card-meta">
+            <div class="meta-row"><span class="k">Fleet Status</span><span class="v">ACTIVE</span></div>
+            <div class="meta-row"><span class="k">License</span><span class="v">IMPERIAL</span></div>
+            <div class="meta-row"><span class="k">Route Security</span><span class="v">ENFORCED</span></div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Helios Ring -->
+      <a href="#helios" class="index-card helios-card reveal reveal-delay-2">
+        <div class="index-card-img">
+          <img src="images/parallel-worlds/helios-1.webp" alt="Helios Ring Resort" loading="lazy">
+        </div>
+        <div class="index-card-body">
+          <div class="index-card-class">Luxury Orbital Hospitality Network / Interstellar Tourism Institution</div>
+          <div class="index-card-name">HELIOS RING RESORT</div>
+          <p class="index-card-premise">The most prestigious luxury tourism destination ever constructed — a colossal rotating orbital ring serving ultra-wealthy travelers from across civilized space.</p>
+          <div class="index-card-meta">
+            <div class="meta-row"><span class="k">Destination</span><span class="v">OPEN</span></div>
+            <div class="meta-row"><span class="k">Guest Class</span><span class="v">PREMIUM</span></div>
+            <div class="meta-row"><span class="k">Orbital</span><span class="v">NOMINAL</span></div>
+          </div>
+        </div>
+      </a>
+
+    </div><!-- /index-grid -->
+  </section>
+
+  <div class="section-rule"></div>
+
+  <!-- ════════════════════════════
+       NINTH EMBER TAVERN CO.
+  ════════════════════════════ -->
+  <section class="brand-section ember-section" id="ninth-ember">
+    <div class="brand-header">
+      <div class="brand-eyebrow reveal">Entry 01 — Fantasy Hospitality</div>
+      <h2 class="brand-title reveal">THE NINTH<br>EMBER<br>TAVERN CO.</h2>
+      <p class="brand-tagline reveal reveal-delay-1">"Warmth for the road. Fire for the story."</p>
+    </div>
+
+    <div class="brand-lore-wrap reveal">
+      <p class="brand-lore">
+        A tavern company old enough to become infrastructure. The Ninth Ember appears wherever trade routes turn dangerous and travelers need shelter, ale, rumor, and protection. Some say it built the roads. Others say it followed the blood. Either way — the ember's always lit.
+      </p>
+      <div class="brand-meta-block">
+        <div class="meta-title">// Classification Data</div>
+        <div class="meta-row"><span class="k">STATUS</span><span class="v">OPEN</span></div>
+        <div class="meta-row"><span class="k">REGION</span><span class="v">WESTERN ROAD KINGDOMS</span></div>
+        <div class="meta-row"><span class="k">SPECIALTY</span><span class="v">EMBER ALE</span></div>
+        <div class="meta-row"><span class="k">ARTIFACTS</span><span class="v">LOGO / MENU / ALE LABEL / POSTER / COASTERS</span></div>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="gallery-hero gallery-img reveal">
+      <img src="images/parallel-worlds/ninth-ember-1.webp" alt="Ninth Ember Tavern Co. — Primary artifact" loading="lazy">
+    </div>
+
+    <div class="gallery-two-col">
+      <div class="gallery-img reveal">
+        <img src="images/parallel-worlds/ninth-ember-2.webp" alt="Ninth Ember artifact" loading="lazy">
+      </div>
+      <div class="gallery-img reveal reveal-delay-1">
+        <img src="images/parallel-worlds/ninth-ember-4.webp" alt="Ninth Ember artifact" loading="lazy">
+      </div>
+    </div>
+
+    <div class="gallery-full gallery-img reveal">
+      <img src="images/parallel-worlds/ninth-ember-5.webp" alt="Ninth Ember — full spread" loading="lazy">
+    </div>
+
+    <div class="gallery-two-col">
+      <div class="gallery-img reveal">
+        <img src="images/parallel-worlds/ninth-ember-3.webp" alt="Ninth Ember artifact" loading="lazy">
+      </div>
+      <div class="gallery-img reveal reveal-delay-1">
+        <img src="images/parallel-worlds/ninth-ember-6.webp" alt="Ninth Ember artifact" loading="lazy">
+      </div>
+    </div>
+
+    <div class="brand-divider"></div>
+  </section>
+
+  <!-- ════════════════════════════
+       KESTREL COURIER DIVISION
+  ════════════════════════════ -->
+  <section class="brand-section kestrel-section" id="kestrel">
+    <div class="brand-header">
+      <div class="brand-eyebrow reveal">Entry 02 — Interplanetary Logistics</div>
+      <h2 class="brand-title reveal">KESTREL<br>COURIER<br>DIVISION</h2>
+      <p class="brand-tagline reveal reveal-delay-1">"Your package arrives. No matter the system."</p>
+    </div>
+
+    <div class="brand-lore-wrap reveal">
+      <p class="brand-lore">
+        Kestrel operates where official logistics networks fail. Its couriers move fast, fly low, and treat customs borders as suggestions. If it has to arrive and cannot fail — Kestrel takes the contract. No questions. No paper trail. One price.
+      </p>
+      <div class="brand-meta-block">
+        <div class="meta-title">// Classification Data</div>
+        <div class="meta-row"><span class="k">STATUS</span><span class="v">ACTIVE</span></div>
+        <div class="meta-row"><span class="k">SECTOR</span><span class="v">OUTER BELT</span></div>
+        <div class="meta-row"><span class="k">DELIVERY RISK</span><span class="v">EXTREME</span></div>
+        <div class="meta-row"><span class="k">ARTIFACTS</span><span class="v">LOGO / POSTERS / CARGO / SHIP HULL / ID SYSTEMS</span></div>
+      </div>
+    </div>
+
+    <div class="gallery-hero gallery-img reveal">
+      <img src="images/parallel-worlds/kestrel-1.webp" alt="Kestrel Courier Division — Primary artifact" loading="lazy">
+    </div>
+
+    <div class="gallery-two-col">
+      <div class="gallery-img reveal">
+        <img src="images/parallel-worlds/kestrel-3.webp" alt="Kestrel artifact" loading="lazy">
+      </div>
+      <div class="gallery-img reveal reveal-delay-1">
+        <img src="images/parallel-worlds/kestrel-4.webp" alt="Kestrel artifact" loading="lazy">
+      </div>
+    </div>
+
+    <div class="gallery-full gallery-img reveal">
+      <img src="images/parallel-worlds/kestrel-5.webp" alt="Kestrel — full spread" loading="lazy">
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-img reveal">
+        <img src="images/parallel-worlds/kestrel-2.webp" alt="Kestrel artifact" loading="lazy">
+      </div>
+      <div class="gallery-img reveal reveal-delay-1">
+        <img src="images/parallel-worlds/kestrel-6.webp" alt="Kestrel artifact" loading="lazy">
+      </div>
+      <div class="gallery-img reveal reveal-delay-2">
+        <img src="images/parallel-worlds/kestrel-7.webp" alt="Kestrel artifact" loading="lazy">
+      </div>
+    </div>
+
+    <div class="gallery-full gallery-img reveal" style="margin-top: 2px;">
+      <img src="images/parallel-worlds/kestrel-8.webp" alt="Kestrel — final artifact" loading="lazy">
+    </div>
+
+    <div class="brand-divider"></div>
+  </section>
+
+  <!-- ════════════════════════════
+       DEAD CHANNEL BROADCASTING
+  ════════════════════════════ -->
+  <section class="brand-section dead-section" id="dead-channel">
+    <div class="brand-header">
+      <div class="brand-eyebrow reveal">Entry 03 — Unauthorized Media</div>
+      <h2 class="brand-title reveal">
+        <span class="glitch" data-text="DEAD CHANNEL">DEAD CHANNEL</span><br>BROADCASTING
+      </h2>
+      <p class="brand-tagline reveal reveal-delay-1">"If you're hearing this, they didn't win."</p>
+    </div>
+
+    <div class="brand-lore-wrap reveal">
+      <p class="brand-lore">
+        Dead Channel is not a station. It is an infection in the city's media nervous system — a pirate signal that appears when corporate truth starts to crack. It has no address. No staff list. No broadcast license. It has a frequency, a cause, and an audience the state cannot reach.
+      </p>
+      <div class="brand-meta-block">
+        <div class="meta-title">// Classification Data</div>
+        <div class="meta-row"><span class="k">SIGNAL STATUS</span><span class="v">UNAUTHORIZED</span></div>
+        <div class="meta-row"><span class="k">FREQUENCY</span><span class="v">UNKNOWN</span></div>
+        <div class="meta-row"><span class="k">CORP. RESPONSE</span><span class="v">SUPPRESSED</span></div>
+        <div class="meta-row"><span class="k">ARTIFACTS</span><span class="v">LOGO / PROPAGANDA / BILLBOARDS / STATION IDS</span></div>
+      </div>
+    </div>
+
+    <div class="gallery-hero gallery-img reveal">
+      <img src="images/parallel-worlds/dead-channel-1.webp" alt="Dead Channel Broadcasting — Primary artifact" loading="lazy">
+    </div>
+
+    <div class="gallery-two-col">
+      <div class="gallery-img reveal">
+        <img src="images/parallel-worlds/dead-channel-2.webp" alt="Dead Channel artifact" loading="lazy">
+      </div>
+      <div class="gallery-img reveal reveal-delay-1">
+        <img src="images/parallel-worlds/dead-channel-3.webp" alt="Dead Channel artifact" loading="lazy">
+      </div>
+    </div>
+
+    <div class="gallery-full gallery-img reveal">
+      <img src="images/parallel-worlds/dead-channel-4.webp" alt="Dead Channel — final broadcast" loading="lazy">
+    </div>
+
+    <div class="brand-divider"></div>
+  </section>
+
+  <!-- ════════════════════════════
+       ORBITAL MOURNING SERVICES
+  ════════════════════════════ -->
+  <section class="brand-section orbital-section" id="orbital">
+    <div class="brand-header">
+      <div class="brand-eyebrow reveal">Entry 04 — Interstellar Funeral Logistics</div>
+      <h2 class="brand-title reveal">ORBITAL<br>MOURNING<br>SERVICES</h2>
+      <p class="brand-tagline reveal reveal-delay-1">"No soul left adrift."</p>
+    </div>
+
+    <div class="brand-lore-wrap reveal">
+      <p class="brand-lore">
+        Orbital Mourning Services turns grief into infrastructure: ceremonial spacecraft, memorial stations, transport systems, and luxury rites for the final journey between worlds. They do not comfort you. They carry you — and those you've lost — with flawless precision through the dark between stars.
+      </p>
+      <div class="brand-meta-block">
+        <div class="meta-title">// Classification Data</div>
+        <div class="meta-row"><span class="k">STATUS</span><span class="v">ACTIVE</span></div>
+        <div class="meta-row"><span class="k">SERVICE CLASS</span><span class="v">CELESTIAL</span></div>
+        <div class="meta-row"><span class="k">PRIMARY ROUTE</span><span class="v">FINAL ORBIT</span></div>
+        <div class="meta-row"><span class="k">ARTIFACTS</span><span class="v">LOGO / MEMORIALS / SPACECRAFT / CEREMONIAL CARGO</span></div>
+      </div>
+    </div>
+
+    <div class="gallery-hero gallery-img reveal">
+      <img src="images/parallel-worlds/orbital-2.webp" alt="Orbital Mourning Services — Primary artifact" loading="lazy">
+    </div>
+
+    <div class="gallery-two-col">
+      <div class="gallery-img reveal">
+        <img src="images/parallel-worlds/orbital-3.webp" alt="Orbital Mourning artifact" loading="lazy">
+      </div>
+      <div class="gallery-img reveal reveal-delay-1">
+        <img src="images/parallel-worlds/orbital-4.webp" alt="Orbital Mourning artifact" loading="lazy">
+      </div>
+    </div>
+
+    <div class="gallery-full gallery-img reveal">
+      <img src="images/parallel-worlds/orbital-5.webp" alt="Orbital Mourning — full spread" loading="lazy">
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-img reveal">
+        <img src="images/parallel-worlds/orbital-6.webp" alt="Orbital Mourning artifact" loading="lazy">
+      </div>
+      <div class="gallery-img reveal reveal-delay-1">
+        <img src="images/parallel-worlds/orbital-7.webp" alt="Orbital Mourning artifact" loading="lazy">
+      </div>
+      <div class="gallery-img reveal reveal-delay-2">
+        <img src="images/parallel-worlds/orbital-8.webp" alt="Orbital Mourning artifact" loading="lazy">
+      </div>
+    </div>
+
+    <div class="gallery-full gallery-img reveal" style="margin-top: 2px;">
+      <img src="images/parallel-worlds/orbital-1.webp" alt="Orbital Mourning — world poster" loading="lazy">
+    </div>
+
+    <div class="brand-divider"></div>
+  </section>
+
+  <!-- ════════════════════════════
+       GLASS CATHEDRAL DATA VAULTS
+  ════════════════════════════ -->
+  <section class="brand-section glass-section" id="glass-cathedral">
+    <div class="brand-header">
+      <div class="brand-eyebrow reveal">Entry 05 — Civilizational Memory Institution</div>
+      <h2 class="brand-title reveal">GLASS<br>CATHEDRAL<br>DATA VAULTS</h2>
+      <p class="brand-tagline reveal reveal-delay-1">"Memory Preserved Eternal."</p>
+    </div>
+
+    <div class="brand-lore-wrap reveal">
+      <p class="brand-lore">
+        Glass Cathedral Data Vaults preserves the memory of civilizations long after the civilizations themselves disappear. Its archivists maintain vast cathedral-scale preservation chambers where consciousness records, cultural histories, and planetary memory systems are stored against time, war, and extinction. To be remembered by the Archive is to achieve a form of permanence. To be denied entry is to vanish completely.
+      </p>
+      <div class="brand-meta-block">
+        <div class="meta-title">// Classification Data</div>
+        <div class="meta-row"><span class="k">ARCHIVE STATUS</span><span class="v">ACTIVE</span></div>
+        <div class="meta-row"><span class="k">MEMORY INTEGRITY</span><span class="v">VERIFIED</span></div>
+        <div class="meta-row"><span class="k">PRESERVATION</span><span class="v">ETERNAL</span></div>
+        <div class="meta-row"><span class="k">VAULT ACCESS</span><span class="v">RESTRICTED</span></div>
+        <div class="meta-row"><span class="k">DOCTRINE</span><span class="v">ENDURING</span></div>
+        <div class="meta-row"><span class="k">ARTIFACTS</span><span class="v">LOGO / PROPAGANDA / VAULT INTERIOR / CREDENTIALS</span></div>
+      </div>
+    </div>
+
+    <div class="gallery-hero gallery-img reveal">
+      <img src="images/parallel-worlds/glass-cathedral-1.webp" alt="Glass Cathedral Data Vaults — Primary artifact" loading="lazy">
+    </div>
+
+    <div class="gallery-two-col">
+      <div class="gallery-img reveal">
+        <img src="images/parallel-worlds/glass-cathedral-2.webp" alt="Glass Cathedral artifact" loading="lazy">
+      </div>
+      <div class="gallery-img reveal reveal-delay-1">
+        <img src="images/parallel-worlds/glass-cathedral-4.webp" alt="Glass Cathedral artifact" loading="lazy">
+      </div>
+    </div>
+
+    <div class="gallery-full gallery-img reveal">
+      <img src="images/parallel-worlds/glass-cathedral-3.webp" alt="Glass Cathedral — vault interior" loading="lazy">
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-img reveal">
+        <img src="images/parallel-worlds/glass-cathedral-5.webp" alt="Glass Cathedral artifact" loading="lazy">
+      </div>
+      <div class="gallery-img reveal reveal-delay-1">
+        <img src="images/parallel-worlds/glass-cathedral-6.webp" alt="Glass Cathedral artifact" loading="lazy">
+      </div>
+      <div class="gallery-img reveal reveal-delay-2">
+        <img src="images/parallel-worlds/glass-cathedral-7.webp" alt="Glass Cathedral artifact" loading="lazy">
+      </div>
+    </div>
+
+    <div class="gallery-full gallery-img reveal" style="margin-top: 2px;">
+      <img src="images/parallel-worlds/glass-cathedral-8.webp" alt="Glass Cathedral — world poster" loading="lazy">
+    </div>
+
+    <div class="brand-divider"></div>
+  </section>
+
+  <!-- ════════════════════════════
+       BLACKTIDE PRIVATEERING CO.
+  ════════════════════════════ -->
+  <section class="brand-section blacktide-section" id="blacktide">
+    <div class="brand-header">
+      <div class="brand-eyebrow reveal">Entry 06 — Imperial Maritime Privateering</div>
+      <h2 class="brand-title reveal">BLACKTIDE<br>PRIVATEERING<br>CO.</h2>
+      <p class="brand-tagline reveal reveal-delay-1">"Fortune Favors The Ruthless."</p>
+    </div>
+
+    <div class="brand-lore-wrap reveal">
+      <p class="brand-lore">
+        Blacktide Privateering Co. began as a sanctioned naval contractor protecting imperial trade routes through contested waters. Within decades, its fleets controlled shipping lanes so completely that governments became dependent on the very organization they once hired. Now Blacktide exists beyond nation and crown — a storm-born commercial empire enforcing maritime order through fear, gold, and cannon fire. Every crossing costs. Blacktide simply decides how much.
+      </p>
+      <div class="brand-meta-block">
+        <div class="meta-title">// Classification Data</div>
+        <div class="meta-row"><span class="k">FLEET STATUS</span><span class="v">ACTIVE</span></div>
+        <div class="meta-row"><span class="k">LICENSE</span><span class="v">IMPERIAL</span></div>
+        <div class="meta-row"><span class="k">TRADE AUTHORITY</span><span class="v">EXPANDED</span></div>
+        <div class="meta-row"><span class="k">ROUTE SECURITY</span><span class="v">ENFORCED</span></div>
+        <div class="meta-row"><span class="k">HARBOR ACCESS</span><span class="v">RESTRICTED</span></div>
+        <div class="meta-row"><span class="k">ARTIFACTS</span><span class="v">LOGO / PROPAGANDA / FLAG / LETTER OF MARQUE / SHIP HULL</span></div>
+      </div>
+    </div>
+
+    <div class="gallery-hero gallery-img reveal">
+      <img src="images/parallel-worlds/blacktide-1.webp" alt="Blacktide Privateering Co. — Primary artifact" loading="lazy">
+    </div>
+
+    <div class="gallery-two-col">
+      <div class="gallery-img reveal">
+        <img src="images/parallel-worlds/blacktide-3.webp" alt="Blacktide artifact" loading="lazy">
+      </div>
+      <div class="gallery-img reveal reveal-delay-1">
+        <img src="images/parallel-worlds/blacktide-4.webp" alt="Blacktide artifact" loading="lazy">
+      </div>
+    </div>
+
+    <div class="gallery-full gallery-img reveal">
+      <img src="images/parallel-worlds/blacktide-5.webp" alt="Blacktide — full spread" loading="lazy">
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-img reveal">
+        <img src="images/parallel-worlds/blacktide-2.webp" alt="Blacktide artifact" loading="lazy">
+      </div>
+      <div class="gallery-img reveal reveal-delay-1">
+        <img src="images/parallel-worlds/blacktide-6.webp" alt="Blacktide artifact" loading="lazy">
+      </div>
+      <div class="gallery-img reveal reveal-delay-2">
+        <img src="images/parallel-worlds/blacktide-7.webp" alt="Blacktide artifact" loading="lazy">
+      </div>
+    </div>
+
+    <div class="gallery-two-col" style="margin-top: 2px;">
+      <div class="gallery-img reveal">
+        <img src="images/parallel-worlds/blacktide-8.webp" alt="Blacktide artifact" loading="lazy">
+      </div>
+      <div class="gallery-img reveal reveal-delay-1">
+        <img src="images/parallel-worlds/blacktide-9.webp" alt="Blacktide — world poster" loading="lazy">
+      </div>
+    </div>
+
+    <div class="brand-divider"></div>
+  </section>
+
+  <!-- ════════════════════════════
+       HELIOS RING RESORT
+  ════════════════════════════ -->
+  <section class="brand-section helios-section" id="helios">
+    <div class="brand-header">
+      <div class="brand-eyebrow reveal">Entry 07 — Luxury Orbital Hospitality</div>
+      <h2 class="brand-title reveal">HELIOS<br>RING<br>RESORT</h2>
+      <p class="brand-tagline reveal reveal-delay-1">"Vacation Beyond Gravity."</p>
+    </div>
+
+    <div class="brand-lore-wrap reveal">
+      <p class="brand-lore">
+        Helios Ring Resort transformed orbital habitation into the highest form of luxury. Built above one of the most visually celebrated worlds in civilized space, the rotating megastructure houses panoramic sky lounges, luxury suites, orbital gardens, fine dining districts, private observation decks, and elite transit terminals for guests arriving from across the stars. For many, visiting Helios is less a vacation than a declaration: that they have finally escaped gravity itself.
+      </p>
+      <div class="brand-meta-block">
+        <div class="meta-title">// Classification Data</div>
+        <div class="meta-row"><span class="k">DESTINATION</span><span class="v">OPEN</span></div>
+        <div class="meta-row"><span class="k">ORBITAL</span><span class="v">STABLE / NOMINAL</span></div>
+        <div class="meta-row"><span class="k">GUEST CLASS</span><span class="v">PREMIUM</span></div>
+        <div class="meta-row"><span class="k">DOCKING</span><span class="v">CLEARANCE VERIFIED</span></div>
+        <div class="meta-row"><span class="k">HOSPITALITY</span><span class="v">ELITE</span></div>
+        <div class="meta-row"><span class="k">ARTIFACTS</span><span class="v">LOGO / TRAVEL ADS / RING EXTERIOR / INTERIORS / BROCHURE</span></div>
+      </div>
+    </div>
+
+    <div class="gallery-hero gallery-img reveal">
+      <img src="images/parallel-worlds/helios-1.webp" alt="Helios Ring Resort — Primary artifact" loading="lazy">
+    </div>
+
+    <div class="gallery-two-col">
+      <div class="gallery-img reveal">
+        <img src="images/parallel-worlds/helios-2.webp" alt="Helios artifact" loading="lazy">
+      </div>
+      <div class="gallery-img reveal reveal-delay-1">
+        <img src="images/parallel-worlds/helios-3.webp" alt="Helios artifact" loading="lazy">
+      </div>
+    </div>
+
+    <div class="gallery-full gallery-img reveal">
+      <img src="images/parallel-worlds/helios-4.webp" alt="Helios Ring — orbital exterior" loading="lazy">
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-img reveal">
+        <img src="images/parallel-worlds/helios-5.webp" alt="Helios artifact" loading="lazy">
+      </div>
+      <div class="gallery-img reveal reveal-delay-1">
+        <img src="images/parallel-worlds/helios-6.webp" alt="Helios artifact" loading="lazy">
+      </div>
+      <div class="gallery-img reveal reveal-delay-2">
+        <img src="images/parallel-worlds/helios-7.webp" alt="Helios — world poster" loading="lazy">
+      </div>
+    </div>
+
+    <div class="brand-divider"></div>
+  </section>
+
+  <!-- ════════════════════════════
+       CLOSING
+  ════════════════════════════ -->
+  <div class="section-rule"></div>
+  <section class="closing">
+    <h2 class="closing-headline reveal">Commercial<br>artifacts from<br>impossible markets.</h2>
+    <p class="reveal reveal-delay-1">
+      Each fictional brand is built as a complete visual system — not only to look compelling, but to imply economy, culture, infrastructure, and story.
+    </p>
+    <div class="closing-ctas reveal reveal-delay-2">
+      <a href="mailto:matt@manicwebmaster.com" class="cta-primary">Work with Matt Livingston</a>
+      <a href="https://manicwebmaster.com" class="cta-secondary" target="_blank" rel="noopener">Build a world around your brand →</a>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════
+       FOOTER
+  ════════════════════════════ -->
+  <footer>
+    <div class="footer-transmission">
+      <div>// END OF INDEX</div>
+      <div class="terminated">// ARCHIVE TRANSMISSION TERMINATED</div>
+      <div class="terminated">// REALITY NODE CLOSED</div>
+      <br>
+      <div>Matt Livingston / ManicWebmaster — 2025</div>
+    </div>
+    <div class="footer-links">
+      <a href="https://manicwebmaster.com" target="_blank" rel="noopener">manicwebmaster.com</a>
+      <a href="mailto:matt@manicwebmaster.com">Contact</a>
+    </div>
+  </footer>
+
+  <div class="image-modal" id="image-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image preview">
+    <div class="image-modal-bar">
+      <div class="image-modal-title" id="image-modal-title"></div>
+      <div class="image-modal-actions">
+        <button type="button" id="image-modal-prev" aria-label="Previous image">Prev</button>
+        <button type="button" id="image-modal-next" aria-label="Next image">Next</button>
+        <button type="button" id="image-modal-close" aria-label="Close image preview">Close</button>
+      </div>
+    </div>
+    <div class="image-modal-stage" id="image-modal-stage">
+      <img class="image-modal-img" id="image-modal-img" alt="">
+    </div>
+    <div class="image-modal-foot">
+      <div class="image-modal-count" id="image-modal-count"></div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════
+       SCRIPTS
+  ════════════════════════════ -->
+  <script>
+    // Nav scroll state
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Lightweight image hinting and mobile menu close behavior
+    document.querySelectorAll('img').forEach(img => {
+      img.decoding = 'async';
+    });
+
+    const mobileMenu = document.querySelector('.mobile-menu');
+    mobileMenu?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.removeAttribute('open');
+      });
+    });
+
+    // Full image preview modal
+    const galleryImages = Array.from(document.querySelectorAll('.brand-section .gallery-img img'));
+    const imageModal = document.getElementById('image-modal');
+    const imageModalImg = document.getElementById('image-modal-img');
+    const imageModalTitle = document.getElementById('image-modal-title');
+    const imageModalCount = document.getElementById('image-modal-count');
+    const imageModalStage = document.getElementById('image-modal-stage');
+    const imageModalClose = document.getElementById('image-modal-close');
+    const imageModalPrev = document.getElementById('image-modal-prev');
+    const imageModalNext = document.getElementById('image-modal-next');
+    let activeImageIndex = 0;
+    let lastFocusedGalleryItem = null;
+
+    function renderModalImage(index) {
+      const wrappedIndex = (index + galleryImages.length) % galleryImages.length;
+      const image = galleryImages[wrappedIndex];
+      activeImageIndex = wrappedIndex;
+      imageModalImg.src = image.currentSrc || image.src;
+      imageModalImg.alt = image.alt || 'Brand artifact';
+      imageModalTitle.textContent = image.alt || 'Brand artifact';
+      imageModalCount.textContent = `${String(wrappedIndex + 1).padStart(2, '0')} / ${String(galleryImages.length).padStart(2, '0')}`;
+    }
+
+    function openImageModal(index) {
+      lastFocusedGalleryItem = document.activeElement;
+      renderModalImage(index);
+      imageModal.classList.add('open');
+      imageModal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+      imageModalClose.focus();
+    }
+
+    function closeImageModal() {
+      imageModal.classList.remove('open');
+      imageModal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+      imageModalImg.removeAttribute('src');
+      lastFocusedGalleryItem?.focus?.();
+    }
+
+    galleryImages.forEach((image, index) => {
+      const frame = image.closest('.gallery-img');
+      frame.setAttribute('role', 'button');
+      frame.setAttribute('tabindex', '0');
+      frame.setAttribute('aria-label', `View ${image.alt || 'brand artifact'}`);
+      frame.addEventListener('click', () => openImageModal(index));
+      frame.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openImageModal(index);
+        }
+      });
+    });
+
+    imageModalClose.addEventListener('click', closeImageModal);
+    imageModalPrev.addEventListener('click', () => renderModalImage(activeImageIndex - 1));
+    imageModalNext.addEventListener('click', () => renderModalImage(activeImageIndex + 1));
+    imageModalStage.addEventListener('click', event => {
+      if (event.target === imageModalStage) closeImageModal();
+    });
+
+    document.addEventListener('keydown', event => {
+      if (!imageModal.classList.contains('open')) return;
+      if (event.key === 'Escape') closeImageModal();
+      if (event.key === 'ArrowLeft') renderModalImage(activeImageIndex - 1);
+      if (event.key === 'ArrowRight') renderModalImage(activeImageIndex + 1);
+    });
+
+    // Intersection observer for reveal animations
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Trigger hero reveals immediately
+    document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), 100 + i * 150);
+    });
+  </script>
+
+</body>
+</html>
+<!-- * lone wolf, quiet teeth | Matt Livingston -->

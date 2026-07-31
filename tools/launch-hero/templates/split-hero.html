@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Split Hero — Launch Hero Template 1</title>
+  <style>
+/* ============================================================
+   Split Hero — lh-hero-split
+   Launch Hero Template 1 | ManicWebmaster
+   Color vibe: dark-neon (default showcase)
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #0a0a0c;
+  min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+}
+
+/* ── Color Vibe: dark-neon ─────────────────────────────────── */
+.lh-vibe-dark-neon {
+  --lh-bg:           #09090f;
+  --lh-bg2:          #12121a;
+  --lh-text:         #f0f0f5;
+  --lh-text-sub:     rgba(240,240,245,.62);
+  --lh-accent:       #00e5ff;
+  --lh-accent2:      #7c3aed;
+  --lh-chip-bg:      rgba(0,229,255,.1);
+  --lh-chip-border:  rgba(0,229,255,.22);
+  --lh-chip-text:    #00e5ff;
+  --lh-cta-bg:       #00e5ff;
+  --lh-cta-text:     #060a0e;
+  --lh-cta2-border:  rgba(255,255,255,.18);
+  --lh-cta2-text:    rgba(255,255,255,.72);
+  --lh-card-bg:      #15151e;
+  --lh-card-border:  rgba(255,255,255,.07);
+  --lh-eyebrow-bg:   rgba(0,229,255,.1);
+  --lh-eyebrow-bdr:  rgba(0,229,255,.25);
+}
+
+/* ── Generated Hero Root ───────────────────────────────────── */
+.lh-generated-hero {
+  width: 100%;
+  background: var(--lh-bg);
+  color: var(--lh-text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle noise texture overlay */
+.lh-generated-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: .4;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ambient glow blobs */
+.lh-generated-hero::after {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124,58,237,.12) 0%, transparent 70%);
+  top: -200px;
+  right: -100px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Split Layout ──────────────────────────────────────────── */
+.lh-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 5rem 2.5rem 5.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (max-width: 760px) {
+  .lh-hero-inner {
+    grid-template-columns: 1fr;
+    padding: 3.5rem 1.5rem 4rem;
+    gap: 2.5rem;
+  }
+  .lh-visual-col { display: none; }
+}
+
+/* ── Copy Column ───────────────────────────────────────────── */
+.lh-copy-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Eyebrow */
+.lh-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .6875rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--lh-accent);
+  background: var(--lh-eyebrow-bg);
+  border: 1px solid var(--lh-eyebrow-bdr);
+  border-radius: 100px;
+  padding: .275rem .875rem;
+  margin-bottom: 1.25rem;
+}
+.lh-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--lh-accent);
+  opacity: .85;
+}
+
+/* Headline */
+.lh-headline {
+  font-size: clamp(2rem, 4.5vw, 3.125rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.06;
+  color: var(--lh-text);
+  margin-bottom: .875rem;
+}
+
+/* Accent word — wraps one word in the headline */
+.lh-headline-accent {
+  color: var(--lh-accent);
+  position: relative;
+  display: inline-block;
+}
+.lh-headline-accent::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  bottom: .05em;
+  height: 2px;
+  background: var(--lh-accent);
+  opacity: .4;
+  border-radius: 1px;
+}
+
+/* Subheadline */
+.lh-subheadline {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--lh-text-sub);
+  margin-bottom: 2rem;
+  max-width: 480px;
+}
+
+/* CTA group */
+.lh-cta-group {
+  display: flex;
+  align-items: center;
+  gap: .875rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.lh-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: .375rem;
+  background: var(--lh-cta-bg);
+  color: var(--lh-cta-text);
+  border: none;
+  border-radius: 9px;
+  padding: .75rem 1.625rem;
+  font-weight: 700;
+  font-size: .9375rem;
+  font-family: inherit;
+  letter-spacing: .01em;
+  cursor: pointer;
+  transition: box-shadow .15s, transform .1s, opacity .15s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.lh-cta-primary:hover {
+  box-shadow: 0 0 28px rgba(0,229,255,.4);
+  transform: translateY(-1px);
+}
+.lh-cta-primary:active { transform: translateY(0); }
+
+/* Arrow icon in CTA */
+.lh-cta-primary svg { transition: transform .15s; }
+.lh-cta-primary:hover svg { transform: translateX(2px); }
+
+.lh-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: .375rem;
+  color: var(--lh-cta2-text);
+  border: 1px solid var(--lh-cta2-border);
+  border-radius: 9px;
+  padding: .75rem 1.375rem;
+  font-weight: 600;
+  font-size: .9375rem;
+  font-family: inherit;
+  cursor: pointer;
+  background: rgba(255,255,255,.03);
+  transition: border-color .15s, color .15s, background .15s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.lh-cta-secondary:hover {
+  border-color: rgba(255,255,255,.32);
+  color: rgba(255,255,255,.9);
+  background: rgba(255,255,255,.06);
+}
+
+/* Benefit chips */
+.lh-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: 1.375rem;
+}
+
+.lh-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-size: .8125rem;
+  font-weight: 600;
+  color: var(--lh-chip-text);
+  background: var(--lh-chip-bg);
+  border: 1px solid var(--lh-chip-border);
+  border-radius: 100px;
+  padding: .3rem .8rem;
+  letter-spacing: .01em;
+}
+.lh-chip svg {
+  flex-shrink: 0;
+  opacity: .75;
+}
+
+/* Credibility line */
+.lh-credibility {
+  font-size: .8125rem;
+  color: var(--lh-text-sub);
+  opacity: .6;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+.lh-credibility::before {
+  content: '';
+  display: inline-block;
+  width: 20px; height: 1px;
+  background: currentColor;
+  opacity: .5;
+}
+
+/* ── Visual Column ─────────────────────────────────────────── */
+.lh-visual-col {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Background glow for visual */
+.lh-visual-col::before {
+  content: '';
+  position: absolute;
+  width: 360px; height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,229,255,.09) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Main card */
+.lh-card {
+  width: 100%;
+  max-width: 360px;
+  background: var(--lh-card-bg);
+  border: 1px solid var(--lh-card-border);
+  border-radius: 20px;
+  padding: 1.75rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.04),
+    0 24px 64px rgba(0,0,0,.5),
+    0 4px 16px rgba(0,0,0,.3);
+}
+
+/* Card top accent bar */
+.lh-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 1.75rem; right: 1.75rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--lh-accent), transparent);
+  opacity: .5;
+}
+
+/* Card inner glow orbs */
+.lh-card-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(55px);
+  pointer-events: none;
+}
+.lh-card-orb-1 {
+  width: 220px; height: 220px;
+  background: var(--lh-accent2);
+  opacity: .18;
+  top: -80px; right: -80px;
+}
+.lh-card-orb-2 {
+  width: 160px; height: 160px;
+  background: var(--lh-accent);
+  opacity: .1;
+  bottom: -60px; left: -60px;
+}
+
+/* Card label */
+.lh-card-label {
+  font-size: .6875rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--lh-accent);
+  opacity: .8;
+  margin-bottom: 1.125rem;
+  position: relative;
+}
+
+/* Skeleton lines */
+.lh-skel {
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,.05) 0%,
+    rgba(255,255,255,.09) 50%,
+    rgba(255,255,255,.05) 100%
+  );
+  background-size: 200% 100%;
+  animation: lh-shimmer 2s infinite linear;
+  position: relative;
+}
+@keyframes lh-shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+.lh-skel-title  { height: 18px; width: 72%; margin-bottom: .625rem; }
+.lh-skel-body   { height: 10px; width: 90%; margin-bottom: .4rem; }
+.lh-skel-body-s { height: 10px; width: 65%; margin-bottom: 1.25rem; }
+
+/* Rating row */
+.lh-card-rating {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: 1.25rem;
+}
+.lh-stars {
+  display: flex;
+  gap: 2px;
+}
+.lh-star {
+  width: 14px; height: 14px;
+  color: #fbbf24;
+}
+.lh-rating-text {
+  font-size: .75rem;
+  font-weight: 600;
+  color: var(--lh-text-sub);
+}
+
+/* Mini stat row */
+.lh-card-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .625rem;
+  margin-bottom: 1.375rem;
+}
+.lh-stat {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 10px;
+  padding: .625rem .5rem;
+  text-align: center;
+}
+.lh-stat-val {
+  font-size: 1.0625rem;
+  font-weight: 800;
+  color: var(--lh-text);
+  letter-spacing: -.02em;
+  line-height: 1.2;
+}
+.lh-stat-lbl {
+  font-size: .6375rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--lh-text-sub);
+  opacity: .65;
+  margin-top: .2rem;
+}
+
+/* Card CTA button */
+.lh-card-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  width: 100%;
+  background: var(--lh-cta-bg);
+  color: var(--lh-cta-text);
+  border: none;
+  border-radius: 10px;
+  padding: .7rem 1rem;
+  font-size: .875rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  letter-spacing: .01em;
+  transition: opacity .15s;
+  position: relative;
+}
+.lh-card-cta:hover { opacity: .88; }
+
+/* Floating badge — "Most popular" ribbon */
+.lh-card-badge {
+  position: absolute;
+  top: 1.25rem; right: 1.25rem;
+  background: rgba(124,58,237,.2);
+  border: 1px solid rgba(124,58,237,.4);
+  color: #c4b5fd;
+  font-size: .625rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .25rem .625rem;
+  border-radius: 100px;
+}
+
+/* Floating testimonial pip */
+.lh-float-pip {
+  position: absolute;
+  bottom: -1rem;
+  left: -1rem;
+  background: #1e1e2a;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 14px;
+  padding: .875rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: .625rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,.5);
+  max-width: 210px;
+  animation: lh-float 4s ease-in-out infinite;
+}
+@keyframes lh-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+.lh-pip-avatar {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--lh-accent), var(--lh-accent2));
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .875rem;
+  font-weight: 800;
+  color: #060a0e;
+}
+.lh-pip-name {
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--lh-text);
+  line-height: 1.2;
+}
+.lh-pip-sub {
+  font-size: .6375rem;
+  color: var(--lh-text-sub);
+  opacity: .7;
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     SPLIT HERO — Template 1
+     Replace the values below with your own content.
+     Generated by Launch Hero / ManicWebmaster.com
+     ══════════════════════════════════════════════════════════ -->
+
+<section class="lh-generated-hero lh-hero-split lh-vibe-dark-neon">
+  <div class="lh-hero-inner">
+
+    <!-- ── COPY COLUMN ──────────────────────────────────────── -->
+    <div class="lh-copy-col">
+
+      <!-- Eyebrow label -->
+      <div class="lh-eyebrow">Late-night pizza shop</div>
+
+      <!-- Headline — wrap one key word in .lh-headline-accent for emphasis -->
+      <h1 class="lh-headline">
+        Pizza that hits different<br/>
+        after <span class="lh-headline-accent">midnight</span>
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="lh-subheadline">
+        Hot, creative pizza for after-dark cravings. Night owls and downtown regulars
+        have been finding us for years — now it's your turn.
+      </p>
+
+      <!-- CTA group -->
+      <div class="lh-cta-group">
+        <a href="#order" class="lh-cta-primary">
+          Order Now
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <path d="M3 7.5h9M8.5 4l3.5 3.5L8.5 11" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#menu" class="lh-cta-secondary">View Menu</a>
+      </div>
+
+      <!-- Benefit chips -->
+      <div class="lh-chips">
+        <span class="lh-chip">
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+            <path d="M2 5.5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Open till 4am
+        </span>
+        <span class="lh-chip">
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+            <path d="M2 5.5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Pickup &amp; delivery
+        </span>
+        <span class="lh-chip">
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+            <path d="M2 5.5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          No BS slice policy
+        </span>
+      </div>
+
+      <!-- Credibility line -->
+      <p class="lh-credibility">Trusted by night owls and downtown regulars across the area.</p>
+
+    </div>
+
+    <!-- ── VISUAL COLUMN ─────────────────────────────────────── -->
+    <div class="lh-visual-col">
+
+      <!-- Main card -->
+      <div class="lh-card">
+        <div class="lh-card-orb lh-card-orb-1"></div>
+        <div class="lh-card-orb lh-card-orb-2"></div>
+        <div class="lh-card-badge">Most popular</div>
+
+        <div class="lh-card-label">Midnight Slice</div>
+
+        <div class="lh-skel lh-skel-title"></div>
+        <div class="lh-skel lh-skel-body"></div>
+        <div class="lh-skel lh-skel-body-s"></div>
+
+        <!-- Rating -->
+        <div class="lh-card-rating">
+          <div class="lh-stars">
+            <svg class="lh-star" viewBox="0 0 14 14" fill="currentColor"><path d="M7 1l1.545 3.13 3.455.503-2.5 2.437.59 3.44L7 9l-3.09 1.51.59-3.44-2.5-2.437 3.455-.502L7 1z"/></svg>
+            <svg class="lh-star" viewBox="0 0 14 14" fill="currentColor"><path d="M7 1l1.545 3.13 3.455.503-2.5 2.437.59 3.44L7 9l-3.09 1.51.59-3.44-2.5-2.437 3.455-.502L7 1z"/></svg>
+            <svg class="lh-star" viewBox="0 0 14 14" fill="currentColor"><path d="M7 1l1.545 3.13 3.455.503-2.5 2.437.59 3.44L7 9l-3.09 1.51.59-3.44-2.5-2.437 3.455-.502L7 1z"/></svg>
+            <svg class="lh-star" viewBox="0 0 14 14" fill="currentColor"><path d="M7 1l1.545 3.13 3.455.503-2.5 2.437.59 3.44L7 9l-3.09 1.51.59-3.44-2.5-2.437 3.455-.502L7 1z"/></svg>
+            <svg class="lh-star" viewBox="0 0 14 14" fill="currentColor"><path d="M7 1l1.545 3.13 3.455.503-2.5 2.437.59 3.44L7 9l-3.09 1.51.59-3.44-2.5-2.437 3.455-.502L7 1z"/></svg>
+          </div>
+          <span class="lh-rating-text">4.9 · 800+ orders</span>
+        </div>
+
+        <!-- Stats -->
+        <div class="lh-card-stats">
+          <div class="lh-stat">
+            <div class="lh-stat-val">4am</div>
+            <div class="lh-stat-lbl">Close time</div>
+          </div>
+          <div class="lh-stat">
+            <div class="lh-stat-val">20m</div>
+            <div class="lh-stat-lbl">Avg pickup</div>
+          </div>
+          <div class="lh-stat">
+            <div class="lh-stat-val">12+</div>
+            <div class="lh-stat-lbl">Specialty slices</div>
+          </div>
+        </div>
+
+        <button class="lh-card-cta">
+          Order Now
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+            <path d="M2.5 6.5h8M7 3.5l3 3-3 3" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Floating testimonial pip -->
+      <div class="lh-float-pip">
+        <div class="lh-pip-avatar">JD</div>
+        <div>
+          <div class="lh-pip-name">"Best slice after midnight"</div>
+          <div class="lh-pip-sub">Jake D. · Regular since 2022</div>
+        </div>
+      </div>
+
+    </div>
+    <!-- /visual col -->
+
+  </div>
+</section>
+
+<!-- ============================================================
+     HOW TO CUSTOMIZE:
+
+     1. Color vibe — swap .lh-vibe-dark-neon for another vibe class
+        (see style.css in the Launch Hero project for all vibes)
+
+     2. Eyebrow — your business category / short descriptor
+
+     3. Headline — use .lh-headline-accent to highlight one key word
+
+     4. Subheadline — 1-2 sentences, lead with what you do
+
+     5. CTA labels — match your real action words
+
+     6. Benefit chips — 3 specific, honest chips (not generic)
+
+     7. Credibility line — one grounding social-proof statement
+
+     8. Card stats — real numbers from your business
+
+     9. Float pip — real quote snippet + customer name/context
+
+     Generated by Launch Hero · manicwebmaster.com/tools/launch-hero/
+     ============================================================ -->
+
+</body>
+</html>

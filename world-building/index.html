@@ -1,0 +1,2115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#05070A" />
+  <title>World-Building as a Service — ManicWebmaster</title>
+  <meta name="description" content="Custom story-driven web experiences, AI art direction, cinematic visual series, and Pinterest content systems. See Veyra Scholarium and Digital Relics by ManicWebmaster." />
+  <link rel="canonical" href="https://manicwebmaster.com/world-building/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="World-Building as a Service — ManicWebmaster" />
+  <meta property="og:description" content="Custom AI art direction, cinematic story branding, lore-driven web experiences, and Pinterest-optimized visual series. See Veyra Scholarium as a featured live example." />
+  <meta property="og:url" content="https://manicwebmaster.com/world-building/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://manicwebmaster.com/world-building/world-building-og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="World-Building as a Service — ManicWebmaster" />
+  <meta name="twitter:description" content="Custom AI art direction, cinematic story branding, lore-driven web experiences, and Pinterest-optimized visual series. Featured proof: Veyra Scholarium." />
+  <meta name="twitter:image" content="https://manicwebmaster.com/world-building/world-building-og.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700&family=Barlow:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../manicwebmaster-logo.webp" type="image/webp" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <script>document.documentElement.classList.add('js');</script>
+
+  <style>
+    /* ── Reset & base ─────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg:           #05070A;
+      --panel:        #0D1117;
+      --panel-soft:   #101722;
+      --text:         #E6F1FF;
+      --muted:        #7B8794;
+      --muted-dim:    #778397;
+      --cyan:         #00E5FF;
+      --cyan-dim:     rgba(0,229,255,0.12);
+      --cyan-glow:    rgba(0,229,255,0.06);
+      --violet:       #8B5CF6;
+      --green:        #6CFFB3;
+      --amber:        #FFB700;
+      --red:          #FF3B3B;
+      --border:       rgba(0,229,255,0.12);
+      --border-solid: #1A2535;
+      --max-w:        1160px;
+      --font-display: 'Barlow Condensed', ui-sans-serif, sans-serif;
+      --font-body:    'Barlow', ui-sans-serif, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    :focus-visible {
+      outline: 1.5px solid var(--cyan);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    /* ── Noise overlay ────────────────────────────────────────────────────── */
+    .noise {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+    /* ── Layout ───────────────────────────────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin-inline: auto;
+      padding-inline: clamp(1.25rem, 5vw, 3rem);
+    }
+
+    section { position: relative; }
+
+    /* ── Reusable typography ──────────────────────────────────────────────── */
+    .eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.625rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--cyan);
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-family: var(--font-display);
+      font-size: 0.625rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      color: var(--muted-dim);
+      text-transform: uppercase;
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+    .section-label-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border-solid);
+      min-width: 20px;
+    }
+
+    /* ── Buttons ──────────────────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      border-radius: 2px;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      white-space: nowrap;
+    }
+    .btn--cyan {
+      background: var(--cyan);
+      color: var(--bg);
+    }
+    .btn--cyan:hover, .btn--cyan:focus-visible {
+      background: #33ecff;
+      box-shadow: 0 0 32px rgba(0,229,255,0.35);
+      transform: translateY(-1px);
+    }
+    .btn--outline {
+      background: transparent;
+      color: var(--cyan);
+      border: 1px solid rgba(0,229,255,0.4);
+    }
+    .btn--outline:hover, .btn--outline:focus-visible {
+      background: var(--cyan-dim);
+      border-color: var(--cyan);
+      box-shadow: 0 0 24px var(--cyan-glow);
+      transform: translateY(-1px);
+    }
+    .btn--small {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+    }
+    .btn-icon { font-size: 1.1em; flex-shrink: 0; }
+
+    /* ── NAV ──────────────────────────────────────────────────────────────── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(5,7,10,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-solid);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: relative;
+    }
+    .nav-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text);
+      z-index: 2;
+    }
+    .nav-brand img {
+      width: 34px;
+      height: 34px;
+      border-radius: 6px;
+      object-fit: contain;
+      box-shadow: 0 0 18px rgba(0,229,255,0.22);
+    }
+    .nav-brand .brand-highlight { color: var(--cyan); }
+
+    /* Desktop links — hidden on mobile */
+    .nav-links-desktop {
+      display: none;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    @media (min-width: 640px) {
+      .nav-links-desktop { display: flex; }
+    }
+    .nav-link {
+      font-family: var(--font-display);
+      font-size: 0.625rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--cyan); }
+    .nav-link--cta {
+      color: var(--cyan);
+      border: 1px solid rgba(0,229,255,0.3);
+      padding: 0.4rem 0.85rem;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .nav-link--cta:hover {
+      background: var(--cyan-dim);
+      border-color: var(--cyan);
+    }
+
+    /* Mobile CTA — always visible, replaces hamburger */
+    .nav-cta-mobile {
+      display: flex;
+    }
+    @media (min-width: 640px) {
+      .nav-cta-mobile { display: none; }
+    }
+    .nav-cta-mobile a {
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      border: 1px solid rgba(0,229,255,0.3);
+      padding: 0.4rem 0.85rem;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .nav-cta-mobile a:hover {
+      background: var(--cyan-dim);
+      border-color: var(--cyan);
+    }
+
+    /* ── HERO ─────────────────────────────────────────────────────────────── */
+    .hero {
+      padding-block: clamp(3rem, 7vw, 6rem);
+      border-bottom: 1px solid var(--border-solid);
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-bg svg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+    }
+    .hero .container { position: relative; z-index: 2; }
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(2.5rem, 6vw, 5rem);
+      align-items: center;
+    }
+    @media (min-width: 960px) {
+      .hero-layout { grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.75fr); }
+    }
+    .hero-inner { max-width: 760px; }
+    .hero-eyebrow { margin-bottom: 1.25rem; }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6.6vw, 5.85rem);
+      font-weight: 700;
+      line-height: 0.93;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .hero-title em {
+      font-style: normal;
+      color: var(--cyan);
+    }
+
+    .hero-accent-line {
+      height: 2px;
+      width: clamp(60px, 10vw, 120px);
+      background: linear-gradient(90deg, var(--cyan), transparent);
+      margin-block: 1.2rem;
+    }
+
+    .hero-sub {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      color: var(--text);
+      opacity: 0.7;
+      line-height: 1.45;
+      margin-bottom: 0.85rem;
+      max-width: 560px;
+    }
+    .hero-body {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 520px;
+      margin-bottom: clamp(1.35rem, 3vw, 2rem);
+    }
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .hero-mobile-proof {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-top: 1.25rem;
+      max-width: 520px;
+    }
+    @media (min-width: 960px) {
+      .hero-mobile-proof { display: none; }
+    }
+    .hero-mobile-proof img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border: 1px solid var(--border-solid);
+      border-radius: 3px;
+      background: var(--panel-soft);
+    }
+
+    .hero-visual {
+      position: relative;
+      display: none;
+    }
+    @media (min-width: 960px) {
+      .hero-visual { display: block; }
+    }
+    .hero-showcase {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      max-width: 450px;
+      margin-left: auto;
+    }
+    .showcase-column {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .showcase-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border-solid);
+      border-radius: 3px;
+      background: var(--panel-soft);
+      box-shadow: 0 24px 90px rgba(0,0,0,0.28);
+    }
+    .showcase-column:first-child {
+      transform: translateY(16px);
+    }
+    .showcase-card img {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
+      filter: saturate(1.05) contrast(1.03);
+    }
+    .showcase-card--wide img { aspect-ratio: 1 / 1; }
+    .showcase-card--strip img { aspect-ratio: 2 / 1; }
+    .showcase-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.75rem;
+      background: linear-gradient(180deg, transparent, rgba(5,7,10,0.9));
+      font-family: var(--font-display);
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cyan);
+    }
+    .showcase-proof {
+      margin-top: 1rem;
+      margin-left: auto;
+      max-width: 450px;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      border: 1px solid var(--border-solid);
+      border-radius: 3px;
+      background: rgba(13,17,23,0.72);
+      padding: 0.9rem 1rem;
+    }
+    .showcase-proof span {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.2rem;
+    }
+    .showcase-proof p {
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    /* Scope stats */
+    .hero-proof {
+      margin-top: 2.25rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-solid);
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+    @media (min-width: 640px) {
+      .hero-proof { grid-template-columns: repeat(4, 1fr); }
+    }
+    .proof-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .proof-num {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 700;
+      color: var(--cyan);
+      line-height: 1;
+    }
+    .proof-label {
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted-dim);
+      line-height: 1.4;
+    }
+    .proof-sub {
+      font-family: var(--font-display);
+      font-size: 0.575rem;
+      letter-spacing: 0.1em;
+      color: var(--muted-dim);
+      opacity: 0.6;
+      line-height: 1.4;
+    }
+
+    /* ── WHAT THIS IS ─────────────────────────────────────────────────────── */
+    .what-section {
+      padding-block: clamp(5rem, 10vw, 9rem);
+      border-bottom: 1px solid var(--border-solid);
+    }
+    .what-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(2rem, 4vw, 4rem);
+    }
+    @media (min-width: 768px) {
+      .what-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 1024px) {
+      .what-grid { grid-template-columns: 5fr 7fr; gap: 5rem; }
+    }
+    .what-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.05;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+    .what-heading em {
+      font-style: normal;
+      color: var(--cyan);
+      display: block;
+    }
+    .what-body p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .what-body p:last-child { margin-bottom: 0; }
+    .what-body strong { color: var(--text); font-weight: 500; }
+
+    /* ── CASE STUDY ───────────────────────────────────────────────────────── */
+    .case-section {
+      padding-block: clamp(5rem, 10vw, 9rem);
+      background: var(--panel);
+      border-top: 1px solid var(--border-solid);
+      border-bottom: 1px solid var(--border-solid);
+    }
+    .case-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(2.5rem, 5vw, 4rem);
+    }
+    @media (min-width: 900px) {
+      .case-inner { grid-template-columns: 1fr 1fr; align-items: start; }
+    }
+
+    .case-label {
+      font-family: var(--font-display);
+      font-size: 0.575rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      opacity: 0.6;
+      margin-bottom: 0.5rem;
+    }
+    .case-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 1rem;
+      line-height: 1.05;
+    }
+    .case-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1.75rem;
+    }
+    .deliverables {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border-solid);
+      border: 1px solid var(--border-solid);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+    }
+    .deliverable {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.85rem 1.1rem;
+      background: var(--panel-soft);
+      transition: background 0.15s;
+    }
+    .deliverable:hover { background: #131C28; }
+    .deliverable-icon {
+      font-size: 0.85rem;
+      color: var(--cyan);
+      opacity: 0.7;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+    .deliverable-name {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+    }
+    .deliverable-desc {
+      font-size: 0.775rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .case-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-display);
+      font-size: 0.625rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .case-link:hover { opacity: 1; }
+    .case-link::after { content: '→'; }
+    .case-media {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .case-feature-image {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1.9 / 1;
+      object-fit: cover;
+      border-radius: 3px;
+      border: 1px solid var(--border-solid);
+      background: var(--panel-soft);
+      box-shadow: 0 0 40px rgba(0,229,255,0.08);
+    }
+
+    /* Case image grid — 2 col mobile, 3 col desktop */
+    .case-image-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+    }
+    @media (min-width: 900px) {
+      .case-image-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .case-image-grid img {
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
+      border-radius: 2px;
+      border: 1px solid var(--border-solid);
+      background: var(--panel-soft);
+      width: 100%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .case-image-grid img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 24px rgba(0,229,255,0.12);
+    }
+    /* Hide last image on mobile so we get 2x2 instead of 2x2+orphan */
+    .case-image-grid img:last-child {
+      display: none;
+    }
+    @media (min-width: 900px) {
+      .case-image-grid img:last-child { display: block; }
+    }
+
+    .worlds-section {
+      padding-block: clamp(4rem, 8vw, 6.5rem);
+      border-bottom: 1px solid var(--border-solid);
+    }
+    .worlds-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      border: 1px solid var(--border-solid);
+      background: var(--border-solid);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    @media (min-width: 800px) {
+      .worlds-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .world-card {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      min-height: 100%;
+      background: var(--panel);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .world-card:hover {
+      background: #0F1A26;
+      transform: translateY(-1px);
+    }
+    .world-card img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border-solid);
+      filter: saturate(0.9);
+    }
+    .world-card-body {
+      padding: clamp(1.3rem, 3vw, 1.9rem);
+    }
+    .world-card-label {
+      font-family: var(--font-display);
+      font-size: 0.56rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      opacity: 0.62;
+      margin-bottom: 0.55rem;
+    }
+    .world-card-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1;
+      color: var(--text);
+      margin-bottom: 0.8rem;
+    }
+    .world-card-copy {
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 1.2rem;
+    }
+
+    /* ── SERVICES ─────────────────────────────────────────────────────────── */
+    .services-section {
+      padding-block: clamp(5rem, 10vw, 9rem);
+      border-bottom: 1px solid var(--border-solid);
+    }
+    .services-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text);
+      line-height: 1.05;
+      margin-bottom: 0.5rem;
+    }
+    .services-sub {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+      max-width: 520px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      background: var(--border-solid);
+      border: 1px solid var(--border-solid);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    @media (min-width: 640px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .service-card {
+      background: var(--panel);
+      padding: clamp(1.5rem, 3vw, 2.25rem);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: background 0.2s;
+    }
+    .service-card:hover { background: #0F1A26; }
+    .service-num {
+      font-family: var(--font-display);
+      font-size: 0.575rem;
+      letter-spacing: 0.2em;
+      color: var(--cyan);
+      opacity: 0.45;
+      font-weight: 600;
+    }
+    .service-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text);
+      line-height: 1.15;
+    }
+    .service-desc {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.7;
+      flex: 1;
+    }
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.25rem;
+    }
+    .service-tag {
+      font-family: var(--font-display);
+      font-size: 0.55rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid var(--border-solid);
+      border-radius: 2px;
+      color: var(--muted-dim);
+    }
+
+    /* ── PROCESS ──────────────────────────────────────────────────────────── */
+    .process-section {
+      padding-block: clamp(5rem, 10vw, 9rem);
+      background: var(--panel);
+      border-top: 1px solid var(--border-solid);
+      border-bottom: 1px solid var(--border-solid);
+    }
+    .process-intro {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(1.5rem, 4vw, 4rem);
+      margin-bottom: clamp(2rem, 5vw, 3rem);
+    }
+    @media (min-width: 768px) {
+      .process-intro { grid-template-columns: 5fr 7fr; align-items: end; }
+    }
+    .process-copy {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 560px;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      background: var(--border-solid);
+      border: 1px solid var(--border-solid);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    @media (min-width: 768px) {
+      .process-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .process-step {
+      background: var(--panel-soft);
+      padding: clamp(1.35rem, 3vw, 1.85rem);
+      min-height: 210px;
+    }
+    .process-num {
+      font-family: var(--font-display);
+      font-size: 0.575rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--cyan);
+      opacity: 0.65;
+      margin-bottom: 1.5rem;
+    }
+    .process-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+      line-height: 1.15;
+      margin-bottom: 0.6rem;
+    }
+    .process-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── INCLUDED ─────────────────────────────────────────────────────────── */
+    .included-section {
+      padding-block: clamp(5rem, 10vw, 9rem);
+      border-bottom: 1px solid var(--border-solid);
+    }
+    .included-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+    }
+    @media (min-width: 900px) {
+      .included-grid { grid-template-columns: 4fr 8fr; align-items: start; }
+    }
+    .included-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      background: var(--border-solid);
+      border: 1px solid var(--border-solid);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    @media (min-width: 640px) {
+      .included-list { grid-template-columns: repeat(2, 1fr); }
+    }
+    .included-item {
+      background: var(--panel);
+      padding: 1rem 1.15rem;
+    }
+    .included-name {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .included-desc {
+      font-size: 0.76rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* ── PACKAGES ─────────────────────────────────────────────────────────── */
+    .packages-section {
+      padding-block: clamp(5rem, 10vw, 9rem);
+      background: var(--panel-soft);
+      border-top: 1px solid var(--border-solid);
+      border-bottom: 1px solid var(--border-solid);
+    }
+    .packages-intro {
+      font-size: 0.875rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+      line-height: 1.75;
+    }
+    .packages-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      background: var(--border-solid);
+      border: 1px solid var(--border-solid);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    @media (min-width: 768px) {
+      .packages-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .package-card {
+      background: var(--panel);
+      padding: clamp(1.5rem, 3vw, 2rem);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      position: relative;
+      transition: background 0.2s;
+    }
+    .package-card:hover { background: #0F1A26; }
+    .package-card--featured {
+      background: #0B1520;
+      border-top: 2px solid var(--cyan);
+    }
+    .package-card--featured:hover { background: #0D1A28; }
+    .package-badge {
+      font-family: var(--font-display);
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--cyan);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      width: fit-content;
+      margin-bottom: -0.25rem;
+    }
+    .package-name {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+      line-height: 1;
+    }
+    .package-name em {
+      font-style: normal;
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      color: var(--cyan);
+      opacity: 0.6;
+      margin-bottom: 0.25rem;
+    }
+    .package-price {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--cyan);
+      line-height: 1;
+    }
+    .package-price span {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+    .package-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.65;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-solid);
+    }
+    .package-meta {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      background: var(--border-solid);
+      border: 1px solid var(--border-solid);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .package-meta-item {
+      background: rgba(16,23,34,0.9);
+      padding: 0.7rem 0.8rem;
+    }
+    .package-meta-label {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.52rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      opacity: 0.62;
+      margin-bottom: 0.18rem;
+    }
+    .package-meta-value {
+      display: block;
+      font-size: 0.74rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .package-includes {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+    }
+    .package-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .package-line::before {
+      content: '◈';
+      color: var(--cyan);
+      opacity: 0.5;
+      font-size: 0.6rem;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+    .package-cta { margin-top: 0.25rem; }
+
+    /* Add-ons */
+    .addons-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border-solid);
+      border: 1px solid var(--border-solid);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    @media (min-width: 768px) {
+      .addons-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .addon-item {
+      background: var(--panel);
+      padding: 1rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      transition: background 0.15s;
+    }
+    .addon-item:hover { background: #0F1A26; }
+    .addon-name {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .addon-price {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--cyan);
+    }
+    .addon-desc {
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .packages-note {
+      margin-top: 1.5rem;
+      font-size: 0.775rem;
+      color: var(--muted-dim);
+      font-style: italic;
+    }
+
+    /* ── WHO THIS IS FOR ──────────────────────────────────────────────────── */
+    .who-section {
+      padding-block: clamp(5rem, 10vw, 9rem);
+      border-bottom: 1px solid var(--border-solid);
+    }
+    .who-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(2rem, 4vw, 4rem);
+    }
+    @media (min-width: 768px) {
+      .who-grid { grid-template-columns: 1fr 1fr; align-items: start; }
+    }
+    .who-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4.5vw, 3rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+    .who-heading em {
+      font-style: normal;
+      color: var(--cyan);
+    }
+    .who-intro {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .who-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border-solid);
+      border: 1px solid var(--border-solid);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .who-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--panel);
+      transition: background 0.15s;
+    }
+    .who-item:hover { background: #0F1A26; }
+    .who-marker {
+      font-family: var(--font-display);
+      font-size: 0.575rem;
+      letter-spacing: 0.18em;
+      color: var(--cyan);
+      opacity: 0.5;
+      padding-top: 3px;
+      flex-shrink: 0;
+      font-weight: 600;
+    }
+    .who-item-title {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+    .who-item-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* ── MAKER ────────────────────────────────────────────────────────────── */
+    .maker-section {
+      padding-block: clamp(4rem, 8vw, 7rem);
+      background: var(--panel);
+      border-bottom: 1px solid var(--border-solid);
+    }
+    .maker-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(1.5rem, 4vw, 3rem);
+      align-items: center;
+    }
+    @media (min-width: 768px) {
+      .maker-inner { grid-template-columns: 4fr 8fr; }
+    }
+    .maker-kicker {
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      opacity: 0.7;
+      margin-bottom: 0.5rem;
+    }
+    .maker-name {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text);
+      line-height: 1;
+    }
+    .maker-copy {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 680px;
+    }
+    .maker-copy strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ── FAQ ──────────────────────────────────────────────────────────────── */
+    .faq-section {
+      padding-block: clamp(5rem, 10vw, 9rem);
+      border-bottom: 1px solid var(--border-solid);
+    }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      background: var(--border-solid);
+      border: 1px solid var(--border-solid);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    @media (min-width: 768px) {
+      .faq-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .faq-item {
+      background: var(--panel);
+      padding: clamp(1.3rem, 3vw, 1.8rem);
+    }
+    .faq-question {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 0.55rem;
+    }
+    .faq-answer {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── CTA ──────────────────────────────────────────────────────────────── */
+    .cta-section {
+      padding-block: clamp(6rem, 12vw, 10rem);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,229,255,0.04) 0%, transparent 70%);
+    }
+    .cta-inner { position: relative; z-index: 2; }
+    .cta-eyebrow { justify-content: center; margin-bottom: 1.5rem; }
+    .cta-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text);
+      line-height: 0.95;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+    .cta-title em {
+      font-style: normal;
+      color: var(--cyan);
+      display: block;
+    }
+    .cta-sub {
+      font-size: 0.925rem;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 480px;
+      margin-inline: auto;
+      margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+    }
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+    .cta-buttons .btn {
+      min-width: 220px;
+      font-size: 0.875rem;
+      padding: 1.1rem 2rem;
+    }
+    .cta-note {
+      margin-top: 2rem;
+      font-family: var(--font-display);
+      font-size: 0.575rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted-dim);
+    }
+
+    /* ── FOOTER ───────────────────────────────────────────────────────────── */
+    .site-footer {
+      padding-block: clamp(2.5rem, 5vw, 4rem);
+      background: var(--panel);
+      border-top: 1px solid var(--border-solid);
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .footer-brand span { color: var(--cyan); }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      align-items: center;
+    }
+    .footer-link {
+      font-family: var(--font-display);
+      font-size: 0.575rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .footer-link:hover { color: var(--cyan); }
+    .footer-meta {
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-solid);
+      font-family: var(--font-display);
+      font-size: 0.525rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted-dim);
+    }
+
+    /* ── Scroll reveal ────────────────────────────────────────────────────── */
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .js .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── Reduced motion ───────────────────────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+      .js .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="noise" aria-hidden="true"></div>
+
+  <!-- ── NAV ───────────────────────────────────────────────────────────────── -->
+  <nav class="site-nav" aria-label="Site navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="https://manicwebmaster.com" class="nav-brand">
+          <img src="../manicwebmaster-logo.webp" alt="" width="34" height="34" />
+          <span class="brand-word">Manic<span class="brand-highlight">Webmaster</span></span>
+        </a>
+        <div class="nav-links-desktop">
+          <a href="/veyra/" class="nav-link">Veyra</a>
+          <a href="https://manicwebmaster.com/digital-relics-archive/" class="nav-link">Digital Relics</a>
+          <a href="https://manicwebmaster.com" class="nav-link">Portfolio</a>
+          <a href="mailto:matt@manicwebmaster.com?subject=World%20Building%20Project%20Inquiry&amp;body=Hey%20Matt%2C%20I%27m%20interested%20in%20a%20world-building%20project.%20Here%27s%20what%20I%27m%20building%3A%0A%0A" class="nav-link nav-link--cta">Start a Project</a>
+        </div>
+        <div class="nav-cta-mobile">
+          <a href="sms:4697170416" aria-label="Text Matt">Text Me</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ──────────────────────────────────────────────────────────────── -->
+  <header class="hero" role="banner">
+    <div class="hero-bg" aria-hidden="true">
+      <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+        <circle cx="900" cy="350" r="300" fill="none" stroke="rgba(0,229,255,0.035)" stroke-width="1"/>
+        <circle cx="900" cy="350" r="460" fill="none" stroke="rgba(0,229,255,0.02)" stroke-width="1"/>
+        <circle cx="900" cy="350" r="600" fill="none" stroke="rgba(0,229,255,0.012)" stroke-width="1"/>
+        <line x1="600" y1="0" x2="1200" y2="700" stroke="rgba(0,229,255,0.02)" stroke-width="1"/>
+        <line x1="700" y1="0" x2="1200" y2="500" stroke="rgba(0,229,255,0.015)" stroke-width="1"/>
+      </svg>
+    </div>
+    <div class="container">
+      <div class="hero-layout">
+        <div class="hero-inner">
+          <p class="eyebrow hero-eyebrow">ManicWebmaster // Services</p>
+          <h1 class="hero-title">
+            Let's Build<br>
+            <em>Your World.</em>
+          </h1>
+          <div class="hero-accent-line" aria-hidden="true"></div>
+          <p class="hero-sub">Custom story-driven web experiences, AI art direction, and cinematic visual series — built around a single cohesive concept.</p>
+          <p class="hero-body">Bring me the half-formed idea, the strange brand angle, the fictional product, the music project, the book world, or the niche shop with a point of view. I'll turn it into a launch-ready web experience with visuals, copy, assets, and a content system.</p>
+          <div class="hero-cta">
+            <a href="mailto:matt@manicwebmaster.com?subject=Start%20My%20World%20Build&amp;body=Hey%20Matt%2C%20I%20want%20to%20start%20a%20world-building%20project.%0A%0AProject%20idea%3A%0AExisting%20brand%20or%20style%20references%3A%0ATimeline%3A%0ABudget%20range%3A%0A%0A" class="btn btn--cyan" aria-label="Email Matt to start a world-building project">
+              <span class="btn-icon">✉</span>
+              Start Your World Build
+            </a>
+            <a href="sms:4697170416" class="btn btn--outline" aria-label="Text Matt at 469-717-0416">
+              <span class="btn-icon">💬</span>
+              Text Me — 469.717.0416
+            </a>
+          </div>
+
+          <div class="hero-mobile-proof" aria-label="World-building service preview">
+            <img src="hero-1.png" alt="Brand universe asset kit preview" />
+            <img src="hero-3.png" alt="Three distinct fictional brand worlds preview" />
+            <img src="hero-2.png" alt="World-building creative desk preview" />
+          </div>
+
+          <div class="hero-proof" aria-label="Project scope stats">
+            <div class="proof-item">
+              <span class="proof-num">3–4</span>
+              <span class="proof-label">Day Builds</span>
+              <span class="proof-sub">Most projects move fast once direction is locked</span>
+            </div>
+            <div class="proof-item">
+              <span class="proof-num">2</span>
+              <span class="proof-label">Worlds Shipped</span>
+              <span class="proof-sub">Veyra Scholarium + Digital Relics Archive</span>
+            </div>
+            <div class="proof-item">
+              <span class="proof-num">6</span>
+              <span class="proof-label">Artifact Entries</span>
+              <span class="proof-sub">Recovered holdings in the Veyra dossier</span>
+            </div>
+            <div class="proof-item">
+              <span class="proof-num">3</span>
+              <span class="proof-label">Factions</span>
+              <span class="proof-sub">Institutional conflict, motives, and mystery</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="World-building service asset preview">
+          <div class="hero-showcase">
+            <div class="showcase-column">
+              <div class="showcase-card">
+                <img src="hero-1.png" alt="Brand universe asset kit with webpage, lore, social, and design materials" />
+                <span class="showcase-caption">Asset Kit</span>
+              </div>
+              <div class="showcase-card showcase-card--strip">
+                <img src="hero-4.png" alt="Close-up strip of launch-ready brand assets, code, and lore documents" />
+              </div>
+            </div>
+            <div class="showcase-column">
+              <div class="showcase-card showcase-card--wide">
+                <img src="hero-3.png" alt="Three fictional brand worlds presented as a cohesive service" />
+              </div>
+              <div class="showcase-card showcase-card--wide">
+                <img src="hero-2.png" alt="World-building creative desk with webpage, notes, and visual references" />
+              </div>
+            </div>
+          </div>
+          <div class="showcase-proof">
+            <p><span>Built</span>Visual world, page, assets</p>
+            <p><span>Delivered</span>Images, code, PDFs, Pinterest kit</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── WHAT THIS IS ───────────────────────────────────────────────────── -->
+    <section class="what-section" aria-labelledby="what-heading">
+      <div class="container">
+        <div class="section-label">
+          <span class="section-label-line"></span>
+          What This Actually Is
+          <span class="section-label-line"></span>
+        </div>
+        <div class="what-grid">
+          <div>
+            <h2 class="what-heading" id="what-heading">
+              More Than<br>
+              <em>A Website.</em>
+            </h2>
+          </div>
+          <div class="what-body">
+            <p>Most brands have a website. Few have a <strong>world</strong>. A world is a visual identity, a story, a consistent aesthetic, and a content system that all point to the same thing — and make people feel something when they encounter it.</p>
+            <p>This is what I build. It starts with a concept: what is the thing, what does it feel like, what world does it live in? Then I direct the AI art, build the web experience around it, write the copy in whatever voice fits, and set up a content system so the visuals keep working for you long after launch.</p>
+            <p>The Veyra Scholarium is the clearest live example: <strong>a compact world bible turned into an interactive archive with factions, recovered artifacts, chronology, cartographic mystery, and a complete visual tone.</strong> Digital Relics shows the same service in a more cinematic wallpaper/archive format.</p>
+            <p>I can build something like that for your brand, your product, your book, your music, your idea.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CASE STUDY ─────────────────────────────────────────────────────── -->
+    <section class="case-section" aria-labelledby="case-heading">
+      <div class="container">
+        <div class="section-label">
+          <span class="section-label-line"></span>
+          Featured World
+          <span class="section-label-line"></span>
+        </div>
+        <div class="case-inner">
+          <div>
+            <p class="case-label">Case Study // Interactive Lore Dossier</p>
+            <h2 class="case-title" id="case-heading">The Veyra Scholarium</h2>
+            <p class="case-desc">A cartographic archive-horror world built around The Quiet: a disappearing-world premise told through institutional factions, recovered artifacts, unstable maps, chronology, terminal logs, and a museum-like interface that makes the lore feel discovered instead of explained.</p>
+            <div class="deliverables" role="list" aria-label="Project deliverables">
+              <div class="deliverable" role="listitem">
+                <span class="deliverable-icon" aria-hidden="true">◈</span>
+                <div>
+                  <p class="deliverable-name">Interactive Lore Dossier</p>
+                  <p class="deliverable-desc">A full single-page archive experience with indexed sections, fragmentary records, in-world navigation, and a creator note that frames the build.</p>
+                </div>
+              </div>
+              <div class="deliverable" role="listitem">
+                <span class="deliverable-icon" aria-hidden="true">◈</span>
+                <div>
+                  <p class="deliverable-name">Faction System</p>
+                  <p class="deliverable-desc">The Lantern Order, the Black Archive, and the Choir of Glass give the world institutional conflict, motive, and internal logic.</p>
+                </div>
+              </div>
+              <div class="deliverable" role="listitem">
+                <span class="deliverable-icon" aria-hidden="true">◈</span>
+                <div>
+                  <p class="deliverable-name">Recovered Artifact Catalog</p>
+                  <p class="deliverable-desc">Six artifact entries with catalog IDs, status labels, visual evidence, and implied history outside the frame.</p>
+                </div>
+              </div>
+              <div class="deliverable" role="listitem">
+                <span class="deliverable-icon" aria-hidden="true">◈</span>
+                <div>
+                  <p class="deliverable-name">Timeline + Archive Log</p>
+                  <p class="deliverable-desc">Chronology, transmission entries, and cartographic anomaly hooks that imply a larger playable or publishable setting.</p>
+                </div>
+              </div>
+            </div>
+            <a href="/veyra/" class="case-link">Explore the Scholarium</a>
+          </div>
+          <div class="case-media">
+            <img class="case-feature-image" src="/veyra/veyra-card.webp" alt="Preview card for The Veyra Scholarium interactive lore dossier" loading="lazy" />
+            <div class="case-image-grid" aria-label="Sample images from The Veyra Scholarium">
+              <img src="/veyra/assets/faction-lantern-order.webp" alt="The Lantern Order faction art from The Veyra Scholarium" loading="lazy" />
+              <img src="/veyra/assets/artifact-vey-arc-442.webp" alt="The Compass artifact from The Veyra Scholarium" loading="lazy" />
+              <img src="/veyra/assets/faction-black-archive.webp" alt="The Black Archive faction art from The Veyra Scholarium" loading="lazy" />
+              <img src="/veyra/assets/artifact-vey-lng-019.webp" alt="The Tablets artifact from The Veyra Scholarium" loading="lazy" />
+              <img src="/veyra/assets/faction-choir-of-glass.webp" alt="The Choir of Glass faction art from The Veyra Scholarium" loading="lazy" />
+              <img src="/veyra/assets/map-fragment.webp" alt="The Hollow Coast map fragment from The Veyra Scholarium" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MORE WORLDS ───────────────────────────────────────────────────── -->
+    <section class="worlds-section" aria-labelledby="worlds-heading">
+      <div class="container">
+        <div class="section-label">
+          <span class="section-label-line"></span>
+          More Worlds Shipped
+          <span class="section-label-line"></span>
+        </div>
+        <h2 class="services-heading" id="worlds-heading">Two examples.<br>Two different shapes.</h2>
+        <p class="services-sub">Veyra shows the lore-dossier version of the service. Digital Relics shows the cinematic archive and content-system version.</p>
+        <div class="worlds-grid">
+          <article class="world-card reveal">
+            <img src="/veyra/veyra-card.webp" alt="The Veyra Scholarium case study card" loading="lazy" />
+            <div class="world-card-body">
+              <p class="world-card-label">Featured // Lore Dossier</p>
+              <h3 class="world-card-title">Veyra Scholarium</h3>
+              <p class="world-card-copy">A cartographic archive-horror world with factions, recovered artifacts, chronology, archive logs, and a complete interface built around the mystery of The Quiet.</p>
+              <a href="/veyra/" class="case-link">Open Veyra</a>
+            </div>
+          </article>
+          <article class="world-card reveal reveal-delay-1">
+            <img src="https://manicwebmaster.com/digital-relics-archive/assets/relic-01-the-scanner.webp" alt="Digital Relics Archive preview image" loading="lazy" />
+            <div class="world-card-body">
+              <p class="world-card-label">Live Example // Visual Archive</p>
+              <h3 class="world-card-title">Digital Relics Archive</h3>
+              <p class="world-card-copy">A cinematic AI-directed wallpaper and archive system with 15 relics, in-universe PDFs, Pinterest-formatted assets, and a custom web experience.</p>
+              <a href="https://manicwebmaster.com/digital-relics-archive/" class="case-link" target="_blank" rel="noopener noreferrer">Visit the archive</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SERVICES ───────────────────────────────────────────────────────── -->
+    <section class="services-section" aria-labelledby="services-heading">
+      <div class="container">
+        <div class="section-label">
+          <span class="section-label-line"></span>
+          What I Can Build For You
+          <span class="section-label-line"></span>
+        </div>
+        <h2 class="services-heading" id="services-heading">Four Services.<br>One Cohesive Vision.</h2>
+        <p class="services-sub">Each service works on its own. Together, they build something that feels like a real world.</p>
+        <div class="services-grid">
+          <div class="service-card reveal">
+            <p class="service-num">01</p>
+            <h3 class="service-title">Story Brand Pages</h3>
+            <p class="service-desc">A fully custom webpage built around a concept, world, or narrative. Not a template — a designed experience with its own visual language, copy voice, and atmosphere. The kind of page people screenshot and share.</p>
+            <div class="service-tags">
+              <span class="service-tag">HTML / CSS / JS</span>
+              <span class="service-tag">Custom Design</span>
+              <span class="service-tag">Lore Writing</span>
+            </div>
+          </div>
+          <div class="service-card reveal reveal-delay-1">
+            <p class="service-num">02</p>
+            <h3 class="service-title">AI Art Direction</h3>
+            <p class="service-desc">AI-generated imagery that actually looks intentional. I concept, prompt, iterate, and curate until the visuals are consistent, cinematic, and on-brand. No generic outputs. Every image is art-directed with a specific mood in mind.</p>
+            <div class="service-tags">
+              <span class="service-tag">Concept Development</span>
+              <span class="service-tag">Prompt Direction</span>
+              <span class="service-tag">Series Consistency</span>
+            </div>
+          </div>
+          <div class="service-card reveal reveal-delay-2">
+            <p class="service-num">03</p>
+            <h3 class="service-title">Pinterest Content Systems</h3>
+            <p class="service-desc">A repeatable visual series optimized for Pinterest reach. Consistent aesthetic, proper 2:3 formatting, archive-style branding, and enough entries to build a real presence. Designed to grow over time, not burn out after three posts.</p>
+            <div class="service-tags">
+              <span class="service-tag">2:3 Pin Format</span>
+              <span class="service-tag">Series Design</span>
+              <span class="service-tag">OLED Optimized</span>
+            </div>
+          </div>
+          <div class="service-card reveal reveal-delay-3">
+            <p class="service-num">04</p>
+            <h3 class="service-title">Lore & Document Design</h3>
+            <p class="service-desc">In-universe documents, field guides, spec sheets, and supporting materials that make a brand feel like a real world. Designed to be downloaded, shared, and treated like artifacts in their own right.</p>
+            <div class="service-tags">
+              <span class="service-tag">PDF Design</span>
+              <span class="service-tag">In-Universe Copy</span>
+              <span class="service-tag">Brand Lore</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PROCESS ───────────────────────────────────────────────────────── -->
+    <section class="process-section" aria-labelledby="process-heading">
+      <div class="container">
+        <div class="section-label">
+          <span class="section-label-line"></span>
+          How It Works
+          <span class="section-label-line"></span>
+        </div>
+        <div class="process-intro">
+          <h2 class="services-heading" id="process-heading">From loose idea<br>to launchable world.</h2>
+          <p class="process-copy">The process is intentionally simple. We lock the concept, build a visual language, turn it into a page and asset system, then package everything so you can launch, post, share, and keep building from it.</p>
+        </div>
+        <div class="process-grid" role="list" aria-label="Project process">
+          <div class="process-step reveal" role="listitem">
+            <p class="process-num">01</p>
+            <h3 class="process-title">Concept Lock</h3>
+            <p class="process-desc">You send the idea, audience, references, existing brand materials, and any hard requirements. I help shape the direction before anything gets built.</p>
+          </div>
+          <div class="process-step reveal reveal-delay-1" role="listitem">
+            <p class="process-num">02</p>
+            <h3 class="process-title">Visual Direction</h3>
+            <p class="process-desc">I art-direct the image system, refine prompts, curate the strongest outputs, and make sure the series feels consistent instead of randomly generated.</p>
+          </div>
+          <div class="process-step reveal reveal-delay-2" role="listitem">
+            <p class="process-num">03</p>
+            <h3 class="process-title">Web Build</h3>
+            <p class="process-desc">The page gets designed around the world: layout, copy voice, atmosphere, responsive behavior, social preview, and deployment-ready code.</p>
+          </div>
+          <div class="process-step reveal reveal-delay-3" role="listitem">
+            <p class="process-num">04</p>
+            <h3 class="process-title">Launch Kit</h3>
+            <p class="process-desc">You receive high-resolution assets, optimized web files, Pinterest-ready formats, code, OG image, and launch support for your hosting path.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── INCLUDED ──────────────────────────────────────────────────────── -->
+    <section class="included-section" aria-labelledby="included-heading">
+      <div class="container">
+        <div class="section-label">
+          <span class="section-label-line"></span>
+          What You Get
+          <span class="section-label-line"></span>
+        </div>
+        <div class="included-grid">
+          <div>
+            <h2 class="services-heading" id="included-heading">Built assets,<br>not vague files.</h2>
+            <p class="services-sub">The exact mix depends on scope, but the goal is always the same: you leave with a usable world, not just a pretty mockup.</p>
+          </div>
+          <div class="included-list" role="list" aria-label="Included deliverables">
+            <div class="included-item" role="listitem">
+              <p class="included-name">High-Resolution Images</p>
+              <p class="included-desc">Final art files suitable for sharing, archiving, print tests, and future campaign use.</p>
+            </div>
+            <div class="included-item" role="listitem">
+              <p class="included-name">Optimized Web Images</p>
+              <p class="included-desc">Compressed WebP or similar files prepared for fast page loading and clean mobile display.</p>
+            </div>
+            <div class="included-item" role="listitem">
+              <p class="included-name">Page Code</p>
+              <p class="included-desc">Static, deployable HTML/CSS/JS for the project page or archive experience.</p>
+            </div>
+            <div class="included-item" role="listitem">
+              <p class="included-name">Pinterest Assets</p>
+              <p class="included-desc">2:3 social images and consistent series formatting so the world can keep spreading after launch.</p>
+            </div>
+            <div class="included-item" role="listitem">
+              <p class="included-name">PDF Artifacts</p>
+              <p class="included-desc">For larger builds, in-universe documents such as field guides, spec sheets, manuals, or lore files.</p>
+            </div>
+            <div class="included-item" role="listitem">
+              <p class="included-name">OG Image</p>
+              <p class="included-desc">A social preview card for the page so links look intentional when shared.</p>
+            </div>
+            <div class="included-item" role="listitem">
+              <p class="included-name">Hosting Help</p>
+              <p class="included-desc">Deployment support for your existing host, or optional lightweight hosting handled by me for a minimal fee.</p>
+            </div>
+            <div class="included-item" role="listitem">
+              <p class="included-name">Launch Support</p>
+              <p class="included-desc">Final checks, link review, asset handoff, and practical help getting the project live.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PACKAGES ───────────────────────────────────────────────────────── -->
+    <section class="packages-section" aria-labelledby="packages-heading">
+      <div class="container">
+        <div class="section-label">
+          <span class="section-label-line"></span>
+          Packages & Pricing
+          <span class="section-label-line"></span>
+        </div>
+        <h2 class="services-heading" id="packages-heading">Custom projects,<br>priced by scope.</h2>
+        <p class="packages-intro">Three packages cover most projects. If your idea doesn't fit neatly into one, reach out — we'll figure out what it actually needs.</p>
+
+        <div class="packages-grid">
+
+          <!-- SIGNAL -->
+          <div class="package-card reveal">
+            <div>
+              <p class="package-name">
+                <em>Package 01</em>
+                SIGNAL
+              </p>
+            </div>
+            <div class="package-price">$350 <span>— $450</span></div>
+            <p class="package-desc">The entry point. A focused visual series to establish the look and feel of your world before committing to a full build.</p>
+            <div class="package-meta" aria-label="Signal package details">
+              <div class="package-meta-item">
+                <span class="package-meta-label">Best For</span>
+                <span class="package-meta-value">Testing a concept, campaign look, or visual direction.</span>
+              </div>
+              <div class="package-meta-item">
+                <span class="package-meta-label">Typical Timeline</span>
+                <span class="package-meta-value">1–2 days once direction is locked.</span>
+              </div>
+            </div>
+            <div class="package-includes">
+              <div class="package-line">5 AI-directed images, art-directed to a specific mood</div>
+              <div class="package-line">Consistent visual language across all images</div>
+              <div class="package-line">Pinterest-ready 2:3 WebP format</div>
+              <div class="package-line">No web build — visuals only</div>
+            </div>
+            <div class="package-cta">
+              <a href="mailto:matt@manicwebmaster.com?subject=Signal%20Package%20Inquiry&amp;body=Hey%20Matt%2C%20I%27m%20interested%20in%20the%20SIGNAL%20package.%0A%0AProject%20idea%3A%0AVisual%20references%3A%0AWhat%20I%20want%20the%20images%20to%20feel%20like%3A%0A%0A" class="btn btn--outline btn--small">Ask About Signal</a>
+            </div>
+          </div>
+
+          <!-- ARCHIVE -->
+          <div class="package-card package-card--featured reveal reveal-delay-1">
+            <span class="package-badge">Most Popular</span>
+            <div>
+              <p class="package-name">
+                <em>Package 02</em>
+                ARCHIVE
+              </p>
+            </div>
+            <div class="package-price">$800 <span>— $1,000</span></div>
+            <p class="package-desc">The core package. A visual series plus a custom story brand page — something real they can send people to.</p>
+            <div class="package-meta" aria-label="Archive package details">
+              <div class="package-meta-item">
+                <span class="package-meta-label">Best For</span>
+                <span class="package-meta-value">A launchable campaign, artist page, product world, or niche brand experience.</span>
+              </div>
+              <div class="package-meta-item">
+                <span class="package-meta-label">Typical Timeline</span>
+                <span class="package-meta-value">Most builds land in 3–4 days or less.</span>
+              </div>
+            </div>
+            <div class="package-includes">
+              <div class="package-line">8–10 AI-directed images</div>
+              <div class="package-line">Single-page custom story brand website</div>
+              <div class="package-line">Custom design, in-universe copy voice</div>
+              <div class="package-line">Mobile-first, static, deployable anywhere</div>
+              <div class="package-line">Pinterest-formatted image set</div>
+            </div>
+            <div class="package-cta">
+              <a href="mailto:matt@manicwebmaster.com?subject=Archive%20Package%20Inquiry&amp;body=Hey%20Matt%2C%20I%27m%20interested%20in%20the%20ARCHIVE%20package.%0A%0AProject%20idea%3A%0AExisting%20brand%20or%20style%20references%3A%0ATimeline%3A%0AAnything%20that%20must%20be%20included%3A%0A%0A" class="btn btn--cyan btn--small">Start an Archive Build</a>
+            </div>
+          </div>
+
+          <!-- WORLD -->
+          <div class="package-card reveal reveal-delay-2">
+            <div>
+              <p class="package-name">
+                <em>Package 03</em>
+                WORLD
+              </p>
+            </div>
+            <div class="package-price">$1,800 <span>— $2,400</span></div>
+            <p class="package-desc">The full build. Everything Veyra and Digital Relics prove out — built around your concept from scratch.</p>
+            <div class="package-meta" aria-label="World package details">
+              <div class="package-meta-item">
+                <span class="package-meta-label">Best For</span>
+                <span class="package-meta-value">Full fictional worlds, deep launches, creator universes, and brand ecosystems.</span>
+              </div>
+              <div class="package-meta-item">
+                <span class="package-meta-label">Typical Timeline</span>
+                <span class="package-meta-value">Usually 4–7 days depending on PDF and archive depth.</span>
+              </div>
+            </div>
+            <div class="package-includes">
+              <div class="package-line">12–15 AI-directed images</div>
+              <div class="package-line">Full archive-style website</div>
+              <div class="package-line">One in-universe lore document (PDF, styled)</div>
+              <div class="package-line">Pinterest series setup and OG social card</div>
+              <div class="package-line">Complete concept-to-launch execution</div>
+            </div>
+            <div class="package-cta">
+              <a href="mailto:matt@manicwebmaster.com?subject=World%20Package%20Inquiry&amp;body=Hey%20Matt%2C%20I%27m%20interested%20in%20the%20WORLD%20package.%0A%0AProject%20idea%3A%0AExisting%20brand%20or%20style%20references%3A%0ADocuments%20or%20lore%20assets%20needed%3A%0ATimeline%3A%0A%0A" class="btn btn--outline btn--small">Build a Full World</a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Add-ons -->
+        <div class="section-label" style="margin-top: 2.5rem;">
+          <span class="section-label-line"></span>
+          Add-Ons
+          <span class="section-label-line"></span>
+        </div>
+        <div class="addons-grid">
+          <div class="addon-item">
+            <p class="addon-name">Extra Image Set</p>
+            <p class="addon-price">+$200</p>
+            <p class="addon-desc">5 additional AI-directed images in the same visual language.</p>
+          </div>
+          <div class="addon-item">
+            <p class="addon-name">Lore Document</p>
+            <p class="addon-price">+$150</p>
+            <p class="addon-desc">Additional in-universe PDF — field guide, spec sheet, handling manual, or similar.</p>
+          </div>
+          <div class="addon-item">
+            <p class="addon-name">Additional Web Page</p>
+            <p class="addon-price">+$200</p>
+            <p class="addon-desc">A second page extending the web experience — services, about, a sub-archive.</p>
+          </div>
+          <div class="addon-item">
+            <p class="addon-name">Pinterest Pin Templates</p>
+            <p class="addon-price">+$100</p>
+            <p class="addon-desc">Branded pin templates formatted for your series — ready to post, consistently styled.</p>
+          </div>
+        </div>
+        <p class="packages-note">All packages include a direction check and one focused revision round. Small polish is part of the process; major concept pivots after approval may require an added scope.</p>
+      </div>
+    </section>
+
+    <!-- ── WHO THIS IS FOR ────────────────────────────────────────────────── -->
+    <section class="who-section" aria-labelledby="who-heading">
+      <div class="container">
+        <div class="section-label">
+          <span class="section-label-line"></span>
+          Who This Is For
+          <span class="section-label-line"></span>
+        </div>
+        <div class="who-grid">
+          <div>
+            <h2 class="who-heading" id="who-heading">
+              You have a world<br>in your head.<br>
+              <em>Let's build it.</em>
+            </h2>
+            <p class="who-intro">This work is for people who have something specific — a concept, a brand, a project — and want it to feel like a real, thought-through thing rather than a generic web presence.</p>
+          </div>
+          <div class="who-list" role="list" aria-label="Ideal clients">
+            <div class="who-item reveal" role="listitem">
+              <span class="who-marker" aria-hidden="true">→</span>
+              <div>
+                <p class="who-item-title">Independent Creators & Artists</p>
+                <p class="who-item-desc">Musicians, illustrators, writers, and makers who want a web presence that actually reflects their work — not a Squarespace template with their name on it.</p>
+              </div>
+            </div>
+            <div class="who-item reveal reveal-delay-1" role="listitem">
+              <span class="who-marker" aria-hidden="true">→</span>
+              <div>
+                <p class="who-item-title">Small Brands & Product Businesses</p>
+                <p class="who-item-desc">Products with a story worth telling. If your brand has a world, a philosophy, or a distinct aesthetic — that's something a page can communicate. Most don't try.</p>
+              </div>
+            </div>
+            <div class="who-item reveal reveal-delay-2" role="listitem">
+              <span class="who-marker" aria-hidden="true">→</span>
+              <div>
+                <p class="who-item-title">Authors & Game Designers</p>
+                <p class="who-item-desc">World-building is already what you do. I can build the web equivalent — an archive, a field guide, a visual series that extends the fiction into the real world.</p>
+              </div>
+            </div>
+            <div class="who-item reveal reveal-delay-3" role="listitem">
+              <span class="who-marker" aria-hidden="true">→</span>
+              <div>
+                <p class="who-item-title">Pinterest-Serious Sellers</p>
+                <p class="who-item-desc">Etsy shops, resellers, and niche content creators who understand Pinterest as a long-term traffic channel and want a visual series that actually performs.</p>
+              </div>
+            </div>
+            <div class="who-item reveal reveal-delay-4" role="listitem">
+              <span class="who-marker" aria-hidden="true">→</span>
+              <div>
+                <p class="who-item-title">Anyone With a Strong Concept</p>
+                <p class="who-item-desc">If you have something specific you want to build — a world, a project, an idea — and you're not sure what form it takes yet, that's exactly the conversation to have.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MAKER ─────────────────────────────────────────────────────────── -->
+    <section class="maker-section" aria-labelledby="maker-heading">
+      <div class="container">
+        <div class="maker-inner">
+          <div>
+            <p class="maker-kicker">Built by Matt</p>
+            <h2 class="maker-name" id="maker-heading">ManicWebmaster</h2>
+          </div>
+          <p class="maker-copy">I build these worlds directly: concept, art direction, copy, page design, optimization, and launch support. <strong>Veyra Scholarium and Digital Relics Archive are the live proof</strong> — shipped worlds with image systems, lore structures, web interfaces, and supporting launch assets built from one strange little concept at a time.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ───────────────────────────────────────────────────────────── -->
+    <section class="faq-section" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-label">
+          <span class="section-label-line"></span>
+          Questions Before We Build
+          <span class="section-label-line"></span>
+        </div>
+        <h2 class="services-heading" id="faq-heading">Fast answers<br>before you reach out.</h2>
+        <p class="services-sub">If the idea is unusual, good. The project just needs enough direction to start moving.</p>
+        <div class="faq-grid">
+          <div class="faq-item reveal">
+            <h3 class="faq-question">How long does this usually take?</h3>
+            <p class="faq-answer">Most projects are done in 3–4 days or less once the concept, references, and scope are locked. Smaller visual-only projects can move faster; deeper archive builds or extra PDFs may take a little longer.</p>
+          </div>
+          <div class="faq-item reveal reveal-delay-1">
+            <h3 class="faq-question">Who owns the final images?</h3>
+            <p class="faq-answer">You own the final delivered images and project assets. You can use them for your site, social content, Pinterest, launch materials, and brand storytelling.</p>
+          </div>
+          <div class="faq-item reveal reveal-delay-2">
+            <h3 class="faq-question">How do revisions work?</h3>
+            <p class="faq-answer">We start with a direction check so the core mood is right before the build goes too far. Each package includes one focused revision round for image selection, copy, layout, and polish. If the whole concept changes after approval, we can rescope it cleanly.</p>
+          </div>
+          <div class="faq-item reveal reveal-delay-3">
+            <h3 class="faq-question">Can you handle hosting?</h3>
+            <p class="faq-answer">Yes. I can deploy to client-supplied hosting, hand over deployable code, or take care of lightweight hosting for a minimal fee. The simplest path depends on where your current domain and site already live.</p>
+          </div>
+          <div class="faq-item reveal">
+            <h3 class="faq-question">What do you need from me?</h3>
+            <p class="faq-answer">A project idea, target audience, existing site or brand links if you have them, a few visual references, any required copy or facts, your preferred package, and where the finished page should live.</p>
+          </div>
+          <div class="faq-item reveal reveal-delay-1">
+            <h3 class="faq-question">Can you match my existing brand?</h3>
+            <p class="faq-answer">Absolutely. If you already have colors, type, logos, product photography, or a clear brand style, I can build the world around that instead of replacing it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ────────────────────────────────────────────────────────────── -->
+    <section class="cta-section" aria-labelledby="cta-heading">
+      <div class="cta-bg" aria-hidden="true"></div>
+      <div class="container">
+        <div class="cta-inner">
+          <p class="eyebrow cta-eyebrow">Dallas, TX — Available Now</p>
+          <h2 class="cta-title" id="cta-heading">
+            Let's Build<br>
+            <em>Your World.</em>
+          </h2>
+          <p class="cta-sub">Tell me what you're building. A concept, a project, an idea — even half-formed. I'll tell you what's possible and what it takes.</p>
+          <div class="cta-buttons">
+            <a href="mailto:matt@manicwebmaster.com?subject=Start%20My%20World%20Build&amp;body=Hey%20Matt%2C%20I%20want%20to%20start%20a%20world-building%20project.%0A%0AProject%20idea%3A%0AExisting%20brand%20or%20style%20references%3A%0ATimeline%3A%0ABudget%20range%3A%0A%0A" class="btn btn--cyan" aria-label="Email Matt to start a world-building project">
+              <span class="btn-icon">✉</span>
+              Start Your World Build
+            </a>
+            <a href="sms:4697170416" class="btn btn--outline" aria-label="Text Matt at 469-717-0416">
+              <span class="btn-icon">💬</span>
+              Text — 469.717.0416
+            </a>
+          </div>
+          <p class="cta-note">No forms. No intake questionnaires. Just reach out directly.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────────────────────── -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-brand">Manic<span>Webmaster</span></p>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="https://manicwebmaster.com" class="footer-link">Portfolio</a>
+          <a href="/veyra/" class="footer-link">Veyra</a>
+          <a href="https://manicwebmaster.com/digital-relics-archive/" class="footer-link">Digital Relics</a>
+          <a href="https://www.pinterest.com/manicwebmaster/" class="footer-link" target="_blank" rel="noopener noreferrer">Pinterest</a>
+          <a href="mailto:matt@manicwebmaster.com" class="footer-link">Email</a>
+          <a href="sms:4697170416" class="footer-link">Text</a>
+        </nav>
+      </div>
+      <p class="footer-meta">World-building as a service. // ManicWebmaster // Dallas, TX // manicwebmaster.com/world-building/</p>
+    </div>
+  </footer>
+
+  <script>
+    // ── Scroll reveal ──────────────────────────────────────────────────────
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    } else {
+      // Fallback: show everything
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    }
+  </script>
+
+</body>
+</html>

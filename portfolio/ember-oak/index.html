@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ember &amp; Oak | Wood · Fire · Kitchen</title>
+  <meta name="description" content="Ember &amp; Oak is a polished single-page restaurant concept for a wood-fired fine dining room in Plano, Texas." />
+  <meta name="theme-color" content="#0e0c0a" />
+  <meta property="og:title" content="Ember &amp; Oak | Wood · Fire · Kitchen" />
+  <meta property="og:description" content="Live-fire cooking, seasonal ingredients, and a warm high-end dining experience in Plano, Texas." />
+  <meta property="og:image" content="menu-image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&amp;family=Raleway:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --char:      #0e0c0a;
+      --ash:       #1a1714;
+      --smoke:     #242018;
+      --ember:     #e8810a;
+      --flame:     #f4a623;
+      --gold:      #c9973a;
+      --gold-lt:   #e2bb6a;
+      --copper:    #9b4f28;
+      --sage:      #8b9676;
+      --cream:     #f0e6d4;
+      --bone:      #fff7ea;
+      --warm-grey: #9b8e82;
+      --white:     #faf4ea;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'Cormorant Garamond', Georgia, serif;
+      --font-ui:      'Raleway', sans-serif;
+      --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--char); color: var(--cream); font-family: var(--font-body); line-height: 1.5; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 2px solid var(--gold-lt); outline-offset: 4px; }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+    .skip-link {
+      position: fixed; left: 1rem; top: 1rem; z-index: 1000;
+      transform: translateY(-160%); background: var(--bone); color: var(--char);
+      font-family: var(--font-ui); font-size: 0.7rem; font-weight: 800;
+      letter-spacing: 0.12em; text-transform: uppercase; padding: 0.75rem 1rem;
+      transition: transform 0.2s;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    /* GRAIN */
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: 900; pointer-events: none; opacity: 0.038;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+      transition: background 0.4s, backdrop-filter 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(14,12,10,0.94);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 1px 0 rgba(201,151,58,0.12);
+    }
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo img {
+      height: 42px; width: auto;
+      mix-blend-mode: lighten;
+      filter: drop-shadow(0 0 6px rgba(232,129,10,0.35));
+      transition: filter 0.4s;
+    }
+    nav.scrolled .nav-logo img {
+      mix-blend-mode: lighten;
+      filter: drop-shadow(0 0 10px rgba(244,166,35,0.55));
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--font-ui); font-size: 0.68rem;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--warm-grey); transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--flame); }
+    .nav-actions { display: flex; align-items: center; gap: 1rem; }
+    .nav-reserve {
+      display: none; font-family: var(--font-ui); font-size: 0.62rem; font-weight: 800;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--char);
+      background: var(--gold-lt); padding: 0.7rem 1rem;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.22);
+      transition: transform 0.2s, background 0.2s;
+    }
+    .nav-reserve:hover { background: var(--flame); transform: translateY(-1px); }
+    .nav-menu-btn {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .nav-menu-btn span { display: block; width: 24px; height: 1.5px; background: var(--cream); transition: all 0.3s; }
+
+    /* MOBILE NAV */
+    .mobile-nav {
+      display: none; position: fixed; inset: 0; z-index: 190;
+      background: rgba(14,12,10,0.97);
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 2.5rem; opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    .mobile-nav.open { opacity: 1; pointer-events: all; }
+    .mobile-nav a { font-family: var(--font-display); font-size: 2.2rem; font-style: italic; color: var(--cream); transition: color 0.2s; }
+    .mobile-nav a:hover { color: var(--flame); }
+    body.nav-open .nav-menu-btn span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    body.nav-open .nav-menu-btn span:nth-child(2) { opacity: 0; }
+    body.nav-open .nav-menu-btn span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* HERO */
+    #hero {
+      position: relative; min-height: 100svh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 5rem 2rem 4rem; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 45% 40% at 50% 62%, rgba(232,129,10,0.22) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 45% at 50% 90%, rgba(201,151,58,0.09) 0%, transparent 55%),
+        radial-gradient(ellipse 100% 60% at 50% 100%, rgba(100,30,0,0.25) 0%, transparent 50%),
+        linear-gradient(175deg, #0c0a08 0%, #171210 50%, #0c0a08 100%);
+    }
+    .hero-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 100% 100% at 50% 50%, transparent 40%, rgba(0,0,0,0.55) 100%);
+    }
+    .embers { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    .ember-particle {
+      position: absolute; border-radius: 50%;
+      background: radial-gradient(circle, var(--flame), var(--ember));
+      animation: float-up linear infinite; opacity: 0;
+    }
+    @keyframes float-up {
+      0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+      8%   { opacity: 1; }
+      85%  { opacity: 0.15; }
+      100% { transform: translateY(-85vh) translateX(var(--drift)) scale(0.1); opacity: 0; }
+    }
+    .hero-logo-wrap {
+      position: relative; z-index: 1;
+      opacity: 0; transform: translateY(24px) scale(0.96);
+      animation: hero-in 1.1s var(--ease-expo) 0.2s forwards;
+    }
+    @keyframes hero-in { to { opacity: 1; transform: translateY(0) scale(1); } }
+    .hero-logo-wrap img {
+      width: min(490px, 88vw); height: auto; margin: 0 auto;
+      mix-blend-mode: lighten;
+      filter: drop-shadow(0 0 40px rgba(232,129,10,0.25));
+      animation: logo-breathe 4s ease-in-out infinite alternate;
+    }
+    @keyframes logo-breathe {
+      from { filter: drop-shadow(0 0 30px rgba(232,129,10,0.2)); }
+      to   { filter: drop-shadow(0 0 65px rgba(244,166,35,0.6)); }
+    }
+    .hero-divider {
+      position: relative; z-index: 1;
+      display: flex; align-items: center; gap: 1rem;
+      margin: 1.5rem auto 0; width: min(300px, 70vw);
+      opacity: 0; animation: hero-in 0.8s var(--ease-expo) 0.7s forwards;
+    }
+    .hero-divider::before, .hero-divider::after {
+      content: ''; flex: 1; height: 1px;
+    }
+    .hero-divider::before { background: linear-gradient(to right, transparent, rgba(201,151,58,0.5)); }
+    .hero-divider::after  { background: linear-gradient(to left,  transparent, rgba(201,151,58,0.5)); }
+    .hero-divider span { color: var(--gold); font-size: 0.6rem; }
+    .hero-copy {
+      position: relative; z-index: 1; max-width: 680px; margin: 1.35rem auto 0;
+      opacity: 0; animation: hero-in 0.8s var(--ease-expo) 0.82s forwards;
+    }
+    .hero-kicker {
+      font-family: var(--font-ui); font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.28em; text-transform: uppercase; color: var(--sage);
+      margin-bottom: 0.85rem;
+    }
+    .hero-copy p {
+      font-size: clamp(1.12rem, 2.2vw, 1.45rem);
+      font-weight: 300; line-height: 1.7; color: rgba(250,244,234,0.78);
+    }
+    .hero-proof {
+      position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 1px; width: min(740px, calc(100vw - 3rem)); margin: 2rem auto 0;
+      background: rgba(255,247,234,0.1); border: 1px solid rgba(201,151,58,0.16);
+      opacity: 0; animation: hero-in 0.8s var(--ease-expo) 1.08s forwards;
+    }
+    .hero-proof div {
+      background: rgba(14,12,10,0.48); backdrop-filter: blur(12px);
+      padding: 0.9rem 0.75rem;
+    }
+    .hero-proof strong {
+      display: block; font-family: var(--font-ui); font-size: 0.58rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold-lt); margin-bottom: 0.2rem;
+    }
+    .hero-proof span { display: block; font-size: 0.92rem; color: rgba(240,230,212,0.78); }
+    .hero-ctas {
+      position: relative; z-index: 1;
+      display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;
+      margin-top: 2rem;
+      opacity: 0; animation: hero-in 0.8s var(--ease-expo) 1.22s forwards;
+    }
+    .hero-scroll {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      opacity: 0; animation: hero-in 0.8s ease 1.5s forwards;
+    }
+    .hero-scroll span { font-family: var(--font-ui); font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--warm-grey); }
+    .scroll-bar { width: 1px; height: 36px; background: linear-gradient(to bottom, var(--ember), transparent); animation: bar-pulse 2s ease-in-out infinite; }
+    @keyframes bar-pulse { 0%,100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+    /* BUTTONS */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: linear-gradient(135deg, var(--ember) 0%, var(--gold-lt) 100%);
+      color: #0e0c0a; font-family: var(--font-ui); font-weight: 700;
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 0.9rem 2rem; border: none; cursor: pointer;
+      position: relative; overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--flame), var(--ember));
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 35px rgba(232,129,10,0.35); }
+    .btn-primary:hover::after { opacity: 1; }
+    .btn-primary span { position: relative; z-index: 1; }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: transparent; color: var(--cream); font-family: var(--font-ui); font-weight: 400;
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 0.9rem 2rem; border: 1px solid rgba(245,237,224,0.25);
+      cursor: pointer; transition: all 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--ember); color: var(--flame); }
+    .btn-primary, .btn-ghost { min-height: 44px; }
+
+    /* MARQUEE */
+    .marquee-wrap {
+      background: linear-gradient(90deg, var(--copper), var(--gold-lt), var(--sage), var(--gold));
+      background-size: 200% 100%; animation: grad-shift 6s ease infinite;
+      overflow: hidden; padding: 0.7rem 0;
+    }
+    @keyframes grad-shift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+    .marquee-track { display: flex; animation: marquee 22s linear infinite; white-space: nowrap; }
+    .marquee-track span { font-family: var(--font-ui); font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--char); font-weight: 800; padding: 0 2rem; }
+    .marquee-track .dot { padding: 0; letter-spacing: 0; opacity: 0.4; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* SECTIONS */
+    section { padding: 6rem 2rem; }
+    .section-label { font-family: var(--font-ui); font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ember); margin-bottom: 0.9rem; }
+    .section-heading { font-family: var(--font-display); font-weight: 400; font-style: italic; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; color: var(--white); }
+    .section-body { font-family: var(--font-body); font-size: 1.15rem; font-weight: 300; line-height: 1.85; color: var(--warm-grey); }
+    .eyebrow-note {
+      font-family: var(--font-ui); font-size: 0.62rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--sage);
+    }
+
+    /* STORY */
+    #story { background: var(--ash); position: relative; overflow: hidden; }
+    #story::before {
+      content: ''; position: absolute; right: -5%; top: -15%;
+      width: 45vw; height: 45vw; max-width: 550px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,129,10,0.06) 0%, transparent 70%); pointer-events: none;
+    }
+    .story-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: start; }
+    .story-text .section-body { margin-top: 1.5rem; }
+    .story-text .section-body + .section-body { margin-top: 1rem; }
+    .story-numbers { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .stat-card { border-top: 1px solid rgba(201,151,58,0.3); padding-top: 1.2rem; }
+    .stat-card .number { font-family: var(--font-display); font-size: 2.4rem; font-style: italic; color: var(--flame); line-height: 1; }
+    .stat-card .label { font-family: var(--font-ui); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm-grey); margin-top: 0.4rem; }
+    .story-quote {
+      margin-top: 2.5rem; padding: 1.75rem 1.5rem;
+      border-left: 2px solid var(--ember);
+      background: linear-gradient(135deg, var(--smoke), rgba(36,32,24,0.6));
+      position: relative;
+    }
+    .story-quote::before {
+      content: '\201C'; position: absolute; top: -0.5rem; left: 1rem;
+      font-family: var(--font-display); font-size: 5rem;
+      color: var(--ember); opacity: 0.2; line-height: 1;
+    }
+    .story-quote p { font-family: var(--font-body); font-size: 1.2rem; font-style: italic; color: var(--cream); line-height: 1.75; position: relative; }
+    .story-quote footer { margin-top: 1rem; font-family: var(--font-ui); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ember); }
+    .story-service {
+      margin-top: 2rem; display: grid; gap: 1px;
+      background: rgba(255,255,255,0.055); border: 1px solid rgba(201,151,58,0.12);
+    }
+    .story-service div { background: rgba(14,12,10,0.28); padding: 1rem; }
+    .story-service strong {
+      display: block; font-family: var(--font-ui); font-size: 0.6rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold-lt); margin-bottom: 0.35rem;
+    }
+    .story-service span { display: block; color: var(--warm-grey); font-size: 1rem; line-height: 1.55; }
+
+    /* INTERSTITIAL */
+    .interstitial {
+      background: var(--smoke); padding: 5rem 2rem;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .interstitial::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(232,129,10,0.06) 0%, transparent 70%);
+    }
+    .interstitial-inner { position: relative; max-width: 680px; margin: 0 auto; }
+    .interstitial p { font-family: var(--font-ui); font-size: 0.62rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--ember); margin-bottom: 1.25rem; }
+    .interstitial h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.8rem, 4.5vw, 3rem); color: var(--white); line-height: 1.2; }
+    .interstitial em { font-style: italic; color: var(--gold-lt); display: block; margin-top: 0.5rem; font-family: var(--font-body); font-size: clamp(1.15rem, 3vw, 1.7rem); }
+
+    /* MENU */
+    #menu { background: var(--char); }
+    .menu-inner { max-width: 860px; margin: 0 auto; }
+    .menu-header { text-align: center; margin-bottom: 2.5rem; }
+    .menu-showcase {
+      display: grid; gap: 2rem; align-items: center; margin: 0 auto 3rem;
+      border-top: 1px solid rgba(201,151,58,0.18);
+      border-bottom: 1px solid rgba(201,151,58,0.18);
+      padding: 2rem 0;
+    }
+    .menu-showcase-copy h3 {
+      font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 400; font-style: italic; color: var(--white); margin: 0.55rem 0 0.85rem;
+    }
+    .menu-showcase-copy p { font-size: 1.05rem; line-height: 1.75; color: var(--warm-grey); }
+    .menu-highlights {
+      display: grid; gap: 0.7rem; margin-top: 1.25rem;
+      font-family: var(--font-ui); font-size: 0.62rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--cream);
+    }
+    .menu-highlights span { color: var(--sage); margin-right: 0.4rem; }
+    .menu-preview {
+      width: min(260px, 70vw); justify-self: center; position: relative;
+      border: 0; background: transparent; padding: 0; cursor: zoom-in;
+    }
+    .menu-preview img {
+      border: 1px solid rgba(201,151,58,0.35);
+      box-shadow: 0 24px 70px rgba(0,0,0,0.55);
+      transform: rotate(1.25deg);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .menu-preview:hover img { transform: rotate(0deg) translateY(-4px); box-shadow: 0 30px 85px rgba(0,0,0,0.68); }
+    .menu-preview::before {
+      content: ''; position: absolute; inset: 8% -8% -8% 8%;
+      border: 1px solid rgba(139,150,118,0.35); z-index: -1;
+    }
+
+    /* Tabs */
+    .menu-tabs {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      border-bottom: 1px solid rgba(201,151,58,0.2); margin-bottom: 0;
+    }
+    .tab-btn {
+      font-family: var(--font-ui); font-size: 0.62rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--warm-grey);
+      background: none; border: none; padding: 0.85rem 1.15rem; cursor: pointer;
+      border-bottom: 2px solid transparent; margin-bottom: -1px;
+      transition: color 0.2s, border-color 0.2s; white-space: nowrap;
+    }
+    .tab-btn:hover { color: var(--cream); }
+    .tab-btn.active { color: var(--flame); border-bottom-color: var(--ember); }
+    .tab-btn:focus-visible { outline-offset: -3px; }
+
+    .tab-panel { display: none; padding-top: 2.5rem; }
+    .tab-panel.active { display: block; }
+
+    /* Menu rows */
+    .menu-list { list-style: none; }
+    .menu-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 1rem; padding: 1.05rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.055);
+    }
+    .menu-row:last-child { border-bottom: none; }
+    .menu-row-left { flex: 1; }
+    .menu-row-name { font-family: var(--font-ui); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream); margin-bottom: 0.2rem; }
+    .menu-row-desc { font-family: var(--font-body); font-size: 0.98rem; font-style: italic; color: var(--warm-grey); line-height: 1.5; }
+    .menu-row-price { font-family: var(--font-ui); font-size: 0.82rem; font-weight: 600; color: var(--gold); white-space: nowrap; }
+
+    /* From the Fire featured */
+    .fire-feature {
+      border: 1px solid rgba(201,151,58,0.4);
+      padding: 2.25rem 2rem;
+      background: linear-gradient(145deg, rgba(36,32,24,0.95), rgba(26,23,20,0.7));
+      position: relative;
+    }
+    .fire-feature::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(232,129,10,0.07) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .fire-feature-header { text-align: center; margin-bottom: 1.75rem; }
+    .fire-feature-header h3 { font-family: var(--font-ui); font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ember); margin-bottom: 0.5rem; }
+    .fire-feature-header p { font-family: var(--font-body); font-size: 1rem; font-style: italic; color: var(--warm-grey); }
+
+    /* Menu CTA */
+    .menu-pdf-cta {
+      margin-top: 3rem; padding-top: 2.5rem;
+      border-top: 1px solid rgba(201,151,58,0.2);
+      display: flex; flex-direction: column; align-items: center; gap: 1.25rem;
+    }
+    .menu-pdf-cta p { font-family: var(--font-body); font-style: italic; color: var(--warm-grey); font-size: 1.05rem; }
+    .menu-thumb {
+      width: 180px; border: 1px solid rgba(201,151,58,0.3);
+      cursor: zoom-in; box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .menu-thumb-button { background: none; border: 0; padding: 0; }
+    .menu-thumb-wrap { text-align: center; }
+    .menu-thumb:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 14px 40px rgba(0,0,0,0.65); }
+    .menu-thumb-label { font-family: var(--font-ui); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--warm-grey); text-align: center; margin-top: 0.5rem; }
+
+    /* Lightbox */
+    .lightbox {
+      display: none; position: fixed; inset: 0; z-index: 800;
+      background: rgba(0,0,0,0.92); align-items: center; justify-content: center;
+      padding: 2rem; cursor: zoom-out;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-height: 92vh; max-width: 92vw; width: auto; height: auto; box-shadow: 0 20px 80px rgba(0,0,0,0.8); }
+    .lightbox-close {
+      position: absolute; top: 1.5rem; right: 1.75rem;
+      font-family: var(--font-ui); font-size: 0.65rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--warm-grey);
+      cursor: pointer; background: none; border: none; transition: color 0.2s;
+    }
+    .lightbox-close:hover { color: var(--flame); }
+
+    /* EXPERIENCE */
+    #experience { background: var(--ash); }
+    .exp-inner { max-width: 1100px; margin: 0 auto; }
+    .exp-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 3rem; }
+    .exp-card {
+      background: var(--smoke); padding: 2rem;
+      border-left: 2px solid var(--ember); position: relative; overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .exp-card::after {
+      content: ''; position: absolute; top: -40%; right: -15%; width: 130px; height: 130px;
+      border-radius: 50%; background: radial-gradient(circle, rgba(232,129,10,0.07) 0%, transparent 70%);
+    }
+    .exp-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+    .exp-icon {
+      width: 2.2rem; height: 2.2rem; display: grid; place-items: center;
+      border: 1px solid rgba(201,151,58,0.35); color: var(--gold-lt);
+      font-family: var(--font-ui); font-size: 0.68rem; font-weight: 800;
+      letter-spacing: 0.08em; margin-bottom: 1rem;
+    }
+    .exp-card h3 { font-family: var(--font-display); font-size: 1.2rem; font-style: italic; color: var(--cream); margin-bottom: 0.5rem; }
+    .exp-card p { font-family: var(--font-body); font-size: 0.98rem; font-weight: 300; color: var(--warm-grey); line-height: 1.75; }
+
+    /* RESERVATIONS */
+    #reservations { background: var(--char); position: relative; overflow: hidden; }
+    #reservations::before {
+      content: ''; position: absolute; bottom: -30%; left: 50%; transform: translateX(-50%);
+      width: 80vw; height: 50vw; max-width: 900px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,129,10,0.05) 0%, transparent 70%); pointer-events: none;
+    }
+    .res-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+    .res-inner .section-label, .res-inner .section-heading { text-align: center; }
+    .res-inner .section-body { text-align: center; margin: 1.5rem auto 2.5rem; }
+    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: rgba(255,255,255,0.04); margin-bottom: 2.5rem; text-align: left; }
+    .contact-item { background: var(--ash); padding: 1.5rem; display: flex; align-items: flex-start; gap: 1rem; }
+    .contact-item-icon {
+      width: 1.65rem; height: 1.65rem; display: grid; place-items: center;
+      border: 1px solid rgba(201,151,58,0.28); color: var(--gold-lt);
+      font-family: var(--font-ui); font-size: 0.56rem; font-weight: 800;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .contact-item-label { font-family: var(--font-ui); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ember); margin-bottom: 0.4rem; }
+    .contact-item-value { font-family: var(--font-body); font-size: 1rem; color: var(--cream); line-height: 1.6; }
+    .reserve-cta { display: flex; flex-direction: column; gap: 1rem; align-items: center; }
+
+    /* FOOTER */
+    footer { background: var(--char); border-top: 1px solid rgba(201,151,58,0.12); padding: 3.5rem 2rem 2.5rem; text-align: center; }
+    .footer-logo { display: flex; justify-content: center; margin-bottom: 0.5rem; }
+    .footer-logo img { height: 90px; width: auto; mix-blend-mode: lighten; filter: drop-shadow(0 0 12px rgba(232,129,10,0.3)); opacity: 0.9; }
+    .footer-tagline { font-family: var(--font-ui); font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--warm-grey); margin-bottom: 2rem; }
+    .footer-links { display: flex; justify-content: center; gap: 1.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .footer-links a { font-family: var(--font-ui); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--warm-grey); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--ember); }
+    .footer-legal { font-family: var(--font-ui); font-size: 0.58rem; letter-spacing: 0.08em; color: rgba(155,142,130,0.4); }
+    .footer-credit { color: var(--ember); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s var(--ease-expo), transform 0.8s var(--ease-expo); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* RESPONSIVE */
+    @media (min-width: 560px) {
+      .contact-grid { grid-template-columns: repeat(3,1fr); }
+      .story-service { grid-template-columns: repeat(3,1fr); }
+    }
+    @media (min-width: 640px) {
+      .exp-grid { grid-template-columns: repeat(2,1fr); }
+      .reserve-cta { flex-direction: row; justify-content: center; }
+    }
+    @media (min-width: 900px) {
+      nav { padding: 1.25rem 4rem; }
+      section { padding: 8rem 4rem; }
+      .interstitial { padding: 7rem 4rem; }
+      .nav-links { display: flex; }
+      .nav-reserve { display: inline-flex; }
+      .nav-menu-btn { display: none; }
+      .mobile-nav { display: none !important; }
+      .story-inner { grid-template-columns: 1fr 1fr; gap: 6rem; }
+      .menu-showcase { grid-template-columns: 1fr 280px; }
+      .exp-grid { grid-template-columns: repeat(3,1fr); }
+      .tab-btn { padding: 0.9rem 1.6rem; font-size: 0.65rem; }
+    }
+    @media (max-width: 639px) {
+      .nav-links { display: none; }
+      .nav-menu-btn { display: flex; }
+      .mobile-nav { display: flex; }
+      nav { padding: 0.9rem 1.35rem; }
+      .nav-logo img { height: 34px; }
+      #hero { min-height: 94svh; justify-content: flex-start; padding: 5.6rem 1rem 3rem; }
+      .hero-logo-wrap img { width: min(340px, 74vw); }
+      .hero-divider { margin-top: 0.9rem; }
+      .hero-copy { margin-top: 0.9rem; }
+      .hero-kicker { font-size: 0.56rem; letter-spacing: 0.2em; margin-bottom: 0.55rem; }
+      .hero-copy p { font-size: 1.04rem; line-height: 1.55; }
+      .hero-proof { grid-template-columns: 1fr; width: min(420px, calc(100vw - 2rem)); }
+      .hero-proof { margin-top: 1.1rem; }
+      .hero-proof div { padding: 0.62rem 0.75rem; }
+      .hero-proof strong { display: inline; margin-right: 0.35rem; }
+      .hero-proof span { display: inline; font-size: 0.9rem; }
+      .hero-ctas { margin-top: 1.2rem; gap: 0.7rem; }
+      .btn-primary, .btn-ghost { padding: 0.82rem 1.2rem; }
+      .hero-scroll { display: none; }
+      .hero-ctas .btn-primary, .hero-ctas .btn-ghost { width: min(100%, 320px); justify-content: center; }
+      .story-numbers { gap: 1rem; }
+      .stat-card .number { font-size: 1.9rem; }
+      .menu-tabs { justify-content: flex-start; overflow-x: auto; scrollbar-width: none; }
+      .menu-tabs::-webkit-scrollbar { display: none; }
+      .menu-row { align-items: flex-start; }
+      .menu-row-name { line-height: 1.35; }
+      .footer-links { gap: 1rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
+      .ember-particle { display: none; }
+    }
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#story">Skip to content</a>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Full menu preview">
+  <button class="lightbox-close" type="button" id="lightboxClose">Close</button>
+  <img src="menu-image.png" alt="Ember &amp; Oak Full Menu" />
+</div>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#story">Our Story</a>
+  <a href="#menu">Menu</a>
+  <a href="#experience">Experience</a>
+  <a href="#reservations">Reservations</a>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#hero" class="nav-logo"><img src="logo.png" alt="Ember &amp; Oak" /></a>
+  <ul class="nav-links">
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#reservations">Reservations</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="#reservations" class="nav-reserve">Reserve</a>
+    <button class="nav-menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-controls="mobileNav" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="embers" id="embers"></div>
+  <div class="hero-logo-wrap">
+    <img src="logo.png" alt="Ember &amp; Oak — Wood · Fire · Kitchen" />
+  </div>
+  <h1 class="sr-only">Ember &amp; Oak Wood Fire Kitchen</h1>
+  <div class="hero-divider"><span>✦</span></div>
+  <div class="hero-copy">
+    <div class="hero-kicker">Plano, Texas · Live-fire dining</div>
+    <p>Seasonal plates, oak embers, and a dining room built around the glow of the hearth.</p>
+  </div>
+  <div class="hero-proof" aria-label="Restaurant highlights">
+    <div><strong>Tonight</strong><span>Chef's hearth menu</span></div>
+    <div><strong>Bar</strong><span>Smoke-led cocktails</span></div>
+    <div><strong>Events</strong><span>Private dining for 60</span></div>
+  </div>
+  <div class="hero-ctas">
+    <a href="#reservations" class="btn-primary"><span>Reserve a Table</span></a>
+    <a href="#menu" class="btn-ghost">View Menu</a>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-bar"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Wood-Fired Dining</span><span class="dot"> ✦ </span>
+    <span>Open Flame</span><span class="dot"> ✦ </span>
+    <span>Seasonal Menu</span><span class="dot"> ✦ </span>
+    <span>Private Events</span><span class="dot"> ✦ </span>
+    <span>Open Kitchen</span><span class="dot"> ✦ </span>
+    <span>Good Ingredients</span><span class="dot"> ✦ </span>
+    <span>Oak Embers</span><span class="dot"> ✦ </span>
+    <span>Local Sourcing</span><span class="dot"> ✦ </span>
+    <span>Wood-Fired Dining</span><span class="dot"> ✦ </span>
+    <span>Open Flame</span><span class="dot"> ✦ </span>
+    <span>Seasonal Menu</span><span class="dot"> ✦ </span>
+    <span>Private Events</span><span class="dot"> ✦ </span>
+    <span>Open Kitchen</span><span class="dot"> ✦ </span>
+    <span>Good Ingredients</span><span class="dot"> ✦ </span>
+    <span>Oak Embers</span><span class="dot"> ✦ </span>
+    <span>Local Sourcing</span><span class="dot"> ✦ </span>
+  </div>
+</div>
+
+<!-- STORY -->
+<section id="story">
+  <div class="story-inner">
+    <div class="story-text">
+      <p class="section-label reveal">Our Philosophy</p>
+      <h2 class="section-heading reveal reveal-delay-1">Fire transforms<br/><em>everything it touches.</em></h2>
+      <p class="section-body reveal reveal-delay-2">
+        At Ember &amp; Oak, we believe the oldest cooking method is still the most honest.
+        Every dish that leaves our kitchen has passed through live flame — wood-sourced,
+        hand-tended, and built around ingredients that don't need much help to become remarkable.
+      </p>
+      <p class="section-body reveal reveal-delay-3">
+        Our menu rotates with the seasons. Our fire never goes out. We source from
+        within 150 miles whenever possible, and we'll always tell you exactly where your food came from.
+      </p>
+    </div>
+    <div>
+      <div class="story-numbers">
+        <div class="stat-card reveal reveal-delay-1"><div class="number">6+</div><div class="label">Years of Fire</div></div>
+        <div class="stat-card reveal reveal-delay-2"><div class="number">18</div><div class="label">Local Farms</div></div>
+        <div class="stat-card reveal reveal-delay-3"><div class="number">4</div><div class="label">Wood Types</div></div>
+      </div>
+      <div class="story-quote reveal reveal-delay-2">
+        <p>"We don't cook with fire because it's fashionable. We cook with fire because it's the only way we know how to be completely honest with our ingredients."</p>
+        <footer>— Chef Marcus Colton, Founder</footer>
+      </div>
+      <div class="story-service reveal reveal-delay-3" aria-label="Service details">
+        <div><strong>Dress</strong><span>Polished casual, no jackets required.</span></div>
+        <div><strong>Pace</strong><span>90-minute dinner, slower if you ask.</span></div>
+        <div><strong>Chef's Counter</strong><span>Eight seats facing the hearth.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERSTITIAL -->
+<div class="interstitial">
+  <div class="interstitial-inner reveal">
+    <p>The Ember &amp; Oak Ethos</p>
+    <h2>Good Ingredients. Open Flame.
+      <em>Shared with the people you love.</em>
+    </h2>
+  </div>
+</div>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="menu-inner">
+    <div class="menu-header">
+      <p class="section-label reveal">Seasonal Offerings</p>
+      <h2 class="section-heading reveal reveal-delay-1">From the Kitchen</h2>
+    </div>
+
+    <div class="menu-showcase reveal reveal-delay-2">
+      <div class="menu-showcase-copy">
+        <p class="eyebrow-note">Printed menu, digital rhythm</p>
+        <h3>A menu that feels designed before the first bite.</h3>
+        <p>
+          The on-page menu is fast to scan, while the full printed layout keeps the brand story intact
+          for guests who want the tactile, editorial version.
+        </p>
+        <div class="menu-highlights">
+          <div><span>01</span> Weekly seasonal changes</div>
+          <div><span>02</span> Hearth-led proteins and vegetables</div>
+          <div><span>03</span> Full menu preview without leaving the page</div>
+        </div>
+      </div>
+      <button class="menu-preview" type="button" aria-label="Open full menu preview">
+        <img src="menu-image.png" alt="Preview of the Ember &amp; Oak printed menu" />
+      </button>
+    </div>
+
+    <div class="menu-tabs reveal reveal-delay-2" role="tablist" aria-label="Menu categories">
+      <button class="tab-btn active" type="button" role="tab" aria-selected="true" aria-controls="tab-starters" id="tab-btn-starters" data-tab="starters">Starters</button>
+      <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tab-fire" id="tab-btn-fire" data-tab="fire">From the Fire</button>
+      <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tab-mains" id="tab-btn-mains" data-tab="mains">Mains</button>
+      <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tab-sides" id="tab-btn-sides" data-tab="sides">Sides</button>
+      <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tab-desserts" id="tab-btn-desserts" data-tab="desserts">Desserts</button>
+    </div>
+
+    <!-- STARTERS -->
+    <div class="tab-panel active" id="tab-starters" role="tabpanel" aria-labelledby="tab-btn-starters">
+      <ul class="menu-list">
+        <li class="menu-row">
+          <div class="menu-row-left"><div class="menu-row-name">Wood-Fired Bread</div><div class="menu-row-desc">Whipped honey butter, sea salt</div></div>
+          <div class="menu-row-price">7</div>
+        </li>
+        <li class="menu-row">
+          <div class="menu-row-left"><div class="menu-row-name">Smoked Almonds</div><div class="menu-row-desc">Rosemary, sea salt, chili oil</div></div>
+          <div class="menu-row-price">6</div>
+        </li>
+        <li class="menu-row">
+          <div class="menu-row-left"><div class="menu-row-name">Burrata</div><div class="menu-row-desc">Heirloom tomatoes, basil oil, aged balsamic, grilled sourdough</div></div>
+          <div class="menu-row-price">14</div>
+        </li>
+        <li class="menu-row">
+          <div class="menu-row-left"><div class="menu-row-name">Charred Octopus</div><div class="menu-row-desc">Chickpea puree, nduja, pickled fennel, herb salad</div></div>
+          <div class="menu-row-price">16</div>
+        </li>
+        <li class="menu-row">
+          <div class="menu-row-left"><div class="menu-row-name">Wagyu Carpaccio</div><div class="menu-row-desc">Arugula, shaved parmesan, truffle oil, crispy capers</div></div>
+          <div class="menu-row-price">17</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- FROM THE FIRE -->
+    <div class="tab-panel" id="tab-fire" role="tabpanel" aria-labelledby="tab-btn-fire">
+      <div class="fire-feature">
+        <div class="fire-feature-header">
+          <h3>From the Fire</h3>
+          <p>All grilled over oak embers.</p>
+        </div>
+        <ul class="menu-list">
+          <li class="menu-row">
+            <div class="menu-row-left"><div class="menu-row-name">Hanger Steak</div><div class="menu-row-desc">Chimichurri, charred scallions</div></div>
+            <div class="menu-row-price">32</div>
+          </li>
+          <li class="menu-row">
+            <div class="menu-row-left"><div class="menu-row-name">Wood-Fired Salmon</div><div class="menu-row-desc">Lemon, herbs, olive oil</div></div>
+            <div class="menu-row-price">28</div>
+          </li>
+          <li class="menu-row">
+            <div class="menu-row-left"><div class="menu-row-name">Herb Brined Chicken</div><div class="menu-row-desc">Charred lemon, roasted garlic jus</div></div>
+            <div class="menu-row-price">26</div>
+          </li>
+          <li class="menu-row">
+            <div class="menu-row-left"><div class="menu-row-name">Pork Tomahawk</div><div class="menu-row-desc">Smoked paprika rub, apple mostarda</div></div>
+            <div class="menu-row-price">34</div>
+          </li>
+          <li class="menu-row">
+            <div class="menu-row-left"><div class="menu-row-name">Grilled Prawns</div><div class="menu-row-desc">Garlic butter, chili, charred lemon</div></div>
+            <div class="menu-row-price">30</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MAINS -->
+    <div class="tab-panel" id="tab-mains" role="tabpanel" aria-labelledby="tab-btn-mains">
+      <ul class="menu-list">
+        <li class="menu-row">
+          <div class="menu-row-left"><div class="menu-row-name">Rigatoni alla Norma</div><div class="menu-row-desc">Smoked eggplant, tomato, ricotta salata, basil, charred chili</div></div>
+          <div class="menu-row-price">22</div>
+        </li>
+        <li class="menu-row">
+          <div class="menu-row-left"><div class="menu-row-name">Mushroom Risotto</div><div class="menu-row-desc">Wild mushrooms, roasted shallots, arugula, truffle oil</div></div>
+          <div class="menu-row-price">24</div>
+        </li>
+        <li class="menu-row">
+          <div class="menu-row-left"><div class="menu-row-name">Seared Scallops</div><div class="menu-row-desc">Parsnip puree, crispy bacon, brown butter, chive oil</div></div>
+          <div class="menu-row-price">31</div>
+        </li>
+        <li class="menu-row">
+          <div class="menu-row-left"><div class="menu-row-name">Beef Short Rib</div><div class="menu-row-desc">Red wine glaze, whipped potatoes, charred broccolini</div></div>
+          <div class="menu-row-price">36</div>
+        </li>
+        <li class="menu-row">
+          <div class="menu-row-left"><div class="menu-row-name">Market Catch</div><div class="menu-row-desc">Ask your server for today's selection</div></div>
+          <div class="menu-row-price">MP</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- SIDES -->
+    <div class="tab-panel" id="tab-sides" role="tabpanel" aria-labelledby="tab-btn-sides">
+      <ul class="menu-list">
+        <li class="menu-row">
+          <div class="menu-row-left"><div class="menu-row-name">Charred Broccolini</div><div class="menu-row-desc">Lemon, chili flakes</div></div>
+          <div class="menu-row-price">8</div>
+        </li>
+        <li class="menu-row">
+          <div class="menu-row-left"><div class="menu-row-name">Wood-Fired Carrots</div><div class="menu-row-desc">Whipped feta, dukkah</div></div>
+          <div class="menu-row-price">8</div>
+        </li>
+        <li class="menu-row">
+          <div class="menu-row-left"><div class="menu-row-name">Roasted Potatoes</div><div class="menu-row-desc">Rosemary, garlic, sea salt</div></div>
+          <div class="menu-row-price">8</div>
+        </li>
+        <li class="menu-row">
+          <div class="menu-row-left"><div class="menu-row-name">Simple Greens</div><div class="menu-row-desc">Shaved fennel, lemon vinaigrette</div></div>
+          <div class="menu-row-price">6</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- DESSERTS -->
+    <div class="tab-panel" id="tab-desserts" role="tabpanel" aria-labelledby="tab-btn-desserts">
+      <ul class="menu-list">
+        <li class="menu-row">
+          <div class="menu-row-left"><div class="menu-row-name">Burnt Basque Cheesecake</div><div class="menu-row-desc">Blueberry compote</div></div>
+          <div class="menu-row-price">11</div>
+        </li>
+        <li class="menu-row">
+          <div class="menu-row-left"><div class="menu-row-name">Chocolate Tart</div><div class="menu-row-desc">Olive oil caramel, sea salt</div></div>
+          <div class="menu-row-price">11</div>
+        </li>
+        <li class="menu-row">
+          <div class="menu-row-left"><div class="menu-row-name">Grilled Peaches</div><div class="menu-row-desc">Mascarpone, honey, pistachio</div></div>
+          <div class="menu-row-price">10</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- PDF CTA -->
+    <div class="menu-pdf-cta reveal">
+      <p>Prefer the printed experience? View the full menu below.</p>
+      <a href="menu-image.png" target="_blank" class="btn-primary"><span>View Full Menu</span></a>
+      <div class="menu-thumb-wrap">
+        <button type="button" class="menu-thumb-button" aria-label="Open full menu preview">
+          <img src="menu-image.png" alt="Ember &amp; Oak Menu" class="menu-thumb" />
+        </button>
+        <p class="menu-thumb-label">Click to enlarge</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="exp-inner">
+    <p class="section-label reveal">Why Ember &amp; Oak</p>
+    <h2 class="section-heading reveal reveal-delay-1">The Experience</h2>
+    <div class="exp-grid">
+      <div class="exp-card reveal reveal-delay-1"><div class="exp-icon">01</div><h3>Live Fire Kitchen</h3><p>Our open kitchen features a custom-built wood-fire hearth visible from every seat. Watch your meal take shape in real time.</p></div>
+      <div class="exp-card reveal reveal-delay-2"><div class="exp-icon">02</div><h3>Farm-to-Flame</h3><p>We partner with 18 local farms across North Texas. Our menu changes weekly based on what's freshest, not what's convenient.</p></div>
+      <div class="exp-card reveal reveal-delay-3"><div class="exp-icon">03</div><h3>Craft Cocktail Program</h3><p>Smoke, char, and fire influence our bar program just as much as the kitchen. Seasonal spirits, house-made syrups, zero shortcuts.</p></div>
+      <div class="exp-card reveal reveal-delay-1"><div class="exp-icon">04</div><h3>Private Events</h3><p>Host up to 60 guests in our private dining room. Custom prix-fixe menus, dedicated service, and an experience they won't forget.</p></div>
+      <div class="exp-card reveal reveal-delay-2"><div class="exp-icon">05</div><h3>Curated Wine List</h3><p>400+ bottles from small producers who share our philosophy: honest process, real character, nothing manufactured.</p></div>
+      <div class="exp-card reveal reveal-delay-3"><div class="exp-icon">06</div><h3>Four Wood Profiles</h3><p>Oak, hickory, pecan, and mesquite — each chosen by our chefs based on what's being cooked. The wood is part of the recipe.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATIONS -->
+<section id="reservations">
+  <div class="res-inner">
+    <p class="section-label reveal">Come Find Us</p>
+    <h2 class="section-heading reveal reveal-delay-1">Reservations<br/><em>&amp; Contact</em></h2>
+    <p class="section-body reveal reveal-delay-2">
+      Walk-ins welcome based on availability. For parties of 6 or more,
+      reservations are strongly recommended. Private dining inquiries available by phone.
+    </p>
+    <div class="contact-grid">
+      <div class="contact-item reveal reveal-delay-1">
+        <div class="contact-item-icon" aria-hidden="true">AD</div>
+        <div><div class="contact-item-label">Location</div><div class="contact-item-value">4420 Legacy Drive<br/>Plano, TX 75024</div></div>
+      </div>
+      <div class="contact-item reveal reveal-delay-2">
+        <div class="contact-item-icon" aria-hidden="true">HR</div>
+        <div><div class="contact-item-label">Hours</div><div class="contact-item-value">Mon–Thu &nbsp;5–10 PM<br/>Fri–Sat &nbsp;4–11 PM<br/>Sun &nbsp;4–9 PM</div></div>
+      </div>
+      <div class="contact-item reveal reveal-delay-3">
+        <div class="contact-item-icon" aria-hidden="true">PH</div>
+        <div><div class="contact-item-label">Contact</div><div class="contact-item-value">(972) 555-0148<br/>hello@emberandoak.com</div></div>
+      </div>
+    </div>
+    <div class="reserve-cta reveal">
+      <a href="tel:+19725550148" class="btn-ghost">Call to Reserve</a>
+      <a href="mailto:hello@emberandoak.com" class="btn-primary"><span>Email Us</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><img src="logo.png" alt="Ember &amp; Oak" /></div>
+  <div class="footer-tagline">Wood · Fire · Kitchen · Plano, Texas</div>
+  <div class="footer-links">
+    <a href="#story">Our Story</a>
+    <a href="#menu">Menu</a>
+    <a href="#experience">Experience</a>
+    <a href="#reservations">Reservations</a>
+    <a href="menu-image.png" target="_blank">Full Menu</a>
+  </div>
+  <div class="footer-legal">
+    © 2026 Ember &amp; Oak. All rights reserved. &nbsp;|&nbsp;
+    Site concept by <a href="https://manicwebmaster.com" class="footer-credit">ManicWebmaster</a>
+  </div>
+</footer>
+
+<script>
+  // NAV
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+
+  // MOBILE NAV
+  const mobileNav = document.getElementById('mobileNav');
+  const menuBtn = document.getElementById('menuBtn');
+  let navOpen = false;
+  let lightboxOpen = false;
+  function syncBodyLock() {
+    document.body.classList.toggle('nav-open', navOpen);
+    document.body.style.overflow = navOpen || lightboxOpen ? 'hidden' : '';
+    menuBtn.setAttribute('aria-expanded', String(navOpen));
+    menuBtn.setAttribute('aria-label', navOpen ? 'Close menu' : 'Open menu');
+  }
+  function toggleMobileNav() { navOpen = !navOpen; mobileNav.classList.toggle('open', navOpen); syncBodyLock(); }
+  function closeMobileNav() { navOpen = false; mobileNav.classList.remove('open'); syncBodyLock(); }
+  menuBtn.addEventListener('click', toggleMobileNav);
+  mobileNav.addEventListener('click', e => { if (e.target === mobileNav) closeMobileNav(); });
+  mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMobileNav));
+
+  // TABS
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => {
+      p.classList.remove('active');
+      p.setAttribute('hidden', '');
+    });
+    document.querySelectorAll('.tab-btn').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+      b.setAttribute('tabindex', '-1');
+    });
+    const panel = document.getElementById('tab-' + id);
+    panel.classList.add('active');
+    panel.removeAttribute('hidden');
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+    btn.setAttribute('tabindex', '0');
+  }
+  const tabButtons = [...document.querySelectorAll('.tab-btn')];
+  document.querySelectorAll('.tab-panel:not(.active)').forEach(p => p.setAttribute('hidden', ''));
+  tabButtons.forEach((btn, index) => {
+    if (!btn.classList.contains('active')) btn.setAttribute('tabindex', '-1');
+    btn.addEventListener('click', () => switchTab(btn.dataset.tab, btn));
+    btn.addEventListener('keydown', e => {
+      const keys = ['ArrowLeft', 'ArrowRight', 'Home', 'End'];
+      if (!keys.includes(e.key)) return;
+      e.preventDefault();
+      const nextIndex = e.key === 'Home'
+        ? 0
+        : e.key === 'End'
+          ? tabButtons.length - 1
+          : (index + (e.key === 'ArrowRight' ? 1 : -1) + tabButtons.length) % tabButtons.length;
+      tabButtons[nextIndex].focus();
+      tabButtons[nextIndex].click();
+    });
+  });
+
+  // LIGHTBOX
+  const lightbox = document.getElementById('lightbox');
+  const lightboxClose = document.getElementById('lightboxClose');
+  function openLightbox() { lightboxOpen = true; lightbox.classList.add('open'); syncBodyLock(); lightboxClose.focus(); }
+  function closeLightbox() { lightboxOpen = false; lightbox.classList.remove('open'); syncBodyLock(); }
+  document.querySelectorAll('.menu-preview, .menu-thumb-button').forEach(button => button.addEventListener('click', openLightbox));
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  lightboxClose.addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      if (lightboxOpen) closeLightbox();
+      if (navOpen) closeMobileNav();
+    }
+  });
+
+  // SCROLL REVEAL
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // EMBERS
+  const ec = document.getElementById('embers');
+  for (let i = 0; i < 20; i++) {
+    const el = document.createElement('div');
+    el.className = 'ember-particle';
+    const s = Math.random() * 4 + 1.5;
+    el.style.cssText = `width:${s}px;height:${s}px;left:${28+Math.random()*44}%;bottom:4%;--drift:${(Math.random()-.5)*130}px;animation-duration:${4+Math.random()*7}s;animation-delay:${Math.random()*9}s`;
+    ec.appendChild(el);
+  }
+</script>
+
+<!-- * lone wolf, quiet teeth | Matt Livingston -->
+</body>
+</html>

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#090807" />
+  <meta name="description" content="The Veyra Scholarium — Cartographic and Historical Preservation. What is remembered shapes what survives." />
+  <title>The Veyra Scholarium — Cartographic and Historical Preservation</title>
+  <link rel="canonical" href="https://manicwebmaster.com/veyra/" />
+
+  <meta property="og:title" content="The Veyra Scholarium — ManicWebmaster" />
+  <meta property="og:description" content="An interactive archive-horror lore dossier built around factions, recovered artifacts, cartographic anomalies, and a disappearing world." />
+  <meta property="og:url" content="https://manicwebmaster.com/veyra/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://manicwebmaster.com/veyra/veyra-card.webp" />
+  <meta property="og:image:type" content="image/webp" />
+  <meta property="og:image:width" content="1729" />
+  <meta property="og:image:height" content="910" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Veyra Scholarium — ManicWebmaster" />
+  <meta name="twitter:description" content="An interactive archive-horror lore dossier built around factions, recovered artifacts, cartographic anomalies, and a disappearing world." />
+  <meta name="twitter:image" content="https://manicwebmaster.com/veyra/veyra-card.webp" />
+
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 1 — HERO
+  ═══════════════════════════════════════ -->
+  <header class="hero" role="banner" aria-label="The Veyra Scholarium — Archive Header">
+    <div class="hero__bg" aria-hidden="true">
+      <img src="assets/hero-bg.webp" alt="" loading="eager" />
+      <div class="hero__vignette"></div>
+      <div class="hero__grain"></div>
+    </div>
+
+    <div class="hero__content">
+      <div class="hero__eyebrow" aria-label="Archive classification">
+        <span class="meta-tag">ARCHIVE REF // VEY.MAIN.001</span>
+        <span class="divider-dot" aria-hidden="true">·</span>
+        <span class="meta-tag">ESTABLISHED YEAR 211</span>
+        <span class="divider-dot" aria-hidden="true">·</span>
+        <span class="meta-tag status-caution">PARTIAL RECOVERY</span>
+      </div>
+
+      <h1 class="hero__title">
+        <span class="hero__title-sub">The</span>
+        Veyra Scholarium
+      </h1>
+      <p class="hero__subtitle">Cartographic and Historical Preservation</p>
+      <p class="hero__tagline">"What is remembered shapes what survives."</p>
+
+      <div class="hero__metadata-strip" role="region" aria-label="Archive status indicators">
+        <div class="meta-strip__item">
+          <span class="meta-strip__label">Archive Status</span>
+          <span class="meta-strip__value status-warn">Fragmentary</span>
+        </div>
+        <div class="meta-strip__divider" aria-hidden="true"></div>
+        <div class="meta-strip__item">
+          <span class="meta-strip__label">Signal</span>
+          <span class="meta-strip__value" id="signal-strength">Unstable</span>
+        </div>
+        <div class="meta-strip__divider" aria-hidden="true"></div>
+        <div class="meta-strip__item">
+          <span class="meta-strip__label">Entries Recovered</span>
+          <span class="meta-strip__value">247 / <span class="status-warn">1,044</span></span>
+        </div>
+        <div class="meta-strip__divider" aria-hidden="true"></div>
+        <div class="meta-strip__item">
+          <span class="meta-strip__label">Founded</span>
+          <span class="meta-strip__value">Year 211</span>
+        </div>
+        <div class="meta-strip__divider" aria-hidden="true"></div>
+        <div class="meta-strip__item">
+          <span class="meta-strip__label">Last Record</span>
+          <span class="meta-strip__value status-danger">Year 453 — Silence</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__scroll-cue" aria-hidden="true">
+      <span class="scroll-cue__line"></span>
+    </div>
+  </header>
+
+
+  <!-- ═══════════════════════════════════════
+       SECTION 2 — ARCHIVE INDEX
+  ═══════════════════════════════════════ -->
+  <section class="archive-index" aria-label="Archive contents">
+    <div class="container">
+      <nav class="archive-index__nav" aria-label="Primary archive sections">
+        <a class="archive-index__item" href="#quiet">
+          <span class="archive-index__ref">VEY.DOC.003</span>
+          <span class="archive-index__label">The Quiet</span>
+        </a>
+        <a class="archive-index__item" href="#factions">
+          <span class="archive-index__ref">DIV.I-III</span>
+          <span class="archive-index__label">Active Factions</span>
+        </a>
+        <a class="archive-index__item" href="#artifacts">
+          <span class="archive-index__ref">CATALOG</span>
+          <span class="archive-index__label">Recovered Artifacts</span>
+        </a>
+        <a class="archive-index__item" href="#hollow-coast">
+          <span class="archive-index__ref">VEY.MAP.112</span>
+          <span class="archive-index__label">Hollow Coast</span>
+        </a>
+        <a class="archive-index__item" href="#timeline">
+          <span class="archive-index__ref">CHRONOLOGY</span>
+          <span class="archive-index__label">Timeline of Loss</span>
+        </a>
+        <a class="archive-index__item" href="#archive-log">
+          <span class="archive-index__ref">RECOVERY</span>
+          <span class="archive-index__label">Archive Log</span>
+        </a>
+        <a class="archive-index__item" href="#creator-note">
+          <span class="archive-index__ref">PORTFOLIO</span>
+          <span class="archive-index__label">Creator Note</span>
+        </a>
+      </nav>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       SECTION 3 — THE QUIET
+  ═══════════════════════════════════════ -->
+  <section id="quiet" class="the-quiet" aria-labelledby="quiet-heading">
+    <div class="quiet__container">
+      <div class="quiet__document">
+        <div class="quiet__header">
+          <span class="doc-ref">RECOVERED FRAGMENT // VEY.DOC.003 — CLASSIFICATION: UNRESTRICTED</span>
+        </div>
+
+        <h2 id="quiet-heading" class="section-heading section-heading--quiet">The Quiet</h2>
+
+        <div class="quiet__body">
+          <p class="quiet__lead">
+            We do not know what it is. We have never known what it is. What we know is only what it does — and even that knowledge has grown difficult to hold.
+          </p>
+          <p>
+            It does not arrive. It does not announce. A settlement that existed in the morning records still exists in the evening records, but the expedition that set out to reach it returns having found nothing. Not ruins. Not ash. Nothing. The land where the settlement should stand is unmarked, undisturbed, as though it never hosted anything at all.
+          </p>
+          <p>
+            The word for this process in the early Scholarium records is <em>silencing</em>. Later scholars preferred <em>removal</em>. The Choir of Glass used a term that does not translate into any common tongue — a word meaning, approximately, <em>the forgetting that forgets it has forgotten</em>.
+          </p>
+          <p>
+            The Quiet does not destroy. It erases. And reality closes over the erasure as cleanly as water closes over a stone.
+          </p>
+          <p class="quiet__note">
+            <span class="quiet__note-label">Marginal notation, hand unknown:</span>
+            <em>By the time you notice it has taken something, it has already taken three more things you haven't noticed yet.</em>
+          </p>
+        </div>
+
+        <div class="quiet__footer">
+          <span class="doc-ref">— Internal memorandum, author redacted. Date of composition unknown. Found in the secondary stacks, Ves Talor annex.</span>
+        </div>
+      </div>
+
+      <div class="quiet__sidebar" aria-label="Known manifestations">
+        <div class="sidebar-block">
+          <h3 class="sidebar-block__heading">Documented Manifestations</h3>
+          <ul class="sidebar-block__list" role="list">
+            <li>Names becoming difficult to recall consistently</li>
+            <li>Maps losing correspondence between copies</li>
+            <li>Written records altering between readings</li>
+            <li>Shared memory fracturing along individual lines</li>
+            <li>Locations absent from all concurrent surveying</li>
+            <li>Languages losing phonemes with no record of change</li>
+          </ul>
+        </div>
+        <div class="sidebar-block sidebar-block--warn">
+          <h3 class="sidebar-block__heading">Internal Warning</h3>
+          <p class="sidebar-block__text">The Scholarium's own records are not immune. Archivists are instructed to verify all entries against physical holdings at minimum once per season. Discrepancies must be reported to the Black Archive immediately.</p>
+          <span class="sidebar-block__stamp">BLACK ARCHIVE // STANDING ORDER 7</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       SECTION 4 — ACTIVE FACTIONS
+  ═══════════════════════════════════════ -->
+  <section id="factions" class="factions" aria-labelledby="factions-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">INSTITUTIONAL DIVISIONS // ACTIVE RECORD</span>
+        <h2 id="factions-heading" class="section-heading">Active Factions</h2>
+        <p class="section-desc">Three divisions operated within the Scholarium structure. Their methods differed. Their disagreements were not always resolved.</p>
+      </div>
+
+      <div class="factions__grid" role="list">
+
+        <!-- LANTERN ORDER -->
+        <article class="faction-card faction-card--lantern" role="listitem" aria-labelledby="faction-lantern-name">
+          <div class="faction-card__image-wrap">
+            <img src="assets/faction-lantern-order.webp"
+                 alt="Lantern Order survey compass on aged parchment map with wax seal"
+                 loading="lazy"
+                 class="faction-card__image" />
+            <div class="faction-card__image-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="faction-card__body">
+            <div class="faction-card__meta">
+              <span class="faction-card__ref">DIV.I // SURVEY CORPS</span>
+              <span class="faction-card__status status-active">Active — Pre-Silence</span>
+            </div>
+            <h3 id="faction-lantern-name" class="faction-card__name">The Lantern Order</h3>
+            <p class="faction-card__role">Surveyors · Ruin-Cartographers · Frontier Archivists</p>
+            <blockquote class="faction-card__philosophy">
+              "A place unnamed is already lost."
+            </blockquote>
+            <p class="faction-card__desc">
+              Traveled into unstable regions to document settlements, ruins, dialects, and celestial anomalies before they vanished. Expedition survival rates were extremely low. Members who returned brought contradictory journals, changed maps, and incomplete recollections of what they had witnessed.
+            </p>
+            <div class="faction-card__footer">
+              <span class="faction-tag faction-tag--lantern">Lantern Order</span>
+              <span class="faction-card__note">Expeditions ceased: Year 447</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- BLACK ARCHIVE -->
+        <article class="faction-card faction-card--black" role="listitem" aria-labelledby="faction-black-name">
+          <div class="faction-card__image-wrap">
+            <img src="assets/faction-black-archive.webp"
+                 alt="Black Archive chained tome with eye seal and single candle"
+                 loading="lazy"
+                 class="faction-card__image" />
+            <div class="faction-card__image-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="faction-card__body">
+            <div class="faction-card__meta">
+              <span class="faction-card__ref">DIV.II // CONTAINMENT</span>
+              <span class="faction-card__status status-restricted">Restricted Access</span>
+            </div>
+            <h3 id="faction-black-name" class="faction-card__name">The Black Archive</h3>
+            <p class="faction-card__role">Internal Censorship · Containment · Record Control</p>
+            <blockquote class="faction-card__philosophy">
+              "Not all truths preserve."
+            </blockquote>
+            <p class="faction-card__desc">
+              Determined what knowledge stayed public, what was sealed, which expeditions were erased, which records were too dangerous. Feared even within the Scholarium. Many later scholars believed the Black Archive accelerated the collapse through excessive secrecy — sealing knowledge that could have identified the Quiet's mechanism before it was too late.
+            </p>
+            <div class="faction-card__footer">
+              <span class="faction-tag faction-tag--black">Black Archive</span>
+              <span class="faction-card__note">Established: Year 417</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- CHOIR OF GLASS -->
+        <article class="faction-card faction-card--choir" role="listitem" aria-labelledby="faction-choir-name">
+          <div class="faction-card__image-wrap">
+            <img src="assets/faction-choir-of-glass.webp"
+                 alt="Choir of Glass translation tablet glowing with spectral teal light and glyphs"
+                 loading="lazy"
+                 class="faction-card__image" />
+            <div class="faction-card__image-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="faction-card__body">
+            <div class="faction-card__meta">
+              <span class="faction-card__ref">DIV.III // LINGUISTIC</span>
+              <span class="faction-card__status status-anomalous">Anomalous Status</span>
+            </div>
+            <h3 id="faction-choir-name" class="faction-card__name">The Choir of Glass</h3>
+            <p class="faction-card__role">Linguists · Translators · Mnemonic Scholars</p>
+            <blockquote class="faction-card__philosophy">
+              "To name a thing is to bind it."
+            </blockquote>
+            <p class="faction-card__desc">
+              Studied forgotten languages, memory resonance, and symbolic structures. Believed language itself stabilized existence against the Quiet — that properly spoken names could anchor places and people against erasure. Some members developed speech abnormalities after prolonged translation work. Their final translations have not been rendered into common tongue.
+            </p>
+            <div class="faction-card__footer">
+              <span class="faction-tag faction-tag--choir">Choir of Glass</span>
+              <span class="faction-card__note">Final assembly: Year 452</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       SECTION 5 — RECOVERED ARTIFACTS
+  ═══════════════════════════════════════ -->
+  <section id="artifacts" class="artifacts" aria-labelledby="artifacts-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">CATALOG INDEX // PHYSICAL HOLDINGS</span>
+        <h2 id="artifacts-heading" class="section-heading">Recovered Artifacts</h2>
+        <p class="section-desc">The following items are held under controlled conditions. Physical interaction requires clearance. Some items have demonstrated inconsistent behavior between examination sessions.</p>
+      </div>
+
+      <div class="artifacts__grid" role="list">
+
+        <!-- VEY-ARC-442 -->
+        <article class="artifact-card" role="listitem" aria-labelledby="artifact-442-name">
+          <div class="artifact-card__image-wrap">
+            <img src="assets/artifact-vey-arc-442.webp"
+                 alt="Recovered compass on aged map with artifact tag reading VEY-ARC-442 Restricted Observation Only"
+                 loading="lazy"
+                 class="artifact-card__image" />
+            <div class="artifact-card__catalog-id" aria-label="Catalog identifier">VEY-ARC-442</div>
+          </div>
+          <div class="artifact-card__body">
+            <h3 id="artifact-442-name" class="artifact-card__name">The Compass</h3>
+            <p class="artifact-card__desc">Recovered navigational compass. Points toward locations absent from all registered maps. Needle behavior does not correspond to any known magnetic principle.</p>
+            <div class="artifact-card__status-bar">
+              <span class="artifact-status artifact-status--restricted" aria-label="Restricted observation only"><span class="status-symbol" aria-hidden="true">⊘</span> RESTRICTED OBSERVATION ONLY</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- VEY-LNG-019 -->
+        <article class="artifact-card" role="listitem" aria-labelledby="artifact-019-name">
+          <div class="artifact-card__image-wrap">
+            <img src="assets/artifact-vey-lng-019.webp"
+                 alt="Dark stone translation tablets with glyphs and black wax seal reading VEY-LNG-019"
+                 loading="lazy"
+                 class="artifact-card__image" />
+            <div class="artifact-card__catalog-id" aria-label="Catalog identifier">VEY-LNG-019</div>
+          </div>
+          <div class="artifact-card__body">
+            <h3 id="artifact-019-name" class="artifact-card__name">The Tablets</h3>
+            <p class="artifact-card__desc">Fragmented translation tablets recovered from Ves Talor. Several glyphs cannot be remembered consistently between readings. Each examination produces a different partial transcription.</p>
+            <div class="artifact-card__status-bar">
+              <span class="artifact-status artifact-status--sealed" aria-label="Black Archive seal active"><span class="status-symbol" aria-hidden="true">◼</span> BLACK ARCHIVE SEAL ACTIVE</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- VEY-OBS-771 -->
+        <article class="artifact-card" role="listitem" aria-labelledby="artifact-771-name">
+          <div class="artifact-card__image-wrap">
+            <img src="assets/artifact-vey-obs-771.webp"
+                 alt="Brass armillary sphere astronomical instrument with Choir Review Pending VEY-OBS-771 notation"
+                 loading="lazy"
+                 class="artifact-card__image" />
+            <div class="artifact-card__catalog-id" aria-label="Catalog identifier">VEY-OBS-771</div>
+          </div>
+          <div class="artifact-card__body">
+            <h3 id="artifact-771-name" class="artifact-card__name">The Instrument</h3>
+            <p class="artifact-card__desc">Astronomical survey instrument. Star alignments inconsistent with modern sky charts. The constellation mapped in its central register does not match any recorded stellar configuration.</p>
+            <div class="artifact-card__status-bar">
+              <span class="artifact-status artifact-status--pending" aria-label="Choir review pending"><span class="status-symbol" aria-hidden="true">◎</span> CHOIR REVIEW PENDING</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- VEY-COR-038 -->
+        <article class="artifact-card" role="listitem" aria-labelledby="artifact-038-name">
+          <div class="artifact-card__image-wrap">
+            <img src="assets/artifact-vey-cor-038.webp"
+                 alt="Sealed aged envelope addressed to Merrow with crossed-out addresses and hourglass undeliverable wax seal"
+                 loading="lazy"
+                 class="artifact-card__image" />
+            <div class="artifact-card__catalog-id" aria-label="Catalog identifier">VEY-COR-038</div>
+          </div>
+          <div class="artifact-card__body">
+            <h3 id="artifact-038-name" class="artifact-card__name">The Letter</h3>
+            <p class="artifact-card__desc">Sealed wax letter, never opened. Addressed to a recipient in Merrow — a city removed from all primary charts in year 438. The address is incomplete, as if the writer stopped mid-word.</p>
+            <div class="artifact-card__status-bar">
+              <span class="artifact-status artifact-status--undeliverable" aria-label="Undeliverable, recipient location unknown"><span class="status-symbol" aria-hidden="true">⊗</span> UNDELIVERABLE — RECIPIENT LOCATION UNKNOWN</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- VEY-EXP-114 -->
+        <article class="artifact-card" role="listitem" aria-labelledby="artifact-114-name">
+          <div class="artifact-card__image-wrap">
+            <img src="assets/artifact-vey-exp-114.webp"
+                 alt="Open expedition field journal showing geographic drift confirmed map and mid-sentence field notes"
+                 loading="lazy"
+                 class="artifact-card__image" />
+            <div class="artifact-card__catalog-id" aria-label="Catalog identifier">VEY-EXP-114</div>
+          </div>
+          <div class="artifact-card__body">
+            <h3 id="artifact-114-name" class="artifact-card__name">The Journal</h3>
+            <p class="artifact-card__desc">Expedition field journal. Maps inside show confirmed geographic drift. The final entry stops mid-sentence. Remaining pages are blank, though faint impression marks suggest they were written on.</p>
+            <div class="artifact-card__status-bar">
+              <span class="artifact-status artifact-status--unresolved" aria-label="Lantern Order expedition unresolved"><span class="status-symbol" aria-hidden="true">◌</span> LANTERN ORDER — EXPEDITION UNRESOLVED</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- VEY-MAP-307 -->
+        <article class="artifact-card" role="listitem" aria-labelledby="artifact-307-name">
+          <div class="artifact-card__image-wrap">
+            <img src="assets/artifact-vey-map-307.webp"
+                 alt="Torn parchment map fragment pinned to dark wood, showing a coastline with a second diverging coastline drawn over it in darker ink, marginal notation reading Seems to agree better with the accounts of Le Mair"
+                 loading="lazy"
+                 class="artifact-card__image" />
+            <div class="artifact-card__catalog-id" aria-label="Catalog identifier">VEY-MAP-307</div>
+          </div>
+          <div class="artifact-card__body">
+            <h3 id="artifact-307-name" class="artifact-card__name">The Fragment</h3>
+            <p class="artifact-card__desc">Single torn section of the Scholarium's central cartographic index. Shows a coastline that matches no known geography. A second coastline has been drawn over the first in darker ink, diverging sharply. Marginal notation reads: <em>"Seems to agree better with the accounts of Le Mair. &. J.F."</em> No surveyor with those initials appears in any Scholarium register.</p>
+            <div class="artifact-card__status-bar">
+              <span class="artifact-status artifact-status--contradiction" aria-label="Reference suspended, geographic contradiction unresolved"><span class="status-symbol" aria-hidden="true">⊘</span> REFERENCE SUSPENDED — GEOGRAPHIC CONTRADICTION UNRESOLVED</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       SECTION 6 — HOLLOW COAST FRAGMENT
+  ═══════════════════════════════════════ -->
+  <section id="hollow-coast" class="map-fragment" aria-labelledby="map-fragment-heading">
+    <div class="container">
+      <div class="map-fragment__layout">
+        <figure class="map-fragment__media">
+          <img src="assets/map-fragment.webp"
+               alt="Recovered Hollow Coast map fragment with distressed coastline markings and archival annotations"
+               loading="lazy"
+               class="map-fragment__image" />
+          <figcaption class="map-fragment__caption">VEY.MAP.112 // HOLLOW COAST SURVEY COPY // CORRESPONDENCE UNSTABLE</figcaption>
+        </figure>
+
+        <div class="map-fragment__copy">
+          <span class="section-eyebrow">CARTOGRAPHIC ANOMALY // SECONDARY PLATE</span>
+          <h2 id="map-fragment-heading" class="section-heading">The Hollow Coast Fragment</h2>
+          <p class="section-desc">Recovered from a sealed drawer in the Ves Talor annex. The coastline does not remain fixed between authenticated reproductions.</p>
+
+          <div class="map-fragment__ledger" role="list" aria-label="Hollow Coast survey notes">
+            <div class="map-fragment__ledger-item" role="listitem">
+              <span>Survey Attempts</span>
+              <strong>7</strong>
+            </div>
+            <div class="map-fragment__ledger-item" role="listitem">
+              <span>Returned Parties</span>
+              <strong>3</strong>
+            </div>
+            <div class="map-fragment__ledger-item" role="listitem">
+              <span>Confirmed Routes</span>
+              <strong>0</strong>
+            </div>
+          </div>
+
+          <blockquote class="map-fragment__quote">
+            "Each copy agrees with itself. No copy agrees with another."
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       SECTION 7 — TIMELINE OF LOSS
+  ═══════════════════════════════════════ -->
+  <section id="timeline" class="timeline" aria-labelledby="timeline-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">CHRONOLOGICAL INDEX // PRIMARY RECORD</span>
+        <h2 id="timeline-heading" class="section-heading">Timeline of Loss</h2>
+        <p class="section-desc">What follows is the reconstructed chronology. Gaps have been noted. Gaps that cannot be noted have not been noted.</p>
+      </div>
+
+      <div class="timeline__track" role="list" aria-label="Scholarium chronological events">
+
+        <div class="timeline__entry" role="listitem">
+          <div class="timeline__year">211</div>
+          <div class="timeline__connector" aria-hidden="true"><span></span></div>
+          <div class="timeline__text">Founding of the Scholarium. First Index begun. Twenty-three founding scholars, names recorded in the primary ledger.</div>
+        </div>
+
+        <div class="timeline__entry" role="listitem">
+          <div class="timeline__year">284</div>
+          <div class="timeline__connector" aria-hidden="true"><span></span></div>
+          <div class="timeline__text">First Recorded Silence Event. A coastal settlement of approximately four hundred persons is absent from all maps produced after this date. No expedition confirmed.</div>
+        </div>
+
+        <div class="timeline__entry" role="listitem">
+          <div class="timeline__year">318</div>
+          <div class="timeline__connector" aria-hidden="true"><span></span></div>
+          <div class="timeline__text">Lantern Expansion Era begins. Survey operations extended into frontier territories. Thirty-one new cartographers commissioned.</div>
+        </div>
+
+        <div class="timeline__entry" role="listitem">
+          <div class="timeline__year">356</div>
+          <div class="timeline__connector" aria-hidden="true"><span></span></div>
+          <div class="timeline__text">The Hollow Coast Surveys. Seven expeditions. Three returned. Of those three, no two accounts agree on what was observed.</div>
+        </div>
+
+        <div class="timeline__entry" role="listitem">
+          <div class="timeline__year">401</div>
+          <div class="timeline__connector" aria-hidden="true"><span></span></div>
+          <div class="timeline__text">The Fracture Debates. Internal Scholarium conflict regarding the nature of the Quiet. No resolution reached. Several scholars withdrew from correspondence.</div>
+        </div>
+
+        <div class="timeline__entry" role="listitem">
+          <div class="timeline__year">417</div>
+          <div class="timeline__connector" aria-hidden="true"><span></span></div>
+          <div class="timeline__text">Establishment of the Black Archive. Scope of authority: classified. Initial holdings: classified. Founding membership: classified.</div>
+        </div>
+
+        <div class="timeline__entry" role="listitem">
+          <div class="timeline__year">438</div>
+          <div class="timeline__connector" aria-hidden="true"><span></span></div>
+          <div class="timeline__text">Merrow removed from all primary charts. Population estimate at last survey: twelve thousand. Current status: unverifiable. No expedition has confirmed its absence.</div>
+        </div>
+
+        <div class="timeline__entry timeline__entry--sealed" role="listitem">
+          <div class="timeline__year">442</div>
+          <div class="timeline__connector" aria-hidden="true"><span></span></div>
+          <div class="timeline__text">Ninth Index sealed. Classification unknown. All reference to the contents of the Ninth Index is prohibited in public records. This entry is the extent of what can be stated.</div>
+        </div>
+
+        <div class="timeline__entry" role="listitem">
+          <div class="timeline__year">447</div>
+          <div class="timeline__connector" aria-hidden="true"><span></span></div>
+          <div class="timeline__text">Lantern Order expeditions cease. Final field party does not return. No search party dispatched.</div>
+        </div>
+
+        <div class="timeline__entry" role="listitem">
+          <div class="timeline__year">452</div>
+          <div class="timeline__connector" aria-hidden="true"><span></span></div>
+          <div class="timeline__text">Final Scholarium Assembly. Attendance incomplete. Agenda: unknown. Duration: unknown. No minutes survive.</div>
+        </div>
+
+        <div class="timeline__entry timeline__entry--silence" role="listitem" aria-label="Year 453 — Silence — no records">
+          <div class="timeline__year timeline__year--silence">453</div>
+          <div class="timeline__connector timeline__connector--silence" aria-hidden="true"><span></span></div>
+          <div class="timeline__text timeline__text--silence">
+            Silence.<br />
+            <span class="timeline__silence-note">No reliable records exist after this year.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       SECTION 8 — ARCHIVE LOG
+  ═══════════════════════════════════════ -->
+  <section id="archive-log" class="archive-log" aria-labelledby="log-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">TRANSMISSION LOG // RECOVERY SYSTEM ACTIVE</span>
+        <h2 id="log-heading" class="section-heading">Archive Log</h2>
+        <p class="section-desc">The following entries were recovered from the secondary transmission record. Timestamps are approximate. Some entries have corrupted metadata.</p>
+      </div>
+
+      <div class="log__terminal" role="log" aria-live="polite" aria-label="Archive transmission log">
+        <div class="log__header" aria-hidden="true">
+          <span class="log__header-text">VEY.RECOVERY.SYSTEM // TRANSMISSION LOG // PARTIAL RECORD</span>
+          <span class="log__header-blink">▮</span>
+        </div>
+
+        <div class="log__entries">
+
+          <div class="log__entry log-reveal" data-delay="0">
+            <span class="log__id">[VEY.01]</span>
+            <span class="log__timestamp">Year 442, Day 7</span>
+            <p class="log__text">Compass bearing confirmed non-standard. Destination unregistered in any current or archived index. Survey team has been instructed not to follow the bearing. Survey team has not acknowledged receipt of instruction.</p>
+          </div>
+
+          <div class="log__entry log-reveal" data-delay="150">
+            <span class="log__id">[VEY.02]</span>
+            <span class="log__timestamp">Year 443, Day 12</span>
+            <p class="log__text">Merrow correspondence returned undeliverable. Third time this quarter. The address appears correct in the moment of writing and incorrect in the moment of sending. The postal clerk has requested reassignment.</p>
+          </div>
+
+          <div class="log__entry log-reveal" data-delay="300">
+            <span class="log__id">[VEY.03]</span>
+            <span class="log__timestamp">Year 443, Day 31</span>
+            <p class="log__text">Ninth Index access request denied. Requestor: unknown. The access log shows a signature but the signature cannot be attributed to any registered Scholarium member, living or archived.</p>
+          </div>
+
+          <div class="log__entry log-reveal" data-delay="450">
+            <span class="log__id">[VEY.04]</span>
+            <span class="log__timestamp">Year 444, Day 3</span>
+            <p class="log__text">Translation Tablet VEY-LNG-019 produced three different readings in a single session. The Choir scholar conducting the examination ended the session abruptly. Her written report mentions a fourth reading she declines to transcribe.</p>
+          </div>
+
+          <div class="log__entry log-reveal" data-delay="600">
+            <span class="log__id">[VEY.05]</span>
+            <span class="log__timestamp">Year 445, Day 19</span>
+            <p class="log__text">The Ash Meridian survey team's final transmission has been received. It consists of coordinates for a location that, when plotted, falls inside the Scholarium building. The team departed eleven months ago for the frontier.</p>
+          </div>
+
+          <div class="log__entry log-reveal" data-delay="750">
+            <span class="log__id">[VEY.06]</span>
+            <span class="log__timestamp">Year 452, Day unknown</span>
+            <p class="log__text">This entry was found without a sender designation. The physical paper it was written on does not match any stock held by the Scholarium. The handwriting matches no registered member. The content has been forwarded to the Black Archive. We have not received acknowledgment.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       SECTION 9 — CREATOR NOTE
+  ═══════════════════════════════════════ -->
+  <section id="creator-note" class="creator-note" aria-labelledby="creator-note-heading">
+    <div class="container">
+      <div class="creator-note__panel">
+        <div class="creator-note__copy">
+          <span class="section-eyebrow">PORTFOLIO ANNOTATION // WORLD-BUILDING SYSTEM</span>
+          <h2 id="creator-note-heading" class="section-heading">Creator's Note</h2>
+          <p>
+            The Veyra Scholarium was built as a compact world bible: a premise, institutional factions, artifacts, chronology, visual tone, and evidence trail all working from the same central anxiety.
+          </p>
+          <p>
+            The goal is to show how a setting can be communicated through artifacts rather than exposition alone. Each image, label, warning, and recovered fragment is meant to imply a larger playable or publishable world just outside the frame.
+          </p>
+        </div>
+
+        <dl class="creator-note__details">
+          <div>
+            <dt>Format</dt>
+            <dd>Interactive lore dossier</dd>
+          </div>
+          <div>
+            <dt>Focus</dt>
+            <dd>Archive horror, factions, cartographic mystery</dd>
+          </div>
+          <div>
+            <dt>Deliverables Shown</dt>
+            <dd>Premise, timeline, artifacts, UI tone, visual direction</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__tagline">
+          <p>"What is remembered shapes what survives."</p>
+        </div>
+        <a href="https://manicwebmaster.com/world-building/" class="footer__cta" rel="noopener">Commission a World-Building Dossier</a>
+        <div class="footer__divider" aria-hidden="true"></div>
+        <nav class="footer__nav" aria-label="Site navigation">
+          <a href="https://manicwebmaster.com" class="footer__link" rel="noopener">ManicWebmaster</a>
+          <span class="footer__sep" aria-hidden="true">·</span>
+          <a href="https://manicwebmaster.com/digital-relics-archive/" class="footer__link" rel="noopener">Digital Relics Archive</a>
+          <span class="footer__sep" aria-hidden="true">·</span>
+          <a href="https://manicwebmaster.com/world-building/" class="footer__link" rel="noopener">World-Building Services</a>
+        </nav>
+        <p class="footer__credit">Archive maintained by <a href="https://manicwebmaster.com" class="footer__link" rel="noopener">ManicWebmaster</a></p>
+        <p class="footer__archive-ref">THE VEYRA SCHOLARIUM // CARTOGRAPHIC AND HISTORICAL PRESERVATION // EST. YEAR 211</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <!-- lone wolf, quiet teeth | Matt Livingston -->
+</body>
+</html>

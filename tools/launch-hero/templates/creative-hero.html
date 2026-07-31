@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creative Studio Hero — Launch Hero Template 5</title>
+  <style>
+/* ============================================================
+   Creative Studio Hero — lh-hero-creative
+   Launch Hero Template 5 | ManicWebmaster
+   Color vibe: premium-mono (default showcase)
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #0e0e0e;
+  min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+}
+
+/* ── Color Vibe: premium-mono ──────────────────────────────── */
+.lh-vibe-premium-mono {
+  --lh-bg:           #0e0e0e;
+  --lh-bg2:          #1a1a1a;
+  --lh-text:         #ebebeb;
+  --lh-text-sub:     #888;
+  --lh-accent:       #ebebeb;
+  --lh-accent2:      #555;
+  --lh-chip-bg:      rgba(255,255,255,.05);
+  --lh-chip-border:  rgba(255,255,255,.12);
+  --lh-chip-text:    #aaa;
+  --lh-cta-bg:       #ebebeb;
+  --lh-cta-text:     #0e0e0e;
+  --lh-cta2-border:  rgba(255,255,255,.18);
+  --lh-cta2-text:    #888;
+  --lh-card-bg:      #161616;
+  --lh-card-border:  rgba(255,255,255,.08);
+}
+
+/* ── Generated Hero Root ───────────────────────────────────── */
+.lh-generated-hero {
+  width: 100%;
+  background: var(--lh-bg);
+  color: var(--lh-text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Top Rule ──────────────────────────────────────────────── */
+.lh-creative-top-bar {
+  height: 1px;
+  background: linear-gradient(90deg,
+    var(--lh-accent) 0%,
+    var(--lh-accent2) 60%,
+    transparent 100%);
+  flex-shrink: 0;
+}
+
+/* ── Main Grid ─────────────────────────────────────────────── */
+.lh-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 3rem;
+  align-items: start;
+  padding: 3.75rem 2.5rem 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+@media (max-width: 820px) {
+  .lh-hero-inner {
+    grid-template-columns: 1fr;
+    padding: 3rem 1.5rem 2.5rem;
+  }
+  .lh-creative-right { display: none; }
+}
+
+/* ── Left Column ───────────────────────────────────────────── */
+.lh-creative-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Meta row */
+.lh-creative-meta {
+  display: flex;
+  align-items: center;
+  gap: .625rem;
+  margin-bottom: 1.5rem;
+}
+.lh-creative-index {
+  font-size: .6875rem;
+  font-weight: 700;
+  color: var(--lh-accent);
+  letter-spacing: .12em;
+  font-variant-numeric: tabular-nums;
+  opacity: .5;
+}
+.lh-creative-divider-dot {
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--lh-text-sub);
+  opacity: .35;
+}
+.lh-creative-label {
+  font-size: .6875rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--lh-text-sub);
+  opacity: .6;
+}
+
+/* Two-line headline: solid + outline */
+.lh-creative-headline {
+  display: flex;
+  flex-direction: column;
+  gap: .05em;
+  margin-bottom: 1.375rem;
+}
+
+.lh-creative-line-solid {
+  font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+  font-weight: 800;
+  letter-spacing: -.04em;
+  line-height: .97;
+  color: var(--lh-text);
+  display: block;
+}
+
+/* Outline text — the signature */
+.lh-creative-line-outline {
+  font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+  font-weight: 800;
+  letter-spacing: -.04em;
+  line-height: .97;
+  display: block;
+  -webkit-text-stroke: 1.5px var(--lh-accent);
+  color: transparent;
+}
+
+/* Subheadline */
+.lh-creative-sub {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--lh-text-sub);
+  margin-bottom: 1.875rem;
+  max-width: 460px;
+}
+
+/* CTAs */
+.lh-cta-group {
+  display: flex;
+  align-items: center;
+  gap: .875rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.lh-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: .375rem;
+  background: var(--lh-cta-bg);
+  color: var(--lh-cta-text);
+  border: none;
+  border-radius: 8px;
+  padding: .75rem 1.625rem;
+  font-weight: 700;
+  font-size: .9375rem;
+  font-family: inherit;
+  letter-spacing: .01em;
+  cursor: pointer;
+  transition: opacity .15s, transform .1s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.lh-cta-primary:hover { opacity: .88; transform: translateY(-1px); }
+
+.lh-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: .375rem;
+  color: var(--lh-cta2-text);
+  border: 1px solid var(--lh-cta2-border);
+  border-radius: 8px;
+  padding: .75rem 1.375rem;
+  font-weight: 600;
+  font-size: .9375rem;
+  font-family: inherit;
+  cursor: pointer;
+  background: transparent;
+  transition: border-color .15s, color .15s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.lh-cta-secondary:hover {
+  border-color: rgba(255,255,255,.35);
+  color: #ccc;
+}
+
+/* Services tag row */
+.lh-creative-services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .375rem;
+}
+.lh-creative-service-tag {
+  font-size: .6875rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--lh-text-sub);
+  border: 1px solid var(--lh-card-border);
+  border-radius: 5px;
+  padding: .25rem .625rem;
+  opacity: .65;
+  transition: opacity .15s, border-color .15s;
+}
+.lh-creative-service-tag:hover {
+  opacity: 1;
+  border-color: rgba(255,255,255,.2);
+}
+
+/* ── Right Column ──────────────────────────────────────────── */
+.lh-creative-right {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  padding-top: .25rem;
+}
+
+/* Work tile grid: large on top, two small below */
+.lh-creative-tiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .625rem;
+}
+
+/* Base tile */
+.lh-tile {
+  background: var(--lh-card-bg);
+  border: 1px solid var(--lh-card-border);
+  border-radius: 14px;
+  padding: 1.125rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color .2s;
+}
+.lh-tile:hover { border-color: rgba(255,255,255,.16); }
+
+/* Large tile: full width, taller */
+.lh-tile-lg {
+  grid-column: 1 / -1;
+  min-height: 120px;
+}
+
+/* Accent tile: slightly lighter bg */
+.lh-tile-accent {
+  background: rgba(255,255,255,.04);
+  border-color: rgba(255,255,255,.1);
+}
+
+/* Glow orb inside large tile */
+.lh-tile-orb {
+  position: absolute;
+  width: 150px; height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,.07) 0%, transparent 70%);
+  top: -50px; right: -30px;
+  pointer-events: none;
+}
+
+/* Business name label */
+.lh-tile-label {
+  font-size: .625rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--lh-text-sub);
+  opacity: .55;
+  margin-bottom: .875rem;
+}
+
+/* Skeleton lines */
+.lh-tile-line {
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255,255,255,.07);
+  margin-bottom: .4rem;
+}
+.lh-tile-line-w70 { width: 70%; }
+.lh-tile-line-w50 { width: 50%; }
+
+/* Stat content in small tiles */
+.lh-tile-stat-val {
+  font-size: 1.0625rem;
+  font-weight: 800;
+  color: var(--lh-text);
+  letter-spacing: -.02em;
+  line-height: 1.2;
+  margin-bottom: .2rem;
+}
+.lh-tile-stat-lbl {
+  font-size: .6rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--lh-text-sub);
+  opacity: .55;
+}
+
+/* Testimonial pip */
+.lh-creative-pip {
+  display: flex;
+  align-items: flex-start;
+  gap: .625rem;
+  background: var(--lh-card-bg);
+  border: 1px solid var(--lh-card-border);
+  border-radius: 12px;
+  padding: .875rem 1rem;
+}
+.lh-pip-avatar {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--lh-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .625rem;
+  font-weight: 800;
+  color: var(--lh-cta-text);
+  flex-shrink: 0;
+}
+.lh-pip-quote {
+  font-size: .7125rem;
+  font-weight: 600;
+  color: var(--lh-text);
+  line-height: 1.4;
+  margin-bottom: .2rem;
+}
+.lh-pip-meta {
+  font-size: .625rem;
+  color: var(--lh-text-sub);
+  opacity: .6;
+}
+
+/* ── Bottom Bar ────────────────────────────────────────────── */
+.lh-creative-bottom-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .875rem 2.5rem;
+  border-top: 1px solid var(--lh-card-border);
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  gap: 1rem;
+}
+@media (max-width: 820px) {
+  .lh-creative-bottom-bar { padding: .875rem 1.5rem; }
+  .lh-creative-year       { display: none; }
+}
+.lh-creative-cred {
+  font-size: .75rem;
+  color: var(--lh-text-sub);
+  opacity: .5;
+}
+.lh-creative-year {
+  font-size: .75rem;
+  color: var(--lh-text-sub);
+  opacity: .3;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     CREATIVE STUDIO HERO — Template 5
+     Showcased with premium-mono vibe.
+     Replace values below with your own content.
+     Generated by Launch Hero / ManicWebmaster.com
+     ══════════════════════════════════════════════════════════ -->
+
+<section class="lh-generated-hero lh-hero-creative lh-vibe-premium-mono">
+
+  <!-- Top accent rule -->
+  <div class="lh-creative-top-bar"></div>
+
+  <!-- Main two-column grid -->
+  <div class="lh-hero-inner">
+
+    <!-- ── LEFT COLUMN ──────────────────────────────────────── -->
+    <div class="lh-creative-left">
+
+      <!-- Meta row: index · type -->
+      <div class="lh-creative-meta">
+        <span class="lh-creative-index">001</span>
+        <span class="lh-creative-divider-dot"></span>
+        <span class="lh-creative-label">Late-night pizza shop</span>
+      </div>
+
+      <!-- Two-line headline: solid first line, outline second -->
+      <h1 class="lh-creative-headline">
+        <span class="lh-creative-line-solid">Pizza built for</span>
+        <span class="lh-creative-line-outline">the after-dark</span>
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="lh-creative-sub">
+        Hot, creative pizza for after-dark cravings. Night owls and downtown
+        regulars have been finding us for years. We make it good on purpose.
+      </p>
+
+      <!-- CTAs -->
+      <div class="lh-cta-group">
+        <a href="#" class="lh-cta-primary">
+          Order Now
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2.5 7h9M8 3.5l3.5 3.5L8 10.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#" class="lh-cta-secondary">View Menu</a>
+      </div>
+
+      <!-- Services / disciplines tag row -->
+      <div class="lh-creative-services">
+        <span class="lh-creative-service-tag">Brand Identity</span>
+        <span class="lh-creative-service-tag">Web Design</span>
+        <span class="lh-creative-service-tag">Motion</span>
+        <span class="lh-creative-service-tag">Print</span>
+      </div>
+
+    </div>
+
+    <!-- ── RIGHT COLUMN ─────────────────────────────────────── -->
+    <div class="lh-creative-right">
+
+      <!-- Work tile mosaic -->
+      <div class="lh-creative-tiles">
+
+        <!-- Large tile: project preview placeholder -->
+        <div class="lh-tile lh-tile-lg">
+          <div class="lh-tile-orb"></div>
+          <div class="lh-tile-label">Midnight Slice</div>
+          <div class="lh-tile-line lh-tile-line-w70"></div>
+          <div class="lh-tile-line lh-tile-line-w50"></div>
+        </div>
+
+        <!-- Small stat tile -->
+        <div class="lh-tile lh-tile-sm lh-tile-accent">
+          <div class="lh-tile-stat-val">★★★★★</div>
+          <div class="lh-tile-stat-lbl">Rated</div>
+        </div>
+
+        <!-- Small stat tile -->
+        <div class="lh-tile lh-tile-sm">
+          <div class="lh-tile-stat-val">100+</div>
+          <div class="lh-tile-stat-lbl">Projects</div>
+        </div>
+
+      </div>
+
+      <!-- Testimonial pip -->
+      <div class="lh-creative-pip">
+        <div class="lh-pip-avatar">SR</div>
+        <div>
+          <div class="lh-pip-quote">"Best decision we made all year."</div>
+          <div class="lh-pip-meta">Sarah R. · Repeat customer</div>
+        </div>
+      </div>
+
+    </div>
+    <!-- /right column -->
+
+  </div>
+
+  <!-- Bottom bar: credibility + copyright -->
+  <div class="lh-creative-bottom-bar">
+    <span class="lh-creative-cred">Trusted by night owls and downtown regulars across the area.</span>
+    <span class="lh-creative-year">Midnight Slice © 2026</span>
+  </div>
+
+</section>
+
+<!-- ============================================================
+     HOW TO CUSTOMIZE:
+
+     1. Color vibe — premium-mono is the showcase vibe, but this
+        template also looks sharp in dark-neon (accent becomes cyan,
+        outline text glows) and sunset-punch (outline in orange-red).
+        Avoid clean-light and warm-local — the outline text needs
+        contrast to read.
+
+     2. Headline split — first line solid, second line outline.
+        Break so the outline line contains your most important word.
+        Short punchy lines (3-4 words each) work best at this size.
+
+     3. Meta row — the "001" index is a studio convention. Replace
+        with a project number, year, or short descriptor.
+
+     4. Services row — use your actual disciplines. These read as
+        scope signals to a potential client scanning the page.
+
+     5. Work tiles — the large tile is intentionally abstract.
+        If you have a real image, replace .lh-tile-lg with an
+        <img> tag inside the tile. Otherwise the skeleton reads
+        as "work in progress" or "coming soon" credibly.
+
+     6. Bottom bar — copyright year is live from JS in the
+        generator (new Date().getFullYear()). Hardcode if static.
+
+     7. Outline text browser support — -webkit-text-stroke is
+        supported in all modern browsers. Falls back gracefully
+        to transparent text on very old IE (no real concern in 2026).
+
+     Generated by Launch Hero · manicwebmaster.com/tools/launch-hero/
+     ============================================================ -->
+
+</body>
+</html>

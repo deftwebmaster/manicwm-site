@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Favicon Forge — PNG to Favicon Generator | ManicWebmaster</title>
+  <meta name="description" content="Turn your logo into a complete favicon pack and see if it actually survives at 16px. Free favicon generator by ManicWebmaster." />
+  <link rel="canonical" href="https://manicwebmaster.com/tools/favicon-forge/" />
+  <meta property="og:title" content="Favicon Forge — PNG to Favicon Generator" />
+  <meta property="og:description" content="Generate a complete favicon pack, preview it at 16px, and catch weak logo marks before they ship." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://manicwebmaster.com/tools/favicon-forge/" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="stylesheet" href="styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What favicon files does Favicon Forge generate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Favicon Forge creates favicon.ico, 16x16 and 32x32 PNG favicons, a 180x180 Apple touch icon, Android/PWA icons, a maskable PWA icon, a web manifest, and install instructions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are uploaded logos sent to a server?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Favicon Forge processes images in your browser with canvas and packages the files locally."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does a logo need a 16px test?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Browser tabs and bookmarks display favicons at very small sizes. Testing at 16px helps reveal logos that become blurry, low-contrast, or unrecognizable."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+  <header class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-glow hero-glow--left"></div>
+    <div class="hero-glow hero-glow--right"></div>
+
+    <nav class="nav">
+      <div class="nav-brand">
+        <span class="nav-brand-icon">⬡</span>
+        <span class="nav-brand-name">Favicon<span class="accent">Forge</span></span>
+      </div>
+      <div class="nav-right">
+        <a href="#services" class="nav-hire-btn">Hire Me</a>
+        <span class="nav-by">by <a href="#services" class="nav-link">ManicWebmaster</a></span>
+      </div>
+    </nav>
+
+    <div class="hero-content">
+      <div class="hero-badge">Free Tool</div>
+      <h1 class="hero-headline">PNG to Favicon<br/><span class="gradient-text">Generator</span></h1>
+      <p class="hero-tagline">"Most logos look fine big.<br class="br-mobile"/> Very few survive tiny."</p>
+      <p class="hero-sub">Turn your logo into a complete favicon pack — and see if it<br class="br-desktop"/> actually survives at 16px.</p>
+      <div class="hero-cta-group">
+        <button class="btn-primary hero-cta" id="heroUploadBtn">
+          <span class="btn-icon">⬆</span>
+          Generate My Favicon Pack
+        </button>
+        <a href="#services" class="btn-hero-secondary">
+          Need a logo or site? <span class="btn-hero-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-preview-row" aria-hidden="true">
+      <div class="mini-tab"><span class="mini-tab-dot"></span><span class="mini-favicon-slot pulse"></span><span class="mini-tab-title">Your Site</span><span class="mini-tab-x">×</span></div>
+      <div class="mini-tab mini-tab--active"><span class="mini-tab-dot"></span><span class="mini-favicon-slot pulse"></span><span class="mini-tab-title">Homepage</span><span class="mini-tab-x">×</span></div>
+      <div class="mini-tab"><span class="mini-tab-dot"></span><span class="mini-favicon-slot pulse"></span><span class="mini-tab-title">About</span><span class="mini-tab-x">×</span></div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════ MAIN APP ═══════════════════════════ -->
+  <main class="app-main" id="appMain">
+
+    <!-- Upload Panel -->
+    <section class="panel panel--upload" id="uploadSection">
+      <div class="panel-header">
+        <span class="panel-step">01</span>
+        <h2 class="panel-title">Upload Your Logo</h2>
+      </div>
+
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept="image/png,image/jpeg,image/gif,image/webp,image/svg+xml" class="file-input" aria-label="Upload logo image" />
+        <div class="drop-zone-inner" id="dropZoneInner">
+          <div class="drop-icon">⬡</div>
+          <p class="drop-primary">Drop your logo here</p>
+          <p class="drop-secondary">or click to browse</p>
+          <p class="drop-formats">PNG · JPG · SVG · WebP · GIF</p>
+        </div>
+        <div class="drop-zone-preview hidden" id="previewContainer">
+          <img id="uploadedPreview" alt="Uploaded logo" />
+          <div class="preview-meta" id="previewMeta"></div>
+          <button class="btn-ghost btn-replace" id="replaceBtn">Replace Image</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Settings + Live Preview (side by side on desktop) -->
+    <div class="twin-panels">
+
+      <!-- Settings Panel -->
+      <section class="panel panel--settings" id="settingsSection">
+        <div class="panel-header">
+          <span class="panel-step">02</span>
+          <h2 class="panel-title">Favicon Settings</h2>
+        </div>
+
+        <fieldset class="settings-group">
+          <legend class="settings-label">Background</legend>
+          <div class="option-grid" id="bgOptions" role="group" aria-label="Favicon background">
+            <button class="opt-btn opt-btn--active" data-bg="transparent" aria-pressed="true">
+              <span class="opt-swatch swatch-transparent"></span>
+              Transparent
+            </button>
+            <button class="opt-btn" data-bg="white" aria-pressed="false">
+              <span class="opt-swatch" style="background:#ffffff; border:1px solid #333"></span>
+              White
+            </button>
+            <button class="opt-btn" data-bg="black" aria-pressed="false">
+              <span class="opt-swatch" style="background:#000000"></span>
+              Black
+            </button>
+            <button class="opt-btn opt-btn--color" data-bg="custom" id="customBgBtn" aria-pressed="false">
+              <span class="opt-swatch swatch-custom" id="customSwatch"></span>
+              Custom
+              <input type="color" id="customColorPicker" value="#3b82f6" aria-label="Choose custom background color" />
+            </button>
+          </div>
+        </fieldset>
+
+        <fieldset class="settings-group">
+          <legend class="settings-label">Padding</legend>
+          <div class="option-grid" id="paddingOptions" role="group" aria-label="Favicon padding">
+            <button class="opt-btn opt-btn--active" data-padding="0" aria-pressed="true">None</button>
+            <button class="opt-btn" data-padding="0.05" aria-pressed="false">Small</button>
+            <button class="opt-btn" data-padding="0.12" aria-pressed="false">Medium</button>
+            <button class="opt-btn" data-padding="0.2" aria-pressed="false">Large</button>
+          </div>
+        </fieldset>
+
+        <fieldset class="settings-group">
+          <legend class="settings-label">Shape Preview</legend>
+          <div class="option-grid" id="shapeOptions" role="group" aria-label="Favicon shape preview">
+            <button class="opt-btn opt-btn--active" data-shape="square" aria-pressed="true">Square</button>
+            <button class="opt-btn" data-shape="rounded" aria-pressed="false">Rounded</button>
+            <button class="opt-btn" data-shape="circle" aria-pressed="false">Circle</button>
+          </div>
+        </fieldset>
+
+        <fieldset class="settings-group">
+          <legend class="settings-label">Crop Mode</legend>
+          <div class="option-grid" id="cropOptions" role="group" aria-label="Favicon crop mode">
+            <button class="opt-btn opt-btn--active" data-crop="contain" aria-pressed="true">
+              <span class="crop-icon">⊙</span>Contain
+            </button>
+            <button class="opt-btn" data-crop="cover" aria-pressed="false">
+              <span class="crop-icon">⊕</span>Cover
+            </button>
+          </div>
+        </fieldset>
+      </section>
+
+      <!-- Live Preview Panel -->
+      <section class="panel panel--preview" id="previewSection">
+        <div class="panel-header">
+          <span class="panel-step">03</span>
+          <h2 class="panel-title">Live Preview</h2>
+        </div>
+
+        <div class="preview-sizes">
+          <div class="size-card" id="size-16">
+            <canvas width="16" height="16"></canvas>
+            <span class="size-label">16×16</span>
+            <span class="size-desc">Browser Tab</span>
+          </div>
+          <div class="size-card" id="size-32">
+            <canvas width="32" height="32"></canvas>
+            <span class="size-label">32×32</span>
+            <span class="size-desc">Standard Favicon</span>
+          </div>
+          <div class="size-card" id="size-180">
+            <canvas width="180" height="180"></canvas>
+            <span class="size-label">180×180</span>
+            <span class="size-desc">Apple Touch</span>
+          </div>
+          <div class="size-card" id="size-192">
+            <canvas width="192" height="192"></canvas>
+            <span class="size-label">192×192</span>
+            <span class="size-desc">Android Chrome</span>
+          </div>
+          <div class="size-card" id="size-512">
+            <canvas width="512" height="512"></canvas>
+            <span class="size-label">512×512</span>
+            <span class="size-desc">PWA Splash</span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- 16px Readability Test -->
+    <section class="panel panel--readability" id="readabilitySection">
+      <div class="panel-header">
+        <span class="panel-step">04</span>
+        <h2 class="panel-title">16px Readability Test</h2>
+        <p class="panel-subtitle">The moment of truth. See how your favicon actually looks where it lives.</p>
+      </div>
+
+      <div class="readability-placeholder" id="readabilityPlaceholder">
+        <span class="placeholder-icon">⬡</span>
+        <p>Upload a logo to run the readability test</p>
+      </div>
+
+      <div class="readability-tests hidden" id="readabilityTests">
+
+        <!-- Browser Tab Mockups -->
+        <div class="test-group">
+          <h3 class="test-group-label">Browser Tabs</h3>
+          <div class="test-browsers">
+
+            <!-- Light Browser -->
+            <div class="browser-mock browser-mock--light">
+              <div class="browser-mock-bar">
+                <div class="browser-mock-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="browser-tabs-row">
+                  <div class="browser-tab browser-tab--active">
+                    <canvas class="tab-favicon" width="16" height="16" id="tabFavLight1"></canvas>
+                    <span>Your Site</span>
+                    <span class="tab-x">×</span>
+                  </div>
+                  <div class="browser-tab">
+                    <canvas class="tab-favicon" width="16" height="16" id="tabFavLight2"></canvas>
+                    <span>Gmail</span>
+                    <span class="tab-x">×</span>
+                  </div>
+                  <div class="browser-tab browser-tab--bg">
+                    <canvas class="tab-favicon" width="16" height="16" id="tabFavLight3"></canvas>
+                    <span>Figma</span>
+                    <span class="tab-x">×</span>
+                  </div>
+                </div>
+                <div class="browser-mock-address">
+                  <span class="address-lock">🔒</span>
+                  <span class="address-text">yoursite.com</span>
+                </div>
+              </div>
+              <div class="browser-mock-body"></div>
+              <span class="mock-label">Light UI</span>
+            </div>
+
+            <!-- Dark Browser -->
+            <div class="browser-mock browser-mock--dark">
+              <div class="browser-mock-bar">
+                <div class="browser-mock-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="browser-tabs-row">
+                  <div class="browser-tab browser-tab--active">
+                    <canvas class="tab-favicon" width="16" height="16" id="tabFavDark1"></canvas>
+                    <span>Your Site</span>
+                    <span class="tab-x">×</span>
+                  </div>
+                  <div class="browser-tab">
+                    <canvas class="tab-favicon" width="16" height="16" id="tabFavDark2"></canvas>
+                    <span>GitHub</span>
+                    <span class="tab-x">×</span>
+                  </div>
+                  <div class="browser-tab browser-tab--bg">
+                    <canvas class="tab-favicon" width="16" height="16" id="tabFavDark3"></canvas>
+                    <span>Vercel</span>
+                    <span class="tab-x">×</span>
+                  </div>
+                </div>
+                <div class="browser-mock-address">
+                  <span class="address-lock">🔒</span>
+                  <span class="address-text">yoursite.com</span>
+                </div>
+              </div>
+              <div class="browser-mock-body"></div>
+              <span class="mock-label">Dark UI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bookmarks Bar -->
+        <div class="test-group">
+          <h3 class="test-group-label">Bookmarks Bar</h3>
+          <div class="bookmarks-mock">
+            <div class="bookmark-item bookmark-item--yours">
+              <canvas class="bookmark-favicon" width="16" height="16" id="bookmarkFav"></canvas>
+              <span>Your Site</span>
+            </div>
+            <div class="bookmark-item">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA" class="bookmark-favicon" width="16" height="16" alt="" />
+              <span>Google</span>
+            </div>
+            <div class="bookmark-item">
+              <span class="bookmark-emoji">🐙</span>
+              <span>GitHub</span>
+            </div>
+            <div class="bookmark-item">
+              <span class="bookmark-emoji">🎨</span>
+              <span>Figma</span>
+            </div>
+            <div class="bookmark-item bookmark-item--more">»</div>
+          </div>
+        </div>
+
+        <!-- Mobile Home Screen -->
+        <div class="test-group">
+          <h3 class="test-group-label">Mobile Home Screen</h3>
+          <div class="mobile-mock">
+            <div class="mobile-screen">
+              <div class="mobile-status-bar">
+                <span>9:41</span>
+                <span>●●●</span>
+              </div>
+              <div class="mobile-icons-grid">
+                <div class="mobile-icon mobile-icon--yours">
+                  <div class="mobile-icon-img">
+                    <canvas width="60" height="60" id="mobileIcon"></canvas>
+                  </div>
+                  <span class="mobile-icon-label">Your App</span>
+                </div>
+                <div class="mobile-icon">
+                  <div class="mobile-icon-img" style="background: linear-gradient(135deg,#4285F4,#34A853)">
+                    <span style="font-size:28px; line-height:60px; display:block; text-align:center">G</span>
+                  </div>
+                  <span class="mobile-icon-label">Search</span>
+                </div>
+                <div class="mobile-icon">
+                  <div class="mobile-icon-img" style="background: #1DA1F2">
+                    <span style="font-size:28px; line-height:60px; display:block; text-align:center">𝕏</span>
+                  </div>
+                  <span class="mobile-icon-label">Twitter</span>
+                </div>
+                <div class="mobile-icon">
+                  <div class="mobile-icon-img" style="background: #0A0A0C; border:1px solid #333">
+                    <span style="font-size:26px; line-height:60px; display:block; text-align:center">⬡</span>
+                  </div>
+                  <span class="mobile-icon-label">App</span>
+                </div>
+                <div class="mobile-icon">
+                  <div class="mobile-icon-img" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366)">
+                    <span style="font-size:26px; line-height:60px; display:block; text-align:center">📷</span>
+                  </div>
+                  <span class="mobile-icon-label">Camera</span>
+                </div>
+                <div class="mobile-icon">
+                  <div class="mobile-icon-img" style="background:#25D366">
+                    <span style="font-size:28px; line-height:60px; display:block; text-align:center">💬</span>
+                  </div>
+                  <span class="mobile-icon-label">Msg</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tiny Toolbar Stress Test -->
+        <div class="test-group">
+          <h3 class="test-group-label">Tiny Toolbar Stress Test</h3>
+          <div class="toolbar-mock">
+            <div class="toolbar-row" id="toolbarRow">
+              <!-- Generated dynamically by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Readability Score -->
+        <div class="readability-verdict" id="readabilityVerdict">
+          <div class="verdict-score" id="verdictScore">
+            <canvas width="16" height="16" id="verdictCanvas"></canvas>
+            <div class="verdict-info">
+              <span class="verdict-rating" id="verdictRating">Analyzing…</span>
+              <span class="verdict-desc" id="verdictDesc"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Readability Report -->
+    <section class="panel panel--report hidden" id="reportSection">
+      <div class="panel-header">
+        <span class="panel-step">05</span>
+        <h2 class="panel-title">Favicon Readability Report</h2>
+        <p class="panel-subtitle">Automated analysis of your favicon's real-world viability.</p>
+      </div>
+      <div class="report-findings" id="reportFindings">
+        <!-- Populated by JS -->
+      </div>
+      <div class="recommendation-cta hidden" id="recommendationCta">
+        <div>
+          <h3 id="recommendationTitle">Your favicon needs a sharper mark</h3>
+          <p id="recommendationBody">If the tiny version is struggling, I can simplify the mark and make the whole brand system read cleaner.</p>
+        </div>
+        <div class="recommendation-actions">
+          <a href="sms:4697170416&body=Hey%20Matt%2C%20my%20favicon%20needs%20a%20cleaner%20brand%20mark." class="btn-service btn-service--sms">Text Me</a>
+          <a href="mailto:matt@manicwebmaster.com?subject=Favicon-Friendly+Brand+Mark" class="btn-service btn-service--featured">Email Me</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="panel panel--download" id="downloadSection">
+      <div class="panel-header">
+        <span class="panel-step">06</span>
+        <h2 class="panel-title">Your Favicon Pack</h2>
+      </div>
+
+      <div class="download-placeholder" id="downloadPlaceholder">
+        <span class="placeholder-icon">⬡</span>
+        <p>Upload a logo to generate your favicon pack</p>
+      </div>
+
+      <div class="download-content hidden" id="downloadContent">
+        <div class="download-file-list">
+          <div class="file-item"><span class="file-icon">▣</span><span>favicon.ico</span></div>
+          <div class="file-item"><span class="file-icon">🖼</span><span>favicon-16x16.png</span></div>
+          <div class="file-item"><span class="file-icon">🖼</span><span>favicon-32x32.png</span></div>
+          <div class="file-item"><span class="file-icon">🍎</span><span>apple-touch-icon.png</span></div>
+          <div class="file-item"><span class="file-icon">🤖</span><span>android-chrome-192x192.png</span></div>
+          <div class="file-item"><span class="file-icon">🤖</span><span>android-chrome-512x512.png</span></div>
+          <div class="file-item"><span class="file-icon">◎</span><span>android-chrome-maskable-512x512.png</span></div>
+          <div class="file-item"><span class="file-icon">📋</span><span>site.webmanifest</span></div>
+        </div>
+
+        <div class="download-actions">
+          <button class="btn-primary" id="downloadBtn">
+            <span class="btn-icon">⬇</span>
+            Download Favicon Pack
+          </button>
+          <button class="btn-secondary" id="copySnippetBtn">
+            <span class="btn-icon">⧉</span>
+            Copy HTML Snippet
+          </button>
+        </div>
+        <div class="download-status hidden" id="downloadStatus" role="status" aria-live="polite"></div>
+
+        <div class="snippet-panel hidden" id="snippetPanel">
+          <div class="snippet-header">
+            <span>HTML — paste into your <code>&lt;head&gt;</code></span>
+            <button class="btn-ghost btn-small" id="copySnippetClose">✕</button>
+          </div>
+          <pre class="snippet-code" id="snippetCode"></pre>
+          <button class="btn-ghost" id="copySnippetAgain">Copy Again</button>
+          <div class="copy-toast hidden" id="copyToast">Copied!</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="seo-guide" id="favicon-guide">
+      <div class="guide-block">
+        <span class="services-eyebrow">Install Guide</span>
+        <h2 class="guide-title">How to add the favicon pack to your website</h2>
+        <ol class="guide-steps">
+          <li>Download the ZIP and place every file from the favicon-pack folder in your website root.</li>
+          <li>Paste the generated HTML snippet into the document head on your pages or layout template.</li>
+          <li>Clear your browser cache, then check the icon in tabs, bookmarks, and mobile home screen previews.</li>
+        </ol>
+      </div>
+      <div class="guide-grid">
+        <article class="guide-card">
+          <h3>Why 16px matters</h3>
+          <p>Most logos are designed large, but browser tabs compress them into a tiny square. High contrast, simple shapes, and reduced detail usually win.</p>
+        </article>
+        <article class="guide-card">
+          <h3>What files are included</h3>
+          <p>The pack includes PNG favicons, a real multi-size ICO, Apple and Android icons, a maskable PWA icon, a manifest, and install notes.</p>
+        </article>
+        <article class="guide-card">
+          <h3>When to redesign</h3>
+          <p>If the favicon becomes a smudge at 16px, use a simplified brand mark instead of forcing the full logo into the smallest context.</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════ SERVICES CTA ═══════════════════════════ -->
+  <section class="services-cta" id="services">
+    <div class="services-cta-inner">
+      <div class="services-glow"></div>
+
+      <div class="services-header">
+        <span class="services-eyebrow">ManicWebmaster</span>
+        <h2 class="services-headline">If your logo disappears at 16px,<br/> your branding probably needs refinement.</h2>
+        <p class="services-sub">A great favicon is a symptom of a great visual system. If yours is struggling, let's fix the root cause.</p>
+      </div>
+
+      <div class="services-cards">
+        <div class="service-card">
+          <div class="service-card-icon">✦</div>
+          <h3 class="service-card-title">Need a sharper logo?</h3>
+          <p class="service-card-body">I design clean, favicon-friendly branding systems that stay readable everywhere — from billboard to browser tab.</p>
+          <ul class="service-card-list">
+            <li>Logo + brand mark</li>
+            <li>Favicon-optimized variations</li>
+            <li>Style guide & color system</li>
+          </ul>
+          <div class="service-card-actions">
+            <a href="sms:4697170416&body=Hey%20Matt%2C%20I%20need%20help%20with%20my%20logo." class="btn-service btn-service--sms">
+              <span class="btn-service-icon">💬</span> Text Me
+            </a>
+            <a href="mailto:matt@manicwebmaster.com?subject=Logo+Design+Inquiry" class="btn-service">
+              <span class="btn-service-icon">✉</span> Email Me
+            </a>
+          </div>
+          <a href="https://manicwebmaster.com/graphics/" target="_blank" rel="noopener" class="service-card-cta-link">See graphic design work →</a>
+        </div>
+
+        <div class="service-card service-card--featured">
+          <div class="service-card-badge">Most Requested</div>
+          <div class="service-card-icon">◈</div>
+          <h3 class="service-card-title">Need the whole site upgraded?</h3>
+          <p class="service-card-body">I build fast, modern websites that actually look professional — not like a template bought in 2019.</p>
+          <ul class="service-card-list">
+            <li>Custom design + development</li>
+            <li>Performance-first build</li>
+            <li>Brand-consistent throughout</li>
+          </ul>
+          <div class="service-card-actions">
+            <a href="sms:4697170416&body=Hey%20Matt%2C%20I%20need%20help%20with%20my%20website." class="btn-service btn-service--sms">
+              <span class="btn-service-icon">💬</span> Text Me
+            </a>
+            <a href="mailto:matt@manicwebmaster.com?subject=Website+Project+Inquiry" class="btn-service btn-service--featured">
+              <span class="btn-service-icon">✉</span> Email Me
+            </a>
+          </div>
+          <a href="https://manicwebmaster.com" target="_blank" rel="noopener" class="service-card-cta-link service-card-cta-link--featured">See my web work →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-brand-name">⬡ Favicon<span class="accent">Forge</span></span>
+        <span class="footer-by">Built by <a href="https://manicwebmaster.com" target="_blank" rel="noopener" class="footer-link">ManicWebmaster</a></span>
+      </div>
+      <p class="footer-note">Free tool. No upload server. No external runtime scripts. Your images are processed in your browser.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<!-- * lone wolf, quiet teeth | Matt Livingston -->

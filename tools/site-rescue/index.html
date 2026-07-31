@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Site Rescue — ManicWebmaster</title>
+  <meta name="description" content="Find out why your website doesn't feel legit — and what to fix first. Site Rescue is a free audit covering trust, clarity, design, SEO basics, and conversion friction." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
+</head>
+<body>
+
+  <!-- Noise overlay -->
+  <div class="noise" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <a href="https://manicwebmaster.com/" class="logo" aria-label="ManicWebmaster home">
+      <span class="logo-mark">MW</span>
+      <span class="logo-text">ManicWebmaster</span>
+    </a>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section class="hero" id="top" style="scroll-margin-top: 64px;">
+      <div class="hero-bg-lines" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <div class="eyebrow">Free · No login required</div>
+        <h1 class="hero-headline">
+          Site<br />
+          <span class="headline-accent">Rescue</span>
+        </h1>
+        <p class="hero-sub">
+          Find out why your website doesn't feel legit —<br class="br-desktop" />
+          and what to fix first.
+        </p>
+        <p class="hero-body">
+          Get a practical, plain-English audit covering trust, clarity,
+          design, SEO basics, and conversion friction.
+        </p>
+
+        <!-- Audit Form -->
+        <div class="form-wrap" id="auditForm">
+          <div class="input-row">
+            <input
+              type="text"
+              id="urlInput"
+              class="url-input"
+              placeholder="https://example.com"
+              autocomplete="url"
+              spellcheck="false"
+              aria-label="Website URL to audit"
+            />
+            <button class="audit-btn" id="auditBtn" type="button">
+              <span class="btn-text">Audit My Site</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </button>
+          </div>
+          <p class="form-note">No spam. No signup. Just useful feedback.</p>
+          <div class="turnstile-wrap hidden" id="turnstileWrap">
+            <div id="turnstileWidget"></div>
+          </div>
+          <p class="privacy-note">
+            Site Rescue scans public page content only. Do not submit private dashboards,
+            client portals, or password-protected pages.
+          </p>
+          <p class="form-error" id="formError" role="alert" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <div class="hero-decoration" aria-hidden="true">
+        <div class="deco-ring deco-ring-1"></div>
+        <div class="deco-ring deco-ring-2"></div>
+        <div class="deco-ring deco-ring-3"></div>
+        <div class="deco-ring deco-ring-4"></div>
+        <div class="deco-score">
+          <span class="deco-score-num">97</span>
+          <span class="deco-score-label">/ 100</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Loading State -->
+    <section class="loading-section hidden" id="loadingSection" aria-live="polite" aria-busy="true">
+      <div class="loading-inner">
+        <div class="loading-spinner" aria-hidden="true">
+          <div class="spinner-ring"></div>
+          <div class="spinner-ring-2"></div>
+          <div class="spinner-dot"></div>
+        </div>
+        <p class="loading-step" id="loadingStep">Scanning first impression...</p>
+        <p class="loading-url" id="loadingUrl"></p>
+        <div class="loading-bar-wrap">
+          <div class="loading-bar" id="loadingBar"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Report Output -->
+    <section class="report-section hidden" id="reportSection" aria-live="polite">
+      <div class="report-header">
+        <div class="report-meta">
+          <p class="report-label">Site Rescue Report for</p>
+          <div class="report-url-display" id="reportUrl"></div>
+        </div>
+        <button class="new-audit-btn" id="newAuditBtn" type="button" aria-label="Start a new audit">← New Audit</button>
+      </div>
+
+      <!-- Score Banner -->
+      <div class="score-banner" id="scoreBanner">
+        <div class="score-circle-wrap">
+          <svg class="score-svg" viewBox="0 0 140 140" aria-hidden="true">
+            <circle class="score-track" cx="70" cy="70" r="60" />
+            <circle class="score-fill" id="scoreCircle" cx="70" cy="70" r="60" />
+          </svg>
+          <div class="score-text">
+            <span class="score-number" id="scoreNumber">—</span>
+            <span class="score-denom">/100</span>
+          </div>
+        </div>
+        <div class="score-summary">
+          <h2 class="score-label-text">Overall Score</h2>
+          <p class="score-summary-text" id="scoreSummary"></p>
+        </div>
+      </div>
+
+      <!-- Sections Grid -->
+      <p class="grid-label">Audit Sections</p>
+      <div class="sections-grid" id="sectionsGrid">
+        <!-- injected by JS -->
+      </div>
+
+      <!-- Top 5 Fixes -->
+      <div class="fixes-block" id="fixesBlock">
+        <h2 class="fixes-headline">
+          <span class="fixes-num-label">Top 5</span> Priority Fixes
+        </h2>
+        <ol class="fixes-list" id="fixesList">
+          <!-- injected by JS -->
+        </ol>
+      </div>
+
+      <!-- Final Recommendation -->
+      <div class="final-rec" id="finalRec">
+        <div class="final-rec-inner">
+          <div class="final-rec-icon" aria-hidden="true">◈</div>
+          <div>
+            <h2 class="final-rec-title">Final Recommendation</h2>
+            <p class="final-rec-text" id="finalRecText"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Report Actions -->
+      <div class="report-actions" id="reportActions">
+        <button class="report-action-btn" id="copySummaryBtn" type="button">Copy Report Summary</button>
+        <button class="report-action-btn" id="shareReportBtn" type="button">Copy Share Link</button>
+        <div class="share-url-wrap hidden" id="shareUrlWrap">
+          <label class="share-url-label" for="shareUrlInput">Saved report link</label>
+          <input class="share-url-input" id="shareUrlInput" type="text" readonly />
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-block">
+        <div class="cta-inner">
+          <h2 class="cta-headline" id="ctaHeadline">Want this fixed?</h2>
+          <p class="cta-body" id="ctaBody">
+            I build and repair websites for small businesses, creators, and local
+            operators who need to look legit online fast.
+          </p>
+          <a href="https://manicwebmaster.com/" class="cta-btn" target="_blank" rel="noopener noreferrer">
+            Work With ManicWebmaster
+          </a>
+          <p class="cta-or">
+            Or text Matt directly:
+            <a href="tel:+14697170416" class="cta-phone">(469) 717-0416</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Lead Capture -->
+      <div class="lead-block" id="leadBlock">
+        <div class="lead-copy">
+          <p class="lead-kicker">Turn the audit into a fix plan</p>
+          <h2 class="lead-headline">Want me to price the top fixes?</h2>
+          <p class="lead-body">
+            Send the report with your contact info and I will follow up with the
+            highest-leverage next steps for your site.
+          </p>
+        </div>
+        <form class="lead-form" id="leadForm">
+          <div class="lead-row">
+            <label>
+              <span>Name</span>
+              <input type="text" id="leadName" autocomplete="name" maxlength="80" />
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" id="leadEmail" autocomplete="email" maxlength="120" required />
+            </label>
+          </div>
+          <label>
+            <span>What do you want help with?</span>
+            <textarea id="leadMessage" rows="4" maxlength="800" placeholder="Example: I want help fixing the homepage and making the site look more trustworthy."></textarea>
+          </label>
+          <label class="lead-checkbox">
+            <input type="checkbox" id="leadWantsCopy" checked />
+            <span>Email me a copy of this report too.</span>
+          </label>
+          <button class="lead-submit-btn" id="leadSubmitBtn" type="submit">
+            Send My Audit to Matt
+          </button>
+          <p class="lead-status" id="leadStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <p>
+      <a href="https://manicwebmaster.com/" class="footer-link">ManicWebmaster</a>
+      — Web tools for people who take their site seriously.
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

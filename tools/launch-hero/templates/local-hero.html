@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Local Service Hero — Launch Hero Template 3</title>
+  <style>
+/* ============================================================
+   Local Service Hero — lh-hero-local
+   Launch Hero Template 3 | ManicWebmaster
+   Color vibe: warm-local (natural fit for this template)
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #1a0e02;
+  min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+}
+
+/* ── Color Vibe: warm-local ────────────────────────────────── */
+.lh-vibe-warm-local {
+  --lh-bg:           #fffaf3;
+  --lh-bg2:          #fef3e2;
+  --lh-text:         #1a1209;
+  --lh-text-sub:     #7a5c2e;
+  --lh-accent:       #d97706;
+  --lh-accent2:      #b45309;
+  --lh-chip-bg:      rgba(217,119,6,.08);
+  --lh-chip-border:  rgba(217,119,6,.22);
+  --lh-chip-text:    #92400e;
+  --lh-cta-bg:       #d97706;
+  --lh-cta-text:     #fff;
+  --lh-cta2-border:  rgba(26,18,9,.18);
+  --lh-cta2-text:    #7a5c2e;
+  --lh-card-bg:      #fff;
+  --lh-card-border:  rgba(217,119,6,.15);
+  --lh-glow-rgb:     217,119,6;
+  --lh-glow2-rgb:    180,83,9;
+}
+
+/* ── Generated Hero Root ───────────────────────────────────── */
+.lh-generated-hero {
+  width: 100%;
+  background: var(--lh-bg);
+  color: var(--lh-text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle warm texture — faint diagonal lines */
+.lh-generated-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 40px,
+    rgba(217,119,6,.025) 40px,
+    rgba(217,119,6,.025) 41px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Grid Layout ───────────────────────────────────────────── */
+.lh-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4.5rem 2.5rem 5rem;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+@media (max-width: 800px) {
+  .lh-hero-inner {
+    grid-template-columns: 1fr;
+    padding: 3rem 1.5rem 3.5rem;
+    gap: 2.5rem;
+  }
+}
+
+/* ── Copy Column ───────────────────────────────────────────── */
+.lh-copy-col { display: flex; flex-direction: column; }
+
+/* Eyebrow */
+.lh-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .6875rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--lh-accent);
+  background: var(--lh-chip-bg);
+  border: 1px solid var(--lh-chip-border);
+  border-radius: 100px;
+  padding: .275rem .875rem;
+  margin-bottom: 1.25rem;
+  align-self: flex-start;
+}
+.lh-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--lh-accent);
+  opacity: .85;
+}
+
+/* Headline */
+.lh-headline {
+  font-size: clamp(1.875rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.08;
+  color: var(--lh-text);
+  margin-bottom: .875rem;
+}
+.lh-headline-accent {
+  color: var(--lh-accent);
+}
+
+/* Subheadline */
+.lh-subheadline {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--lh-text-sub);
+  margin-bottom: 1.875rem;
+  max-width: 500px;
+}
+
+/* CTAs */
+.lh-cta-group {
+  display: flex;
+  align-items: center;
+  gap: .875rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.75rem;
+}
+.lh-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: .375rem;
+  background: var(--lh-cta-bg);
+  color: var(--lh-cta-text);
+  border: none;
+  border-radius: 9px;
+  padding: .75rem 1.625rem;
+  font-weight: 700;
+  font-size: .9375rem;
+  font-family: inherit;
+  letter-spacing: .01em;
+  cursor: pointer;
+  transition: box-shadow .15s, transform .1s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.lh-cta-primary:hover {
+  box-shadow: 0 4px 20px rgba(217,119,6,.35);
+  transform: translateY(-1px);
+}
+.lh-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: .375rem;
+  color: var(--lh-cta2-text);
+  border: 1px solid var(--lh-cta2-border);
+  border-radius: 9px;
+  padding: .75rem 1.375rem;
+  font-weight: 600;
+  font-size: .9375rem;
+  font-family: inherit;
+  cursor: pointer;
+  background: transparent;
+  transition: border-color .15s, color .15s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.lh-cta-secondary:hover {
+  border-color: var(--lh-accent);
+  color: var(--lh-accent);
+}
+
+/* Benefit chips */
+.lh-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: 1.375rem;
+}
+.lh-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-size: .8125rem;
+  font-weight: 600;
+  color: var(--lh-chip-text);
+  background: var(--lh-chip-bg);
+  border: 1px solid var(--lh-chip-border);
+  border-radius: 100px;
+  padding: .3rem .8rem;
+}
+.lh-chip svg { flex-shrink: 0; opacity: .7; }
+
+/* Credibility */
+.lh-credibility {
+  font-size: .8125rem;
+  color: var(--lh-text-sub);
+  opacity: .65;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+.lh-credibility::before {
+  content: '';
+  display: inline-block;
+  width: 20px; height: 1px;
+  background: currentColor;
+  opacity: .4;
+}
+
+/* ── Contact Card ──────────────────────────────────────────── */
+.lh-local-card {
+  background: var(--lh-card-bg);
+  border: 1px solid var(--lh-card-border);
+  border-radius: 18px;
+  padding: 1.5rem;
+  position: sticky;
+  top: 1.5rem;
+  overflow: hidden;
+  box-shadow:
+    0 1px 0 rgba(217,119,6,.1),
+    0 16px 48px rgba(26,18,9,.1);
+}
+
+/* Accent top bar */
+.lh-local-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--lh-accent), var(--lh-accent2));
+}
+
+/* Rating block */
+.lh-local-card-top { text-align: center; margin-bottom: 1rem; }
+.lh-local-rating {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: .375rem;
+  margin-bottom: .2rem;
+}
+.lh-local-stars { color: #f59e0b; font-size: 1rem; letter-spacing: 1px; }
+.lh-local-rating-val {
+  font-size: 1.0625rem;
+  font-weight: 800;
+  color: var(--lh-text);
+  letter-spacing: -.02em;
+}
+.lh-local-rating-lbl {
+  font-size: .6875rem;
+  font-weight: 600;
+  color: var(--lh-text-sub);
+  opacity: .65;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+/* Divider */
+.lh-local-divider {
+  height: 1px;
+  background: var(--lh-card-border);
+  margin: 1rem 0;
+}
+
+/* Phone */
+.lh-local-contact-label {
+  font-size: .625rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--lh-accent);
+  margin-bottom: .375rem;
+}
+.lh-local-phone {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--lh-text);
+  letter-spacing: -.02em;
+  line-height: 1.2;
+  text-decoration: none;
+  margin-bottom: 1rem;
+  transition: color .15s;
+}
+.lh-local-phone:hover { color: var(--lh-accent); }
+
+/* Hours + location meta */
+.lh-local-meta { display: flex; flex-direction: column; gap: .5rem; }
+.lh-local-meta-row {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .8125rem;
+  color: var(--lh-text-sub);
+}
+.lh-local-meta-row svg { flex-shrink: 0; opacity: .55; }
+
+/* Trust chips 2-up grid */
+.lh-trust-chips {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .375rem;
+}
+.lh-trust-chip {
+  display: flex;
+  align-items: center;
+  gap: .375rem;
+  font-size: .75rem;
+  font-weight: 600;
+  color: var(--lh-chip-text);
+  background: var(--lh-chip-bg);
+  border: 1px solid var(--lh-chip-border);
+  border-radius: 7px;
+  padding: .4rem .625rem;
+  line-height: 1.3;
+}
+.lh-trust-check { flex-shrink: 0; opacity: .7; color: var(--lh-accent); }
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 800px) {
+  .lh-local-card { position: static; }
+  .lh-trust-chips { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     LOCAL SERVICE HERO — Template 3
+     Showcased with warm-local vibe.
+     Replace values below with your own content.
+     Generated by Launch Hero / ManicWebmaster.com
+     ══════════════════════════════════════════════════════════ -->
+
+<section class="lh-generated-hero lh-hero-local lh-vibe-warm-local">
+  <div class="lh-hero-inner">
+
+    <!-- ── COPY COLUMN ──────────────────────────────────────── -->
+    <div class="lh-copy-col">
+
+      <div class="lh-eyebrow">Local · Trusted · Ready</div>
+
+      <h1 class="lh-headline">
+        The <span class="lh-headline-accent">local service</span><br/>
+        your neighbors already trust
+      </h1>
+
+      <p class="lh-subheadline">
+        Hot, creative pizza for after-dark cravings. Night owls and downtown
+        regulars have been finding us for years — we show up, we deliver, no drama.
+      </p>
+
+      <div class="lh-cta-group">
+        <a href="tel:5550001234" class="lh-cta-primary">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <path d="M12.5 10.5c-.667.5-1.5.667-2.5.5-1-.167-2-.667-3-1.5S5.667 7.5 5 6.5c-.667-1-.833-1.833-.5-2.5L5.5 2.5a.5.5 0 01.707 0L8 4.293a.5.5 0 010 .707L7 6a6.5 6.5 0 003 3l1-.5a.5.5 0 01.707.707L12.5 10.5z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+          </svg>
+          Call Now
+        </a>
+        <a href="#" class="lh-cta-secondary">Get a Free Quote</a>
+      </div>
+
+      <div class="lh-chips">
+        <span class="lh-chip">
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+            <path d="M2 5.5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Locally owned
+        </span>
+        <span class="lh-chip">
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+            <path d="M2 5.5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Fast turnaround
+        </span>
+        <span class="lh-chip">
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+            <path d="M2 5.5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Clear pricing
+        </span>
+      </div>
+
+      <p class="lh-credibility">Trusted by neighbors and regulars across the area.</p>
+
+    </div>
+
+    <!-- ── CONTACT CARD ──────────────────────────────────────── -->
+    <div class="lh-local-card">
+
+      <!-- Rating block -->
+      <div class="lh-local-card-top">
+        <div class="lh-local-rating">
+          <span class="lh-local-stars">★★★★★</span>
+          <span class="lh-local-rating-val">4.9★</span>
+        </div>
+        <div class="lh-local-rating-lbl">Avg. rating</div>
+      </div>
+
+      <div class="lh-local-divider"></div>
+
+      <!-- Phone -->
+      <div class="lh-local-contact-label">Call or Text</div>
+      <a href="tel:5550001234" class="lh-local-phone">(555) 000-1234</a>
+
+      <!-- Hours + location -->
+      <div class="lh-local-meta">
+        <div class="lh-local-meta-row">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+            <circle cx="6.5" cy="6.5" r="5.5" stroke="currentColor" stroke-width="1.25"/>
+            <path d="M6.5 4v3l2 1.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+          </svg>
+          <span>Mon–Sat, 8am–6pm</span>
+        </div>
+        <div class="lh-local-meta-row">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+            <path d="M6.5 1.5C4.567 1.5 3 3.067 3 5c0 2.5 3.5 6.5 3.5 6.5S10 7.5 10 5c0-1.933-1.567-3.5-3.5-3.5z" stroke="currentColor" stroke-width="1.25"/>
+            <circle cx="6.5" cy="5" r="1.25" stroke="currentColor" stroke-width="1.25"/>
+          </svg>
+          <span>Serving the local area</span>
+        </div>
+      </div>
+
+      <div class="lh-local-divider"></div>
+
+      <!-- Trust chips 2×2 -->
+      <div class="lh-trust-chips">
+        <div class="lh-trust-chip">
+          <svg class="lh-trust-check" width="11" height="11" viewBox="0 0 11 11" fill="none">
+            <path d="M2 5.5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Fast turnaround
+        </div>
+        <div class="lh-trust-chip">
+          <svg class="lh-trust-check" width="11" height="11" viewBox="0 0 11 11" fill="none">
+            <path d="M2 5.5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Clear pricing
+        </div>
+        <div class="lh-trust-chip">
+          <svg class="lh-trust-check" width="11" height="11" viewBox="0 0 11 11" fill="none">
+            <path d="M2 5.5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Locally owned
+        </div>
+        <div class="lh-trust-chip">
+          <svg class="lh-trust-check" width="11" height="11" viewBox="0 0 11 11" fill="none">
+            <path d="M2 5.5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Call anytime
+        </div>
+      </div>
+
+    </div>
+    <!-- /contact card -->
+
+  </div>
+</section>
+
+<!-- ============================================================
+     HOW TO CUSTOMIZE:
+
+     1. Color vibe — warm-local is the natural fit here, but
+        dark-neon and premium-mono also work well. Light vibes
+        (clean-light, warm-local) remove the .lh-generated-hero::before
+        texture or soften its opacity for best results.
+
+     2. Primary CTA — for local services, "Call Now" with a tel: link
+        outperforms generic action words. Keep it.
+
+     3. Phone number — replace (555) 000-1234 with a real number
+        in both the copy column CTA and the card <a href="tel:">.
+
+     4. Hours + service area — both meta rows are freeform text.
+        Update to match your actual hours and coverage area.
+
+     5. Trust chips — pick from LOCAL_TRUST_BANK entries or write
+        your own. Specificity beats generics ("Same-day service"
+        beats "Fast service" every time).
+
+     6. Sticky card — the contact card is position:sticky on desktop.
+        Remove that if you're embedding this below the fold.
+
+     Generated by Launch Hero · manicwebmaster.com/tools/launch-hero/
+     ============================================================ -->
+
+</body>
+</html>

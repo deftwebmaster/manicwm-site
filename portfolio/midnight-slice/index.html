@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Midnight Slice is a fictional late-night pizza shop website with neon branding, pickup, delivery, slices, and group orders."
+    />
+    <title>Midnight Slice | Pizza After Dark</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="#hero" aria-label="Midnight Slice home">
+          <img src="assets/midnight-slice-logo.png" width="1536" height="1024" alt="" />
+          <span>Midnight Slice</span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" data-nav-toggle>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span class="sr-only">Toggle menu</span>
+        </button>
+
+        <div class="nav-menu" id="nav-menu" data-nav-menu>
+          <a href="#featured">Pies</a>
+          <a href="#menu">Menu</a>
+          <a href="#about">About</a>
+          <a href="#gallery">Gallery</a>
+          <a class="nav-order" href="#order">Order Now</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero section-shell" id="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <div class="eyebrow">
+            <span>Open Late</span>
+            <span>Downtown Eclipse City</span>
+          </div>
+          <h1 id="hero-title">Pizza After Dark.</h1>
+          <p>
+            Hot slices, loud flavors, and late-night delivery from Midnight Slice.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#order">Order Now</a>
+            <a class="button button-secondary" href="#menu">View Menu</a>
+          </div>
+          <div class="hero-meta" aria-label="Restaurant highlights">
+            <span>Fresh dough daily</span>
+            <span>15-minute pickup</span>
+            <span>Group orders welcome</span>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-label="Hot Honey Afterburn pizza hero artwork">
+          <div class="hero-card">
+            <img
+              src="assets/midnight-slice-hero.png"
+              width="1024"
+              height="1536"
+              alt="Hot Honey Afterburn pizza poster with Midnight Slice neon logo"
+              fetchpriority="high"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="promo-strip" aria-label="Current pizza deal">
+        <div class="promo-inner">
+          <span class="promo-kicker">Midnight Special</span>
+          <strong>2 slices + drink for $7</strong>
+          <span>after 9PM</span>
+        </div>
+      </section>
+
+      <section class="section-shell section-block featured" id="featured" aria-labelledby="featured-title">
+        <div class="section-heading">
+          <span class="section-kicker">Featured Menu</span>
+          <h2 id="featured-title">Loud flavors, fast exits.</h2>
+          <p>Six shop signatures built for pickup windows, curbside handoffs, and people texting "you up?" to pizza.</p>
+        </div>
+
+        <div class="featured-grid">
+          <article class="menu-card signature">
+            <div class="card-top">
+              <span class="item-badge">House Slice</span>
+              <span class="price">$5.25</span>
+            </div>
+            <h3>The Midnight Slice</h3>
+            <p>Charred pepperoni, mozzarella, red sauce, oregano, and a garlic oil finish.</p>
+          </article>
+          <article class="menu-card">
+            <div class="card-top">
+              <span class="item-badge">Classic</span>
+              <span class="price">$4.75</span>
+            </div>
+            <h3>Neon Pepperoni</h3>
+            <p>Cupped pepperoni, marinara, mozzarella, and a bright chili drizzle.</p>
+          </article>
+          <article class="menu-card hot-card">
+            <div class="card-top">
+              <span class="item-badge">Hot Honey Favorite</span>
+              <span class="price">$5.50</span>
+            </div>
+            <h3>Hot Honey Afterburn</h3>
+            <p>Soppressata, hot honey, mozzarella, chili flakes, and crispy edges.</p>
+          </article>
+          <article class="menu-card">
+            <div class="card-top">
+              <span class="item-badge">Loaded</span>
+              <span class="price">$5.75</span>
+            </div>
+            <h3>Alley Cat Supreme</h3>
+            <p>Sausage, mushrooms, peppers, onions, olives, pepperoni, and extra cheese.</p>
+          </article>
+          <article class="menu-card">
+            <div class="card-top">
+              <span class="item-badge">Veg</span>
+              <span class="price">$4.95</span>
+            </div>
+            <h3>Static Margherita</h3>
+            <p>Fresh mozzarella, basil, crushed tomato, sea salt, and olive oil.</p>
+          </article>
+          <article class="menu-card storm">
+            <div class="card-top">
+              <span class="item-badge">After Hours</span>
+              <span class="price">$6.25</span>
+            </div>
+            <h3>The 2AM Meatstorm</h3>
+            <p>Pepperoni, sausage, bacon, meatballs, mozzarella, and midnight marinara.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-shell section-block menu-preview" id="menu" aria-labelledby="menu-title">
+        <div class="section-heading">
+          <span class="section-kicker">Full Menu Preview</span>
+          <h2 id="menu-title">Scan it fast. Order faster.</h2>
+          <p>All prices are fictional, all cravings are extremely real.</p>
+        </div>
+
+        <div class="menu-layout">
+          <div class="menu-poster">
+            <img
+              src="assets/midnight-slice-menu.png"
+              width="1024"
+              height="1536"
+              loading="lazy"
+              alt="Neon Midnight Slice illustrated menu poster"
+            />
+          </div>
+
+          <div class="menu-lists" aria-label="Menu categories and prices">
+            <article class="price-card">
+              <h3>Slices</h3>
+              <ul>
+                <li><span>Neon Pepperoni</span><strong>$4.75</strong></li>
+                <li><span>Static Cheese</span><strong>$4.25</strong></li>
+                <li><span>Hot Honey Afterburn</span><strong>$5.25</strong></li>
+                <li><span>Alley Cat Supreme</span><strong>$5.50</strong></li>
+              </ul>
+            </article>
+            <article class="price-card">
+              <h3>Whole Pies</h3>
+              <ul>
+                <li><span>Midnight Classic</span><strong>$22</strong></li>
+                <li><span>Electric BBQ Chicken</span><strong>$23</strong></li>
+                <li><span>Inferno Deluxe</span><strong>$24</strong></li>
+                <li><span>Downtown Veggie</span><strong>$21</strong></li>
+              </ul>
+            </article>
+            <article class="price-card">
+              <h3>Wings</h3>
+              <ul>
+                <li><span>Buffalo</span><strong>$10.50</strong></li>
+                <li><span>Garlic Parm</span><strong>$10.50</strong></li>
+                <li><span>Atomic Heat</span><strong>$11.50</strong></li>
+                <li><span>Hot Honey</span><strong>$11.50</strong></li>
+              </ul>
+            </article>
+            <article class="price-card">
+              <h3>Drinks</h3>
+              <ul>
+                <li><span>Fountain Drinks</span><strong>$2.75</strong></li>
+                <li><span>Bottled Soda</span><strong>$3.50</strong></li>
+                <li><span>Energy Drinks</span><strong>$4.50</strong></li>
+                <li><span>Cherry Coke Slush</span><strong>$4.25</strong></li>
+              </ul>
+            </article>
+            <article class="price-card combo-card">
+              <h3>Late Night Combos</h3>
+              <ul>
+                <li><span>Slice + Drink</span><strong>$6.50</strong></li>
+                <li><span>2 Slice Combo</span><strong>$8.75</strong></li>
+                <li><span>Pizza + Wings Pack</span><strong>$29.99</strong></li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-shell order-panel" id="order" aria-labelledby="order-title">
+        <div>
+          <span class="section-kicker">Online Ordering</span>
+          <h2 id="order-title">Built for pickup, delivery, and bad decisions after 10PM.</h2>
+          <p>Tap in for hot pies, slice runs, office raids, movie-night stacks, and post-show recovery orders.</p>
+        </div>
+        <div class="order-actions">
+          <a class="button button-primary" href="#order">Start Order</a>
+          <a class="button button-call" href="tel:+15558675309">Call the Shop</a>
+          <address>
+            <strong>(555) 867-5309</strong>
+            <span>317 Neon Nights Blvd, Downtown Eclipse City</span>
+          </address>
+        </div>
+      </section>
+
+      <section class="section-shell section-block about" id="about" aria-labelledby="about-title">
+        <div class="about-copy">
+          <span class="section-kicker">About Midnight Slice</span>
+          <h2 id="about-title">Fresh dough. Fast pickup. Chaotic-good pizza energy.</h2>
+          <p>
+            Midnight Slice started as the tiny shop everyone found after concerts, late shifts, and group chats that
+            refused to go home. We make dough every morning, fire pies until late, and keep the counter moving when the
+            rest of the block goes quiet.
+          </p>
+          <p>
+            The vibe is neon, the sauce is bright, and every order is built to travel well from our oven to your couch,
+            curb, studio, or sidewalk table.
+          </p>
+        </div>
+        <div class="about-stats" aria-label="Shop facts">
+          <div>
+            <strong>2:30AM</strong>
+            <span>Friday and Saturday close</span>
+          </div>
+          <div>
+            <strong>12 min</strong>
+            <span>Average slice pickup</span>
+          </div>
+          <div>
+            <strong>24"</strong>
+            <span>Party pie option</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-shell section-block gallery" id="gallery" aria-labelledby="gallery-title">
+        <div class="section-heading">
+          <span class="section-kicker">Gallery</span>
+          <h2 id="gallery-title">Seen under neon.</h2>
+          <p>Social-friendly moments from the counter, the curb, and the box lid.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <article class="social-card slice-shot">
+            <div class="visual"></div>
+            <p>@midnight.slice.pizza: pepperoni glow-up in aisle five.</p>
+          </article>
+          <article class="social-card box-shot">
+            <div class="visual"></div>
+            <p>@midnight.slice.pizza: group order secured before the encore.</p>
+          </article>
+          <article class="social-card wings-shot">
+            <div class="visual"></div>
+            <p>@midnight.slice.pizza: atomic heat, dramatic lighting.</p>
+          </article>
+          <article class="social-card counter-shot">
+            <div class="visual"></div>
+            <p>@midnight.slice.pizza: the counter stays loud after midnight.</p>
+          </article>
+          <article class="social-card drink-shot">
+            <div class="visual"></div>
+            <p>@midnight.slice.pizza: fountain drink, huge slice, correct choice.</p>
+          </article>
+          <article class="social-card sign-shot">
+            <div class="visual"></div>
+            <p>@midnight.slice.pizza: hot slices, open late, no regrets.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-shell section-block reviews" aria-labelledby="reviews-title">
+        <div class="section-heading">
+          <span class="section-kicker">Reviews</span>
+          <h2 id="reviews-title">Locals with sauce on their sleeves.</h2>
+        </div>
+
+        <div class="review-grid">
+          <figure>
+            <blockquote>"The Hot Honey Afterburn fixed my whole night and maybe my personality."</blockquote>
+            <figcaption>Marisol R.</figcaption>
+          </figure>
+          <figure>
+            <blockquote>"Ordered for six people. Fed nine. Nobody knows how, but we respect it."</blockquote>
+            <figcaption>Devon K.</figcaption>
+          </figure>
+          <figure>
+            <blockquote>"Fast pickup, crispy crust, and the box looked cool enough to photograph."</blockquote>
+            <figcaption>Jules P.</figcaption>
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div>
+          <a class="footer-brand" href="#hero">Midnight Slice</a>
+          <p>Late-night pizza for Eclipse City.</p>
+        </div>
+        <div>
+          <h2>Location</h2>
+          <p>317 Neon Nights Blvd<br />Downtown Eclipse City</p>
+        </div>
+        <div>
+          <h2>Hours</h2>
+          <p>Sun-Thu: 11AM-1AM<br />Fri-Sat: 11AM-2:30AM</p>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <p><a href="tel:+15558675309">(555) 867-5309</a><br /><a href="mailto:orders@midnightslice.test">orders@midnightslice.test</a></p>
+        </div>
+        <div>
+          <h2>Social</h2>
+          <p><a href="#">Instagram</a><br /><a href="#">TikTok</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Designed by <a href="https://ManicWebmaster.com">ManicWebmaster</a></span>
+        <nav aria-label="Footer menu">
+          <a href="#featured">Featured</a>
+          <a href="#menu">Menu</a>
+          <a href="#order">Order</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

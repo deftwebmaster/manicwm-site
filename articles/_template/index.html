@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article Template | ManicWebmaster</title>
+  <meta name="description" content="A calm, content-first ManicWebmaster article template for long-tail SEO pages.">
+  <meta name="theme-color" content="#faf8f2">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="../../mw-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&amp;family=Newsreader:opsz,wght@6..72,500;6..72,650&amp;display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Replace With Article Title",
+      "description": "Replace with the article meta description.",
+      "author": {
+        "@type": "Person",
+        "name": "Matt Livingston"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ManicWebmaster",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://manicwebmaster.com/mw-logo.png"
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #141414;
+      --soft-ink: #4c4d50;
+      --quiet: #7a7b7c;
+      --paper: #faf8f2;
+      --paper-deep: #eee8dc;
+      --white: #fffdf8;
+      --line: rgba(20, 20, 20, 0.12);
+      --line-strong: rgba(20, 20, 20, 0.22);
+      --accent: #151515;
+      --cyan: #00b8df;
+      --rose: #e84676;
+      --container: 1120px;
+      --measure: 720px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 96px;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(0, 184, 223, 0.1), transparent 28rem),
+        linear-gradient(180deg, var(--paper), #f7f2e9 62%, #f1eadf);
+      color: var(--ink);
+      font-family: 'Barlow', sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .wrap {
+      width: min(100% - 40px, var(--container));
+      margin: 0 auto;
+    }
+
+    .measure {
+      width: min(100%, var(--measure));
+      margin: 0 auto;
+    }
+
+    .site-top {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 253, 248, 0.46);
+    }
+
+    .site-top-inner {
+      display: flex;
+      min-height: 72px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--ink);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .brand img {
+      width: 34px;
+      height: 34px;
+      border-radius: 7px;
+      background: var(--ink);
+    }
+
+    .home-link {
+      display: inline-flex;
+      align-items: center;
+      color: var(--quiet);
+      font-size: 0.84rem;
+      font-weight: 700;
+      border-bottom: 1px solid transparent;
+      line-height: 1.3;
+      text-decoration: none;
+    }
+
+    .home-link:hover {
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+
+    main {
+      padding-bottom: 76px;
+    }
+
+    .hero {
+      padding: clamp(64px, 9vw, 128px) 0 clamp(38px, 7vw, 76px);
+    }
+
+    .eyebrow {
+      color: var(--quiet);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      color: var(--ink);
+      font-family: 'Newsreader', serif;
+      font-weight: 650;
+      letter-spacing: 0;
+      line-height: 1.02;
+    }
+
+    h1 {
+      max-width: 840px;
+      margin-top: 18px;
+      font-size: clamp(3rem, 6.6vw, 5.9rem);
+    }
+
+    .dek {
+      max-width: 690px;
+      margin-top: 24px;
+      color: var(--soft-ink);
+      font-size: clamp(1.08rem, 2vw, 1.32rem);
+      line-height: 1.55;
+    }
+
+    .answer {
+      border-block: 1px solid var(--line);
+      background: rgba(255, 253, 248, 0.58);
+      padding: clamp(30px, 5vw, 52px) 0;
+    }
+
+    .answer b {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--ink);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .answer p {
+      color: var(--soft-ink);
+      font-size: clamp(1.18rem, 2.4vw, 1.55rem);
+      line-height: 1.5;
+    }
+
+    .article-layout {
+      display: grid;
+      gap: clamp(38px, 7vw, 72px);
+      padding-top: clamp(48px, 8vw, 86px);
+    }
+
+    .toc {
+      color: var(--quiet);
+      font-size: 0.92rem;
+    }
+
+    .toc b {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--ink);
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .toc ol {
+      display: grid;
+      gap: 9px;
+      list-style-position: inside;
+    }
+
+    .toc a {
+      color: var(--soft-ink);
+      text-decoration: none;
+    }
+
+    .toc a:hover {
+      color: var(--ink);
+    }
+
+    article {
+      width: min(100%, var(--measure));
+    }
+
+    article > * + * {
+      margin-top: 24px;
+    }
+
+    article section + section {
+      margin-top: clamp(54px, 9vw, 92px);
+    }
+
+    h2 {
+      margin-bottom: 18px;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+    }
+
+    h3 {
+      margin-top: 34px;
+      margin-bottom: 12px;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+    }
+
+    p, li {
+      color: var(--soft-ink);
+    }
+
+    article p,
+    article li {
+      font-size: 1.06rem;
+    }
+
+    .lead {
+      color: var(--ink);
+      font-size: clamp(1.22rem, 2.4vw, 1.48rem);
+      line-height: 1.55;
+    }
+
+    ul, ol {
+      padding-left: 1.25rem;
+    }
+
+    li + li {
+      margin-top: 0.6rem;
+    }
+
+    strong {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .note {
+      border-left: 3px solid var(--ink);
+      margin-block: 34px;
+      padding: 4px 0 4px 22px;
+    }
+
+    .note p {
+      color: var(--ink);
+      font-size: clamp(1.22rem, 2.3vw, 1.42rem);
+      line-height: 1.48;
+    }
+
+    .soft-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 253, 248, 0.68);
+      padding: clamp(22px, 4vw, 34px);
+    }
+
+    .soft-card b {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--ink);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .cta {
+      margin-top: clamp(60px, 9vw, 96px);
+      border: 1px solid var(--line-strong);
+      border-radius: 24px;
+      background: #151515;
+      color: var(--paper);
+      padding: clamp(28px, 5vw, 44px);
+    }
+
+    .cta h2 {
+      color: var(--paper);
+      margin-bottom: 14px;
+    }
+
+    .cta p {
+      max-width: 580px;
+      color: rgba(250, 248, 242, 0.74);
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(250, 248, 242, 0.28);
+      border-radius: 999px;
+      padding: 11px 17px;
+      color: var(--paper);
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .button.primary {
+      border-color: var(--paper);
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .faq {
+      border-top: 1px solid var(--line);
+      padding-top: clamp(42px, 7vw, 72px);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--line);
+      padding: 24px 0;
+    }
+
+    .faq-item h3 {
+      margin: 0 0 8px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 30px 0 42px;
+      color: var(--quiet);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    footer a {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    @media (min-width: 940px) {
+      .article-layout {
+        grid-template-columns: 220px minmax(0, var(--measure));
+        justify-content: center;
+        align-items: start;
+      }
+
+      .toc {
+        position: sticky;
+        top: 104px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .wrap {
+        width: min(100% - 28px, var(--container));
+      }
+
+      .site-top-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        padding-block: 16px;
+      }
+
+      h1 {
+        font-size: clamp(2.75rem, 13vw, 4.35rem);
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-top">
+    <div class="wrap site-top-inner">
+      <a class="brand" href="../../" aria-label="ManicWebmaster home">
+        <img src="../../mw-logo.png" alt="" width="34" height="34">
+        <span>ManicWebmaster</span>
+      </a>
+      <a class="home-link" href="../../">Web fixes &amp; graphic design</a>
+    </div>
+  </header>
+
+  <main>
+    <header class="hero">
+      <div class="wrap measure">
+        <p class="eyebrow">Website design notes</p>
+        <h1>Replace this with the article title.</h1>
+        <p class="dek">A calm subtitle that names the reader, the problem, and the useful thing this article will help them understand.</p>
+      </div>
+    </header>
+
+    <section class="answer" id="answer">
+      <div class="wrap measure">
+        <b>Short answer</b>
+        <p>Open with the clean answer to the exact long-tail keyword. No throat-clearing. Give the reader the useful version first, then let the article add nuance.</p>
+      </div>
+    </section>
+
+    <div class="wrap article-layout" id="guide">
+      <aside class="toc" aria-label="Table of contents">
+        <b>Contents</b>
+        <ol>
+          <li><a href="#section-one">What to know</a></li>
+          <li><a href="#section-two">What to fix</a></li>
+          <li><a href="#section-three">What it costs</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ol>
+      </aside>
+
+      <article>
+        <section id="section-one">
+          <p class="lead">Use the opening section to make the reader feel understood. Name the situation clearly, then explain the decision they are trying to make.</p>
+          <p>This layout is intentionally quiet: readable line length, strong headings, minimal decoration, and enough visual rhythm to feel modern without fighting the article.</p>
+          <p>For SEO, the page should still have a crisp title, direct answer, useful subheads, internal links, and FAQs. It just does not need to look like a dashboard.</p>
+        </section>
+
+        <section id="section-two">
+          <h2>What to know before you change anything</h2>
+          <p>Put the most useful context here. This might be a diagnosis, comparison, local business angle, or explanation of why the problem matters.</p>
+          <div class="note">
+            <p>The design should disappear a little. The reader came for the answer, not a carnival of boxes.</p>
+          </div>
+          <h3>A practical detail</h3>
+          <p>Use short subsections when the article needs depth. Keep the language specific, plain, and grounded in the kind of work ManicWebmaster actually does.</p>
+        </section>
+
+        <section id="section-three">
+          <h2>What I would fix first</h2>
+          <p>This section is where the expertise shows up. Give the reader the same order of operations you would use on a real website or design project.</p>
+          <div class="soft-card">
+            <b>Simple checklist</b>
+            <ul>
+              <li>Clarify the headline and first call to action.</li>
+              <li>Check the mobile reading experience and spacing.</li>
+              <li>Remove anything that distracts from the customer’s next step.</li>
+              <li>Add proof where it helps the reader trust the recommendation.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="cta" id="contact">
+          <h2>Want me to look at yours?</h2>
+          <p>Send the page, logo, article idea, or messy version. I’ll tell you what I would clean up first.</p>
+          <div class="cta-actions">
+            <a class="button primary sms-link" data-sms="I read your article and want help with my website or design.">Text Matt</a>
+            <a class="button" href="mailto:matt@manicwebmaster.com">Email the brief</a>
+          </div>
+        </section>
+
+        <section class="faq" id="faq">
+          <h2>FAQ</h2>
+          <div class="faq-item">
+            <h3>Should every article have a short answer?</h3>
+            <p>Yes. It helps readers immediately and gives the page a clear search-intent match.</p>
+          </div>
+          <div class="faq-item">
+            <h3>How many sections should an article have?</h3>
+            <p>As many as the topic needs, but fewer than the busy version. Useful, calm, complete.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Where does the sales pitch go?</h3>
+            <p>After the advice has earned it. Keep the CTA present but quiet.</p>
+          </div>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>© 2026 ManicWebmaster</p>
+      <p><a href="../../">Website fixes</a> · <a href="../../graphics/">Graphic design</a> · <a href="mailto:matt@manicwebmaster.com">matt@manicwebmaster.com</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const PHONE = '4697170416';
+    document.querySelectorAll('.sms-link').forEach(a => {
+      const body = encodeURIComponent('Hey Matt, ' + a.dataset.sms);
+      a.href = `sms:${PHONE}?&body=${body}`;
+    });
+  </script>
+</body>
+</html>

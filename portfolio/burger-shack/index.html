@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The Burger Shack is a retro diner-inspired burger spot serving smash burgers, hand-cut fries, craft shakes, and late-night specials." />
+  <title>The Burger Shack | Big Flavor. Good Vibes.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lato:wght@400;700;900&family=Rye&family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #24140d;
+      --cola: #321b12;
+      --red: #c83422;
+      --ketchup: #a92317;
+      --mustard: #eeb537;
+      --pickle: #3d642e;
+      --mint: #b9d8c5;
+      --cream: #fff4d9;
+      --paper: #f8e8c3;
+      --tile: #fdf9ec;
+      --steel: #d7e3df;
+      --shadow: rgba(36, 20, 13, 0.18);
+      --max: 1180px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    * { margin: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-width: 320px;
+      background:
+        linear-gradient(90deg, rgba(200, 52, 34, 0.05) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(200, 52, 34, 0.05) 1px, transparent 1px),
+        var(--cream);
+      background-size: 32px 32px;
+      color: var(--ink);
+      font-family: "Lato", Arial, sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      pointer-events: none;
+      opacity: 0.42;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E");
+    }
+
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      border-bottom: 4px solid var(--mustard);
+      background: rgba(36, 20, 13, 0.95);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      width: min(var(--max), calc(100% - 32px));
+      min-height: 68px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .nav-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--mustard);
+      font-family: "Rye", Georgia, serif;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .nav-brand img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.28));
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(14px, 3vw, 34px);
+      list-style: none;
+      padding: 0;
+    }
+
+    .nav-links a {
+      color: var(--paper);
+      font-family: "Special Elite", Courier, monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible { color: var(--mustard); }
+
+    .hero {
+      min-height: 96vh;
+      padding: 118px 0 42px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(185, 216, 197, 0.78), rgba(255, 244, 217, 0.82) 44%, rgba(248, 232, 195, 0.94)),
+        repeating-linear-gradient(90deg, rgba(200, 52, 34, 0.18) 0 18px, rgba(255, 255, 255, 0.2) 18px 36px);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      left: -10%;
+      right: -10%;
+      bottom: 0;
+      height: 28%;
+      background:
+        linear-gradient(90deg, var(--red) 0 12.5%, var(--tile) 12.5% 25%, var(--red) 25% 37.5%, var(--tile) 37.5% 50%, var(--red) 50% 62.5%, var(--tile) 62.5% 75%, var(--red) 75% 87.5%, var(--tile) 87.5% 100%);
+      background-size: 160px 160px;
+      border-top: 8px solid var(--ink);
+      transform: skewY(-2deg);
+      transform-origin: right top;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(var(--max), calc(100% - 32px));
+      min-height: calc(96vh - 160px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.98fr);
+      align-items: center;
+      gap: clamp(28px, 5vw, 70px);
+    }
+
+    .eyebrow {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 20px;
+      padding: 8px 12px 7px;
+      border: 2px solid var(--ink);
+      background: var(--mustard);
+      color: var(--ink);
+      box-shadow: 5px 5px 0 var(--ink);
+      font-family: "Special Elite", Courier, monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 720px;
+      color: var(--cola);
+      font-family: "Abril Fatface", Georgia, serif;
+      font-size: clamp(3.2rem, 8.5vw, 7.4rem);
+      line-height: 0.86;
+      text-wrap: balance;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--red);
+      text-shadow: 4px 4px 0 var(--mustard);
+    }
+
+    .hero-copy {
+      max-width: 570px;
+      margin-top: 24px;
+      color: #513225;
+      font-size: clamp(1.02rem, 1.6vw, 1.2rem);
+      font-weight: 700;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--ink);
+      border-radius: 6px;
+      padding: 13px 22px 11px;
+      color: var(--ink);
+      cursor: pointer;
+      font-family: "Special Elite", Courier, monospace;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 var(--ink);
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: #fff9ec;
+    }
+
+    .btn-light { background: #fff9ec; }
+
+    .hero-panel {
+      position: relative;
+      align-self: stretch;
+      min-height: 520px;
+      display: grid;
+      place-items: center;
+    }
+
+    .hero-sign {
+      width: min(430px, 86vw);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 10px solid var(--ink);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 50% 50%, #fff9ec 0 43%, rgba(255, 249, 236, 0.72) 44%, transparent 45%),
+        repeating-conic-gradient(from 0deg, var(--red) 0deg 12deg, #fff9ec 12deg 24deg);
+      box-shadow: 0 22px 0 var(--red), 0 38px 52px rgba(36, 20, 13, 0.32);
+      animation: signDrop 0.7s cubic-bezier(.2, 1, .3, 1) both;
+    }
+
+    .hero-logo {
+      width: 64%;
+      filter: drop-shadow(0 14px 18px rgba(36, 20, 13, 0.18));
+      transform: translateY(-4%) rotate(-2deg);
+    }
+
+    .ticket {
+      position: absolute;
+      right: 4%;
+      bottom: 14%;
+      width: min(235px, 48vw);
+      padding: 18px;
+      border: 2px dashed var(--red);
+      background: #fffdf4;
+      box-shadow: 8px 8px 0 rgba(36, 20, 13, 0.16);
+      transform: rotate(4deg);
+    }
+
+    .ticket strong {
+      display: block;
+      color: var(--red);
+      font-family: "Rye", Georgia, serif;
+      font-size: 1.55rem;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .ticket span {
+      display: block;
+      margin-top: 8px;
+      color: #664332;
+      font-family: "Special Elite", Courier, monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .badge-strip {
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+      border-block: 4px solid var(--ink);
+      background: var(--cola);
+      padding: 12px 0 10px;
+    }
+
+    .badge-track {
+      display: flex;
+      width: max-content;
+      animation: scrollLeft 24s linear infinite;
+    }
+
+    .badge-track span {
+      padding: 0 26px;
+      color: var(--mustard);
+      font-family: "Special Elite", Courier, monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    section { padding: 90px 0; }
+    .section-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section-kicker {
+      margin-bottom: 8px;
+      color: var(--red);
+      font-family: "Special Elite", Courier, monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.22em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 0 auto 34px;
+      color: var(--cola);
+      font-family: "Abril Fatface", Georgia, serif;
+      font-size: clamp(2.2rem, 5.6vw, 4.4rem);
+      line-height: 0.95;
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    .about {
+      background:
+        linear-gradient(135deg, rgba(238, 181, 55, 0.08), transparent 35%),
+        var(--cola);
+      color: var(--paper);
+    }
+
+    .about .section-title { color: var(--mustard); }
+    .about .section-kicker { color: rgba(248, 232, 195, 0.68); }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .story-card,
+    .feature {
+      border: 2px solid rgba(255, 244, 217, 0.18);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .story-card {
+      padding: clamp(28px, 4vw, 42px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 28px;
+      box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.18);
+    }
+
+    .story-card p {
+      color: rgba(248, 232, 195, 0.85);
+      font-size: 1.04rem;
+    }
+
+    .story-card p + p { margin-top: 18px; }
+
+    .stamp {
+      width: fit-content;
+      padding: 11px 14px 9px;
+      border: 2px solid var(--mustard);
+      color: var(--mustard);
+      font-family: "Special Elite", Courier, monospace;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transform: rotate(-3deg);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .feature {
+      padding: 24px;
+      transition: transform 0.22s ease, background 0.22s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .feature-icon {
+      display: grid;
+      place-items: center;
+      width: 50px;
+      height: 50px;
+      margin-bottom: 18px;
+      border-radius: 50%;
+      background: var(--mustard);
+      color: var(--ink);
+      font-size: 1.45rem;
+    }
+
+    .feature h3 {
+      margin-bottom: 8px;
+      color: #fff4d9;
+      font-family: "Rye", Georgia, serif;
+      font-size: 1.02rem;
+      letter-spacing: 0.05em;
+    }
+
+    .feature p {
+      color: rgba(248, 232, 195, 0.74);
+      font-size: 0.94rem;
+    }
+
+    .menu {
+      background:
+        linear-gradient(180deg, var(--cream), #fff9ec 38%, var(--paper));
+    }
+
+    .menu-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 34px;
+    }
+
+    .tab-btn {
+      min-height: 42px;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      padding: 10px 17px 8px;
+      background: #fffdf4;
+      color: var(--ink);
+      cursor: pointer;
+      font-family: "Special Elite", Courier, monospace;
+      font-size: 0.77rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: transform 0.16s ease, background 0.16s ease, color 0.16s ease;
+    }
+
+    .tab-btn:hover,
+    .tab-btn:focus-visible,
+    .tab-btn.active {
+      background: var(--cola);
+      color: var(--mustard);
+      transform: translateY(-2px);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .menu-card {
+      min-height: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: #fffdf4;
+      box-shadow: 7px 7px 0 rgba(36, 20, 13, 0.16);
+      transition: opacity 0.18s ease, transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .menu-card:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 11px 11px 0 rgba(36, 20, 13, 0.16);
+    }
+
+    .menu-card[hidden] { display: none; }
+
+    .menu-card-img {
+      min-height: 142px;
+      display: grid;
+      place-items: center;
+      border-bottom: 2px solid var(--ink);
+      background:
+        radial-gradient(circle at 50% 45%, rgba(238, 181, 55, 0.9) 0 38%, transparent 39%),
+        linear-gradient(135deg, rgba(185, 216, 197, 0.95), rgba(255, 244, 217, 0.95));
+      font-size: 4.2rem;
+    }
+
+    .menu-card-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      max-width: calc(100% - 24px);
+      border: 2px solid var(--ink);
+      border-radius: 4px;
+      padding: 5px 8px 3px;
+      background: var(--red);
+      color: #fff9ec;
+      font-family: "Special Elite", Courier, monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .menu-card-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 21px;
+    }
+
+    .menu-card h3 {
+      color: var(--cola);
+      font-family: "Abril Fatface", Georgia, serif;
+      font-size: 1.36rem;
+      line-height: 1.04;
+    }
+
+    .menu-card p {
+      margin-top: 10px;
+      color: #674331;
+      font-size: 0.92rem;
+    }
+
+    .menu-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 20px;
+    }
+
+    .price {
+      color: var(--red);
+      font-family: "Rye", Georgia, serif;
+      font-size: 1.15rem;
+      white-space: nowrap;
+    }
+
+    .order-btn {
+      min-height: 39px;
+      border: 2px solid var(--ink);
+      border-radius: 5px;
+      padding: 9px 12px 7px;
+      background: var(--cola);
+      color: var(--mustard);
+      cursor: pointer;
+      font-family: "Special Elite", Courier, monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .order-btn:hover,
+    .order-btn:focus-visible {
+      background: var(--red);
+      color: #fff9ec;
+      transform: translateY(-2px);
+    }
+
+    .specials {
+      padding: 0;
+      border-block: 5px solid var(--ink);
+      background: var(--red);
+    }
+
+    .specials-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.86fr 1.14fr;
+      gap: 32px;
+      align-items: center;
+      padding: 58px 0;
+    }
+
+    .specials-board {
+      border: 3px solid var(--ink);
+      border-radius: 8px;
+      padding: 28px;
+      background: var(--cola);
+      color: var(--paper);
+      box-shadow: 10px 10px 0 rgba(36, 20, 13, 0.25);
+    }
+
+    .specials-board h2 {
+      color: var(--mustard);
+      font-family: "Rye", Georgia, serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1;
+    }
+
+    .specials-board p {
+      margin-top: 14px;
+      color: rgba(248, 232, 195, 0.82);
+      font-family: "Special Elite", Courier, monospace;
+      letter-spacing: 0.04em;
+    }
+
+    .specials-board .section-kicker {
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    .special-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .special-row {
+      display: grid;
+      grid-template-columns: 92px 1fr auto;
+      gap: 14px;
+      align-items: center;
+      border: 2px solid var(--ink);
+      border-radius: 7px;
+      padding: 13px 15px;
+      background: #fff8e8;
+      box-shadow: 5px 5px 0 rgba(36, 20, 13, 0.18);
+    }
+
+    .special-row strong {
+      color: var(--red);
+      font-family: "Special Elite", Courier, monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .special-row span {
+      color: var(--cola);
+      font-weight: 900;
+    }
+
+    .special-row em {
+      color: var(--pickle);
+      font-family: "Rye", Georgia, serif;
+      font-style: normal;
+      white-space: nowrap;
+    }
+
+    .info {
+      padding: 0;
+      background: var(--steel);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      min-height: 500px;
+    }
+
+    .info-block {
+      display: grid;
+      place-items: center;
+      padding: clamp(42px, 7vw, 82px) 24px;
+      text-align: center;
+    }
+
+    .info-block:first-child {
+      background:
+        linear-gradient(90deg, rgba(200, 52, 34, 0.12) 50%, transparent 50%),
+        var(--tile);
+      background-size: 34px 34px;
+    }
+
+    .info-card {
+      width: min(430px, 100%);
+      border: 3px solid var(--ink);
+      border-radius: 8px;
+      background: #fffdf4;
+      box-shadow: 10px 10px 0 rgba(36, 20, 13, 0.18);
+      padding: clamp(26px, 4vw, 38px);
+    }
+
+    .info-card h2 {
+      color: var(--cola);
+      font-family: "Abril Fatface", Georgia, serif;
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+
+    .hours-table {
+      width: 100%;
+      margin-top: 22px;
+      border-collapse: collapse;
+    }
+
+    .hours-table td {
+      border-bottom: 1px dashed rgba(36, 20, 13, 0.28);
+      padding: 10px 0;
+      color: #503123;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    .hours-table td:last-child {
+      color: var(--red);
+      font-family: "Special Elite", Courier, monospace;
+      text-align: right;
+    }
+
+    .address-text {
+      margin-top: 18px;
+      color: #503123;
+      font-family: "Special Elite", Courier, monospace;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+    }
+
+    .map-card {
+      min-height: 168px;
+      margin-top: 24px;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--ink);
+      border-radius: 7px;
+      background:
+        linear-gradient(90deg, rgba(36, 20, 13, 0.09) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(36, 20, 13, 0.09) 1px, transparent 1px),
+        var(--mint);
+      background-size: 26px 26px;
+      color: var(--cola);
+    }
+
+    .map-card span {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      padding: 10px 14px 8px;
+      background: var(--mustard);
+      font-family: "Special Elite", Courier, monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    footer {
+      padding: 46px 0 36px;
+      border-top: 5px solid var(--mustard);
+      background: var(--cola);
+      color: var(--paper);
+      text-align: center;
+    }
+
+    .footer-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      color: var(--mustard);
+      font-family: "Rye", Georgia, serif;
+      font-size: 1.45rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .footer-sub {
+      margin-top: 8px;
+      color: rgba(248, 232, 195, 0.62);
+      font-family: "Special Elite", Courier, monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .footer-links,
+    .social-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 13px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .social-row { margin-top: 26px; }
+    .footer-links { margin-top: 24px; }
+
+    .social-btn {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 2px solid rgba(248, 232, 195, 0.22);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--paper);
+      text-decoration: none;
+      transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+    }
+
+    .social-btn:hover,
+    .social-btn:focus-visible {
+      background: var(--mustard);
+      color: var(--ink);
+      transform: translateY(-2px);
+    }
+
+    .footer-links a {
+      color: rgba(248, 232, 195, 0.7);
+      font-family: "Special Elite", Courier, monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible { color: var(--mustard); }
+
+    .footer-copy {
+      margin-top: 24px;
+      color: rgba(248, 232, 195, 0.38);
+      font-family: "Special Elite", Courier, monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.06em;
+    }
+
+    .credit {
+      margin-top: 8px;
+      color: rgba(248, 232, 195, 0.48);
+      font-family: "Special Elite", Courier, monospace;
+      font-size: 0.76rem;
+    }
+
+    .credit a {
+      color: var(--mustard);
+      text-decoration: none;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes signDrop {
+      from { opacity: 0; transform: translateY(-28px) rotate(5deg) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) rotate(0deg) scale(1); }
+    }
+
+    @keyframes scrollLeft {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        min-height: auto;
+        padding-top: 104px;
+      }
+
+      .hero-inner,
+      .story-grid,
+      .specials-inner,
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-inner { min-height: 0; }
+      .hero-panel {
+        min-height: 420px;
+        order: -1;
+      }
+
+      .ticket {
+        right: 8%;
+        bottom: 6%;
+      }
+
+      .menu-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 720px) {
+      .nav-inner {
+        min-height: auto;
+        padding: 11px 0;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .nav-links a {
+        font-size: 0.66rem;
+        letter-spacing: 0.05em;
+      }
+
+      .hero { padding-top: 130px; }
+      .hero h1 { font-size: clamp(3rem, 17vw, 4.7rem); }
+      .hero-panel { min-height: 344px; }
+      .hero-sign {
+        width: min(320px, 84vw);
+        border-width: 7px;
+      }
+
+      .ticket {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: 100%;
+        max-width: 320px;
+        margin: -30px auto 0;
+      }
+
+      .features,
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section { padding: 66px 0; }
+      .special-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .special-row em { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-nav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="#top" aria-label="The Burger Shack home">
+        <img src="burgershack-logo.png" alt="" />
+        <span>The Burger Shack</span>
+      </a>
+      <ul class="nav-links" aria-label="Primary navigation">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#specials">Specials</a></li>
+        <li><a href="#hours">Hours</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div>
+          <p class="eyebrow">Open late Friday and Saturday</p>
+          <h1 id="hero-title">Smash burgers, <span>diner soul.</span></h1>
+          <p class="hero-copy">Hand-pressed patties, crisp-edge fries, thick shakes, and the kind of counter-service energy that makes a weeknight feel like a small celebration.</p>
+          <div class="hero-actions">
+            <a href="#menu" class="btn btn-primary">See the Menu</a>
+            <a href="#specials" class="btn btn-light">Today’s Specials</a>
+          </div>
+        </div>
+
+        <div class="hero-panel" aria-hidden="true">
+          <div class="hero-sign">
+            <img class="hero-logo" src="burgershack-logo.png" alt="" />
+          </div>
+          <div class="ticket">
+            <strong>$9.99</strong>
+            <span>Classic smash, fries, and a fountain drink every weekday from 2 to 5.</span>
+          </div>
+        </div>
+      </div>
+      <div class="badge-strip" aria-hidden="true">
+        <div class="badge-track">
+          <span>Smash Burgers</span><span>Hand-Cut Fries</span><span>Craft Shakes</span><span>Daily Specials</span><span>Dine In + Takeout</span><span>Open Late Weekends</span>
+          <span>Smash Burgers</span><span>Hand-Cut Fries</span><span>Craft Shakes</span><span>Daily Specials</span><span>Dine In + Takeout</span><span>Open Late Weekends</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="section-inner">
+        <p class="section-kicker">Our Story</p>
+        <h2 class="section-title" id="about-title">Built Like a Neighborhood Classic</h2>
+        <div class="story-grid">
+          <article class="story-card reveal">
+            <div>
+              <p>The Burger Shack is all chrome-counter nostalgia and real-deal flavor: a small place where the grill stays loud, the shakes are thick, and every order gets the good paper liner.</p>
+              <p>Grab a booth, claim a stool, or take it to-go. Either way, the bag leaves hot and the napkin stack is never optional.</p>
+            </div>
+            <div class="stamp">Since 1998-ish</div>
+          </article>
+
+          <div class="features">
+            <article class="feature reveal">
+              <div class="feature-icon">1</div>
+              <h3>Fresh Daily</h3>
+              <p>80/20 chuck, hand-pressed every morning, seared hard on a flat top for crisp edges.</p>
+            </article>
+            <article class="feature reveal">
+              <div class="feature-icon">2</div>
+              <h3>House Sauce</h3>
+              <p>Tangy, smoky, a little sweet, and kept just mysterious enough to stay fun.</p>
+            </article>
+            <article class="feature reveal">
+              <div class="feature-icon">3</div>
+              <h3>Real Sides</h3>
+              <p>Russet fries, beer-battered rings, and pickles with enough snap to announce themselves.</p>
+            </article>
+            <article class="feature reveal">
+              <div class="feature-icon">4</div>
+              <h3>Counter Vibes</h3>
+              <p>Red vinyl, jukebox energy, fast service, and a crew that knows the regulars.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu" id="menu" aria-labelledby="menu-title">
+      <div class="section-inner">
+        <p class="section-kicker">What We Serve</p>
+        <h2 class="section-title" id="menu-title">The Full Lineup</h2>
+        <div class="menu-tabs" role="tablist" aria-label="Filter menu">
+          <button class="tab-btn active" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="tab-btn" type="button" data-filter="burgers" aria-pressed="false">Burgers</button>
+          <button class="tab-btn" type="button" data-filter="sides" aria-pressed="false">Sides</button>
+          <button class="tab-btn" type="button" data-filter="drinks" aria-pressed="false">Drinks</button>
+        </div>
+
+        <div class="menu-grid" id="menuGrid">
+          <article class="menu-card reveal" data-cat="burgers">
+            <div class="menu-card-img" aria-hidden="true">🍔</div>
+            <div class="menu-card-badge">Fan Fave</div>
+            <div class="menu-card-body">
+              <h3>The Classic Smash</h3>
+              <p>Double smash patty, American cheese, shack sauce, pickles, shredded lettuce, toasted brioche.</p>
+              <div class="menu-card-footer">
+                <span class="price">$9.99</span>
+                <button class="order-btn" type="button">Add</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-cat="burgers">
+            <div class="menu-card-img" aria-hidden="true">🥓</div>
+            <div class="menu-card-badge">Best Seller</div>
+            <div class="menu-card-body">
+              <h3>Bacon Fire Stack</h3>
+              <p>Triple smash, thick-cut bacon, pepper jack, jalapenos, chipotle mayo, crispy onion strings.</p>
+              <div class="menu-card-footer">
+                <span class="price">$13.49</span>
+                <button class="order-btn" type="button">Add</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-cat="burgers">
+            <div class="menu-card-img" aria-hidden="true">🧀</div>
+            <div class="menu-card-body">
+              <h3>Mushroom Swiss</h3>
+              <p>Double patty, sauteed mushrooms, Swiss cheese, garlic aioli, arugula, caramelized onions.</p>
+              <div class="menu-card-footer">
+                <span class="price">$11.99</span>
+                <button class="order-btn" type="button">Add</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-cat="burgers">
+            <div class="menu-card-img" aria-hidden="true">🌶️</div>
+            <div class="menu-card-badge">New</div>
+            <div class="menu-card-body">
+              <h3>Shack BBQ Melt</h3>
+              <p>Smash patty, house BBQ, cheddar, slaw, fried jalapeno slices, toasted Texas toast.</p>
+              <div class="menu-card-footer">
+                <span class="price">$12.49</span>
+                <button class="order-btn" type="button">Add</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-cat="sides">
+            <div class="menu-card-img" aria-hidden="true">🍟</div>
+            <div class="menu-card-body">
+              <h3>Hand-Cut Fries</h3>
+              <p>Fresh-cut Russets, double fried, dusted with shack seasoning, served with your pick of dip.</p>
+              <div class="menu-card-footer">
+                <span class="price">$4.49</span>
+                <button class="order-btn" type="button">Add</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-cat="sides">
+            <div class="menu-card-img" aria-hidden="true">🧅</div>
+            <div class="menu-card-badge">Crunchy</div>
+            <div class="menu-card-body">
+              <h3>Onion Rings</h3>
+              <p>Beer-battered thick rings, golden fried, served with comeback sauce.</p>
+              <div class="menu-card-footer">
+                <span class="price">$5.49</span>
+                <button class="order-btn" type="button">Add</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-cat="drinks">
+            <div class="menu-card-img" aria-hidden="true">🥤</div>
+            <div class="menu-card-body">
+              <h3>Craft Shake</h3>
+              <p>Hand-spun thick shakes: vanilla bean, chocolate fudge, strawberry, salted caramel, or seasonal.</p>
+              <div class="menu-card-footer">
+                <span class="price">$6.99</span>
+                <button class="order-btn" type="button">Add</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-cat="drinks">
+            <div class="menu-card-img" aria-hidden="true">🍋</div>
+            <div class="menu-card-badge">Fresh</div>
+            <div class="menu-card-body">
+              <h3>Fresh Lemonade</h3>
+              <p>Squeezed daily. Classic, strawberry-basil, or spicy mango over pebble ice.</p>
+              <div class="menu-card-footer">
+                <span class="price">$3.99</span>
+                <button class="order-btn" type="button">Add</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="specials" id="specials" aria-labelledby="specials-title">
+      <div class="specials-inner">
+        <div class="specials-board reveal">
+          <p class="section-kicker">This Week Only</p>
+          <h2 id="specials-title">Daily Specials</h2>
+          <p>Fresh off the griddle, written on the board, and gone when the day is done.</p>
+        </div>
+        <div class="special-list">
+          <div class="special-row reveal"><strong>Mon</strong><span>Double Stack Lunch</span><em>$9.99</em></div>
+          <div class="special-row reveal"><strong>Tue</strong><span>Free fry upgrade with any burger</span><em>2-5 PM</em></div>
+          <div class="special-row reveal"><strong>Wed</strong><span>Onion rings and shack sauce flight</span><em>$6</em></div>
+          <div class="special-row reveal"><strong>Thu</strong><span>Shake happy hour</span><em>Half off</em></div>
+          <div class="special-row reveal"><strong>Fri-Sat</strong><span>Late-night griddle menu</span><em>Till midnight</em></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="info" id="hours" aria-label="Hours and location">
+      <div class="info-grid">
+        <div class="info-block">
+          <div class="info-card reveal">
+            <p class="section-kicker">Hours</p>
+            <h2>Pull Up</h2>
+            <table class="hours-table">
+              <tr><td>Mon - Thu</td><td>11am - 10pm</td></tr>
+              <tr><td>Friday</td><td>11am - Midnight</td></tr>
+              <tr><td>Saturday</td><td>10am - Midnight</td></tr>
+              <tr><td>Sunday</td><td>10am - 9pm</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="info-block" id="contact">
+          <div class="info-card reveal">
+            <p class="section-kicker">Find Us</p>
+            <h2>Plano, TX</h2>
+            <p class="address-text">123 Main Street<br>Plano, TX 75075<br>(972) 555-0198</p>
+            <a class="map-card" href="https://maps.google.com/?q=123+Main+Street+Plano+TX+75075" target="_blank" rel="noopener" aria-label="Get directions to The Burger Shack">
+              <span>Get Directions</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">The Burger Shack</div>
+      <div class="footer-sub">Big Flavor. Good Vibes.</div>
+      <div class="social-row" aria-label="Social links">
+        <a class="social-btn" href="#" aria-label="Facebook">f</a>
+        <a class="social-btn" href="#" aria-label="Instagram">ig</a>
+        <a class="social-btn" href="#" aria-label="TikTok">tk</a>
+        <a class="social-btn" href="#" aria-label="Yelp">y</a>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#specials">Specials</a></li>
+        <li><a href="#hours">Hours</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <p class="footer-copy">&copy; 2026 The Burger Shack. All rights reserved.</p>
+      <p class="credit">Designed by <a href="https://manicwebmaster.com" target="_blank" rel="noopener">ManicWebmaster</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (!entry.isIntersecting) return;
+        window.setTimeout(() => entry.target.classList.add("visible"), index * 70);
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.14 });
+    reveals.forEach((element) => observer.observe(element));
+
+    const filterButtons = document.querySelectorAll(".tab-btn");
+    const menuCards = document.querySelectorAll(".menu-card");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter;
+        filterButtons.forEach((item) => {
+          item.classList.toggle("active", item === button);
+          item.setAttribute("aria-pressed", item === button ? "true" : "false");
+        });
+
+        menuCards.forEach((card) => {
+          card.hidden = filter !== "all" && card.dataset.cat !== filter;
+        });
+      });
+    });
+
+    document.querySelectorAll(".order-btn").forEach((button) => {
+      button.addEventListener("click", () => {
+        const originalText = button.textContent;
+        button.textContent = "Added";
+        button.style.background = "var(--pickle)";
+        button.style.color = "#fff9ec";
+        window.setTimeout(() => {
+          button.textContent = originalText;
+          button.style.background = "";
+          button.style.color = "";
+        }, 1300);
+      });
+    });
+  </script>
+</body>
+</html>

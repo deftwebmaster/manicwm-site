@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<!--
+  * lone wolf, quiet teeth | Matt Livingston
+  ============================================================
+  ManicWebmaster — Tools Index
+  Deploy: Drop this index.html into /tools/ on GitHub Pages.
+  No build step. No dependencies except Google Fonts (CDN).
+  Live at: manicwebmaster.com/tools/
+  ============================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Web Tools — ManicWebmaster</title>
+  <meta name="description" content="Free tools for business owners. Practical web tools built by a designer who actually ships." />
+  <link rel="icon" href="../manicwebmaster-logo.webp" type="image/webp" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =========================================
+       DESIGN TOKENS
+    ========================================= */
+    :root {
+      --bg:          #0A0A0C;
+      --surface-1:   #111116;
+      --surface-2:   #13131A;
+      --surface-3:   #1A1A24;
+      --cyan:        #00E5FF;
+      --cyan-dim:    rgba(0, 229, 255, 0.12);
+      --cyan-glow:   rgba(0, 229, 255, 0.25);
+      --violet:      #8B5CF6;
+      --violet-dim:  rgba(139, 92, 246, 0.12);
+      --violet-glow: rgba(139, 92, 246, 0.25);
+      --border:      rgba(255,255,255,0.07);
+      --border-hover: rgba(0, 229, 255, 0.45);
+      --text-primary:   #F0F0F5;
+      --text-secondary: #8888A0;
+      --text-muted:     #55556A;
+      --font-display: 'Syne', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+      --font-mono:    'JetBrains Mono', monospace;
+      --radius-sm:  6px;
+      --radius-md:  10px;
+      --radius-lg:  16px;
+    }
+
+    /* =========================================
+       RESET & BASE
+    ========================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* =========================================
+       BACKGROUND TEXTURE
+       Subtle noise + radial highlight
+    ========================================= */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 20% -10%, rgba(0,229,255,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 110%, rgba(139,92,246,0.05) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* =========================================
+       LAYOUT UTILS
+    ========================================= */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* =========================================
+       NAV
+    ========================================= */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 10, 12, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+      transition: color 0.2s;
+    }
+
+    .brand img {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-sm);
+      object-fit: contain;
+      box-shadow: 0 0 18px rgba(0, 229, 255, 0.22);
+    }
+
+    .brand .brand-highlight {
+      color: var(--cyan);
+    }
+
+    .brand:hover { color: var(--cyan); }
+
+    .nav-cta {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      letter-spacing: 0.02em;
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+
+    .nav-cta:hover {
+      color: var(--cyan);
+      border-color: var(--cyan-glow);
+      background: var(--cyan-dim);
+    }
+
+    /* =========================================
+       HERO
+    ========================================= */
+    .hero {
+      padding: 72px 0 56px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--cyan);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      opacity: 0.85;
+    }
+
+    .hero-label::before {
+      content: '// ';
+      opacity: 0.4;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      max-width: 600px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--cyan);
+    }
+
+    .hero-sub {
+      margin-top: 18px;
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 480px;
+      line-height: 1.65;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .hero-stat {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 2px;
+    }
+
+    .hero-divider {
+      width: 1px;
+      height: 32px;
+      background: var(--border);
+    }
+
+    /* =========================================
+       TOOLS GRID
+    ========================================= */
+    .tools-section {
+      padding: 64px 0 72px;
+    }
+
+    .section-header {
+      margin-bottom: 40px;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    /* =========================================
+       TOOL CARD
+    ========================================= */
+    .tool-card {
+      position: relative;
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      cursor: default;
+    }
+
+    .tool-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+      box-shadow:
+        0 12px 40px rgba(0,0,0,0.5),
+        0 0 0 1px rgba(0, 229, 255, 0.08),
+        0 0 30px rgba(0, 229, 255, 0.06);
+    }
+
+    /* Top accent line — alternate cyan / violet / cyan */
+    .tool-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--card-accent, var(--cyan));
+      opacity: 0.75;
+      transition: opacity 0.25s;
+    }
+
+    .tool-card:hover::before { opacity: 1; }
+
+    .card-1 { --card-accent: var(--cyan); }
+    .card-2 { --card-accent: var(--violet); }
+    .card-3 { --card-accent: var(--cyan); }
+    .card-4 { --card-accent: var(--violet); }
+
+    /* Card illustration zone */
+    .card-visual {
+      height: 130px;
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-visual svg {
+      opacity: 0.75;
+      transition: opacity 0.25s, transform 0.25s;
+    }
+
+    .tool-card:hover .card-visual svg {
+      opacity: 1;
+      transform: scale(1.04);
+    }
+
+    /* Card body */
+    .card-body {
+      padding: 22px 22px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .card-badge {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      background: var(--cyan-dim);
+      border: 1px solid rgba(0, 229, 255, 0.15);
+      border-radius: 100px;
+      padding: 3px 9px;
+      display: inline-block;
+      width: fit-content;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .card-2 .card-badge,
+    .card-4 .card-badge {
+      color: var(--violet);
+      background: var(--violet-dim);
+      border-color: rgba(139, 92, 246, 0.15);
+    }
+
+    .tool-card:hover .card-badge {
+      background: rgba(0, 229, 255, 0.18);
+      border-color: rgba(0, 229, 255, 0.3);
+    }
+
+    .card-2:hover .card-badge,
+    .card-4:hover .card-badge {
+      background: rgba(139, 92, 246, 0.18);
+      border-color: rgba(139, 92, 246, 0.3);
+    }
+
+    .card-name {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-top: 2px;
+    }
+
+    .card-tagline {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    /* Card footer */
+    .card-footer {
+      padding: 0 22px 20px;
+    }
+
+    .card-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 9px 16px;
+      letter-spacing: 0.02em;
+      transition: color 0.2s, background 0.2s, border-color 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+
+    .card-btn:hover {
+      color: var(--cyan);
+      border-color: rgba(0,229,255,0.4);
+      background: var(--cyan-dim);
+      box-shadow: 0 0 14px rgba(0,229,255,0.1);
+    }
+
+    .card-btn .arrow {
+      transition: transform 0.2s;
+    }
+
+    .card-btn:hover .arrow {
+      transform: translateX(3px);
+    }
+
+    /* =========================================
+       CTA SECTION
+    ========================================= */
+    .cta-section {
+      padding: 72px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .cta-inner {
+      max-width: 680px;
+    }
+
+    .cta-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--violet);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      opacity: 0.9;
+    }
+
+    .cta-eyebrow::before {
+      content: '→ ';
+      opacity: 0.5;
+    }
+
+    .cta-headline {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    .cta-sub {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 36px;
+      max-width: 460px;
+    }
+
+    .cta-contacts {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    /* Contact cards */
+    .contact-card {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      flex: 1;
+      min-width: 200px;
+      transition: border-color 0.25s, background 0.25s;
+      text-decoration: none;
+    }
+
+    .contact-card:hover {
+      border-color: rgba(139,92,246,0.4);
+      background: var(--violet-dim);
+    }
+
+    .contact-card .cc-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .contact-card .cc-method {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .contact-card .cc-handle {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--violet);
+    }
+
+    /* Service links */
+    .service-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .service-link {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .service-link::before {
+      content: '↗';
+      font-size: 0.65rem;
+    }
+
+    .service-link:hover { color: var(--text-secondary); }
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .footer-brand a {
+      color: var(--text-secondary);
+      transition: color 0.2s;
+    }
+    .footer-brand a:hover { color: var(--cyan); }
+
+    .footer-note {
+      font-family: var(--font-mono);
+      font-size: 0.67rem;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+    }
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+    @media (max-width: 860px) {
+      .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 580px) {
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero { padding: 48px 0 40px; }
+      .tools-section { padding: 48px 0 56px; }
+      .cta-section { padding: 56px 0; }
+
+      .cta-contacts {
+        flex-direction: column;
+      }
+
+      .contact-card { min-width: unset; }
+
+      .hero-meta {
+        display: none; /* keep hero clean on mobile */
+      }
+    }
+
+    /* =========================================
+       FADE-IN ANIMATION
+    ========================================= */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .anim {
+      opacity: 0;
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    .anim-d1 { animation-delay: 0.05s; }
+    .anim-d2 { animation-delay: 0.12s; }
+    .anim-d3 { animation-delay: 0.20s; }
+    .anim-d4 { animation-delay: 0.30s; }
+    .anim-d5 { animation-delay: 0.38s; }
+    .anim-d6 { animation-delay: 0.46s; }
+  </style>
+</head>
+<body>
+
+  <!-- =====================
+       NAV
+  ===================== -->
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="https://manicwebmaster.com" class="brand">
+          <img src="../manicwebmaster-logo.webp" alt="" width="34" height="34" />
+          <span class="brand-word">Manic<span class="brand-highlight">Webmaster</span></span>
+        </a>
+        <a href="#hire" class="nav-cta">Hire Me</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =====================
+       HERO
+  ===================== -->
+  <section class="hero">
+    <div class="container">
+      <p class="hero-label anim anim-d1">Tools</p>
+      <h1 class="anim anim-d2">Free Tools for <em>Business Owners</em></h1>
+      <p class="hero-sub anim anim-d3">Practical web tools built by a designer who actually ships.</p>
+      <div class="hero-meta anim anim-d4">
+        <div class="hero-stat">
+          <strong>4</strong>
+          tools available
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat">
+          <strong>Free</strong>
+          no login required
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat">
+          <strong>Static</strong>
+          runs in your browser
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================
+       TOOLS GRID
+  ===================== -->
+  <section class="tools-section">
+    <div class="container">
+      <div class="section-header anim anim-d1">
+        <p class="section-label">// suite</p>
+        <h2 class="section-title">Available Tools</h2>
+      </div>
+
+      <div class="tools-grid">
+
+        <!-- ── Card 1: Launch Hero ── -->
+        <div class="tool-card card-1 anim anim-d2">
+          <div class="card-visual">
+            <!-- Abstract: stacked hero layout bars -->
+            <svg width="180" height="90" viewBox="0 0 180 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Grid lines hint -->
+              <line x1="0" y1="44" x2="180" y2="44" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+              <line x1="90" y1="0" x2="90" y2="90" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+              <!-- Headline bar -->
+              <rect x="18" y="18" width="100" height="9" rx="2" fill="#00E5FF" opacity="0.7"/>
+              <!-- Sub bar -->
+              <rect x="18" y="32" width="68" height="5" rx="2" fill="rgba(255,255,255,0.18)"/>
+              <!-- Sub bar 2 -->
+              <rect x="18" y="41" width="52" height="5" rx="2" fill="rgba(255,255,255,0.10)"/>
+              <!-- CTA button shape -->
+              <rect x="18" y="55" width="48" height="16" rx="4" fill="rgba(0,229,255,0.18)" stroke="#00E5FF" stroke-width="1" stroke-opacity="0.5"/>
+              <rect x="25" y="61" width="28" height="3" rx="1" fill="rgba(0,229,255,0.6)"/>
+              <!-- Decorative right element: hero image placeholder -->
+              <rect x="128" y="14" width="36" height="54" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+              <circle cx="146" cy="36" r="9" fill="rgba(0,229,255,0.12)" stroke="rgba(0,229,255,0.2)" stroke-width="1"/>
+              <rect x="136" y="50" width="20" height="3" rx="1" fill="rgba(255,255,255,0.08)"/>
+              <rect x="140" y="57" width="12" height="3" rx="1" fill="rgba(255,255,255,0.05)"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <span class="card-badge">Design</span>
+            <h3 class="card-name">Launch Hero</h3>
+            <p class="card-tagline">Build high-converting hero sections in minutes.</p>
+          </div>
+          <div class="card-footer">
+            <a href="/tools/launch-hero/" class="card-btn">
+              Open Tool <span class="arrow">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- ── Card 2: Site Rescue ── -->
+        <div class="tool-card card-2 anim anim-d3">
+          <div class="card-visual">
+            <!-- Abstract: audit scan lines + alert -->
+            <svg width="180" height="90" viewBox="0 0 180 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Scan line animation hint -->
+              <rect x="14" y="16" width="152" height="58" rx="6" fill="rgba(255,255,255,0.02)" stroke="rgba(139,92,246,0.2)" stroke-width="1"/>
+              <!-- Scan rows -->
+              <rect x="22" y="24" width="90" height="4" rx="1" fill="rgba(255,255,255,0.06)"/>
+              <rect x="22" y="32" width="70" height="4" rx="1" fill="rgba(255,255,255,0.06)"/>
+              <rect x="22" y="40" width="110" height="4" rx="1" fill="rgba(255,255,255,0.06)"/>
+              <rect x="22" y="48" width="55" height="4" rx="1" fill="rgba(255,255,255,0.06)"/>
+              <!-- Issue markers -->
+              <rect x="118" y="30" width="32" height="7" rx="2" fill="rgba(255,80,80,0.15)" stroke="rgba(255,80,80,0.3)" stroke-width="1"/>
+              <circle cx="122" cy="33" r="1.5" fill="rgba(255,80,80,0.8)"/>
+              <rect x="125" y="31.5" width="20" height="2" rx="1" fill="rgba(255,80,80,0.4)"/>
+              <rect x="118" y="46" width="32" height="7" rx="2" fill="rgba(255,180,0,0.12)" stroke="rgba(255,180,0,0.25)" stroke-width="1"/>
+              <circle cx="122" cy="49" r="1.5" fill="rgba(255,180,0,0.8)"/>
+              <rect x="125" y="47.5" width="14" height="2" rx="1" fill="rgba(255,180,0,0.4)"/>
+              <!-- Score indicator -->
+              <circle cx="155" cy="20" r="9" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.4)" stroke-width="1"/>
+              <text x="155" y="24" text-anchor="middle" font-size="7" fill="#8B5CF6" font-family="monospace" font-weight="700">42</text>
+              <!-- Active scan line -->
+              <rect x="14" y="40" width="152" height="1" rx="0.5" fill="rgba(139,92,246,0.4)" opacity="0.6"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <span class="card-badge">Audit</span>
+            <h3 class="card-name">Site Rescue</h3>
+            <p class="card-tagline">Audit your website and expose what's killing conversions.</p>
+          </div>
+          <div class="card-footer">
+            <a href="/tools/site-rescue/" class="card-btn">
+              Open Tool <span class="arrow">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- ── Card 3: Favicon Forge ── -->
+        <div class="tool-card card-3 anim anim-d4">
+          <div class="card-visual">
+            <!-- Abstract: large logo → tiny favicon comparison -->
+            <svg width="180" height="90" viewBox="0 0 180 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Large "logo" on left -->
+              <rect x="14" y="16" width="72" height="58" rx="6" fill="rgba(0,229,255,0.06)" stroke="rgba(0,229,255,0.15)" stroke-width="1"/>
+              <!-- Abstract logo shape inside large box -->
+              <circle cx="50" cy="40" r="14" fill="rgba(0,229,255,0.12)" stroke="rgba(0,229,255,0.3)" stroke-width="1.5"/>
+              <path d="M44 40 L50 33 L56 40 L50 47 Z" fill="rgba(0,229,255,0.5)"/>
+              <text x="50" y="61" text-anchor="middle" font-size="6" fill="rgba(0,229,255,0.4)" font-family="monospace">LOGO</text>
+              <!-- Arrow / reduction indicator -->
+              <line x1="96" y1="45" x2="108" y2="45" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" stroke-dasharray="3 2"/>
+              <path d="M107 42 L112 45 L107 48" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Small favicons grid on right -->
+              <!-- 32×32 -->
+              <rect x="118" y="18" width="20" height="20" rx="3" fill="rgba(0,229,255,0.1)" stroke="rgba(0,229,255,0.25)" stroke-width="1"/>
+              <circle cx="128" cy="28" r="5" fill="rgba(0,229,255,0.3)"/>
+              <text x="118" y="45" font-size="5" fill="rgba(0,229,255,0.4)" font-family="monospace">32px</text>
+              <!-- 16×16 -->
+              <rect x="148" y="22" width="12" height="12" rx="2" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.2)" stroke-width="1"/>
+              <circle cx="154" cy="28" r="3" fill="rgba(0,229,255,0.25)"/>
+              <text x="148" y="41" font-size="5" fill="rgba(0,229,255,0.4)" font-family="monospace">16px</text>
+              <!-- Tiny app icon row -->
+              <rect x="118" y="55" width="9" height="9" rx="2" fill="rgba(0,229,255,0.06)" stroke="rgba(0,229,255,0.15)" stroke-width="0.75"/>
+              <rect x="130" y="55" width="9" height="9" rx="2" fill="rgba(0,229,255,0.06)" stroke="rgba(0,229,255,0.15)" stroke-width="0.75"/>
+              <rect x="142" y="55" width="9" height="9" rx="2" fill="rgba(0,229,255,0.06)" stroke="rgba(0,229,255,0.15)" stroke-width="0.75"/>
+              <rect x="154" y="55" width="9" height="9" rx="2" fill="rgba(0,229,255,0.06)" stroke="rgba(0,229,255,0.15)" stroke-width="0.75"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <span class="card-badge">Branding</span>
+            <h3 class="card-name">Favicon Forge</h3>
+            <p class="card-tagline">Most logos look fine big. Very few survive tiny.</p>
+          </div>
+          <div class="card-footer">
+            <a href="/tools/favicon-forge/" class="card-btn">
+              Open Tool <span class="arrow">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- ── Card 4: ShareSpark ── -->
+        <div class="tool-card card-4 anim anim-d5">
+          <div class="card-visual">
+            <!-- Abstract: OG card preview floating across platforms -->
+            <svg width="180" height="90" viewBox="0 0 180 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Main OG card shape -->
+              <rect x="30" y="12" width="120" height="66" rx="6" fill="rgba(139,92,246,0.08)" stroke="rgba(139,92,246,0.25)" stroke-width="1"/>
+              <!-- OG image zone -->
+              <rect x="30" y="12" width="120" height="36" rx="6" fill="rgba(139,92,246,0.12)"/>
+              <rect x="30" y="42" width="120" height="6" rx="0" fill="rgba(139,92,246,0.08)"/>
+              <!-- Image placeholder detail -->
+              <circle cx="90" cy="30" r="10" fill="rgba(139,92,246,0.2)" stroke="rgba(139,92,246,0.35)" stroke-width="1"/>
+              <path d="M85 30 L90 24 L95 30 L90 36 Z" fill="rgba(139,92,246,0.6)"/>
+              <!-- OG text rows -->
+              <rect x="38" y="52" width="70" height="5" rx="2" fill="rgba(255,255,255,0.18)"/>
+              <rect x="38" y="61" width="50" height="4" rx="2" fill="rgba(255,255,255,0.08)"/>
+              <!-- Platform bubbles: Twitter/X, iMessage -->
+              <circle cx="22" cy="22" r="8" fill="rgba(0,0,0,0.4)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <text x="22" y="26" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.5)" font-family="monospace">𝕏</text>
+              <rect x="148" y="56" width="18" height="14" rx="7" fill="rgba(0,229,255,0.12)" stroke="rgba(0,229,255,0.2)" stroke-width="1"/>
+              <rect x="153" y="61" width="8" height="2" rx="1" fill="rgba(0,229,255,0.5)"/>
+              <rect x="153" y="65" width="5" height="2" rx="1" fill="rgba(0,229,255,0.3)"/>
+              <!-- Spark dots -->
+              <circle cx="152" cy="15" r="2" fill="rgba(139,92,246,0.6)"/>
+              <circle cx="160" cy="22" r="1.5" fill="rgba(0,229,255,0.5)"/>
+              <circle cx="144" cy="20" r="1" fill="rgba(139,92,246,0.4)"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <span class="card-badge">Social</span>
+            <h3 class="card-name">ShareSpark</h3>
+            <p class="card-tagline">Design open graph cards that look sharp when your link gets shared.</p>
+          </div>
+          <div class="card-footer">
+            <a href="/tools/sharespark/" class="card-btn">
+              Open Tool <span class="arrow">→</span>
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /tools-grid -->
+    </div>
+  </section>
+
+  <!-- =====================
+       CTA SECTION
+  ===================== -->
+  <section class="cta-section" id="hire">
+    <div class="container">
+      <div class="cta-inner">
+        <p class="cta-eyebrow anim anim-d1">Work with me</p>
+        <h2 class="cta-headline anim anim-d2">Need the whole thing built?</h2>
+        <p class="cta-sub anim anim-d3">
+          These tools scratch a surface. If you need a real site — fast, sharp, and built to convert — let's talk.
+        </p>
+
+        <!-- Contact options -->
+        <div class="cta-contacts anim anim-d4">
+          <!-- Text / SMS -->
+          <a
+            href="sms:4697170416?body=Hey%20Matt%2C%20I%20have%20a%20project%20for%20you."
+            class="contact-card"
+          >
+            <span class="cc-label">Text me</span>
+            <span class="cc-method">Send a Text</span>
+            <span class="cc-handle">(469) 717-0416</span>
+          </a>
+
+          <!-- Email -->
+          <a
+            href="mailto:matt@manicwebmaster.com?subject=Project%20Inquiry"
+            class="contact-card"
+          >
+            <span class="cc-label">Email me</span>
+            <span class="cc-method">Project Inquiry</span>
+            <span class="cc-handle">matt@manicwebmaster.com</span>
+          </a>
+        </div>
+
+        <!-- Service links -->
+        <div class="service-links anim anim-d5">
+          <a href="https://manicwebmaster.com/graphics/" class="service-link">
+            Logo &amp; Graphic Design
+          </a>
+          <a href="https://manicwebmaster.com" class="service-link">
+            Web Design &amp; Development
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================
+       FOOTER
+  ===================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-brand">
+          Built by <a href="https://manicwebmaster.com">ManicWebmaster</a>
+        </p>
+        <p class="footer-note">No trackers. No analytics. No server. Runs local.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

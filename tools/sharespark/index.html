@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShareSpark — Social Share Card Generator | ManicWebmaster</title>
+  <meta name="description" content="Create polished OpenGraph preview images that actually make people want to click. Free social share card generator by ManicWebmaster." />
+  <meta name="theme-color" content="#080c10" />
+  <meta property="og:title" content="ShareSpark — Social Share Card Generator" />
+  <meta property="og:description" content="Create polished OpenGraph preview images that actually make people want to click." />
+  <meta property="og:image" content="https://manicwebmaster.com/tools/sharespark/card.png" />
+  <meta property="og:image:width" content="1729" />
+  <meta property="og:image:height" content="910" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ShareSpark — Social Share Card Generator" />
+  <meta name="twitter:description" content="Create polished OpenGraph preview images that actually make people want to click." />
+  <meta name="twitter:image" content="https://manicwebmaster.com/tools/sharespark/card.png" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="preload" as="image" href="card.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <header class="hero">
+    <div class="hero__bg-grid"></div>
+    <div class="hero__glow hero__glow--cyan"></div>
+    <div class="hero__glow hero__glow--violet"></div>
+
+    <nav class="nav">
+      <a href="#" class="nav__brand">
+        <span class="nav__brand-icon">⚡</span>
+        <span class="nav__brand-name">ShareSpark</span>
+      </a>
+      <a href="https://manicwebmaster.com" target="_blank" rel="noopener" class="nav__brand-by">by ManicWebmaster</a>
+    </nav>
+
+    <div class="hero__content">
+      <div class="hero__badge">Free Tool · No signup required</div>
+      <h1 class="hero__headline">
+        Social Share Card<br />
+        <span class="hero__headline--accent">Generator</span>
+      </h1>
+      <p class="hero__sub">
+        Create polished OpenGraph preview images that actually make<br class="hero__br" />
+        people want to click.
+      </p>
+      <div class="hero__cta-row">
+        <a href="#editor" class="btn btn--primary">
+          <span>Create Share Card</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#services" class="btn btn--secondary">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h8M2 12h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span>Need It Done For You?</span>
+        </a>
+      </div>
+      <p class="hero__context">Perfect for websites, portfolios, blogs, products, and launches.</p>
+    </div>
+
+    <div class="hero__preview-strip">
+      <div class="hero__preview-card hero__preview-card--twitter">
+        <div class="hpc__bar">
+          <span class="hpc__dot"></span>
+          <span class="hpc__label">twitter.com</span>
+        </div>
+        <div class="hpc__img hpc__img--demo">
+          <span class="hpc__img-label">YOUR IMAGE HERE</span>
+        </div>
+      </div>
+      <div class="hero__preview-card hero__preview-card--imessage">
+        <div class="hpc__bubble">
+          <div class="hpc__bubble-img">
+            <span class="hpc__img-label">iMessage</span>
+          </div>
+          <div class="hpc__bubble-text">
+            <strong>Your Title</strong>
+            <span>yoursite.com</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero__preview-card hero__preview-card--discord">
+        <div class="hpc__discord-bar">
+          <span class="hpc__dot hpc__dot--discord"></span>
+          <span class="hpc__label">Discord embed</span>
+        </div>
+        <div class="hpc__discord-inner">
+          <div class="hpc__discord-accent"></div>
+          <div class="hpc__discord-text">
+            <strong>Your Title</strong>
+            <span>Description preview text</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       EDITOR
+  ============================================================ -->
+  <section class="editor" id="editor">
+    <div class="editor__layout">
+
+      <!-- LEFT: Controls -->
+      <aside class="controls">
+
+        <!-- PRESETS -->
+        <div class="controls__group">
+          <h3 class="controls__group-label">Style Preset</h3>
+          <div class="presets-grid" id="presetsGrid">
+            <button class="preset-btn active" data-preset="dark-neon">
+              <div class="preset-btn__swatch preset-btn__swatch--dark-neon"></div>
+              <span>Dark Neon</span>
+            </button>
+            <button class="preset-btn" data-preset="minimal">
+              <div class="preset-btn__swatch preset-btn__swatch--minimal"></div>
+              <span>Minimal</span>
+            </button>
+            <button class="preset-btn" data-preset="startup">
+              <div class="preset-btn__swatch preset-btn__swatch--startup"></div>
+              <span>Startup</span>
+            </button>
+            <button class="preset-btn" data-preset="bold">
+              <div class="preset-btn__swatch preset-btn__swatch--bold"></div>
+              <span>Bold</span>
+            </button>
+            <button class="preset-btn" data-preset="studio">
+              <div class="preset-btn__swatch preset-btn__swatch--studio"></div>
+              <span>Studio</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="controls__group">
+          <h3 class="controls__group-label">Content</h3>
+
+          <label class="field">
+            <span class="field__label">Main Title</span>
+            <input class="field__input" type="text" id="inputTitle" placeholder="Your compelling headline" maxlength="80" />
+            <div class="field__footer"><span class="field__counter" id="counterTitle">0 / 80</span></div>
+          </label>
+
+          <label class="field">
+            <span class="field__label">Subtitle / Description</span>
+            <textarea class="field__input field__textarea" id="inputSubtitle" placeholder="A short description of what you offer or what this page is about." maxlength="160" rows="2"></textarea>
+            <div class="field__footer"><span class="field__counter" id="counterSubtitle">0 / 160</span></div>
+          </label>
+
+          <label class="field">
+            <span class="field__label">Website / Domain</span>
+            <input class="field__input" type="text" id="inputDomain" placeholder="yourdomain.com" maxlength="60" />
+          </label>
+
+          <label class="field">
+            <span class="field__label">Author / Company</span>
+            <input class="field__input" type="text" id="inputAuthor" placeholder="Your Name or Brand" maxlength="60" />
+          </label>
+
+          <label class="field">
+            <span class="field__label">CTA / Tagline</span>
+            <input class="field__input" type="text" id="inputCta" placeholder="Learn More →" maxlength="40" />
+            <div class="field__footer"><span class="field__counter" id="counterCta">0 / 40</span></div>
+          </label>
+        </div>
+
+        <!-- UPLOADS -->
+        <div class="controls__group">
+          <h3 class="controls__group-label">Images</h3>
+
+          <div class="upload-zone" id="logoUpload" role="button" tabindex="0" aria-label="Upload logo image">
+            <input type="file" id="logoFile" accept="image/*" hidden />
+            <div class="upload-zone__inner">
+              <span class="upload-zone__icon">🖼</span>
+              <span class="upload-zone__label">Upload Logo</span>
+              <span class="upload-zone__hint">PNG with transparency recommended</span>
+            </div>
+            <div class="upload-zone__preview" id="logoPreview" hidden>
+              <img id="logoImg" alt="Logo" />
+              <button class="upload-zone__remove" id="logoRemove">✕</button>
+            </div>
+          </div>
+
+          <div class="upload-zone" id="bgUpload" role="button" tabindex="0" aria-label="Upload background image">
+            <input type="file" id="bgFile" accept="image/*" hidden />
+            <div class="upload-zone__inner">
+              <span class="upload-zone__icon">🌅</span>
+              <span class="upload-zone__label">Upload Background</span>
+              <span class="upload-zone__hint">Optional — replaces gradient</span>
+            </div>
+            <div class="upload-zone__preview" id="bgPreview" hidden>
+              <img id="bgImg" alt="Background" />
+              <button class="upload-zone__remove" id="bgRemove">✕</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- STYLE CONTROLS -->
+        <div class="controls__group">
+          <h3 class="controls__group-label">Style Controls</h3>
+
+          <label class="field">
+            <span class="field__label">Accent Color</span>
+            <div class="color-row">
+              <input class="color-input" type="color" id="accentColor" value="#00e5ff" />
+              <div class="color-swatches" id="colorSwatches">
+                <button class="color-swatch active" data-color="#00e5ff" style="background:#00e5ff" title="Cyan" aria-label="Use cyan accent color"></button>
+                <button class="color-swatch" data-color="#bf5af2" style="background:#bf5af2" title="Violet" aria-label="Use violet accent color"></button>
+                <button class="color-swatch" data-color="#ff6b35" style="background:#ff6b35" title="Coral" aria-label="Use coral accent color"></button>
+                <button class="color-swatch" data-color="#30d158" style="background:#30d158" title="Green" aria-label="Use green accent color"></button>
+                <button class="color-swatch" data-color="#ffd60a" style="background:#ffd60a" title="Gold" aria-label="Use gold accent color"></button>
+                <button class="color-swatch" data-color="#ff375f" style="background:#ff375f" title="Red" aria-label="Use red accent color"></button>
+              </div>
+            </div>
+          </label>
+
+          <label class="field">
+            <span class="field__label">Glow Intensity</span>
+            <div class="slider-row">
+              <input class="slider" type="range" id="glowIntensity" min="0" max="100" value="60" />
+              <span class="slider-val" id="glowVal">60</span>
+            </div>
+          </label>
+
+          <label class="field">
+            <span class="field__label">Corner Radius</span>
+            <div class="slider-row">
+              <input class="slider" type="range" id="cornerRadius" min="0" max="40" value="16" />
+              <span class="slider-val" id="cornerVal">16</span>
+            </div>
+          </label>
+
+          <div class="toggle-row">
+            <label class="toggle">
+              <input type="checkbox" id="showBorder" checked />
+              <span class="toggle__track"></span>
+              <span class="toggle__label">Show border</span>
+            </label>
+            <label class="toggle">
+              <input type="checkbox" id="showGradient" checked />
+              <span class="toggle__track"></span>
+              <span class="toggle__label">Gradient overlay</span>
+            </label>
+          </div>
+
+          <label class="field">
+            <span class="field__label">Layout</span>
+            <div class="layout-btns" id="layoutBtns">
+              <button class="layout-btn active" data-layout="centered" title="Centered" aria-label="Use centered layout">
+                <svg viewBox="0 0 32 20"><rect x="6" y="4" width="20" height="3" rx="1"/><rect x="9" y="9" width="14" height="2" rx="1"/><rect x="11" y="13" width="10" height="2" rx="1"/></svg>
+              </button>
+              <button class="layout-btn" data-layout="left" title="Left-aligned" aria-label="Use left-aligned layout">
+                <svg viewBox="0 0 32 20"><rect x="3" y="4" width="16" height="3" rx="1"/><rect x="3" y="9" width="12" height="2" rx="1"/><rect x="3" y="13" width="10" height="2" rx="1"/></svg>
+              </button>
+              <button class="layout-btn" data-layout="split" title="Split / Logo right" aria-label="Use split layout with logo on right">
+                <svg viewBox="0 0 32 20"><rect x="3" y="4" width="14" height="3" rx="1"/><rect x="3" y="9" width="10" height="2" rx="1"/><rect x="21" y="3" width="8" height="8" rx="2"/></svg>
+              </button>
+            </div>
+          </label>
+        </div>
+
+      </aside>
+
+      <!-- RIGHT: Preview -->
+      <div class="preview-panel">
+
+        <div class="preview-panel__header">
+          <h3 class="preview-panel__title">Live Preview</h3>
+          <div class="preview-tabs" id="previewTabs" role="tablist" aria-label="Preview type">
+            <button class="preview-tab active" data-tab="full" role="tab" aria-selected="true" aria-controls="previewFull">Full Card</button>
+            <button class="preview-tab" data-tab="twitter" role="tab" aria-selected="false" aria-controls="previewTwitter">Twitter/X</button>
+            <button class="preview-tab" data-tab="imessage" role="tab" aria-selected="false" aria-controls="previewImessage">iMessage</button>
+            <button class="preview-tab" data-tab="discord" role="tab" aria-selected="false" aria-controls="previewDiscord">Discord</button>
+          </div>
+        </div>
+
+        <!-- Full canvas preview -->
+        <div class="preview-stage" id="previewFull" role="tabpanel">
+          <div class="preview-stage__label">1200 × 630 px</div>
+          <div class="preview-stage__frame">
+            <canvas id="mainCanvas" width="1200" height="630"></canvas>
+          </div>
+        </div>
+
+        <!-- Twitter preview -->
+        <div class="preview-stage preview-stage--hidden" id="previewTwitter" role="tabpanel">
+          <div class="preview-stage__label">Twitter / X Card Preview</div>
+          <div class="twitter-mock">
+            <div class="twitter-mock__header">
+              <div class="twitter-mock__avatar"></div>
+              <div class="twitter-mock__name">
+                <strong>Your Handle</strong>
+                <span>@yourhandle · just now</span>
+              </div>
+            </div>
+            <div class="twitter-mock__tweet">Check out my latest post 👇</div>
+            <div class="twitter-mock__card">
+              <div class="twitter-mock__img-wrap">
+                <canvas class="preview-sub" id="twitterCanvas" width="600" height="315"></canvas>
+              </div>
+              <div class="twitter-mock__card-meta" id="twitterMeta">
+                <span class="twitter-mock__domain" id="twitterDomain">yourdomain.com</span>
+                <strong class="twitter-mock__title" id="twitterTitle">Your Title</strong>
+                <span class="twitter-mock__desc" id="twitterDesc">Your description preview text</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- iMessage preview -->
+        <div class="preview-stage preview-stage--hidden" id="previewImessage" role="tabpanel">
+          <div class="preview-stage__label">iMessage Link Preview</div>
+          <div class="imessage-mock">
+            <div class="imessage-mock__bubble">
+              <div class="imessage-mock__img">
+                <canvas class="preview-sub" id="imessageCanvas" width="480" height="252"></canvas>
+              </div>
+              <div class="imessage-mock__info">
+                <span class="imessage-mock__title" id="imessageTitle">Your Title</span>
+                <span class="imessage-mock__domain" id="imessageDomain">yourdomain.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Discord preview -->
+        <div class="preview-stage preview-stage--hidden" id="previewDiscord" role="tabpanel">
+          <div class="preview-stage__label">Discord Embed Preview</div>
+          <div class="discord-mock">
+            <div class="discord-mock__message">
+              <div class="discord-mock__avatar"></div>
+              <div class="discord-mock__content">
+                <div class="discord-mock__username">User<span>Today at 12:00 PM</span></div>
+                <div class="discord-mock__text">Check this out 🔗</div>
+                <div class="discord-mock__embed">
+                  <div class="discord-mock__embed-accent" id="discordAccent"></div>
+                  <div class="discord-mock__embed-body">
+                    <div class="discord-mock__embed-site" id="discordSite">yourdomain.com</div>
+                    <div class="discord-mock__embed-title" id="discordTitle">Your Title</div>
+                    <div class="discord-mock__embed-desc" id="discordDesc">Your description</div>
+                    <canvas class="preview-sub" id="discordCanvas" width="400" height="209"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Export -->
+        <div class="export-bar">
+          <button class="btn btn--export" id="btnDownload">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M5 7l3 3 3-3M2 12v1a1 1 0 001 1h10a1 1 0 001-1v-1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Download PNG
+          </button>
+          <button class="btn btn--copy" id="btnCopyTags">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="8" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/><path d="M3 11V3a1 1 0 011-1h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Copy OG Tags
+          </button>
+          <button class="btn btn--ghost" id="btnReset">Reset</button>
+        </div>
+
+        <!-- Meta tag output -->
+        <div class="metatag-box" id="metaTagBox">
+          <div class="metatag-box__header">
+            <span>Generated OpenGraph Tags</span>
+            <button class="metatag-box__copy" id="metaCopyBtn">Copy</button>
+          </div>
+          <pre class="metatag-box__code" id="metaOutput"></pre>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA SECTION
+  ============================================================ -->
+  <section class="cta-section" id="services">
+    <div class="cta-section__glow cta-section__glow--left"></div>
+    <div class="cta-section__glow cta-section__glow--right"></div>
+    <div class="cta-section__inner">
+      <div class="cta-section__label">ManicWebmaster Services</div>
+      <h2 class="cta-section__headline">
+        Your share image is your<br />website's first impression.
+      </h2>
+      <p class="cta-section__body">
+        Most websites look mediocre before anyone even clicks them.
+        Good presentation increases trust, clicks, and perceived quality instantly.
+        If your brand or site isn't converting, that's a design problem — and it's fixable.
+      </p>
+
+      <!-- HERO SERVICE CARD: Custom share card — primary pitch -->
+      <div class="cta-cards cta-cards--hero">
+        <div class="cta-card cta-card--hero">
+          <div class="cta-card__hero-inner">
+            <div class="cta-card__hero-text">
+              <div class="cta-card__icon">◈</div>
+              <h3 class="cta-card__title">Want a custom, hand-crafted share card?</h3>
+              <p class="cta-card__body">Skip the generator. Get a professional OG image built specifically for your brand — designed to stop the scroll, earn the click, and look nothing like a template.</p>
+            </div>
+            <div class="cta-card__hero-action">
+              <a href="https://manicwebmaster.com/graphics/" target="_blank" rel="noopener" class="btn btn--card-hero">Get Custom Graphics</a>
+              <span class="cta-card__hero-note">Logos · Social Graphics · OG Images · Flyers</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECONDARY CARDS: Branding + Website -->
+      <div class="cta-cards cta-cards--secondary">
+        <div class="cta-card">
+          <div class="cta-card__icon">✦</div>
+          <h3 class="cta-card__title">Need stronger branding?</h3>
+          <p class="cta-card__body">Logos, social graphics, menus, flyers, and visual systems that actually look professional — not like a template someone else is also using.</p>
+          <a href="https://manicwebmaster.com/branding/" target="_blank" rel="noopener" class="btn btn--card">Get Design Help</a>
+        </div>
+        <div class="cta-card">
+          <div class="cta-card__icon">⬡</div>
+          <h3 class="cta-card__title">Need the whole website upgraded?</h3>
+          <p class="cta-card__body">Fast, modern websites built to match the quality of your brand. No page builders. No bloat. Just clean code and sharp execution.</p>
+          <a href="https://manicwebmaster.com" target="_blank" rel="noopener" class="btn btn--card">Fix My Website</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer">
+    <span>Built by <a href="https://manicwebmaster.com" target="_blank" rel="noopener">ManicWebmaster</a></span>
+  </footer>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
