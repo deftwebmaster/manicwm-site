@@ -112,13 +112,15 @@ p {
 }
 .nav-cta {
   padding:12px 18px;
-  border:1px solid #56555d;
+  border:1px solid var(--cyan);
+  background:var(--cyan);
+  color:#101820;
   text-decoration:none;
-  border-radius:5px
+  border-radius:999px
 }
 .nav-cta span {
   margin-left:18px;
-  color:var(--cyan)
+  color:inherit
 }
 .skip {
   position:absolute;
