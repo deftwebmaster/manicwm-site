@@ -1,0 +1,75 @@
+/* Success page: shares branding, navigation, buttons, and footer with /design/. */
+.sent-page {
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+}
+.sent-page main { flex:1; }
+.sent-hero {
+  display:grid;
+  grid-template-columns:1.35fr 1fr;
+  gap:0 70px;
+  padding-top:85px;
+}
+.sent-copy { align-self:center; }
+.sent-copy h1 {
+  font-size:clamp(38px,4.1vw,58px);
+  white-space:normal;
+  line-height:1.12;
+}
+.sent-copy h1 em { font-size:1.04em; }
+.sent-copy .lede { max-width:43ch; }
+.sent-next {
+  background:var(--cream);
+  color:var(--dark);
+  padding:32px;
+  border-radius:12px;
+}
+.sent-check {
+  display:grid;
+  place-items:center;
+  width:46px;
+  height:46px;
+  background:var(--cyan);
+  color:#101820;
+  border-radius:50%;
+  font-size:25px;
+  margin-bottom:23px;
+}
+.sent-next .eyebrow { color:#354dbc; font-size:10px; margin-bottom:15px; }
+.sent-next h2 { font-size:36px; }
+.sent-steps { list-style:none; counter-reset:next; padding:0; margin:25px 0 0; }
+.sent-steps li {
+  counter-increment:next;
+  position:relative;
+  border-top:1px solid #d5d2cc;
+  padding:18px 0 18px 33px;
+}
+.sent-steps li:last-child { padding-bottom:0; }
+.sent-steps li::before {
+  content:'0' counter(next);
+  position:absolute;
+  left:0;
+  top:20px;
+  font:11px var(--mono);
+  color:#354dbc;
+}
+.sent-steps h3 { font-size:17px; margin-bottom:7px; }
+.sent-steps p { font-size:14px; line-height:1.65; color:#575d67; }
+.sent-page .footer { border-top:1px solid var(--line); }
+@media(max-width:1000px) {
+  .sent-hero { gap:0 35px; padding-top:60px; }
+  .sent-next { padding:25px; }
+}
+@media(max-width:700px) {
+  .sent-hero { grid-template-columns:1fr; padding-top:48px; gap:38px; }
+  .sent-copy h1 { font-size:clamp(35px,7.8vw,48px); }
+  .sent-copy .eyebrow { font-size:9px; }
+  .sent-next { padding:28px 24px; }
+  .sent-next h2 { font-size:34px; }
+  .sent-hero .hero-bottom { grid-column:1; margin-top:0; }
+}
+
+/* Violet accents echo the design landing page. */
+.sent-copy h1 em { color:var(--violet); }
+.sent-next { background:#ded5ee; }
