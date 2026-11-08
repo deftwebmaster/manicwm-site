@@ -1,0 +1,90 @@
+/* Client results — shared by the homepage and /design/ */
+.client-results {
+  --cr-ink: var(--ink, #f3efe8);
+  --cr-muted: var(--muted, #b6b5b8);
+  --cr-line: var(--line, #414247);
+  --cr-accent: var(--cyan, #7bdee7);
+  --cr-violet: var(--violet, #bf8af0);
+  padding-block: 83px;
+  border-top: 1px solid var(--cr-line);
+  color: var(--cr-ink);
+}
+.client-results-head {
+  display: grid;
+  grid-template-columns: .95fr 1.05fr;
+  gap: 70px;
+  align-items: end;
+  margin-bottom: 44px;
+}
+.client-results-head h2 {
+  margin: 14px 0 0;
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1.08;
+  letter-spacing: -.045em;
+  font-weight: 650;
+}
+.client-results-head h2 em {
+  font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  font-weight: 400;
+  color: var(--cr-violet);
+}
+.client-results-head > p { margin: 0; color: var(--cr-muted); max-width: 52ch; }
+.client-results-kicker {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--cr-accent);
+}
+.client-results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.client-result {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  margin: 0;
+  padding: 34px;
+  border: 1px solid var(--cr-line);
+  background: rgba(255, 255, 255, .025);
+}
+.client-result-outcome {
+  margin: 0;
+  font-size: clamp(20px, 1.9vw, 25px);
+  line-height: 1.4;
+  letter-spacing: -.02em;
+  font-weight: 550;
+}
+.client-result-meta { margin-top: auto; display: grid; gap: 4px; font-size: 15px; }
+.client-result-meta strong { font-weight: 700; }
+.client-result-meta span { color: var(--cr-muted); }
+.client-result-meta a {
+  margin-top: 12px;
+  justify-self: start;
+  color: var(--cr-accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.client-result-meta a:hover { color: var(--cr-ink); }
+.client-result-status {
+  justify-self: start;
+  padding: 3px 10px;
+  border: 1px solid var(--cr-line);
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--cr-muted);
+}
+@media (max-width: 800px) {
+  .client-results { padding-block: 60px; }
+  .client-results-head { grid-template-columns: 1fr; gap: 18px; }
+  .client-results-grid { grid-template-columns: 1fr; }
+  .client-result { padding: 26px 22px; }
+}

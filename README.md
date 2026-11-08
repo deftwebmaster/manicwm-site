@@ -1,2 +1,0 @@
-# manicwm-site
-manicwm-site

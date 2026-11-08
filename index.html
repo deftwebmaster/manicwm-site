@@ -1,258 +1,173 @@
 <!doctype html>
-<!-- * lone wolf, quiet teeth | Matt Livingston -->
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ManicWebmaster — Websites, Logos & Brand Design · Dallas–Fort Worth</title>
-<meta name="description" content="ManicWebmaster designs websites, logos, and graphics for small businesses across Dallas–Fort Worth. Hand-built, fast, and yours to own.">
-<meta name="theme-color" content="#0b0b0d">
-<link rel="canonical" href="https://manicwebmaster.com/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ManicWebmaster — Websites & brands with a pulse">
-<meta property="og:description" content="Websites, logos, and graphic design for DFW small businesses.">
-<meta property="og:url" content="https://manicwebmaster.com/">
-<link rel="icon" type="image/png" href="assets/favicon.png">
-
-<style>
-  :root{
-    --bg:#0b0b0d;
-    --ink:#f3efe8;
-    --muted:#9a958d;
-    --line:rgba(243,239,232,.12);
-    --hot:#00e5ff;
-    --hot-2:#a66bff;
-    --cool:#2b59ff;
-    --display:"Inter Tight","Helvetica Neue",Arial,system-ui,sans-serif;
-    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
-    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{background:var(--bg)}
-  body{
-    min-height:100svh;color:var(--ink);background:var(--bg);
-    font:400 17px/1.55 var(--display);
-    -webkit-font-smoothing:antialiased;overflow-x:hidden;
-  }
-  a{color:inherit}
-
-  /* ---------- atmosphere ---------- */
-  .glow{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-  .orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.45;will-change:transform}
-  .orb.a{width:46vmax;height:46vmax;background:var(--hot);top:-18vmax;right:-12vmax;animation:drift-a 22s ease-in-out infinite alternate}
-  .orb.b{width:38vmax;height:38vmax;background:var(--cool);bottom:-20vmax;left:-14vmax;opacity:.5;animation:drift-b 28s ease-in-out infinite alternate}
-  .orb.c{width:22vmax;height:22vmax;background:var(--hot-2);top:40%;left:55%;opacity:.45;animation:drift-c 18s ease-in-out infinite alternate}
-  @keyframes drift-a{to{transform:translate(-8vmax,10vmax) scale(1.1)}}
-  @keyframes drift-b{to{transform:translate(10vmax,-6vmax) scale(.9)}}
-  @keyframes drift-c{to{transform:translate(-14vmax,-8vmax) scale(1.2)}}
-
-  .spot{
-    position:fixed;inset:0;z-index:1;pointer-events:none;
-    background:radial-gradient(500px circle at var(--mx,50%) var(--my,40%),rgba(255,255,255,.06),transparent 60%);
-    transition:opacity .4s;
-  }
-  .grain{
-    position:fixed;inset:-50%;z-index:2;pointer-events:none;opacity:.09;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    animation:grain 1.2s steps(6) infinite;
-  }
-  @keyframes grain{
-    0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}
-    60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}
-  }
-
-  /* ---------- layout ---------- */
-  .wrap{position:relative;z-index:3;max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,48px);min-height:100svh;display:flex;flex-direction:column}
-
-  header{display:flex;justify-content:space-between;align-items:center;padding:28px 0;font:500 13px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-  .mark{display:flex;align-items:center;gap:12px;color:var(--ink);text-decoration:none}
-  .mark img{display:block;width:72px;height:48px;object-fit:contain;flex:none}
-  .mark .wordmark{font:750 clamp(17px,2.2vw,22px)/1 var(--display);letter-spacing:-.045em;text-transform:none}
-  .mark:focus-visible{outline:2px solid var(--hot);outline-offset:6px;border-radius:4px}
-  .status{display:flex;align-items:center;gap:10px}
-  .dot{width:8px;height:8px;border-radius:50%;background:#3ddc84;box-shadow:0 0 0 0 rgba(61,220,132,.6);animation:ping 2.4s infinite}
-  @keyframes ping{70%{box-shadow:0 0 0 10px rgba(61,220,132,0)}100%{box-shadow:0 0 0 0 rgba(61,220,132,0)}}
-
-  main{flex:1;display:flex;flex-direction:column;justify-content:center;padding:6vh 0 8vh}
-
-  .eyebrow{font:500 13px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hot);margin-bottom:28px}
-
-  h1{
-    font-weight:800;letter-spacing:-.045em;line-height:.9;
-    font-size:clamp(3.4rem,11.5vw,10.5rem);
-  }
-  h1 .line{display:block;overflow:hidden}
-  h1 .line > span{display:inline-block;transform:translateY(105%);animation:rise 1s cubic-bezier(.2,.8,.2,1) forwards}
-  h1 .line:nth-child(2) > span{animation-delay:.12s}
-  h1 em{
-    font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.02em;
-    background:linear-gradient(100deg,var(--hot) 10%,var(--hot-2) 60%,#e08cff);
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-    padding-right:.08em;
-  }
-  @keyframes rise{to{transform:none}}
-
-  .lede{
-    max-width:34ch;margin-top:36px;font-size:clamp(1.05rem,1.6vw,1.3rem);color:#cfc9bf;
-    opacity:0;animation:fade .9s .5s forwards;
-  }
-  @keyframes fade{to{opacity:1}}
-
-  .cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;margin-top:44px;opacity:0;animation:fade .9s .7s forwards}
-
-  .btn{
-    position:relative;display:inline-flex;align-items:center;gap:14px;
-    padding:20px 30px;border-radius:999px;text-decoration:none;
-    font:600 1.05rem/1 var(--display);letter-spacing:-.01em;color:#07061a;
-    background:linear-gradient(100deg,var(--hot),var(--hot-2));
-    box-shadow:0 10px 40px -10px rgba(122,92,255,.7),inset 0 1px 0 rgba(255,255,255,.35);
-    transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;
-    will-change:transform;
-  }
-  .btn:hover{box-shadow:0 18px 60px -10px rgba(122,92,255,.9),inset 0 1px 0 rgba(255,255,255,.35)}
-  .btn:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
-  .btn .arrow{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#07061a;color:var(--hot);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
-  .btn:hover .arrow{transform:rotate(-45deg)}
-
-  .copy{
-    background:none;border:0;cursor:pointer;color:var(--muted);
-    font:500 13px/1 var(--mono);letter-spacing:.06em;
-    padding:8px 0;border-bottom:1px dashed var(--line);transition:color .2s,border-color .2s;
-  }
-  .copy:hover{color:var(--ink);border-color:var(--muted)}
-  .copy:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
-
-  /* ---------- services ---------- */
-  .lanes{
-    display:grid;grid-template-columns:repeat(3,1fr);
-    border-top:1px solid var(--line);margin-top:9vh;
-  }
-  .lane{padding:28px 28px 30px 0;position:relative}
-  .lane + .lane{padding-left:28px;border-left:1px solid var(--line)}
-  .lane .n{font:500 12px/1 var(--mono);color:var(--muted);letter-spacing:.1em}
-  .lane h2{font-size:1.35rem;font-weight:700;letter-spacing:-.02em;margin:14px 0 8px}
-  .lane p{color:var(--muted);font-size:.95rem;max-width:30ch}
-  .lane::before{
-    content:"";position:absolute;top:-1px;left:0;height:1px;width:0;
-    background:linear-gradient(90deg,var(--hot),var(--hot-2));transition:width .6s cubic-bezier(.2,.8,.2,1);
-  }
-  .lane:hover::before{width:100%}
-
-  footer{
-    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px 24px;
-    padding:26px 0 32px;border-top:1px solid var(--line);
-    font:500 12px/1.4 var(--mono);letter-spacing:.06em;color:var(--muted);
-  }
-  footer .wink{color:#6f6a63}
-
-  .toast{
-    position:fixed;left:50%;bottom:28px;z-index:10;transform:translate(-50%,20px);opacity:0;
-    padding:12px 18px;border-radius:999px;background:var(--ink);color:var(--bg);
-    font:600 13px/1 var(--mono);transition:all .35s cubic-bezier(.2,.8,.2,1);pointer-events:none;
-  }
-  .toast.show{transform:translate(-50%,0);opacity:1}
-
-  @media (max-width:760px){
-    header .status span{display:none}
-    .lanes{grid-template-columns:1fr}
-    .lane,.lane + .lane{padding:22px 0;border-left:0}
-    .lane + .lane{border-top:1px solid var(--line)}
-    .btn{width:100%;justify-content:space-between}
-    .spot{display:none}
-  }
-
-  @media (prefers-reduced-motion:reduce){
-    *,*::before,*::after{animation:none!important;transition:none!important}
-    h1 .line > span{transform:none}
-    .lede,.cta-row{opacity:1}
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Tag Manager -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-P5JRHLTZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <!-- End Google Tag Manager -->
+  <title>ManicWebmaster — Websites, Logos & Graphic Design · Dallas–Fort Worth</title>
+  <meta name="description" content="Website design, fixes, logos, and graphic design by Matt Livingston, an independent designer and developer in Dallas–Fort Worth. See the work and start a project.">
+  <link rel="canonical" href="https://manicwebmaster.com/">
+  <meta name="theme-color" content="#101114">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ManicWebmaster">
+  <meta property="og:title" content="A little manic. Very intentional. — ManicWebmaster">
+  <meta property="og:description" content="Websites, logos, and graphic design. Independent design and development in Dallas–Fort Worth, by Matt Livingston.">
+  <meta property="og:url" content="https://manicwebmaster.com/">
+  <meta property="og:image" content="https://manicwebmaster.com/assets/img/home-social.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="A little manic. Very intentional. — ManicWebmaster">
+  <meta name="twitter:description" content="Websites, logos, and graphic design from an independent Dallas–Fort Worth studio.">
+  <meta name="twitter:image" content="https://manicwebmaster.com/assets/img/home-social.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/assets/icons/icon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" href="portfolio/assets/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/home.css?v=20261108">
+  <link rel="stylesheet" href="assets/css/project-inquiry.css?v=20261107-7a">
+  <link rel="stylesheet" href="assets/css/project-stories.css?v=20261107-8c">
+  <link rel="stylesheet" href="assets/css/client-results.css">
+  <script src="assets/js/project-inquiry.js?v=20261107-7" defer></script>
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "ProfessionalService", "@id": "https://manicwebmaster.com/#business", "name": "ManicWebmaster", "alternateName": "Manic Webmaster", "url": "https://manicwebmaster.com/", "logo": "https://manicwebmaster.com/assets/icons/icon-512.png", "image": "https://manicwebmaster.com/assets/img/home-social.jpg", "description": "Independent website design, development, website fixes, logos, and graphic design by Matt Livingston. Based in Dallas–Fort Worth, Texas, working with clients locally and nationwide.", "slogan": "A little manic. Very intentional.", "email": "matt@manicwebmaster.com", "telephone": "+1-720-276-6701", "address": {"@type": "PostalAddress", "addressLocality": "Dallas", "addressRegion": "TX", "addressCountry": "US"}, "geo": {"@type": "GeoCoordinates", "latitude": 32.7767, "longitude": -96.797}, "areaServed": [{"@type": "Place", "name": "Dallas–Fort Worth metroplex"}, {"@type": "City", "name": "Dallas"}, {"@type": "City", "name": "Fort Worth"}, {"@type": "Country", "name": "United States"}], "knowsAbout": ["Website design", "Web development", "Website repair", "Logo design", "Brand identity", "Graphic design", "Menu design", "Local SEO"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Design and development services", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Website fixes and updates", "url": "https://manicwebmaster.com/fix/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Website design and redesigns", "url": "https://manicwebmaster.com/design/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Logo design and brand identity", "url": "https://manicwebmaster.com/logos/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Graphic design: menus, flyers, and business cards", "url": "https://manicwebmaster.com/graphics/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Full brand creation", "url": "https://manicwebmaster.com/branding/"}}]}, "founder": {"@type": "Person", "name": "Matt Livingston", "jobTitle": "Designer and developer", "url": "https://mattlivingston.com/"}, "sameAs": ["https://www.pinterest.com/manicwebmaster/"]}
+  </script>
 </head>
-<body>
-  <div class="glow" aria-hidden="true"><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div></div>
-  <div class="spot" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
-
-  <div class="wrap">
-    <header>
-      <a class="mark" href="/" aria-label="ManicWebmaster home">
-        <img src="assets/manicwebmaster-logo.webp" width="72" height="48" alt="" fetchpriority="high">
-        <span class="wordmark">ManicWebmaster</span>
-      </a>
-      <div class="status"><i class="dot"></i><span>Booking new projects</span></div>
-    </header>
-
-    <main>
-      <p class="eyebrow">Design studio · Dallas–Fort Worth</p>
-      <h1>
-        <span class="line"><span>Websites &amp;</span></span>
-        <span class="line"><span>brands with <em>a&nbsp;pulse.</em></span></span>
-      </h1>
-      <p class="lede">Websites, logos, and graphic design for small businesses that refuse to look generic. Hand-built, fast, and yours to own.</p>
-
-      <div class="cta-row">
-        <a class="btn" id="email" href="#" data-u="matt" data-d="manicwebmaster.com">
-          Start a project
-          <span class="arrow" aria-hidden="true">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-        </a>
-        <button class="copy" id="copy" type="button">Copy email address</button>
-        <noscript><span class="copy">matt [at] manicwebmaster [dot] com</span></noscript>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="brand" href="./" aria-label="ManicWebmaster home"><img src="assets/manicwebmaster-logo.webp" width="48" height="32" alt=""><span>ManicWebmaster</span></a>
+    <nav class="site-nav" aria-label="Main navigation"><a href="design/">Web Design</a><a href="fix/">Website Fixes</a><a href="logos/">Logos</a><a href="portfolio/">Portfolio</a><a href="#contact">Contact</a></nav>
+  </header>
+  <main id="main" class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-rail" aria-hidden="true"><span class="rail-number">01</span><p>Dallas–<br>Fort Worth<span class="rail-separator"> / </span><br>Design studio</p></div>
+      <div class="hero-copy">
+        <h1 id="hero-title"><span>A little manic.</span><em>Very intentional.</em></h1>
+        <p class="hero-service">Websites, logos, and graphic design.</p>
+        <p class="hero-intro">An independent design and development studio in Dallas–Fort Worth, run by Matt Livingston.</p>
+        <div class="hero-actions">
+          <a class="button" href="portfolio/">Explore the work</a>
+          <a class="text-link" href="#contact">Start a project <span class="icon icon-right" aria-hidden="true"></span></a>
+          <div class="hero-phone"><p>Call or <a href="sms:+17202766701" aria-label="Text Matt at (720) 276-6701">text</a></p><a href="tel:+17202766701" aria-label="Call Matt at (720) 276-6701">(720) 276-6701</a></div>
+        </div>
       </div>
+    </section>
 
-      <section class="lanes" aria-label="Services">
-        <div class="lane"><span class="n">01</span><h2>Websites</h2><p>Custom sites and landing pages — fast, mobile-first, no bloated builders.</p></div>
-        <div class="lane"><span class="n">02</span><h2>Logos &amp; identity</h2><p>Marks, color, and type that make a small business look established.</p></div>
-        <div class="lane"><span class="n">03</span><h2>Graphic design</h2><p>Social graphics, print, menus, signage — anything that carries your name.</p></div>
-      </section>
-    </main>
+    <section class="selected-work" aria-labelledby="selected-title">
+      <div class="section-heading"><h2 class="eyebrow" id="selected-title">Selected work</h2><a class="text-link" href="portfolio/">Full portfolio <span class="icon" aria-hidden="true"></span></a></div>
+      <div class="featured-grid">
+        <article class="project">
+          <a class="project-link" href="https://kagodfrey.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Keith A Godfrey’s website (opens in a new tab)">
+            <div class="project-media"><img src="portfolio/assets/images/keith-a-godfrey.webp" width="1280" height="720" alt="Keith A Godfrey photography website with bold editorial typography and a curated image collection" decoding="async" fetchpriority="high"></div>
+            <div class="project-title"><h3>Keith A Godfrey</h3><span class="icon" aria-hidden="true"></span></div>
+          </a>
+          <p class="project-description">Website design &amp; development for a photography portfolio that helped Keith land a job. All photography by Keith A Godfrey.</p>
+          <a class="project-story-link" href="portfolio/stories/keith-godfrey/">Read Keith’s project story <span class="icon" aria-hidden="true"></span></a>
+        </article>
+        <article class="project project--world">
+          <a class="project-link" href="veyra/">
+            <div class="project-media"><img src="veyra/veyra-card.webp" width="1729" height="910" alt="The Veyra Scholarium: antique maps, preserved artifacts, and an immersive fictional archive" decoding="async"></div>
+            <div class="project-title"><h3>Veyra Scholarium</h3><span class="icon" aria-hidden="true"></span></div>
+          </a>
+          <p class="project-description">An immersive world of knowledge and discovery.</p>
+        </article>
+      </div>
+    </section>
 
-    <footer>
-      <span>© <span id="yr">2026</span> ManicWebmaster · Matt Livingston</span>
-      <span class="wink">Found this in a site’s footer? Yep — built that one.</span>
-    </footer>
-  </div>
+    <!-- PASS8_STORIES_START --><section class="story-index" id="stories" aria-labelledby="stories-title"><div class="story-index-head"><h2 id="stories-title">Behind the work</h2><p>The brief, the decisions, and what came next.</p></div><div class="story-teasers"><a class="story-teaser" href="/portfolio/stories/keith-godfrey/"><small>Client project · Completed</small><h3>Keith A Godfrey</h3><p>A photography portfolio built from scratch. A job search with a new outcome.</p><span>Read the project story <span class="icon" aria-hidden="true"></span></span></a><a class="story-teaser" href="/portfolio/stories/midnight-slice/"><small>Self-directed · Fictional concept</small><h3>Midnight Slice</h3><p>A late-night pizza identity, with the menu at the heart of the story.</p><span>Read the project story <span class="icon" aria-hidden="true"></span></span></a><a class="story-teaser" href="/portfolio/stories/crossroads/"><small>Client project · In progress</small><h3>CrossRoads Decorative Pavement</h3><p>A business website redesign built around the evidence of the work.</p><span>Read the project story <span class="icon" aria-hidden="true"></span></span></a></div></section><!-- PASS8_STORIES_END -->
 
-  <div class="toast" id="toast" role="status" aria-live="polite">Copied</div>
+    <section class="services" id="services" aria-labelledby="services-title">
+      <h2 class="eyebrow" id="services-title">Services</h2>
+      <a class="service-row" href="fix/"><span class="service-number" aria-hidden="true">01</span><h3>Website fixes</h3><p>Broken forms, awkward layouts, outdated content. Let’s get it working properly.</p><span class="icon" aria-hidden="true"></span></a>
+      <a class="service-row" href="design/"><span class="service-number" aria-hidden="true">02</span><h3>Website design</h3><p>A new website or a considered redesign, built around your business.</p><span class="icon" aria-hidden="true"></span></a>
+      <a class="service-row" href="logos/"><span class="service-number" aria-hidden="true">03</span><h3>Logos &amp; identity</h3><p>A distinctive mark and a visual direction that feels like you.</p><span class="icon" aria-hidden="true"></span></a>
+      <a class="service-row" href="graphics/"><span class="service-number" aria-hidden="true">04</span><h3>Graphic design</h3><p>Menus, flyers, business cards, and graphics that carry your name.</p><span class="icon" aria-hidden="true"></span></a>
+    </section>
 
-<script>
-(() => {
-  // Assemble the address at runtime so it isn't sitting in the HTML for scrapers.
-  const btn = document.getElementById('email');
-  const addr = btn.dataset.u + '@' + btn.dataset.d;
-  btn.href = 'mailto:' + addr + '?subject=' + encodeURIComponent('New project inquiry');
+    <section class="more-work" aria-labelledby="range-title">
+      <div class="section-heading"><h2 class="section-title" id="range-title">Different briefs.<br>Same attention.</h2><a class="text-link" href="portfolio/">Explore all the work <span class="icon" aria-hidden="true"></span></a></div>
+      <div class="more-work-grid">
+        <article class="project project--graphics">
+          <a class="project-link" href="graphics/#campaigns">
+            <div class="project-media"><img src="graphics/midnight-slice-hero-display.webp" width="733" height="1100" alt="Midnight Slice’s neon identity and Hot Honey Afterburn promotional poster" loading="lazy" decoding="async"></div>
+            <div class="project-title"><h3>Midnight Slice</h3><span class="icon" aria-hidden="true"></span></div>
+          </a>
+          <p class="project-description">A restaurant concept with a logo, menu, campaign artwork, and a website to match. <a class="text-link" href="portfolio/midnight-slice/">Explore the example site <span class="icon" aria-hidden="true"></span></a></p>
+          <a class="project-story-link" href="portfolio/stories/midnight-slice/">The menu, the identity, the story <span class="icon" aria-hidden="true"></span></a>
+        </article>
+        <article class="project">
+          <a class="project-link" href="https://mattlivingston.com/portfolio/sterling-kane/" target="_blank" rel="noopener noreferrer" aria-label="Explore the Sterling Kane example website (opens in a new tab)">
+            <div class="project-media"><img src="portfolio/assets/images/sterling-kane.webp" width="1440" height="900" alt="Sterling Kane law-firm example website: restrained typography, dark surfaces, and practice navigation" loading="lazy" decoding="async"></div>
+            <div class="project-title"><h3>Sterling Kane</h3><span class="icon" aria-hidden="true"></span></div>
+          </a>
+          <p class="project-description">An example website for a fictional law firm, with practice pages, attorney profiles, and an editorial approach.</p>
+        </article>
+      </div>
+    </section>
 
-  document.getElementById('yr').textContent = new Date().getFullYear();
+    <!-- PASS8_WORLDS_START --><section class="passion-projects" id="personal-worlds" aria-labelledby="personal-worlds-title">
+      <div class="passion-heading"><div><p class="passion-eyebrow">The projects I happily get lost in</p><h2 id="personal-worlds-title">Some ideas need<em>a world of their own.</em></h2></div><p>Brands from Parallel Worlds and Digital Relics Archive are two of my favorite things to work on. They’re where I follow an idea beyond the brief: building its atmosphere, its objects, and the little details that make an imagined place feel real.</p></div>
+      <div class="passion-grid">
+        <article class="passion-card"><a href="/brands-from-parallel-worlds/"><div class="passion-art"><img src="/brands-from-parallel-worlds/images/parallel-worlds/ninth-ember-1.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="The Ninth Ember Tavern fictional identity"><img src="/brands-from-parallel-worlds/images/parallel-worlds/kestrel-1.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Kestrel Courier Division fictional identity"><img src="/brands-from-parallel-worlds/images/parallel-worlds/blacktide-1.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Blacktide Privateering fictional identity"></div><h3>Brands from Parallel Worlds</h3></a><p>Fictional businesses with lives beyond their logos. Tavern companies, courier divisions, strange institutions: each identity hints at the culture and everyday world around it. This is where branding becomes storytelling.</p><a class="passion-link" href="/brands-from-parallel-worlds/">Explore the parallel worlds <span class="icon" aria-hidden="true"></span></a></article>
+        <article class="passion-card"><a href="/digital-relics-archive/"><img src="/digital-relics-archive/assets/digital-relics-og.webp" width="1200" height="630" loading="lazy" decoding="async" alt="Recovered fictional technology presented in the cinematic Digital Relics Archive"><h3>Digital Relics Archive</h3></a><p>Recovered devices, implied histories, and a quiet, cinematic future. A collection of fictional artifacts and OLED-friendly wallpaper art, built around the pleasure of discovering something that seems to have a story before you ever touch it.</p><a class="passion-link" href="/digital-relics-archive/">Enter the Digital Relics Archive <span class="icon" aria-hidden="true"></span></a></article>
+      </div><nav class="passion-footer" aria-label="More immersive work"><a href="/veyra/">Explore Veyra Scholarium ↗</a><a href="/world-building/">Build a world around your idea ↗</a></nav>
+    </section><!-- PASS8_WORLDS_END -->
 
-  const toast = document.getElementById('toast');
-  document.getElementById('copy').addEventListener('click', async () => {
-    try { await navigator.clipboard.writeText(addr); toast.textContent = 'Copied ' + addr; }
-    catch { toast.textContent = addr; }
-    toast.classList.add('show');
-    clearTimeout(toast._t);
-    toast._t = setTimeout(() => toast.classList.remove('show'), 2200);
-  });
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div><p class="eyebrow">The person behind the pixels</p><h2 id="about-title">Hi, I’m Matt.<br><em>I’ll be doing the work.</em></h2><p class="signature">Matt Livingston / ManicWebmaster</p></div>
+      <div class="about-copy"><p>I’m the designer and developer behind ManicWebmaster. I work directly with small businesses and people building something of their own. You’ll talk with the person designing and building your project, from the first conversation through the finished work.</p><ol class="process"><li><div><h3>Talk it through.</h3><p>Tell me what you need, what’s getting in the way, or what you’re imagining.</p></div></li><li><div><h3>Agree on the scope.</h3><p>We’ll work out the approach, what’s included, and the price before paid work begins.</p></div></li><li><div><h3>Bring it to life.</h3><p>I’ll design and build it, with your input along the way.</p></div></li></ol></div>
+    </section>
 
-  // Desktop-only flourishes: cursor spotlight + magnetic button.
-  const fine = matchMedia('(pointer:fine)').matches;
-  const calm = matchMedia('(prefers-reduced-motion:reduce)').matches;
-  if (!fine || calm) return;
+    <section class="client-results" id="results" aria-labelledby="results-title">
+      <!-- These summarize each project story. When Keith or Paul send a direct quote, swap it into .client-result-outcome. -->
+      <div class="client-results-head"><div><p class="client-results-kicker">Client results</p><h2 id="results-title">Real clients.<br><em>Real outcomes.</em></h2></div><p>Two recent client projects, in brief. The full project stories cover the brief, the decisions, and what came next.</p></div>
+      <ul class="client-results-grid">
+        <li class="client-result"><p class="client-result-outcome">Keith used his new photography portfolio in his job search and landed a job. He’s very happy with the site and the way it presents his work.</p><div class="client-result-meta"><span class="client-result-status">Completed</span><strong>Keith A Godfrey</strong><span>Photographer · Website design &amp; development</span><a href="portfolio/stories/keith-godfrey/">Read Keith’s project story</a></div></li>
+        <li class="client-result"><p class="client-result-outcome">Paul is pleased with the CrossRoads redesign so far. A filterable gallery and before-and-after comparisons now let the work speak for the business.</p><div class="client-result-meta"><span class="client-result-status">In progress</span><strong>Paul Black, CrossRoads Decorative Pavement</strong><span>Dallas · Website redesign</span><a href="portfolio/stories/crossroads/">Read the CrossRoads story</a></div></li>
+      </ul>
+    </section>
 
-  const root = document.documentElement;
-  addEventListener('pointermove', e => {
-    root.style.setProperty('--mx', e.clientX + 'px');
-    root.style.setProperty('--my', e.clientY + 'px');
-  }, { passive: true });
+    <section class="resources" aria-label="Useful things to explore">
+      <a class="resource" href="tools/"><h2>Useful tools. Yours to use.</h2><span class="icon" aria-hidden="true"></span><p>Small web tools for the details that make a website feel finished.</p></a>
+      <a class="resource" href="articles/"><h2>A little practical reading.</h2><span class="icon" aria-hidden="true"></span><p>Notes on websites, design, and making your business easier to find.</p></a>
+    </section>
 
-  btn.addEventListener('pointermove', e => {
-    const r = btn.getBoundingClientRect();
-    const x = (e.clientX - r.left - r.width / 2) * 0.18;
-    const y = (e.clientY - r.top - r.height / 2) * 0.3;
-    btn.style.transform = `translate(${x}px, ${y}px)`;
-  });
-  btn.addEventListener('pointerleave', () => { btn.style.transform = ''; });
-})();
-</script>
+<!-- PROJECT CONTACT START -->
+    <section class="project-contact" id="contact" aria-labelledby="contact-title">
+      <div class="project-contact-copy"><h2 id="contact-title">Have something<br>in mind?</h2><p>A small fix, a fresh start, or something a little unusual. Tell me what you’re working on. You’ll talk directly with Matt Livingston.</p><p class="reply-note">I’ll reply by the next business day.</p><p class="location-note">I’m based in Dallas–Fort Worth and love working with local businesses, but I take on projects from anywhere. (The 720 number? It came with me from Colorado.)</p><p>Your quote will explain the work, deliverables, revision scope, timing, and price before any paid work begins.</p><div class="project-contact-links"><a href="mailto:matt@manicwebmaster.com?subject=New%20project%20inquiry">matt@manicwebmaster.com</a><div class="project-contact-phone"><a href="tel:+17202766701" aria-label="Call Matt at (720) 276-6701">(720) 276-6701</a><a href="sms:+17202766701">Send a text</a></div></div></div>
+      <form class="project-form" data-project-inquiry data-success-path="sent/" id="homepage-inquiry-form" action="https://api.web3forms.com/submit" method="POST" aria-labelledby="project-form-title">
+        <h3 id="project-form-title">Tell me about your project</h3><p class="project-form-intro">A rough idea is a good start. Fields marked * are required.</p>
+        <input type="hidden" name="access_key" value="37a6b510-04c9-4523-b4ec-4eafaf3609a2"><input type="hidden" name="subject" value="New Project Inquiry - ManicWebmaster Homepage"><input type="hidden" name="from_name" value="ManicWebmaster Project Inquiry"><input type="hidden" name="redirect" value="https://manicwebmaster.com/sent/"><input type="hidden" name="campaign_source" value="homepage-page"><input type="hidden" name="utm_source" value=""><input type="hidden" name="utm_medium" value=""><input type="hidden" name="utm_campaign" value=""><input type="hidden" name="utm_content" value=""><input type="hidden" name="utm_term" value=""><input type="hidden" name="landing_page" value="https://manicwebmaster.com/"><input type="checkbox" name="botcheck" hidden tabindex="-1" autocomplete="off">
+        <div class="project-fields">
+          <div class="project-field"><label for="project-name">Your name *</label><input id="project-name" name="name" autocomplete="name" maxlength="120" required></div>
+          <div class="project-field"><label for="project-email">Email address *</label><input id="project-email" name="email" type="email" autocomplete="email" maxlength="254" required></div>
+          <div class="project-field"><label for="project-business">Business or project name <span class="project-optional">(optional)</span></label><input id="project-business" name="business_name" autocomplete="organization" maxlength="200"></div>
+          <div class="project-field"><label for="project-website">Your website <span class="project-optional">(optional)</span></label><input id="project-website" name="website" type="text" inputmode="url" placeholder="example.com" maxlength="500"></div>
+          <div class="project-field project-field-full"><label for="project-service">What do you need? *</label><select id="project-service" name="service" required><option value="" selected disabled>Choose the closest match</option><option value="website-fix">A website fix or update</option><option value="website-design">A new website or redesign</option><option value="logos">A logo or logo refresh</option><option value="graphics">Menus, flyers, cards, or other graphics</option><option value="branding">A coordinated brand identity</option><option value="world-building">An immersive or world-building project</option><option value="other">Something else / I’m still figuring it out</option></select></div>
+          <div class="project-field project-field-full"><label for="project-message">Tell me about your project *</label><textarea id="project-message" name="message" rows="5" maxlength="10000" placeholder="What do you need? What’s getting in the way? Share your idea, any deadline, and where you’d like to take it." required></textarea></div>
+        </div><button class="project-submit" type="submit">Send my project inquiry</button><p class="project-form-note">No obligation. Sending this form does not authorize paid work. Please don’t include passwords or sensitive account information.</p><p class="project-form-note">Matt uses these details to respond and discuss your project. Web3Forms processes the form to deliver your inquiry by email.</p><p class="project-form-status" role="status" aria-live="polite" aria-atomic="true" hidden></p>
+      </form>
+    </section>
+    <!-- PROJECT CONTACT END -->
+  </main>
+
+  <footer class="site-footer wrap">
+    <div class="footer-grid">
+      <div class="footer-brand"><a class="brand" href="./" aria-label="ManicWebmaster home"><img src="assets/manicwebmaster-logo.webp" alt="" width="39" height="26"><span>ManicWebmaster</span></a><p>Independent design &amp; development.<br>Based in Dallas–Fort Worth, Texas.<br>Working with clients everywhere.</p></div>
+      <nav class="footer-group" aria-labelledby="footer-services"><h2 id="footer-services">Services</h2><ul class="footer-links"><li><a href="fix/">Website fixes</a></li><li><a href="design/">Website design</a></li><li><a href="logos/">Logos &amp; identity</a></li><li><a href="branding/">Branding</a></li><li><a href="graphics/">Graphic design</a></li><li><a href="world-building/">World-building</a></li></ul></nav>
+      <nav class="footer-group" aria-labelledby="footer-explore"><h2 id="footer-explore">Explore</h2><ul class="footer-links"><li><a href="portfolio/">Portfolio</a></li><li><a href="veyra/">Veyra Scholarium</a></li><li><a href="digital-relics-archive/">Digital Relics Archive</a></li><li><a href="brands-from-parallel-worlds/">Brands from Parallel Worlds</a></li><li><a href="articles/">Articles</a></li></ul></nav>
+      <nav class="footer-group" aria-labelledby="footer-tools"><h2 id="footer-tools">Free tools</h2><ul class="footer-links"><li><a href="tools/">All tools</a></li><li><a href="tools/launch-hero/">Launch Hero</a></li><li><a href="tools/site-rescue/">Site Rescue</a></li><li><a href="tools/favicon-forge/">Favicon Forge</a></li><li><a href="tools/sharespark/">ShareSpark</a></li></ul></nav>
+    </div>
+    <div class="footer-base"><p>© 2026 ManicWebmaster · Matt Livingston</p><a href="#top">Back to top</a></div>
+  </footer>
 </body>
 </html>

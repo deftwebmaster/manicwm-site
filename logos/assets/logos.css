@@ -1,0 +1,118 @@
+.logos-page { font-size: 18px; }
+.logo-hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 65px; align-items: center; padding-block: 65px 72px; }
+.logo-hero h1 { font-size: clamp(59px, 6.3vw, 90px); margin-block: 22px; letter-spacing: -.05em; line-height: 1.03; }
+.logo-hero h1 em { font-size: 1em; letter-spacing: -.06em; }
+.logo-intro { max-width: 47ch; color: var(--muted); font-size: 20px; margin: 0; line-height: 1.6; }
+.logo-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 24px; margin-top: 27px; }
+.domain-note { color: var(--muted); font-size: 13px; margin-top: 23px; line-height: 1.6; }
+.domain-note strong { color: var(--ink); font-weight: 500; }
+.logo-stage { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 16px; }
+.logo-stage figure { margin: 0; min-width: 0; }
+.logo-stage img { width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; padding: 15px; background: #18191d; }
+.logo-stage figcaption { margin-top: 8px; color: var(--muted); font-size: 12px; }
+.logo-work { border-top: 1px solid var(--line); padding-top: 55px; }
+.logo-section-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 35px; }
+.logo-section-head h2 { font-size: clamp(34px, 3.5vw, 49px); line-height: 1.12; letter-spacing: -.045em; margin: 15px 0 0; font-weight: 650; }
+.logo-section-head > p { max-width: 39ch; color: var(--muted); font-size: 16px; margin: 0; }
+.logo-work .art-media { padding: 24px; }
+.logo-work .art-category { font-size: 13px; }
+.logo-work .art-name h3 { font-size: 23px; }
+.gallery-note { color: var(--muted); font-size: 13px; margin: 23px 0 0; }
+.logo-scope { display: grid; grid-template-columns: 1fr 1fr; gap: 65px; border-top: 1px solid var(--line); margin-top: 75px; padding-block: 65px; }
+.logo-scope h2, .logo-inquiry h2 { font-size: clamp(38px, 3.8vw, 54px); line-height: 1.12; letter-spacing: -.045em; font-weight: 650; margin: 19px 0 22px; }
+.logo-scope h2 em { color: var(--violet); font-family: var(--serif); font-weight: 400; }
+.logo-scope p { color: var(--muted); max-width: 46ch; }
+.logo-scope .eyebrow { color: var(--cyan); }
+.logo-process { list-style: none; margin: 0; padding: 0; }
+.logo-process li { display: grid; grid-template-columns: 35px 1fr; gap: 20px; border-top: 1px solid var(--line); padding-block: 21px; }
+.logo-process li > span { color: var(--violet); font-size: 14px; padding-top: 3px; }
+.logo-process h3 { font-size: 22px; letter-spacing: -.03em; margin: 0 0 7px; font-weight: 600; }
+.logo-process p { font-size: 16px; margin: 0; }
+.logo-faq { border-top: 1px solid var(--line); display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; padding-block: 60px; }
+.logo-faq h2 { margin: 0; font-size: 40px; line-height: 1.15; letter-spacing: -.04em; font-weight: 650; }
+.logo-faq details { border-bottom: 1px solid var(--line); }
+.logo-faq details:first-child { border-top: 1px solid var(--line); }
+.logo-faq summary { cursor: pointer; padding: 18px 25px 18px 0; font-size: 18px; font-weight: 500; }
+.logo-faq details p { color: var(--muted); font-size: 16px; margin: 0 0 22px; max-width: 58ch; }
+.logo-faq summary:focus-visible { outline-offset: 3px; }
+.logo-inquiry { display: grid; grid-template-columns: .9fr 1.1fr; gap: 75px; border-top: 1px solid var(--line); padding-block: 70px; scroll-margin-top: 24px; }
+.logo-inquiry-copy > p:not(.eyebrow) { color: var(--muted); max-width: 42ch; }
+.logo-contact { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; margin-top: 28px; font-size: 17px; }
+.logo-contact > a { color: var(--cyan); }
+.logo-contact p { display: flex; align-items: center; gap: 16px; margin: 0; }
+.logo-contact p a:last-child { color: var(--cyan); border-left: 1px solid var(--line); padding-left: 16px; font-size: 14px; }
+.logo-form { padding: 30px; border: 1px solid var(--line); background: #16171b; }
+.logo-form h3 { margin: 0 0 12px; font-size: 26px; line-height: 1.2; font-weight: 600; letter-spacing: -.03em; }
+.form-intro { color: var(--muted); font-size: 15px; margin: 0 0 25px; }
+.logo-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.logo-field { min-width: 0; }
+.logo-field.full { grid-column: 1 / -1; }
+.logo-field label { display: block; font-size: 14px; margin-bottom: 8px; font-weight: 500; }
+.optional { color: var(--muted); font-size: 12px; font-weight: 400; }
+.logo-field input, .logo-field select, .logo-field textarea { appearance: none; width: 100%; padding: 12px 13px; border: 1px solid #55565e; border-radius: 0; color: var(--ink); background: #101114; font: 400 16px/1.45 var(--sans); min-height: 48px; }
+.logo-field select { appearance: auto; padding-right: 12px; }
+.logo-field textarea { min-height: 150px; resize: vertical; }
+.logo-field input::placeholder, .logo-field textarea::placeholder { color: #95949c; }
+.logo-field input:focus, .logo-field select:focus, .logo-field textarea:focus { outline: 2px solid var(--cyan); outline-offset: 2px; }
+.logo-submit { border: 0; cursor: pointer; margin-top: 24px; font-family: var(--sans); width: 100%; background: var(--cyan); }
+.logo-submit:disabled { opacity: .65; cursor: progress; }
+.form-note { color: var(--muted); font-size: 12px; line-height: 1.6; margin: 17px 0 0; }
+.form-status { border-left: 3px solid var(--cyan); padding: 12px 14px; margin-top: 20px; font-size: 15px; color: var(--ink); }
+.form-status[data-state='error'] { border-color: #efa6a6; }
+.logo-footer { border-top: 1px solid var(--line); padding-block: 28px 35px; display: flex; justify-content: space-between; align-items: flex-start; gap: 30px; color: var(--muted); font-size: 13px; }
+.logo-footer p { margin: 0; }
+.logo-footer nav { display: flex; flex-wrap: wrap; gap: 12px 24px; }
+.logo-footer a:hover { color: var(--cyan); }
+@media (max-width: 1000px) {
+  .logo-hero { gap: 40px; }
+  .logo-hero h1 { font-size: 62px; }
+  .logo-intro { font-size: 18px; }
+  .logo-inquiry { gap: 35px; }
+  .logo-form { padding: 24px; }
+  .logo-fields { grid-template-columns: 1fr; }
+}
+@media (max-width: 800px) {
+  .logo-hero { grid-template-columns: 1fr; padding-block: 40px 50px; gap: 35px; }
+  .logo-hero-copy { max-width: 640px; }
+  .logo-hero h1 { font-size: clamp(57px, 8.6vw, 74px); }
+  .logo-stage { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+  .logo-stage img { padding: 8px; }
+  .logo-section-head { align-items: flex-start; flex-direction: column; gap: 20px; }
+  .logo-section-head > p { max-width: 56ch; }
+  .logo-scope, .logo-faq { gap: 35px; }
+  .logo-inquiry { grid-template-columns: 1fr; gap: 30px; }
+  .logo-inquiry-copy > p:not(.eyebrow) { max-width: 60ch; }
+  .logo-fields { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .logo-hero { padding-top: 30px; }
+  .logo-hero h1 { font-size: clamp(43px, 10.8vw, 62px); margin-block: 21px; }
+  .logo-intro { font-size: 17px; }
+  .logo-actions { gap: 14px 22px; margin-top: 23px; }
+  .logo-actions .button { padding: 14px 17px; }
+  .logo-stage { grid-template-columns: 1fr 1fr; gap: 19px 14px; }
+  .logo-stage img { padding: 12px; }
+  .logo-stage figcaption { font-size: 11px; }
+  .logo-work { padding-top: 40px; }
+  .logo-section-head { margin-bottom: 25px; }
+  .logo-section-head h2 { font-size: 36px; }
+  .logo-section-head > p { font-size: 15px; }
+  .logo-scope, .logo-faq { grid-template-columns: 1fr; padding-block: 45px; gap: 25px; }
+  .logo-scope { margin-top: 50px; }
+  .logo-scope h2, .logo-inquiry h2 { font-size: 42px; }
+  .logo-scope p { font-size: 16px; }
+  .logo-faq h2 { font-size: 35px; }
+  .logo-faq summary { font-size: 17px; }
+  .logo-inquiry { padding-block: 45px; }
+  .logo-inquiry-copy > p:not(.eyebrow) { font-size: 16px; }
+  .logo-contact { font-size: 16px; }
+  .logo-fields { grid-template-columns: 1fr; gap: 18px; }
+  .logo-form { padding: 23px 18px; }
+  .logo-footer { flex-direction: column; gap: 22px; }
+  .logo-footer nav { gap: 12px 22px; }
+}
+
+.logo-inclusions { padding-left: 20px; color: var(--muted); font-size: 16px; line-height: 1.6; margin-block: 22px; }
+.logo-inclusions li + li { margin-top: 8px; }
+
+.logo-stage .stage-wide img { object-fit: cover; }

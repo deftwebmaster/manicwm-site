@@ -1,0 +1,57 @@
+/* Pass 5 additions retain the existing Graphic Studio visual language. */
+html { scroll-behavior: auto; }
+.site-nav .nav-links li { display: block; }
+.hero .hero-copy { max-width: 660px; }
+.hero .hero-title, .hero .hero-copy, .hero .hero-actions, .hero .studio-notes, .hero .hero-visual { animation: none; opacity: 1; transform: none; }
+.hero-visual .studio-piece img { object-fit: contain; }
+.graphics-contact { margin-top: 18px; font-size: 15px; color: var(--ink-2); }
+.graphics-contact a { color: var(--ink); text-underline-offset: 4px; }
+.graphics-contact a:last-child { margin-left: 15px; }
+.campaign-feature { margin-top: 36px; }
+.campaign-feature a:focus-visible { outline-offset: 2px; }
+.campaign-media { min-width: 0; min-height: 0; grid-template-columns: minmax(0, 1fr) minmax(0, .74fr); aspect-ratio: 1.35; }
+.campaign-media a, .campaign-stack { min-width: 0; min-height: 0; }
+.campaign-media a { display: block; }
+.campaign-main { aspect-ratio: auto; }
+.campaign-stack { grid-template-rows: repeat(2, minmax(0, 1fr)); }
+.campaign-media img { object-fit: contain; }
+.graphics-gallery { margin-top: 55px; padding-block: 0; }
+.graphics-gallery h3.gallery-title { font-family: 'Barlow Condensed', Arial, sans-serif; font-size: clamp(32px, 4vw, 46px); line-height: 1.05; margin-bottom: 14px; }
+.graphics-gallery > p { max-width: 65ch; color: var(--ink-2); margin-bottom: 25px; }
+.graphics-gallery .art-category { color: #535761; }
+.graphics-gallery .art-media { border: 1px solid #d7d2c8; }
+.graphics-gallery .art-item[data-kind='logos'] .art-media { background: #e9e6df; }
+.graphics-gallery .art-name h3 { font-family: 'Barlow Condensed', Arial, sans-serif; font-weight: 700; font-size: 25px; line-height: 1.12; letter-spacing: .01em; }
+.graphics-gallery .art-gallery-end { margin-bottom: 0; }
+.graphics-gallery .gallery-note { margin-top: 23px; color: #535761; font-size: 13px; }
+.logo-crosslink { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 35px; margin-top: 50px; padding: 28px 0 0; border-top: 1px solid var(--line-strong); }
+.logo-crosslink h3 { font-family: 'Barlow Condensed', Arial, sans-serif; font-size: 36px; line-height: 1.05; margin: 12px 0; }
+.logo-crosslink p { max-width: 60ch; color: var(--ink-2); }
+.logo-crosslink a { min-width: 180px; }
+.graphics-portfolio-link { display: inline-block; margin-top: 22px; font-weight: 700; color: #006b99; text-underline-offset: 5px; }
+.graphics-portfolio-link:hover { text-decoration: underline; }
+.graphics-skip { position: fixed; top: 10px; left: 10px; z-index: 100; transform: translateY(-200%); padding: 12px 18px; background: #111217; color: white; font-weight: 700; }
+.graphics-skip:focus { transform: none; }
+@media (max-width: 819px) {
+  .site-nav { flex-wrap: wrap; gap: 8px; }
+  .site-nav .nav-links { width: 100%; justify-content: space-between; gap: 12px; }
+  .site-nav .nav-links a { padding-block: 7px; display: inline-block; }
+  .hero { padding-top: 155px; }
+  html { scroll-padding-top: 150px; }
+  .art-anchor { scroll-margin-top: 150px; }
+  .campaign-media { grid-template-columns: minmax(0, 1fr); aspect-ratio: auto; }
+  .campaign-main { aspect-ratio: 2 / 3; }
+  .campaign-stack { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto; }
+  .campaign-stack a { aspect-ratio: 1; }
+  .logo-crosslink { grid-template-columns: 1fr; gap: 20px; }
+  .logo-crosslink a { justify-self: start; }
+}
+@media (max-width: 560px) {
+  .hero .hero-actions { display: flex; flex-wrap: wrap; }
+  .hero-visual { order: 0; margin-top: 20px; min-height: 350px; }
+  .studio-notes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .graphics-gallery { margin-top: 40px; }
+  .logo-crosslink h3 { font-size: 31px; }
+  .graphics-contact { font-size: 14px; }
+  .graphics-portfolio-link { font-size: 14px; }
+}

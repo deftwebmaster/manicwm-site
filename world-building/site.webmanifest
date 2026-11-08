@@ -1,1 +1,22 @@
-{"name":"","short_name":"","icons":[{"src":"/android-chrome-192x192.png","sizes":"192x192","type":"image/png"},{"src":"/android-chrome-512x512.png","sizes":"512x512","type":"image/png"}],"theme_color":"#ffffff","background_color":"#ffffff","display":"standalone"}
+{
+  "name": "World-Building as a Service — ManicWebmaster",
+  "short_name": "World-Building",
+  "description": "Story-driven web experiences, art direction, and visual series by ManicWebmaster.",
+  "start_url": "/world-building/",
+  "scope": "/world-building/",
+  "icons": [
+    {
+      "src": "/world-building/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/world-building/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#05070A",
+  "background_color": "#05070A",
+  "display": "standalone"
+}

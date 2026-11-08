@@ -241,7 +241,7 @@ body {
   border-bottom: 1px solid var(--border);
 }
 .hpc__img--demo {
-  background: linear-gradient(rgba(8, 12, 16, 0.06), rgba(8, 12, 16, 0.06)), url('card.png') center / cover;
+  background: linear-gradient(rgba(8, 12, 16, 0.06), rgba(8, 12, 16, 0.06)), url('card.webp') center / cover;
   border-bottom: 1px solid var(--border-accent);
 }
 .hpc__img-label {

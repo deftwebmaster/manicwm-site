@@ -3,12 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google Tag Manager -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-P5JRHLTZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <!-- End Google Tag Manager -->
   <meta name="description" content="Alpine Heating &amp; Air is a premium HVAC repair website concept for same-day AC repair, heating repair, maintenance, and emergency service across North DFW." />
   <title>Alpine Heating &amp; Air | Same-Day HVAC Repair in North DFW</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="image" href="alpine-hero-hvac.jpg" />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&amp;family=Barlow:wght@400;500;600;700&amp;family=Lora:ital,wght@0,500;1,500&amp;display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="alpine-hero-hvac.webp" />
+  <link rel="stylesheet" href="/assets/fonts/gf/barlow-condensed-barlow-lora-250eae.css">
   <style>
     :root {
       --ink: #111827;
@@ -224,7 +230,7 @@
       background:
         linear-gradient(90deg, rgba(7, 27, 53, .94) 0%, rgba(7, 27, 53, .82) 34%, rgba(7, 27, 53, .34) 64%, rgba(7, 27, 53, .06) 100%),
         linear-gradient(180deg, rgba(7, 27, 53, .28) 0%, rgba(7, 27, 53, .12) 54%, rgba(7, 27, 53, .72) 100%),
-        url("alpine-hero-hvac.jpg") center right / cover no-repeat;
+        url("alpine-hero-hvac.webp") center right / cover no-repeat;
     }
 
     .hero::after {
@@ -901,7 +907,7 @@
       color: var(--white);
       background:
         linear-gradient(90deg, rgba(7, 27, 53, .96), rgba(7, 27, 53, .88)),
-        url("alpine-hero-hvac.jpg") center / cover no-repeat;
+        url("alpine-hero-hvac.webp") center / cover no-repeat;
     }
 
     .contact .section-title { color: var(--white); }
@@ -1199,7 +1205,7 @@
         min-height: 84svh;
         background:
           linear-gradient(180deg, rgba(7, 27, 53, .68) 0%, rgba(7, 27, 53, .88) 54%, rgba(7, 27, 53, .96) 100%),
-          url("alpine-hero-hvac.jpg") 62% center / cover no-repeat;
+          url("alpine-hero-hvac.webp") 62% center / cover no-repeat;
       }
 
       .hero-inner {
@@ -1257,6 +1263,7 @@
       .footer-links { flex-wrap: wrap; justify-content: center; row-gap: .6rem; }
     }
   </style>
+  <meta name="robots" content="noindex, follow">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -1264,7 +1271,7 @@
   <header class="site-header" id="top">
     <nav class="nav" aria-label="Main navigation">
       <a class="brand" href="#top" aria-label="Alpine Heating and Air home">
-        <img src="hvac-logo.png" alt="" width="54" height="54" />
+        <img src="hvac-logo.webp" alt="" width="54" height="54" />
         <span class="brand-text">
           <span class="brand-name">Alpine Heating &amp; Air</span>
           <span class="brand-market">North DFW HVAC Repair</span>
@@ -1301,7 +1308,7 @@
         <p class="hero-copy">Premium HVAC repair, maintenance, and emergency service for North DFW homeowners who want clear answers, clean work, and comfort restored without the sales pressure.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#contact">Request service</a>
-          <a class="btn btn-secondary" href="tel:+19725550148">Call (972) 555-0148</a>
+          <a class="btn btn-secondary" href="tel:+17202766701">Call (720) 276-6701</a>
         </div>
         <div class="hero-proof" aria-label="Service highlights">
           <span class="proof-pill">Most repairs completed same day</span>
@@ -1572,7 +1579,7 @@
           <div class="contact-list">
             <div class="contact-item">
               <span>Phone</span>
-              <a href="tel:+19725550148"><strong>(972) 555-0148</strong></a>
+              <a href="tel:+17202766701"><strong>(720) 276-6701</strong></a>
             </div>
             <div class="contact-item">
               <span>Email</span>
@@ -1669,7 +1676,7 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <img src="hvac-logo.png" alt="" width="48" height="48" />
+        <img src="hvac-logo.webp" alt="" width="48" height="48" />
         <div>
           <strong>Alpine Heating &amp; Air</strong><br />
           <span>Licensed. Insured. NATE certified.</span>
@@ -1690,7 +1697,7 @@
     </div>
   </footer>
 
-  <a class="btn sticky-call" href="tel:+19725550148">Call now</a>
+  <a class="btn sticky-call" href="tel:+17202766701">Call now</a>
 
   <script type="application/ld+json">
     {
@@ -1698,7 +1705,7 @@
       "@type": "HVACBusiness",
       "name": "Alpine Heating & Air",
       "url": "https://example.com",
-      "telephone": "+1-972-555-0148",
+      "telephone": "+17202766701",
       "email": "service@alpinehvac.com",
       "address": {
         "@type": "PostalAddress",
@@ -1776,5 +1783,7 @@
       formNote.textContent = "Thanks. Alpine would call back within the hour during business hours.";
     });
   </script>
+
+<aside class="mw-concept-note" aria-label="About this site" style="all:initial;display:block;box-sizing:border-box;width:100%;padding:14px 20px;background:#101114;color:#d9d6cf;border-top:1px solid #2a2b31;font:14px/1.5 system-ui,-apple-system,'Segoe UI',sans-serif;text-align:center;">Concept by <a href="https://manicwebmaster.com/" style="color:#c7a5ff;text-decoration:underline;font:inherit;">ManicWebmaster</a>. Alpine Heating &amp; Air is a fictional business, and this example website was designed and built to show the work. <a href="https://manicwebmaster.com/portfolio/" style="color:#c7a5ff;text-decoration:underline;font:inherit;">See more work</a></aside>
 </body>
 </html>

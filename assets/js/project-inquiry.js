@@ -1,0 +1,51 @@
+(() => {
+  'use strict';
+  document.querySelectorAll('[data-project-inquiry]').forEach(form => {
+    const submit = form.querySelector('[type="submit"]');
+    const status = form.querySelector('[role="status"]');
+    const label = submit.textContent;
+    const params = new URLSearchParams(location.search);
+    function setAttribution() {
+      for (const name of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term']) {
+        form.elements.namedItem(name).value = (params.get(name) || '').slice(0, 200);
+      }
+      form.elements.namedItem('landing_page').value = location.origin + location.pathname;
+    }
+    setAttribution();
+    const requestedService = params.get('service');
+    const service = form.elements.namedItem('service');
+    if (requestedService && [...service.options].some(option => option.value === requestedService)) {
+      service.value = requestedService;
+    }
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      if (submit.disabled || !form.reportValidity()) return;
+      status.hidden = true;
+      submit.disabled = true;
+      submit.textContent = 'Sending…';
+      form.setAttribute('aria-busy', 'true');
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 30000);
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST', body: new FormData(form),
+          headers: { Accept: 'application/json' }, signal: controller.signal
+        });
+        const result = await response.json();
+        if (!response.ok || result.success !== true) throw new Error('Unconfirmed submission');
+        form.reset();
+        setAttribution();
+        status.textContent = 'Your inquiry has been sent. Opening your confirmation…';
+        location.assign(new URL(form.dataset.successPath, location.href).href);
+      } catch {
+        status.textContent = 'Your inquiry couldn’t be confirmed. Your details are still here. Please try again, or email matt@manicwebmaster.com.';
+      } finally {
+        clearTimeout(timeout);
+        status.hidden = false;
+        submit.disabled = false;
+        submit.textContent = label;
+        form.removeAttribute('aria-busy');
+      }
+    });
+  });
+})();
